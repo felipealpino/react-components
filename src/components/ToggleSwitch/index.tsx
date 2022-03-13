@@ -20,7 +20,7 @@ export interface IToggleSwitchProps {
   textIfOff?: string;
   rounded?: boolean;
   animatedIcon?: boolean;
-  status?: ElementStatus;
+  status: ElementStatus;
   outline?: boolean;
   disabled?: boolean;
   isChecked?: boolean;
@@ -82,6 +82,7 @@ const ToggleSwitch: React.FC<IToggleSwitchProps> = ({
     setStatusCheck(isChecked);
   }, [isChecked]);
 
+  console.log(props)
   return (
     <StyledToggleSwitchContainer
       {...props}

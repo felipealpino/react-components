@@ -1,6 +1,6 @@
-import { themeGet } from '@styled-system/theme-get';
 import styled from 'styled-components';
 import { IToggleSwitchProps } from './index';
+import { colors } from '@shared/theme/colors';
 
 interface IStyledIToggleSwitchProps extends IToggleSwitchProps {
   statusCheck: boolean;
@@ -27,15 +27,15 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
     bottom: 0;
     background-color: ${(props) =>
       props.statusCheck && !props.outline
-        ? themeGet(`colors.${props.status}500`)
+        ? `${colors[`${props.status}500`]}`
         : props.statusCheck && props.outline
-        ? themeGet(`colors.${props.status}400`)
+        ? `${colors[`${props.status}400`]}`
         : 'rgba(143, 155, 179, 0.16)'};
     border: ${(props) =>
       props.statusCheck && !props.outline
-        ? `1px solid ${themeGet(`colors.${props.status}500`)(props)}`
+        ? `1px solid ${colors[`${props.status}500`]}`
         : props.statusCheck && props.outline
-        ? `1px solid ${themeGet(`colors.${props.status}600`)(props)}`
+        ? `1px solid ${colors[`${props.status}600`]}`
         : '1px solid rgba(143, 155, 179, 1)'};
     border-radius: ${(props) => (props.rounded ? '100px' : '4px')};
     transition: 0.6s ease all;
@@ -68,7 +68,7 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
       justify-content: center;
 
       svg {
-        fill: ${(props) => (props.statusCheck ? themeGet(`colors.${props.status}500`) : themeGet('colors.danger500'))};
+        fill: ${(props) => (props.statusCheck ? `${colors[`${props.status}500`]}` : `${colors['danger500']}`)};
       }
     }
 
@@ -82,8 +82,7 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
       transition: 0.4;
 
       .animated-icon {
-        background-color: ${(props) =>
-          props.statusCheck ? themeGet(`colors.${props.status}500`) : themeGet('colors.danger500')};
+        background-color: ${(props) => (props.statusCheck ? `${colors[`${props.status}500`]}` : `${colors['danger500']}`)};
         height: 1.5px;
         width: 12px;
         border-radius: 8px;
@@ -94,8 +93,7 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
 
         &::after {
           content: '';
-          background-color: ${(props) =>
-            props.statusCheck ? themeGet(`colors.${props.status}500`) : themeGet('colors.danger500')};
+          background-color: ${(props) => (props.statusCheck ? `${colors[`${props.status}500`]}` : `${colors['danger500']}`)};
           position: absolute;
           height: 1.5px;
           width: ${(props) => (props.statusCheck ? '6px' : '12px')};

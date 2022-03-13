@@ -1,6 +1,6 @@
 import { ElementStatus } from '@shared/theme/colors';
-import { themeGet } from '@styled-system/theme-get';
 import styled from 'styled-components';
+import { colors } from '@shared/theme/colors';
 
 interface IStyledPagination {
   status: ElementStatus;
@@ -18,13 +18,14 @@ export const StyledPagination = styled.div<IStyledPagination>`
 
     span {
       margin: auto;
+      font-weight: 700;
     }
 
     .pagination-content-icon {
       cursor: pointer;
       margin: 0px 10px;
       transition: background-color 0.1s ease-in-out;
-      background-color: ${({ status }) => themeGet(`colors.${status}500`)};
+      background-color: ${({ status }) => `${colors[`${status}500`]}`};
       border-radius: 15px;
 
       i {
@@ -35,15 +36,15 @@ export const StyledPagination = styled.div<IStyledPagination>`
         svg {
           width: 25px;
           height: 25px;
-          fill: ${({ status }) => themeGet(`colors.${status}Contrast`)};
+          fill: ${({ status }) => `${colors[`${status}Contrast`]}`};
         }
       }
 
       &:hover {
-        background-color: ${({ status }) => themeGet(`colors.${status}600`)};
+        background-color: ${({ status }) => `${colors[`${status}600`]}`};
 
         i svg {
-          fill: ${({ status }) => themeGet(`colors.${status}Contrast`)};
+          fill: ${({ status }) => `${colors[`${status}Contrast`]}`};
         }
       }
     }

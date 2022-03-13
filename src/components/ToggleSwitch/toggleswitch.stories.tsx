@@ -23,6 +23,7 @@ storiesOf('ToggleSwitch', module)
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: '5px' }}>
         <ToggleSwitch disabled={disabled} handleOnChange={handleOnChange} status={status} outline={outline} />
+       
         <ToggleSwitch
           iconNameDisabled='close'
           iconNameEnabled='checkmark'
@@ -31,6 +32,7 @@ storiesOf('ToggleSwitch', module)
           outline={outline}
           disabled={disabled}
         />
+
         <ToggleSwitch
           iconNameDisabled='eye-off-2'
           iconNameEnabled='eye'
@@ -40,6 +42,7 @@ storiesOf('ToggleSwitch', module)
           outline={outline}
           handleOnChange={handleOnChange}
         />
+
         <ToggleSwitch
           rounded={true}
           animatedIcon={true}
