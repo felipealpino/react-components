@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IToggleSwitchProps } from './index';
-import { colors } from '@shared/theme/colors';
+import { colorGet } from '@shared/utils/colorGet';
 
 interface IStyledIToggleSwitchProps extends IToggleSwitchProps {
   statusCheck: boolean;
@@ -20,24 +20,24 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
 
   .slider {
     position: absolute;
-    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${(props) =>
-      props.statusCheck && !props.outline
-        ? `${colors[`${props.status}500`]}`
-        : props.statusCheck && props.outline
-        ? `${colors[`${props.status}400`]}`
+    background-color: ${({ statusCheck, status, outline }) =>
+      statusCheck && !outline
+        ? colorGet(status, 500)
+        : statusCheck && outline
+        ? colorGet(status, 400)
         : 'rgba(143, 155, 179, 0.16)'};
-    border: ${(props) =>
-      props.statusCheck && !props.outline
-        ? `1px solid ${colors[`${props.status}500`]}`
-        : props.statusCheck && props.outline
-        ? `1px solid ${colors[`${props.status}600`]}`
+    border: ${({ statusCheck, status, outline }) =>
+      statusCheck && !outline
+        ? `1px solid ${colorGet(status, 500)}`
+        : statusCheck && outline
+        ? `1px solid ${colorGet(status, 600)}`
         : '1px solid rgba(143, 155, 179, 1)'};
-    border-radius: ${(props) => (props.rounded ? '100px' : '4px')};
+    border-radius: ${({ rounded }) => (rounded ? '100px' : '4px')};
     transition: 0.6s ease all;
   }
 
@@ -48,19 +48,19 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
     width: 28px;
     background-color: white;
     transition: 0.4s;
-    border-radius: ${(props) => (props.rounded ? '50%' : '4px')};
+    border-radius: ${({ rounded }) => (rounded ? '50%' : '4px')};
     margin: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     label {
-      cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+      cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
     }
 
-    ${(props) => props.statusCheck && '-webkit-transform: translateX(20px)'};
-    ${(props) => props.statusCheck && ' -ms-transform: translateX(20px)'};
-    ${(props) => props.statusCheck && 'transform: translateX(20px)'};
+    ${({ statusCheck }) => statusCheck && '-webkit-transform: translateX(20px)'};
+    ${({ statusCheck }) => statusCheck && ' -ms-transform: translateX(20px)'};
+    ${({ statusCheck }) => statusCheck && 'transform: translateX(20px)'};
 
     i {
       display: flex;
@@ -68,7 +68,7 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
       justify-content: center;
 
       svg {
-        fill: ${(props) => (props.statusCheck ? `${colors[`${props.status}500`]}` : `${colors['danger500']}`)};
+        fill: ${({ status, statusCheck }) => (statusCheck ? colorGet(status, 500) : colorGet('danger', 500))};
       }
     }
 
@@ -82,25 +82,27 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
       transition: 0.4;
 
       .animated-icon {
-        background-color: ${(props) => (props.statusCheck ? `${colors[`${props.status}500`]}` : `${colors['danger500']}`)};
+        background-color: ${({ status, statusCheck }) =>
+          statusCheck ? colorGet(status, 500) : colorGet('danger', '500')};
         height: 1.5px;
         width: 12px;
         border-radius: 8px;
-        transform: ${(props) => (props.statusCheck ? 'rotate(-45deg)' : 'rotate(45deg)')};
+        transform: ${({ statusCheck }) => (statusCheck ? 'rotate(-45deg)' : 'rotate(45deg)')};
         position: absolute;
-        right: ${(props) => (props.statusCheck ? '0px' : 'unset')};
+        right: ${({ statusCheck }) => (statusCheck ? '0px' : 'unset')};
         transition: 0.4s;
 
         &::after {
           content: '';
-          background-color: ${(props) => (props.statusCheck ? `${colors[`${props.status}500`]}` : `${colors['danger500']}`)};
+          background-color: ${({ statusCheck, status }) =>
+            statusCheck ? colorGet(status, 500) : colorGet('danger', '500')};
           position: absolute;
           height: 1.5px;
-          width: ${(props) => (props.statusCheck ? '6px' : '12px')};
-          border-radius: ${(props) => (props.statusCheck ? '8px 0px 0px 8px' : '8px')};
+          width: ${({ statusCheck }) => (statusCheck ? '6px' : '12px')};
+          border-radius: ${({ statusCheck }) => (statusCheck ? '8px 0px 0px 8px' : '8px')};
           transform: rotate(90deg);
-          left: ${(props) => (props.statusCheck ? '-2.2px' : 'unset')};
-          bottom: ${(props) => (props.statusCheck ? '3px' : 'unset')};
+          left: ${({ statusCheck }) => (statusCheck ? '-2.2px' : 'unset')};
+          bottom: ${({ statusCheck }) => (statusCheck ? '3px' : 'unset')};
           transition: 0.4s;
         }
       }
