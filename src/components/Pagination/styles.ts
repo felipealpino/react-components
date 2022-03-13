@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { colors } from '@shared/theme/colors';
 import { IPagination } from '.';
+import { colorGet } from '@shared/utils/colorGet';
 
 export const ContainerPagination = styled.div<IPagination>`
   width: 100%;
@@ -21,7 +21,7 @@ export const ContainerPagination = styled.div<IPagination>`
       cursor: pointer;
       margin: 0px 10px;
       transition: background-color 0.1s ease-in-out;
-      background-color: ${({ status }) => `${colors[`${status}500`]}`};
+      background-color: ${({ status }) => colorGet(status, 500)};
       border-radius: ${({ rounded }) => (rounded ? '15px' : '4px')};
 
       i {
@@ -32,15 +32,15 @@ export const ContainerPagination = styled.div<IPagination>`
         svg {
           width: 25px;
           height: 25px;
-          fill: ${({ status }) => `${colors[`${status}Contrast`]}`};
+          fill: ${({ status }) => colorGet(status, 'Contrast')};
         }
       }
 
       &:hover {
-        background-color: ${({ status }) => `${colors[`${status}600`]}`};
+        background-color: ${({ status }) => colorGet(status, 600)};
 
         i svg {
-          fill: ${({ status }) => `${colors[`${status}Contrast`]}`};
+          fill: ${({ status }) => colorGet(status, 'Contrast')};
         }
       }
     }
