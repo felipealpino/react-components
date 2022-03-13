@@ -14,20 +14,27 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   error?: string;
   status?: ElementStatus;
+  mandatory?: boolean;
 }
 
 const Input: React.FC<IInputProps> = (props) => {
   return (
     <InputContainer {...props} className={`input-container ${props.className || ''}`}>
-      <label className='input-label'>{props.label}</label>
-      <input {...props} />
-      <label className='error'>{props.error}</label>
+      <label className='input-label'>
+        {props.label}
+        {props.mandatory && <span className='mandatory-star'>*</span>}
+      </label>
 
-      {props.icon && (
-        <div className='icon'>
-          <Icon name={props.icon.name} fill={props.icon.fill} />
-        </div>
-      )}
+      <div className='container-input-icon'>
+        <input {...props} />
+        {props.icon && (
+          <div className='icon'>
+            <Icon name={props.icon.name} fill={props.icon.fill} />
+          </div>
+        )}
+      </div>
+
+      <label className='error'>{props.error}</label>
     </InputContainer>
   );
 };

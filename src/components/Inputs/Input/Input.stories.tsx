@@ -32,6 +32,7 @@ storiesOf('Input', module)
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <Input
+          label='Nome:'
           name='firstName'
           onChange={(event) => handleInputChange(event)}
           status={status}
@@ -40,6 +41,7 @@ storiesOf('Input', module)
           icon={{ name: 'funnel', fill: '222B45' }}
         />
         <Input
+          label='Sobrenome:'
           name='lastName'
           autoComplete='off'
           onChange={(event) => handleInputChange(event)}
