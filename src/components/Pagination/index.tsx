@@ -2,57 +2,51 @@ import React, { useCallback } from 'react';
 import Icon from 'react-eva-icons';
 import { ElementStatus } from '@shared/theme/colors';
 
-import { StyledPagination } from './styles';
+import { ContainerPagination } from './styles';
 
-interface IPagination {
+export interface IPagination {
   totalOfPages: number | string;
   currentPage: number | string;
   option?: any;
   fixed?: boolean;
   status?: ElementStatus;
+  rounded?: boolean;
   callbackGetListData: (search: string, page: number, option?: any) => Promise<void>;
 }
 
 declare type IAction = 'forward' | 'back';
 
-const Pagination: React.FC<IPagination> = ({
-  totalOfPages,
-  currentPage,
-  callbackGetListData,
-  option = undefined,
-  fixed = false,
-  status = 'primary'
-}) => {
+const Pagination: React.FC<IPagination> = ({ status = 'primary', rounded = true, ...props }) => {
   const changePage = useCallback(
     (action: IAction): void => {
       if (action === 'forward') {
-        const newPage = Number(currentPage) + 1;
-        if (newPage >= totalOfPages) return;
-        callbackGetListData('', newPage, option);
+        const newPage = Number(props.currentPage) + 1;
+        if (newPage >= props.totalOfPages) return;
+        props.callbackGetListData('', newPage, props.option);
       }
       if (action === 'back') {
-        const newPage = Number(currentPage) - 1;
+        const newPage = Number(props.currentPage) - 1;
         if (newPage < 0) return;
-        callbackGetListData('', newPage, option);
+        props.callbackGetListData('', newPage, props.option);
       }
     },
-    [totalOfPages, currentPage, callbackGetListData, option]
+    [props.totalOfPages, props.currentPage, props.callbackGetListData, props.option]
   );
 
   return (
-    <StyledPagination status={status} fixed={fixed} className='pagination-container'>
+    <ContainerPagination {...props} rounded={rounded} status={status} className='pagination-container'>
       <div className='pagination-content'>
         <label className='pagination-content-icon' onClick={() => changePage('back')}>
           <Icon name='arrow-ios-back' fill='white' />
         </label>
         <span className='pagination-content-text'>
-          Página {Number(currentPage) + 1} de {totalOfPages > 0 ? totalOfPages : 1}
+          Página {Number(props.currentPage) + 1} de {props.totalOfPages > 0 ? props.totalOfPages : 1}
         </span>
         <label className='pagination-content-icon' onClick={() => changePage('forward')}>
           <Icon name='arrow-ios-forward' fill='white' />
         </label>
       </div>
-    </StyledPagination>
+    </ContainerPagination>
   );
 };
 

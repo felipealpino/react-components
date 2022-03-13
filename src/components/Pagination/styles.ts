@@ -1,17 +1,13 @@
-import { ElementStatus } from '@shared/theme/colors';
 import styled from 'styled-components';
 import { colors } from '@shared/theme/colors';
+import { IPagination } from '.';
 
-interface IStyledPagination {
-  status: ElementStatus;
-  fixed: boolean;
-}
-export const StyledPagination = styled.div<IStyledPagination>`
+export const ContainerPagination = styled.div<IPagination>`
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  ${(p) => p.fixed && 'position: absolute; bottom: 35px; left: 0;'}
+  ${({ fixed }) => fixed && 'position: absolute; bottom: 35px; left: 0;'}
 
   .pagination-content {
     display: flex;
@@ -26,7 +22,7 @@ export const StyledPagination = styled.div<IStyledPagination>`
       margin: 0px 10px;
       transition: background-color 0.1s ease-in-out;
       background-color: ${({ status }) => `${colors[`${status}500`]}`};
-      border-radius: 15px;
+      border-radius: ${({ rounded }) => (rounded ? '15px' : '4px')};
 
       i {
         display: flex;
