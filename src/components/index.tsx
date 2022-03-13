@@ -1,2 +1,10 @@
 export * from './Pagination';
 export * from './ToggleSwitch';
+export * from './Inputs/Input';
+export * from './Inputs/InputForm';
+// export * from './TextAreas/TextArea';
+export * from './TextAreas/TextAreaForm';
+// export * from './Selects/Select';
+export * from './Selects/SelectForm';
+export * from './Tooltip';
+export * from './Button';
