@@ -7,7 +7,6 @@ import { ButtonContainer } from './styles';
 export interface IButtonProps extends ButtonStyleProps, React.HTMLAttributes<HTMLButtonElement> {
   text?: string;
   shortcut_key?: string;
-  className?: string;
   status?: ElementStatus;
 }
 

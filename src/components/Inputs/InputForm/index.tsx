@@ -1,20 +1,13 @@
-import React, { useRef, useEffect, useCallback, InputHTMLAttributes } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { useField } from '@unform/core';
 import { masker } from '@shared/utils/masker';
 import Icon from 'react-eva-icons';
-import { ElementStatus } from '@shared/theme/colors';
 import { InputContainer } from '../Input/styles';
+import { InputDefaultProps } from '@components/Inputs/interfaces/InputDefaultProps';
 
-export interface IInputFormProps extends InputHTMLAttributes<HTMLInputElement> {
+export type IInputFormProps = InputDefaultProps & {
   name: string;
-  label?: string;
-  mandatory?: boolean;
-  status?: ElementStatus;
-  mask?: string;
-  icon?: { name: string; fill: string };
-  inputRef?: React.RefObject<HTMLInputElement>;
-  error?: string;
-}
+};
 
 const InputForm: React.FC<IInputFormProps> = ({ inputRef, mask, onChange, ...props }) => {
   let inputReference = useRef<HTMLInputElement>(null);

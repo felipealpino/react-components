@@ -1,20 +1,9 @@
-import React, { ChangeEvent, InputHTMLAttributes } from 'react';
+import React from 'react';
 import { InputContainer } from './styles';
 import Icon from 'react-eva-icons';
-import { ElementStatus } from '@shared/theme/colors';
+import { InputDefaultProps } from '@components/Inputs/interfaces/InputDefaultProps';
 
-// type InputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
-
-export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  defaultValue?: any;
-  icon?: { name: string; fill: string };
-  handleOnChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  label?: string;
-  type?: string;
-  error?: string;
-  status?: ElementStatus;
-  mandatory?: boolean;
-}
+export type IInputProps = InputDefaultProps & {}; 
 
 const Input: React.FC<IInputProps> = (props) => {
   return (
