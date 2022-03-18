@@ -1,18 +1,11 @@
-import React, { useRef, useEffect, SelectHTMLAttributes } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
 import { SelectContainer } from './styles';
+import { SelectDefaultProps } from '@components/Selects/interfaces/SelectDefaultProps';
 
-export interface ISelectForm extends SelectHTMLAttributes<HTMLSelectElement> {
+export type ISelectForm = SelectDefaultProps & {
   name: string;
-  label?: string;
-  options: ISelectOptions[];
-  mandatory?: boolean;
-}
-
-interface ISelectOptions {
-  value: string;
-  name: string;
-}
+};
 
 const SelectForm: React.FC<ISelectForm> = ({ name, label, options, ...props }) => {
   const selectRef = useRef(null);

@@ -1,12 +1,11 @@
-import React, { useRef, useEffect, TextareaHTMLAttributes } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
 import { ContainerTextArea } from './styles';
+import { TextAreaDefaultProps } from '@components/TextAreas/interfaces/TextAreaDefaultProps';
 
-export interface ITextAreaForm extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export type ITextAreaForm = TextAreaDefaultProps & {
   name: string;
-  label?: string;
-  mandatory?: boolean;
-}
+};
 
 const TextAreaForm: React.FC<ITextAreaForm> = ({ name, label, ...props }) => {
   const textAreaRef = useRef(null);
