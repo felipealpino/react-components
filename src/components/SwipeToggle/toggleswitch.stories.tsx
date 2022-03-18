@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { storiesOf } from '@storybook/react';
-import { ToggleSwitch } from './index';
-import { useCallback } from 'react';
-import { select, withKnobs, boolean } from '@storybook/addon-knobs';
+import { SwipeToggle } from './index';
+import { select, withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { v1 as uuidv1 } from 'uuid';
 
-storiesOf('ToggleSwitch', module)
+storiesOf('SwipeToggle', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
     const status = select(
@@ -21,17 +21,21 @@ storiesOf('ToggleSwitch', module)
       console.log(stateCheckButton);
     }, []);
 
+    console.log(`isOutline`, isOutline);
+    console.log(`isDisabled`, isDisabled);
+    console.log(`isRounded`, isRounded);
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: '5px' }}>
-        <ToggleSwitch
+        {/* <SwipeToggle
           disabled={isDisabled}
           rounded={isRounded}
           handleOnChange={handleOnChange}
           status={status}
           outline={isOutline}
+          key={uuidv1()}
         />
 
-        <ToggleSwitch
+        <SwipeToggle
           iconNameDisabled='close'
           iconNameEnabled='checkmark'
           handleOnChange={handleOnChange}
@@ -41,7 +45,7 @@ storiesOf('ToggleSwitch', module)
           disabled={isDisabled}
         />
 
-        <ToggleSwitch
+        <SwipeToggle
           iconNameDisabled='eye-off-2'
           iconNameEnabled='eye'
           status={status}
@@ -49,9 +53,9 @@ storiesOf('ToggleSwitch', module)
           disabled={isDisabled}
           outline={isOutline}
           handleOnChange={handleOnChange}
-        />
+        /> */}
 
-        <ToggleSwitch
+        <SwipeToggle
           rounded={isRounded}
           animatedIcon={true}
           handleOnChange={handleOnChange}

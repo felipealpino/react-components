@@ -44,25 +44,23 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, mask, onChange, ...pro
   );
 
   return (
-    <>
-      <InputContainer {...props} className={`input-container ${props.className || ''}`}>
-        <label className='input-label'>
-          {props.label}
-          {props.mandatory && <span className='mandatory-star'>*</span>}
-        </label>
+    <InputContainer {...props} className={`input-container ${props.className || ''}`}>
+      <label className='input-label'>
+        {props.label}
+        {props.mandatory && <span className='mandatory-star'>*</span>}
+      </label>
 
-        <div className='container-input-icon'>
-          <input id={fieldName} ref={inputReference} onChange={handleChange} {...props} />
-          {props.icon && (
-            <div className='icon'>
-              <Icon name={props.icon.name} fill={props.icon.fill} />
-            </div>
-          )}
-        </div>
+      <div className='container-input-icon'>
+        <input id={fieldName} ref={inputReference} onChange={handleChange} {...props} />
+        {props.icon && (
+          <div className='icon'>
+            <Icon name={props.icon.name} fill={props.icon.fill} />
+          </div>
+        )}
+      </div>
 
-        <label className='error'>{props.error}</label>
-      </InputContainer>
-    </>
+      <label className='error'>{props.error}</label>
+    </InputContainer>
   );
 };
 

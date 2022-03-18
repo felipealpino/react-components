@@ -8,16 +8,18 @@ export const ButtonContainer = styled.button<IButtonProps>`
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  cursor: pointer;
   color: #ffffff;
-  background: ${({ status }) => colorGet(status, 400)};
   padding: 10px 15px;
-  /* filter: drop-shadow(0px 2px 9px rgba(0, 0, 0, 0.14)); */
   font-weight: 600;
   font-size: 14px;
   transition: 0.1s ease-in-out;
   transition-property: background;
+  /* filter: drop-shadow(0px 2px 9px rgba(0, 0, 0, 0.14)); */
+  
+  background: ${({ status }) => colorGet(status, 500)};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border: 2px solid ${({ status }) => colorGet(status, 600)};
+  opacity: ${({ disabled }) => (!disabled ? '1' : '0.6')};
 
   &:hover {
     background: ${({ status }) => colorGet(status, 600)};

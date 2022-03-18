@@ -15,8 +15,8 @@ storiesOf('Input', module)
     const iconColor = color('Icon fill', '#8F9BB3');
 
     interface IInputText {
-      firstName?: string;
-      lastName?: string;
+      first_name?: string;
+      last_name?: string;
     }
 
     const [inputText, setInputText] = useState<IInputText>({});
@@ -34,7 +34,7 @@ storiesOf('Input', module)
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <Input
           label='Nome:'
-          name='firstName'
+          name='first_name'
           onChange={(event) => handleInputChange(event)}
           status={status}
           placeholder='Digite o nome'
@@ -42,18 +42,18 @@ storiesOf('Input', module)
           key={`${iconColor}-1`}
           icon={{ name: 'funnel', fill: iconColor }}
         />
+        <label>Nome: {inputText.first_name || ''} </label>
+
         <Input
           label='Sobrenome:'
-          name='lastName'
+          name='last_name'
           autoComplete='off'
           onChange={(event) => handleInputChange(event)}
           status={status}
           placeholder='Digite o sobrenome'
-          key={`${iconColor}-2`}
           icon={{ name: 'funnel', fill: iconColor }}
         />
-        <label>Nome: {inputText.firstName || ''} </label>
-        <label>Sobrenome: {inputText.lastName || ''} </label>
+        <label>Sobrenome: {inputText.last_name || ''} </label>
 
         <br />
         <Input status={status} disabled placeholder='Input disabled' />

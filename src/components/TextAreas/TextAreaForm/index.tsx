@@ -27,27 +27,25 @@ const TextAreaForm: React.FC<ITextAreaForm> = ({ name, label, ...props }) => {
   }, [fieldName, registerField]);
 
   return (
-    <>
-      <ContainerTextArea className={`textareaform-container ${props.className || ''}`}>
-        {label && (
-          <label htmlFor={fieldName}>
-            {label} {props.mandatory && <span className='mandatory-star'>*</span>}
-          </label>
-        )}
-        <textarea
-          id={fieldName}
-          className='component-input'
-          autoComplete={props.autoComplete}
-          ref={textAreaRef}
-          defaultValue={defaultValue}
-          onChange={props.onChange}
-          onBlur={props.onBlur}
-          {...props}
-        >
-          {error && <span className='error'>{error}</span>}
-        </textarea>
-      </ContainerTextArea>
-    </>
+    <ContainerTextArea className={`textareaform-container ${props.className || ''}`}>
+      {label && (
+        <label htmlFor={fieldName}>
+          {label} {props.mandatory && <span className='mandatory-star'>*</span>}
+        </label>
+      )}
+      <textarea
+        id={fieldName}
+        className='component-input'
+        autoComplete={props.autoComplete}
+        ref={textAreaRef}
+        defaultValue={defaultValue}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        {...props}
+      >
+        {error && <span className='error'>{error}</span>}
+      </textarea>
+    </ContainerTextArea>
   );
 };
 

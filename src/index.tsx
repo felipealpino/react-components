@@ -1,6 +1,4 @@
 export * from './components';
-export * from './shared/styles';
-export * from './shared/hooks';
 export * from './shared/utils';
 
 export {

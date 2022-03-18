@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { IToggleSwitchProps } from './index';
 import { colorGet } from '@shared/utils/colorGet';
+import { ISwipeToggle } from '@components/SwipeToggle';
 
-interface IStyledIToggleSwitchProps extends IToggleSwitchProps {
+type ISwipeToggleProps = ISwipeToggle & {
   statusCheck: boolean;
-}
+};
 
-export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProps>`
+export const SwipeToggleContainer = styled.label<ISwipeToggleProps>`
   position: relative;
   display: inline-block;
   width: 52px;
@@ -48,7 +48,7 @@ export const StyledToggleSwitchContainer = styled.label<IStyledIToggleSwitchProp
     width: 28px;
     background-color: white;
     transition: 0.4s;
-    border-radius: ${({ rounded }) => (rounded ? '50%' : '4px')};
+    border-radius: ${({ rounded }) => (rounded ? '100px' : '4px')};
     margin: 1px;
     display: flex;
     align-items: center;

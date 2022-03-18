@@ -1,12 +1,10 @@
 /* eslint-disable jsx-a11y/no-access-key */
 import { ElementStatus } from '@shared/theme/colors';
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import { ButtonStyleProps } from 'styled-system';
 import { ButtonContainer } from './styles';
 
-export interface IButtonProps extends ButtonStyleProps, React.HTMLAttributes<HTMLButtonElement> {
-  text?: string;
-  shortcut_key?: string;
+export interface IButtonProps extends ButtonStyleProps, ButtonHTMLAttributes<HTMLButtonElement> {
   status?: ElementStatus;
 }
 
