@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Input } from '../Input';
-import { withKnobs, select, text } from '@storybook/addon-knobs';
+import { withKnobs, select, text, color } from '@storybook/addon-knobs';
 import { useCallback } from '@storybook/addons';
 
 storiesOf('Input', module)
@@ -12,6 +12,7 @@ storiesOf('Input', module)
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'control'],
       'primary'
     );
+    const iconColor = color('Icon fill', '#8F9BB3');
 
     interface IInputText {
       firstName?: string;
@@ -38,7 +39,8 @@ storiesOf('Input', module)
           status={status}
           placeholder='Digite o nome'
           autoComplete='off'
-          icon={{ name: 'funnel', fill: '222B45' }}
+          key={`${iconColor}-1`}
+          icon={{ name: 'funnel', fill: iconColor }}
         />
         <Input
           label='Sobrenome:'
@@ -47,7 +49,8 @@ storiesOf('Input', module)
           onChange={(event) => handleInputChange(event)}
           status={status}
           placeholder='Digite o sobrenome'
-          icon={{ name: 'funnel', fill: '222B45' }}
+          key={`${iconColor}-2`}
+          icon={{ name: 'funnel', fill: iconColor }}
         />
         <label>Nome: {inputText.firstName || ''} </label>
         <label>Sobrenome: {inputText.lastName || ''} </label>

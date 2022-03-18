@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import { addDecorator, storiesOf } from '@storybook/react';
 import { Pagination } from '../Pagination';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { boolean } from 'yup';
 
 storiesOf('Pagination', module)
   .addDecorator(withKnobs)

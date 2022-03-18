@@ -1,16 +1,11 @@
-import React, { useRef, useEffect } from "react";
-import { useField } from "@unform/core";
-import { StyledSelect } from "./styles";
+import React, { useRef, useEffect, SelectHTMLAttributes } from 'react';
+import { useField } from '@unform/core';
+import { SelectContainer } from './styles';
 
-export interface ISelectFormProps {
+export interface ISelectForm extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
   label?: string;
-  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
-  customStyles?: React.CSSProperties;
-  disabled?: boolean;
-  role?: string;
   options: ISelectOptions[];
-  placeholder?: string;
   mandatory?: boolean;
 }
 
@@ -19,7 +14,7 @@ interface ISelectOptions {
   name: string;
 }
 
-const SelectForm: React.FC<ISelectFormProps> = ({ name, label, onChange, customStyles, options, placeholder, mandatory, ...rest }) => {
+const SelectForm: React.FC<ISelectForm> = ({ name, label, options, ...props }) => {
   const selectRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
   useEffect(() => {
@@ -33,29 +28,35 @@ const SelectForm: React.FC<ISelectFormProps> = ({ name, label, onChange, customS
         ref.current.value = value;
       },
       clearValue: (ref) => {
-        ref.current.value = "";
+        ref.current.value = '';
       }
     });
   }, [fieldName, registerField]);
 
   return (
     <>
-      <StyledSelect className="container-input" style={customStyles}>
+      <SelectContainer className={`selectform-container ${props.className || ''}`}>
         {label && (
           <label htmlFor={fieldName}>
-            {label} {mandatory && <span className="mandatory-star">*</span>}
+            {label} {props.mandatory && <span className='mandatory-star'>*</span>}
           </label>
         )}
-        <select id={fieldName} className="component-select" ref={selectRef} onChange={onChange} defaultValue={defaultValue}>
-          {placeholder && <option value="">{placeholder}</option>}
+        <select
+          id={fieldName}
+          className='component-select'
+          ref={selectRef}
+          onChange={props.onChange}
+          defaultValue={defaultValue}
+        >
+          {props.placeholder && <option value=''>{props.placeholder}</option>}
           {options.map((option, index) => (
             <option value={option.value} key={index}>
               {option.name}
             </option>
           ))}
         </select>
-        {error && <span className="error">{error}</span>}
-      </StyledSelect>
+        {error && <span className='error'>{error}</span>}
+      </SelectContainer>
     </>
   );
 };

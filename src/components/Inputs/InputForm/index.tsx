@@ -14,14 +14,13 @@ export interface IInputFormProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: { name: string; fill: string };
   inputRef?: React.RefObject<HTMLInputElement>;
   error?: string;
-  className?: string;
 }
 
-const InputForm: React.FC<IInputFormProps> = ({ autoFocus = false, inputRef, mask, name, onChange, ...props }) => {
+const InputForm: React.FC<IInputFormProps> = ({ inputRef, mask, onChange, ...props }) => {
   let inputReference = useRef<HTMLInputElement>(null);
   if (inputRef) inputReference = inputRef;
 
-  const { fieldName, registerField } = useField(name);
+  const { fieldName, registerField } = useField(props.name);
   useEffect(() => {
     registerField({
       name: fieldName,

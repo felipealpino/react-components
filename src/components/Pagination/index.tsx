@@ -11,12 +11,13 @@ export interface IPagination {
   fixed?: boolean;
   status?: ElementStatus;
   rounded?: boolean;
+  className?: string;
   callbackGetListData: (search: string, page: number, option?: any) => Promise<void>;
 }
 
 declare type IAction = 'forward' | 'back';
 
-const Pagination: React.FC<IPagination> = ({ status = 'primary', rounded = true, ...props }) => {
+const Pagination: React.FC<IPagination> = ({ rounded = true, ...props }) => {
   const changePage = useCallback(
     (action: IAction): void => {
       if (action === 'forward') {
@@ -34,7 +35,12 @@ const Pagination: React.FC<IPagination> = ({ status = 'primary', rounded = true,
   );
 
   return (
-    <ContainerPagination {...props} rounded={rounded} status={status} className='pagination-container'>
+    <ContainerPagination
+      {...props}
+      rounded={rounded}
+      status={props.status}
+      className={`pagination-container ${props.className}`}
+    >
       <div className='pagination-content'>
         <label className='pagination-content-icon' onClick={() => changePage('back')}>
           <Icon name='arrow-ios-back' fill='white' />

@@ -1,25 +1,14 @@
-import React, { useRef, useEffect } from "react";
-import { useField } from "@unform/core";
-import { StyledTextArea } from "./styles";
+import React, { useRef, useEffect, TextareaHTMLAttributes } from 'react';
+import { useField } from '@unform/core';
+import { ContainerTextArea } from './styles';
 
-export interface ITextAreaFormProps {
+export interface ITextAreaForm extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   label?: string;
-  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
-  onBlur?: React.FocusEventHandler<HTMLTextAreaElement>;
-  maxLength?: number;
-  type?: string;
-  customStyles?: React.CSSProperties;
-  disabled?: boolean;
-  placeholder?: string;
-  value?: string | number;
-  visible?: boolean;
-  role?: string;
-  autoComplete?: string;
   mandatory?: boolean;
 }
 
-const TextAreaForm: React.FC<ITextAreaFormProps> = ({ name, label, onChange, type = "text", customStyles, onBlur, autoComplete = "off", mandatory, ...rest }) => {
+const TextAreaForm: React.FC<ITextAreaForm> = ({ name, label, ...props }) => {
   const textAreaRef = useRef(null);
   const { fieldName, defaultValue, registerField, error } = useField(name);
   useEffect(() => {
@@ -33,32 +22,32 @@ const TextAreaForm: React.FC<ITextAreaFormProps> = ({ name, label, onChange, typ
         ref.current.value = value;
       },
       clearValue: (ref) => {
-        ref.current.value = "";
+        ref.current.value = '';
       }
     });
   }, [fieldName, registerField]);
 
   return (
     <>
-      <StyledTextArea className="container-textarea" style={customStyles}>
+      <ContainerTextArea className={`textareaform-container ${props.className || ''}`}>
         {label && (
           <label htmlFor={fieldName}>
-            {label} {mandatory && <span className="mandatory-star">*</span>}
+            {label} {props.mandatory && <span className='mandatory-star'>*</span>}
           </label>
         )}
         <textarea
           id={fieldName}
-          className="component-input"
-          autoComplete={autoComplete}
+          className='component-input'
+          autoComplete={props.autoComplete}
           ref={textAreaRef}
           defaultValue={defaultValue}
-          onChange={onChange}
-          onBlur={onBlur}
-          {...rest}
+          onChange={props.onChange}
+          onBlur={props.onBlur}
+          {...props}
         >
-          {error && <span className="error">{error}</span>}
+          {error && <span className='error'>{error}</span>}
         </textarea>
-      </StyledTextArea>
+      </ContainerTextArea>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTextArea = styled.div`
+export const ContainerTextArea = styled.div`
   width: 100%;
   position: relative;
 

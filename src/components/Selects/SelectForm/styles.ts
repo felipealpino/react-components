@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSelect = styled.div`
+export const SelectContainer = styled.div`
   width: 100%;
   position: relative;
 

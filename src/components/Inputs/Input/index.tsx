@@ -9,7 +9,6 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   defaultValue?: any;
   icon?: { name: string; fill: string };
   handleOnChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  className?: string;
   label?: string;
   type?: string;
   error?: string;
