@@ -26,7 +26,7 @@ storiesOf('SwipeToggle', module)
     console.log(`isRounded`, isRounded);
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: '5px' }}>
-        {/* <SwipeToggle
+        <SwipeToggle
           disabled={isDisabled}
           rounded={isRounded}
           handleOnChange={handleOnChange}
@@ -53,7 +53,7 @@ storiesOf('SwipeToggle', module)
           disabled={isDisabled}
           outline={isOutline}
           handleOnChange={handleOnChange}
-        /> */}
+        />
 
         <SwipeToggle
           rounded={isRounded}
