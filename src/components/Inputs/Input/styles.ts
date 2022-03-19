@@ -5,6 +5,7 @@ import { colorGet } from '@shared/utils/colorGet';
 export const InputContainer = styled.div<IInputProps>`
   color: #2e3a59;
   font-family: 'Open Sans', sans-serif;
+  margin: 0.5rem 0px;
 
   .input-label {
     font-size: 14px;
@@ -53,6 +54,7 @@ export const InputContainer = styled.div<IInputProps>`
 
   input:disabled {
     cursor: not-allowed;
+    border: 1px solid ${colorGet('basic', 500)};
   }
 
   .error {

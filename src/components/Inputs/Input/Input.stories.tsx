@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Input } from '../Input';
-import { withKnobs, select, text, color } from '@storybook/addon-knobs';
+import { withKnobs, select, text, color, radios } from '@storybook/addon-knobs';
 import { useCallback } from '@storybook/addons';
 
 storiesOf('Input', module)
@@ -12,6 +12,7 @@ storiesOf('Input', module)
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'control'],
       'primary'
     );
+
     const iconColor = color('Icon fill', '#8F9BB3');
 
     interface IInputText {
@@ -31,33 +32,39 @@ storiesOf('Input', module)
     }, []);
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <Input
-          label='Nome:'
-          name='first_name'
-          onChange={(event) => handleInputChange(event)}
-          status={status}
-          placeholder='Digite o nome'
-          autoComplete='off'
-          key={`${iconColor}-1`}
-          icon={{ name: 'funnel', fill: iconColor }}
-        />
-        <label>Nome: {inputText.first_name || ''} </label>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div>
+          <Input
+            label='Name:'
+            name='first_name'
+            onChange={(event) => handleInputChange(event)}
+            status={status}
+            placeholder='Digite o nome'
+            autoComplete='off'
+            key={`${iconColor}-1`}
+            icon={{ name: 'funnel', fill: iconColor }}
+          />
+          <label>Name: {inputText.first_name || ''} </label>
+        </div>
 
-        <Input
-          label='Sobrenome:'
-          name='last_name'
-          autoComplete='off'
-          onChange={(event) => handleInputChange(event)}
-          status={status}
-          placeholder='Digite o sobrenome'
-          icon={{ name: 'funnel', fill: iconColor }}
-        />
-        <label>Sobrenome: {inputText.last_name || ''} </label>
+        <div>
+          <Input
+            label='Last Name:'
+            name='last_name'
+            autoComplete='off'
+            onChange={(event) => handleInputChange(event)}
+            status={status}
+            placeholder='Digite o sobrenome'
+            icon={{ name: 'funnel', fill: iconColor }}
+          />
+          <label>Last Name: {inputText.last_name || ''} </label>
+        </div>
 
-        <br />
-        <Input status={status} disabled placeholder='Input disabled' />
-        <Input error='Algum error aconteceu aqui' status={status} defaultValue={'default value setted'} />
+        <Input label='This input is disabled' status={status} disabled placeholder='Input disabled' />
+
+        <Input label='This input has an error' error='Input error message ... ' status={status} />
+
+        <Input label='This input has Brazilian CPF mask' status={status} mask='###.###.###-##' />
       </div>
     );
   });
