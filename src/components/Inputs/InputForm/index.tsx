@@ -10,11 +10,12 @@ export type IInputFormProps = InputDefaultProps & {
   name: string;
 };
 
-const InputForm: React.FC<IInputFormProps> = ({ inputRef, mask, onChange, ...props }) => {
+const InputForm: React.FC<IInputFormProps> = ({ inputRef, ...props }) => {
   let inputReference = useRef<HTMLInputElement>(null);
   if (inputRef) inputReference = inputRef;
 
   const { fieldName, registerField } = useField(props.name);
+  
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -31,18 +32,12 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, mask, onChange, ...pro
     });
   }, [fieldName, inputReference, registerField]);
 
-  const handleChange = useCallback(
-    (ev) => {
-      if (mask && ev.nativeEvent.inputType !== 'deleteContentBackward') {
-        ev.target.value = masker(ev.target.value.replace(/[^a-zA-Z0-9]/g, ''), mask);
-      }
-
-      if (onChange) {
-        onChange(ev);
-      }
-    },
-    [mask, onChange]
-  );
+  const handleChange = useCallback((ev) => {
+    if (props.mask && ev.nativeEvent.inputType !== 'deleteContentBackward') {
+      ev.target.value = masker(ev.target.value.replace(/[^a-zA-Z0-9]/g, ''), props.mask);
+    }
+    if (props.onChange) props.onChange(ev);
+  }, []);
 
   return (
     <InputContainer {...props} className={`input-container ${props.className || ''}`}>

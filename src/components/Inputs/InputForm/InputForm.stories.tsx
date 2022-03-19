@@ -14,27 +14,15 @@ export const groupSchema = Yup.object().shape({
 });
 // .matches(/^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12]\d|3[01])$/, { message: { name: 'date', message: 'Formato inválido' } })
 
-export interface IInputErrorsFormat {
-  name: string;
-  message: string;
-}
-
 interface IInputFormText {
   first_name?: string;
   last_name?: string;
 }
 
-export const beforeSubmitForm = async (inputData: any, schema: any) => {
-  let auxErrors = [] as IInputErrorsFormat[];
-  try {
-    await schema.validate(inputData, { abortEarly: false });
-    return auxErrors;
-  } catch (err: any) {
-    console.log(err.errors);
-    err.errors.map((er) => auxErrors.push(er));
-    return auxErrors;
-  }
-};
+export interface IInputErrorsFormat {
+  name: string;
+  message: string;
+}
 
 export const errorMessageBuilder = (inputName: string, errors: IInputErrorsFormat[]): string | undefined => {
   const found = errors.find((error) => error.name === inputName);
@@ -55,15 +43,6 @@ storiesOf('InputForm', module)
     const [inputText, setInputFormText] = useState<IInputFormText>({});
     const formRef = useRef<FormHandles>(null);
 
-    const handleInputFormChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-      const inputName = event.target.name;
-      const inputValue = event.target.value;
-
-      setInputFormText((oldState) => {
-        return { ...oldState, [inputName]: inputValue };
-      });
-    }, []);
-
     const handleSubmit = (data) => {
       canSaveGroup(data);
       setInputFormText(data);
@@ -73,6 +52,18 @@ storiesOf('InputForm', module)
       const formErros = await beforeSubmitForm(data, groupSchema);
       setErros(formErros);
     }, []);
+
+    const beforeSubmitForm = async (inputData: any, schema: any) => {
+      let auxErrors = [] as IInputErrorsFormat[];
+      try {
+        await schema.validate(inputData, { abortEarly: false });
+        return auxErrors;
+      } catch (err: any) {
+        console.log(err.errors);
+        err.errors.map((er) => auxErrors.push(er));
+        return auxErrors;
+      }
+    };
 
     return (
       <Form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -95,7 +86,7 @@ storiesOf('InputForm', module)
 
         <InputForm icon={{ name: 'funnel', fill: '222b45' }} name='search' status={status} placeholder='Buscar' />
 
-        <Button>Submit</Button>
+        <Button onClick={() => formRef.current.submitForm()}>Submit</Button>
         <div>
           <div>Nome: {inputText.first_name || ''} </div>
           <div>Sobrenome: {inputText.last_name || ''} </div>
