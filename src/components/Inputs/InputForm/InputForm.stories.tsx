@@ -77,21 +77,23 @@ storiesOf('InputForm', module)
     return (
       <Form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <InputForm
+          label='Nome'
           name='first_name'
           status={status}
           placeholder='Digite o Nome'
           autoComplete='off'
-          icon={{ name: 'funnel', fill: '222B45' }}
           error={errorMessageBuilder('first_name', errors)}
         />
         <InputForm
+          label='Sobrenome'
           name='last_name'
           autoComplete='off'
           status={status}
           placeholder='Digite o Sobrenome'
-          icon={{ name: 'funnel', fill: '222B45' }}
           error={errorMessageBuilder('last_name', errors)}
         />
+
+        <InputForm icon={{ name: 'funnel', fill: '222b45' }} name='search' status={status} placeholder='Buscar' />
 
         <Button>Submit</Button>
         <div>

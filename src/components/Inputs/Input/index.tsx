@@ -2,8 +2,9 @@ import React from 'react';
 import { InputContainer } from './styles';
 import Icon from 'react-eva-icons';
 import { InputDefaultProps } from '@components/Inputs/interfaces/InputDefaultProps';
+import { colorGet } from '@shared/utils/colorGet';
 
-export type IInputProps = InputDefaultProps & {}; 
+export type IInputProps = InputDefaultProps & {};
 
 const Input: React.FC<IInputProps> = (props) => {
   return (
@@ -22,7 +23,12 @@ const Input: React.FC<IInputProps> = (props) => {
         )}
       </div>
 
-      <label className='error'>{props.error}</label>
+      {props.error && (
+        <label className='error'>
+          <Icon name='alert-circle-outline' fill={colorGet('danger', 500)} />
+          {props.error}
+        </label>
+      )}
     </InputContainer>
   );
 };
