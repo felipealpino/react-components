@@ -22,6 +22,9 @@ export const AccordionContainer = styled.div<IAccordionProps>`
   }
 
   .accordion-info-text {
+    > label {
+      cursor: inherit;
+    }
   }
 
   .accordion-icon {
@@ -39,7 +42,6 @@ export const AccordionContainer = styled.div<IAccordionProps>`
   }
 
   .accordion-content {
-    padding: 0.7rem;
     background: #ffffff;
     padding: ${({ isOpen }) => (isOpen ? '1rem 0.7rem' : '0rem 0.7rem')};
     transition: 0.2s ease-in-out;

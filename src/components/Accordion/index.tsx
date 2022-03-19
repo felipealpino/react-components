@@ -29,7 +29,9 @@ const Accordion: React.FC<IAccordion> = ({ status = 'control', ...props }) => {
           <Icon name='arrow-ios-downward' fill='#11182F' />
         </div>
       </div>
-      {props.children && <div className='accordion-content'>{isOpen && <div>{props.children}</div>}</div>}
+      {props.children && <div className='accordion-content'>
+        {isOpen && props.children}
+      </div>}
     </AccordionContainer>
   );
 };
