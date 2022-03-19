@@ -1,25 +1,37 @@
-import React from "react";
-import { TooltipContainer } from "./styles";
+import React, { useState } from 'react';
+import { ElementStatus } from '@shared/theme/colors';
+import { TooltipContainer } from './styles';
 
-interface ITooltip {
+export interface ITooltip {
   text: string;
+  status?: ElementStatus;
+  className?: string;
+  position?: 'top' | 'bottom';
+  clickable?: boolean;
 }
 
-const Tooltip: React.FC<ITooltip> = ({ children, text }) => {
-  const [show, setShow] = React.useState(false);
+const Tooltip: React.FC<ITooltip> = ({ clickable = false, status = 'danger', position = 'bottom', ...props }) => {
+  const [show, setShow] = useState<boolean>(false);
+
+  console.log(show);
   return (
-    <TooltipContainer className="tooltip-wrapper">
-      <div className="tooltip-container">
-        <div className={show ? "tooltip-box visible" : "tooltip-box"}>
-          {text}
-          <span className="tooltip-arrow" />
-        </div>
-        <div onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
-          {children}
-        </div>
+    <TooltipContainer
+      {...props}
+      position={position}
+      status={status}
+      show={show}
+      className={`tooltip-container ${props.className || ''}`}
+      onMouseLeave={() => !clickable && setShow(false)}
+      onMouseEnter={() => !clickable && setShow(true)}
+      onClick={() => clickable && setShow(!show)}
+    >
+      <div className='tooltip-box'>
+        {props.text}
+        <span className='tooltip-arrow' />
       </div>
+      <div className='tooltip-children'>{props.children}</div>
     </TooltipContainer>
   );
 };
 
-export default Tooltip;
+export { Tooltip };
