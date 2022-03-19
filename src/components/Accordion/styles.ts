@@ -18,7 +18,7 @@ export const AccordionContainer = styled.div<IAccordionProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
+    cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer' };
   }
 
   .accordion-info-text {
@@ -35,8 +35,8 @@ export const AccordionContainer = styled.div<IAccordionProps>`
     i {
       display: flex;
       svg {
-        width: 22px;
-        height: 22px;
+        width: 25px;
+        height: 25px;
       }
     }
   }
