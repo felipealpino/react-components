@@ -21,9 +21,6 @@ storiesOf('SwipeToggle', module)
       console.log(stateCheckButton);
     }, []);
 
-    console.log(`isOutline`, isOutline);
-    console.log(`isDisabled`, isDisabled);
-    console.log(`isRounded`, isRounded);
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: '5px' }}>
         <SwipeToggle

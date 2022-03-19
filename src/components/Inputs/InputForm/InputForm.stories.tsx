@@ -9,8 +9,8 @@ import { Button } from '../../Button';
 import * as Yup from 'yup';
 
 export const groupSchema = Yup.object().shape({
-  firstName: Yup.string().required({ name: 'firstName', message: 'O campo é obrigatório' }),
-  lastName: Yup.string().required({ name: 'lastName', message: 'O campo é obrigatório' })
+  first_name: Yup.string().required({ name: 'first_name', message: 'O campo é obrigatório' }),
+  last_name: Yup.string().required({ name: 'last_name', message: 'O campo é obrigatório' })
 });
 // .matches(/^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12]\d|3[01])$/, { message: { name: 'date', message: 'Formato inválido' } })
 
@@ -20,8 +20,8 @@ export interface IInputErrorsFormat {
 }
 
 interface IInputFormText {
-  firstName?: string;
-  lastName?: string;
+  first_name?: string;
+  last_name?: string;
 }
 
 export const beforeSubmitForm = async (inputData: any, schema: any) => {
@@ -77,28 +77,26 @@ storiesOf('InputForm', module)
     return (
       <Form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <InputForm
-          name='firstName'
-          onChange={(event) => handleInputFormChange(event)}
+          name='first_name'
           status={status}
-          placeholder='Digite o nome'
+          placeholder='Digite o Nome'
           autoComplete='off'
           icon={{ name: 'funnel', fill: '222B45' }}
-          error={errorMessageBuilder('firstName', errors)}
+          error={errorMessageBuilder('first_name', errors)}
         />
         <InputForm
-          name='lastName'
+          name='last_name'
           autoComplete='off'
-          onChange={(event) => handleInputFormChange(event)}
           status={status}
-          placeholder='Digite o sobrenome'
+          placeholder='Digite o Sobrenome'
           icon={{ name: 'funnel', fill: '222B45' }}
-          error={errorMessageBuilder('lastName', errors)}
+          error={errorMessageBuilder('last_name', errors)}
         />
 
         <Button>Submit</Button>
         <div>
-          <div>Nome: {inputText.firstName || ''} </div>
-          <div>Sobrenome: {inputText.lastName || ''} </div>
+          <div>Nome: {inputText.first_name || ''} </div>
+          <div>Sobrenome: {inputText.last_name || ''} </div>
         </div>
       </Form>
     );

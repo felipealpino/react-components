@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { colorGet } from '@shared/utils/colorGet';
 import { ISwipeToggle } from '@components/SwipeToggle';
+import styled from 'styled-components';
 
 type ISwipeToggleProps = ISwipeToggle & {
   statusCheck: boolean;
@@ -39,6 +39,7 @@ export const SwipeToggleContainer = styled.label<ISwipeToggleProps>`
         : '1px solid rgba(143, 155, 179, 1)'};
     border-radius: ${({ rounded }) => (rounded ? '100px' : '4px')};
     transition: 0.6s ease all;
+    opacity: ${({ disabled }) => (disabled ? '0.6' : '1')};
   }
 
   .center-ball {
