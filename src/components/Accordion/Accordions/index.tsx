@@ -1,10 +1,8 @@
 import React, { useMemo, useState, useCallback } from 'react';
 
-import { ElementStatus } from '@shared/theme/colors';
 import { AccordionsContainer } from '@components/Accordion/Accordions/styles';
 
 export interface IAccordions {
-  status?: ElementStatus;
   gap?: string;
 }
 

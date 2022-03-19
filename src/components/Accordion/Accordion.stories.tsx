@@ -31,7 +31,7 @@ storiesOf('Accordion', module)
 
   .add('Open One', () => {
     return (
-      <Accordions>
+      <Accordions gap='20px'>
         <Accordion title='Accordion 1'>
           <div>oi</div>
         </Accordion>
