@@ -2,7 +2,12 @@ import styled from 'styled-components';
 import { IPagination } from '.';
 import { colorGet } from '@shared/utils/colorGet';
 
-export const ContainerPagination = styled.div<IPagination>`
+type IPaginationProps = IPagination & {
+  isFirstPage: boolean;
+  isLastPage: boolean;
+};
+
+export const PaginationContainer = styled.div<IPaginationProps>`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -45,4 +50,22 @@ export const ContainerPagination = styled.div<IPagination>`
       }
     }
   }
+
+  ${({ isFirstPage }) =>
+    isFirstPage &&
+    `
+    .pagination-content-icon.back {
+      opacity: 0.6;
+    }
+  
+  `}
+
+  ${({ isLastPage }) =>
+    isLastPage &&
+    `
+    .pagination-content-icon.forward {
+      opacity: 0.6;
+    }
+  
+  `}
 `;

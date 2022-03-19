@@ -14,7 +14,7 @@ storiesOf('Pagination', module)
       'primary'
     );
 
-    const isRounded = boolean('Rounded ? ', true);
+    const isRounded = boolean('Rounded ? ', false);
     const [currentPage, setCurrentPage] = useState<number>(0);
 
     const changePage = useCallback(async (search?: string, page?: number) => {
