@@ -1,8 +1,9 @@
 import { colorGet } from '@shared/utils/colorGet';
 import styled from 'styled-components';
-import { IButtonProps } from '.';
+import { IButton } from '.';
 
-export const ButtonContainer = styled.button<IButtonProps>`
+export const ButtonContainer = styled.div<IButton>`
+  font-family: sans-serif;
   border: none;
   display: flex;
   align-items: center;
@@ -15,7 +16,7 @@ export const ButtonContainer = styled.button<IButtonProps>`
   transition: 0.1s ease-in-out;
   transition-property: background;
   /* filter: drop-shadow(0px 2px 9px rgba(0, 0, 0, 0.14)); */
-  
+
   background: ${({ status }) => colorGet(status, 500)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border: 2px solid ${({ status }) => colorGet(status, 600)};
