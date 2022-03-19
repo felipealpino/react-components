@@ -290,7 +290,7 @@ var SwipeToggleContainer = styled.label(_templateObject$1 || (_templateObject$1 
   return rounded ? '100px' : '4px';
 }, function (_ref5) {
   var rounded = _ref5.rounded;
-  return rounded ? '50%' : '4px';
+  return rounded ? '100px' : '4px';
 }, function (_ref6) {
   var disabled = _ref6.disabled;
   return disabled ? 'not-allowed' : 'pointer';
@@ -335,33 +335,18 @@ var SwipeToggleContainer = styled.label(_templateObject$1 || (_templateObject$1 
   return statusCheck ? '3px' : 'unset';
 });
 
-var _excluded$1 = ["iconNameDisabled", "iconNameEnabled", "rounded", "animatedIcon", "outline", "disabled", "handleOnChange", "isChecked"];
-
-var SwipeToggle = function SwipeToggle(_ref) {
-  var _ref$iconNameDisabled = _ref.iconNameDisabled,
-      iconNameDisabled = _ref$iconNameDisabled === void 0 ? '' : _ref$iconNameDisabled,
-      _ref$iconNameEnabled = _ref.iconNameEnabled,
-      iconNameEnabled = _ref$iconNameEnabled === void 0 ? '' : _ref$iconNameEnabled,
-      _ref$animatedIcon = _ref.animatedIcon,
-      animatedIcon = _ref$animatedIcon === void 0 ? false : _ref$animatedIcon,
-      _ref$disabled = _ref.disabled,
-      disabled = _ref$disabled === void 0 ? false : _ref$disabled,
-      handleOnChange = _ref.handleOnChange,
-      _ref$isChecked = _ref.isChecked,
-      isChecked = _ref$isChecked === void 0 ? false : _ref$isChecked,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$1);
-
-  var _useState = React.useState(isChecked),
+var SwipeToggle = function SwipeToggle(props) {
+  var _useState = React.useState(false),
       statusCheck = _useState[0],
       setStatusCheck = _useState[1];
 
   var inputRef = React.useRef(null);
   var handleChangeInput = React.useCallback(function () {
-    if (handleOnChange) handleOnChange(statusCheck);
-  }, [handleOnChange, statusCheck]);
+    if (props.handleOnChange) props.handleOnChange(statusCheck);
+  }, [props.handleOnChange, statusCheck]);
   React.useEffect(function () {
-    setStatusCheck(isChecked);
-  }, [isChecked]);
+    setStatusCheck(props.isChecked || false);
+  }, [props.isChecked]);
   return React__default.createElement(SwipeToggleContainer, Object.assign({}, props, {
     className: "swipe-toggle-container " + (props.className || ''),
     statusCheck: statusCheck
@@ -372,19 +357,19 @@ var SwipeToggle = function SwipeToggle(_ref) {
   }), React__default.createElement("span", {
     className: 'slider',
     onClick: function onClick() {
-      return !disabled && setStatusCheck(!statusCheck);
+      return !props.disabled && setStatusCheck(!statusCheck);
     }
   }, React__default.createElement("div", {
     className: 'center-ball'
-  }, animatedIcon && React__default.createElement("div", {
+  }, props.animatedIcon && React__default.createElement("div", {
     className: 'animated-icon-div'
   }, React__default.createElement("div", {
     className: 'animated-icon'
-  })), statusCheck && React__default.createElement("label", null, iconNameEnabled && React__default.createElement(Icon, {
-    name: iconNameEnabled,
+  })), statusCheck && React__default.createElement("label", null, props.iconNameEnabled && React__default.createElement(Icon, {
+    name: props.iconNameEnabled,
     fill: ''
-  }), " "), !statusCheck && React__default.createElement("label", null, iconNameDisabled && React__default.createElement(Icon, {
-    name: iconNameDisabled,
+  }), " "), !statusCheck && React__default.createElement("label", null, props.iconNameDisabled && React__default.createElement(Icon, {
+    name: props.iconNameDisabled,
     fill: ''
   })))));
 };
@@ -438,13 +423,13 @@ function masker(val, mask) {
   return maskared;
 }
 
-var _excluded$2 = ["inputRef", "mask", "onChange"];
+var _excluded$1 = ["inputRef", "mask", "onChange"];
 
 var InputForm = function InputForm(_ref) {
   var inputRef = _ref.inputRef,
       mask = _ref.mask,
       onChange = _ref.onChange,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$2);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$1);
 
   var inputReference = React.useRef(null);
   if (inputRef) inputReference = inputRef;
