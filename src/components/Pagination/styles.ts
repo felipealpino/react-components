@@ -12,7 +12,6 @@ export const PaginationContainer = styled.div<IPaginationProps>`
   display: flex;
   justify-content: center;
   margin-top: 10px;
-  ${({ fixed }) => fixed && 'position: absolute; bottom: 35px; left: 0;'}
 
   .pagination-content {
     display: flex;
@@ -55,7 +54,7 @@ export const PaginationContainer = styled.div<IPaginationProps>`
     isFirstPage &&
     `
     .pagination-content-icon.back {
-      opacity: 0.6;
+      opacity: 0.3;
     }
   
   `}
@@ -64,7 +63,7 @@ export const PaginationContainer = styled.div<IPaginationProps>`
     isLastPage &&
     `
     .pagination-content-icon.forward {
-      opacity: 0.6;
+      opacity: 0.3;
     }
   
   `}
