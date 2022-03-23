@@ -18,7 +18,7 @@ export const AccordionContainer = styled.div<IAccordionProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer' };
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   }
 
   .accordion-info-text {
@@ -42,9 +42,18 @@ export const AccordionContainer = styled.div<IAccordionProps>`
   }
 
   .accordion-content {
+    overflow: hidden;
     background: #ffffff;
     padding: ${({ isOpen }) => (isOpen ? '1rem 0.7rem' : '0rem 0.7rem')};
-    transition: 0.2s ease-in-out;
-    transition-property: padding;
+    max-height: ${({ isOpen }) => (isOpen ? '1000px' : '0px')};
+    transition-property: max-height, padding;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    transition-duration: 500ms;
+    .accordion-childrens {
+      transition-duration: 300ms;
+      transition-property: visibility, opacity;
+      opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+      visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
+    }
   }
 `;

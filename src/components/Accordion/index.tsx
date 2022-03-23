@@ -52,7 +52,11 @@ const Accordion: React.FC<IAccordion> = ({ status = 'control', ...props }) => {
           </div>
         )}
       </div>
-      {props.children && <div className='accordion-content'>{isOpen && props.children}</div>}
+      {props.children && (
+        <div className='accordion-content'>
+          <div className='accordion-childrens'>{props.children}</div>
+        </div>
+      )}
     </AccordionContainer>
   );
 };
