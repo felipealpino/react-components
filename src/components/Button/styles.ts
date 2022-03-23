@@ -15,7 +15,9 @@ export const ButtonContainer = styled.div<IButton>`
   font-size: 14px;
   transition: 0.1s ease-in-out;
   transition-property: background;
-  /* filter: drop-shadow(0px 2px 9px rgba(0, 0, 0, 0.14)); */
+  min-width: 110px;
+  width: fit-content;
+  min-height: 30px;
 
   background: ${({ status }) => colorGet(status, 500)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
