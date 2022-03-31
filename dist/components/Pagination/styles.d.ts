@@ -1,2 +1,7 @@
 import { IPagination } from '.';
-export declare const ContainerPagination: import("styled-components").StyledComponent<"div", any, IPagination, never>;
+declare type IPaginationProps = IPagination & {
+    isFirstPage: boolean;
+    isLastPage: boolean;
+};
+export declare const PaginationContainer: import("styled-components").StyledComponent<"div", any, IPaginationProps, never>;
+export {};

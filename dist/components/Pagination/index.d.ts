@@ -4,7 +4,6 @@ export interface IPagination {
     totalOfPages: number | string;
     currentPage: number | string;
     option?: any;
-    fixed?: boolean;
     status?: ElementStatus;
     rounded?: boolean;
     className?: string;

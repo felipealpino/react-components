@@ -1,8 +1,8 @@
 import { ElementStatus } from '@shared/theme/colors';
-import React, { ButtonHTMLAttributes } from 'react';
-import { ButtonStyleProps } from 'styled-system';
-export interface IButtonProps extends ButtonStyleProps, ButtonHTMLAttributes<HTMLButtonElement> {
+import React, { HTMLAttributes } from 'react';
+export interface IButton extends HTMLAttributes<HTMLDivElement> {
     status?: ElementStatus;
+    disabled?: boolean;
 }
-declare const Button: React.FC<IButtonProps>;
+declare const Button: React.FC<IButton>;
 export { Button };
