@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import { useField } from '@unform/core';
-import { masker } from '@shared/utils/masker';
+import { masker } from '../../../shared/utils/masker';
 import Icon from 'react-eva-icons';
 import { InputContainer } from '../Input/styles';
-import { InputDefaultProps } from '@components/Inputs/interfaces/InputDefaultProps';
-import { colorGet } from '@shared/utils/colorGet';
+import { InputDefaultProps } from '../../../components/Inputs/interfaces/InputDefaultProps';
+import { colorGet } from '../../../shared/utils/colorGet';
 
 export type IInputFormProps = InputDefaultProps & {
   name: string;

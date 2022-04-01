@@ -9,4 +9,4 @@ export {
   IFontSizes,
   IFontWeights,
   ILineHeights
-} from '@shared/theme';
+} from 'shared/theme';

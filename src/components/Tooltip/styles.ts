@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ITooltip } from '@components/Tooltip';
-import { colorGet } from '@shared/utils/colorGet';
+import { ITooltip } from '../../components/Tooltip';
+import { colorGet } from '../../shared/utils/colorGet';
 
 type ITooltipProps = ITooltip & {
   show: boolean;

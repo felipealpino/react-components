@@ -1,4 +1,4 @@
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../shared/theme/colors';
 import React, { HTMLAttributes } from 'react';
 export interface IButton extends HTMLAttributes<HTMLDivElement> {
     status?: ElementStatus;

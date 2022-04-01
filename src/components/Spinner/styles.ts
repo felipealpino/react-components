@@ -1,5 +1,5 @@
-import { ISpinner } from '@components/Spinner';
-import { colorGet } from '@shared/utils/colorGet';
+import { ISpinner } from '../../components/Spinner';
+import { colorGet } from '../../shared/utils/colorGet';
 import styled from 'styled-components';
 
 export const SpinnerContainer = styled.div<ISpinner>`

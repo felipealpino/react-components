@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Icon from 'react-eva-icons';
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../shared/theme/colors';
 
 import { PaginationContainer } from './styles';
 

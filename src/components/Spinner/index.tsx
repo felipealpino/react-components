@@ -1,4 +1,4 @@
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../shared/theme/colors';
 import React from 'react';
 
 import { SpinnerContainer } from './styles';

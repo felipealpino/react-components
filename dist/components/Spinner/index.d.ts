@@ -1,4 +1,4 @@
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../shared/theme/colors';
 import React from 'react';
 export interface ISpinner {
     status?: ElementStatus;

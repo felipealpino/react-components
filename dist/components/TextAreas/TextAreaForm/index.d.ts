@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextAreaDefaultProps } from '@components/TextAreas/interfaces/TextAreaDefaultProps';
+import { TextAreaDefaultProps } from '../../../components/TextAreas/interfaces/TextAreaDefaultProps';
 export declare type ITextAreaForm = TextAreaDefaultProps & {
     name: string;
 };

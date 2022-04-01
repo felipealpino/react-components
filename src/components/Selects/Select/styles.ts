@@ -1,5 +1,5 @@
-import { ElementStatus } from '@shared/theme/colors';
-import { colorGet } from '@shared/utils/colorGet';
+import { ElementStatus } from '../../../shared/theme/colors';
+import { colorGet } from '../../../shared/utils/colorGet';
 import styled from 'styled-components';
 
 interface ISelectProps {

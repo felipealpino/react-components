@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { InputContainer } from './styles';
 import Icon from 'react-eva-icons';
-import { InputDefaultProps } from '@components/Inputs/interfaces/InputDefaultProps';
-import { colorGet } from '@shared/utils/colorGet';
-import { masker } from '@shared/utils';
+import { InputDefaultProps } from '../../../components/Inputs/interfaces/InputDefaultProps';
+import { colorGet } from '../../../shared/utils/colorGet';
+import { masker } from '../../../shared/utils';
 
 export type IInputProps = InputDefaultProps & {};
 

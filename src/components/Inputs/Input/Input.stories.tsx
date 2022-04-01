@@ -60,11 +60,11 @@ storiesOf('Input', module)
           <label>Last Name: {inputText.last_name || ''} </label>
         </div>
 
-        <Input label='This input is disabled' status={status} disabled placeholder='Input disabled' />
+        <Input label='This input is disabled' status={status} disabled placeholder='Input disabled' name={''} />
 
-        <Input label='This input has an error' error='Input error message ... ' status={status} />
+        <Input label='This input has an error' error='Input error message ... ' status={status} name={''} />
 
-        <Input label='This input has Brazilian CPF mask' status={status} mask='###.###.###-##' />
+        <Input label='This input has Brazilian CPF mask' status={status} mask='###.###.###-##' name={''} />
       </div>
     );
   });

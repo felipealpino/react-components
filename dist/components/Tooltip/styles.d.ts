@@ -1,4 +1,4 @@
-import { ITooltip } from '@components/Tooltip';
+import { ITooltip } from '../../components/Tooltip';
 declare type ITooltipProps = ITooltip & {
     show: boolean;
 };

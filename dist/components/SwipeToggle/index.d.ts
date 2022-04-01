@@ -1,5 +1,5 @@
 import React from 'react';
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../shared/theme/colors';
 export interface ISwipeToggle {
     iconNameDisabled?: string;
     iconNameEnabled?: string;

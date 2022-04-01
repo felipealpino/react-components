@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../shared/theme/colors';
 import { TooltipContainer } from './styles';
 
 export interface ITooltip {

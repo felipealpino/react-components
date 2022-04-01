@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IPagination } from '.';
-import { colorGet } from '@shared/utils/colorGet';
+import { colorGet } from '../../shared/utils/colorGet';
 
 type IPaginationProps = IPagination & {
   isFirstPage: boolean;

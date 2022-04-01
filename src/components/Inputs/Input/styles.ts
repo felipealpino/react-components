@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { IInputProps } from '@components/Inputs/Input';
-import { colorGet } from '@shared/utils/colorGet';
+import { IInputProps } from '../../../components/Inputs/Input';
+import { colorGet } from '../../../shared/utils/colorGet';
 
 export const InputContainer = styled.div<IInputProps>`
   color: #2e3a59;

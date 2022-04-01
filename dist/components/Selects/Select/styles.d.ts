@@ -1,4 +1,4 @@
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../../shared/theme/colors';
 interface ISelectProps {
     isOpen: boolean;
     status: ElementStatus;

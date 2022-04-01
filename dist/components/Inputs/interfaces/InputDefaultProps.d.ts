@@ -1,4 +1,4 @@
-import { ElementStatus } from '@shared/theme/colors';
+import { ElementStatus } from '../../../shared/theme/colors';
 import { InputHTMLAttributes } from 'react';
 export interface InputDefaultProps extends InputHTMLAttributes<HTMLInputElement> {
     icon?: {
@@ -11,4 +11,5 @@ export interface InputDefaultProps extends InputHTMLAttributes<HTMLInputElement>
     mandatory?: boolean;
     mask?: string;
     inputRef?: React.RefObject<HTMLInputElement>;
+    name: string;
 }

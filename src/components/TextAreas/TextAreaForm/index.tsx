@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
 import { ContainerTextArea } from './styles';
-import { TextAreaDefaultProps } from '@components/TextAreas/interfaces/TextAreaDefaultProps';
+import { TextAreaDefaultProps } from '../../../components/TextAreas/interfaces/TextAreaDefaultProps';
 
 export type ITextAreaForm = TextAreaDefaultProps & {
   name: string;

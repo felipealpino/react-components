@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Icon from 'react-eva-icons';
 
-import { AccordionContainer } from '@components/Accordion/styles';
-import { ElementStatus } from '@shared/theme/colors';
+import { AccordionContainer } from '../../components/Accordion/styles';
+import { ElementStatus } from '../../shared/theme/colors';
 
 export interface IAccordion {
   index?: number;

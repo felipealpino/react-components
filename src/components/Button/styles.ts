@@ -1,4 +1,4 @@
-import { colorGet } from '@shared/utils/colorGet';
+import { colorGet } from '../../shared/utils/colorGet';
 import styled from 'styled-components';
 import { IButton } from '.';
 

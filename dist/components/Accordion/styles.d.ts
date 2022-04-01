@@ -1,4 +1,4 @@
-import { IAccordion } from '@components/Accordion';
+import { IAccordion } from '../../components/Accordion';
 declare type IAccordionProps = IAccordion & {
     isOpen: boolean;
 };

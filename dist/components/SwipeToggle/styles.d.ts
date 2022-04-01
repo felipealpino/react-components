@@ -1,4 +1,4 @@
-import { ISwipeToggle } from '@components/SwipeToggle';
+import { ISwipeToggle } from '../../components/SwipeToggle';
 declare type ISwipeToggleProps = ISwipeToggle & {
     statusCheck: boolean;
 };

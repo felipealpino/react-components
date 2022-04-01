@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useCallback } from 'react';
 
-import { AccordionsContainer } from '@components/Accordion/Accordions/styles';
+import { AccordionsContainer } from '../../../components/Accordion/Accordions/styles';
 
 export interface IAccordions {
   gap?: string;

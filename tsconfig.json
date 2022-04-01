@@ -19,9 +19,9 @@
     "typeRoots": ["./types", "./node_modules/@types"],
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@shared/*": ["shared/*"],
-      "@root/*": ["./*"]
+      // "@components/*": ["components/*"],
+      // "@shared/*": ["shared/*"],
+      // "@root/*": ["./*"]
     },
   },
   "exclude": ["node_modules", "dist", "**/*.stories.tsx"]

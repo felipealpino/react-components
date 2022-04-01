@@ -1,5 +1,5 @@
-import { colorGet } from '@shared/utils/colorGet';
-import { ISwipeToggle } from '@components/SwipeToggle';
+import { colorGet } from '../../shared/utils/colorGet';
+import { ISwipeToggle } from '../../components/SwipeToggle';
 import styled from 'styled-components';
 
 type ISwipeToggleProps = ISwipeToggle & {
