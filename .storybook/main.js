@@ -1,6 +1,8 @@
 const path = require('path');
 
 module.exports = {
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+  framework: '@storybook/react',
 
   stories: ['../src/components/**/*.stories.(ts|js)x'],
 
@@ -12,10 +14,10 @@ module.exports = {
         {
           loader: require.resolve('react-docgen-typescript-loader'),
           options: {
-            tsconfigPath: path.resolve(__dirname, '..', 'tsconfig.json'),
-          },
-        },
-      ],
+            tsconfigPath: path.resolve(__dirname, '..', 'tsconfig.json')
+          }
+        }
+      ]
     });
 
     config.resolve.extensions.push('.ts', '.tsx');
@@ -24,5 +26,5 @@ module.exports = {
     config.resolve.alias['@shared'] = path.resolve(__dirname, '../src/shared');
     config.resolve.alias['@root'] = path.resolve(__dirname, '../src');
     return config;
-  },
+  }
 };
