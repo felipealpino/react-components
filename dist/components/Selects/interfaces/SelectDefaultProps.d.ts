@@ -3,4 +3,5 @@ export interface SelectDefaultProps extends SelectHTMLAttributes<HTMLSelectEleme
     label?: string;
     options: ISelectOptions[];
     mandatory?: boolean;
+    name: string;
 }
