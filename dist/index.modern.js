@@ -896,7 +896,90 @@ var _templateObject$3;
 var ContainerTextArea = styled.div(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    width: 100%;\n    box-sizing: border-box;\n    height: 32px;\n    border-radius: 4px;\n    border: 1px solid var(--black);\n    outline: none;\n  }\n\n  label {\n    width: inherit;\n    font-size: 12px;\n    display: flex;\n    font-weight: 700;\n    text-transform: uppercase;\n    white-space: nowrap;\n\n    .mandatory-star {\n      color: var(--main-danger-color);\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  span {\n    display: block;\n    color: var(--main-danger-color);\n    font-size: 11px;\n  }\n"])));
 
 var _templateObject$4;
-var SelectContainer = styled.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  select {\n    width: 100%;\n    box-sizing: border-box;\n    height: 32px;\n    border-radius: 4px;\n    border: 1px solid var(--black);\n    outline: none;\n    transition: 0.1s ease-in-out border;\n\n    :focus {\n      border: 3px solid var(--main-azul-anil-logo);\n    }\n  }\n\n  label {\n    width: inherit;\n    font-size: 12px;\n    display: flex;\n    font-weight: 700;\n    text-transform: uppercase;\n    white-space: nowrap;\n    \n    .mandatory-star {\n      color: var(--main-danger-color);\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  span {\n    display: block;\n    color: var(--main-danger-color);\n    font-size: 11px;\n  }\n"])));
+var SelectContainer = styled.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  font-family: sans-serif;\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  i {\n    display: flex;\n  }\n\n  .dropdown {\n    border: 1px solid ", ";\n    /* width: max-content; */\n    width:auto;\n    border-radius: 4px;\n    background-color: white;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: pointer;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    .icon-header {\n      cursor: pointer;\n      margin-left: 10px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    border-top: 1px solid ", ";\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n"])), function (_ref) {
+  var status = _ref.status;
+  return "" + colorGet(status, 500);
+}, colorGet('danger', 500), function (_ref2) {
+  var status = _ref2.status;
+  return "" + colorGet(status, 500);
+}, function (_ref3) {
+  var isOpen = _ref3.isOpen;
+  return isOpen ? '90deg' : '0deg';
+}, function (_ref4) {
+  var status = _ref4.status;
+  return "" + colorGet(status, 500);
+}, colorGet('danger', 600));
+
+var Select = function Select(props) {
+  var _useState = useState(false),
+      isOpen = _useState[0],
+      setOpen = _useState[1];
+
+  var _useState2 = useState([]),
+      options = _useState2[0],
+      setOptions = _useState2[1];
+
+  var _useState3 = useState(),
+      selectedItem = _useState3[0],
+      setSelectedItem = _useState3[1];
+
+  useEffect(function () {
+    setOptions(props.options);
+    var found = props.options.find(function (option) {
+      return option.selected === true;
+    });
+    setSelectedItem(found);
+  }, [props.options]);
+  var toggleSelect = useCallback(function () {
+    setOpen(!isOpen);
+  }, [isOpen]);
+  var handleOptionClick = useCallback(function (option) {
+    props.handleOnChange(option);
+    setSelectedItem(option);
+    setOpen(!isOpen);
+  }, [isOpen]);
+  var headerText = useMemo(function () {
+    if (selectedItem) return selectedItem.name;
+    if (props.placeholder) return props.placeholder;
+    return 'Selecione uma Opção';
+  }, [selectedItem, props.placeholder]);
+  return React.createElement(SelectContainer, {
+    className: "select-container " + (props.className ? props.className : ''),
+    status: props.status,
+    isOpen: isOpen
+  }, React.createElement("label", {
+    className: 'select-label'
+  }, props.label, props.mandatory && React.createElement("span", {
+    className: 'mandatory-star'
+  }, "*")), React.createElement("div", {
+    className: 'dropdown'
+  }, React.createElement("div", {
+    className: 'dropdown-header',
+    onClick: toggleSelect
+  }, headerText, React.createElement("label", {
+    className: 'icon-header'
+  }, React.createElement(Icon, {
+    name: 'arrow-ios-forward-outline',
+    fill: '#000000',
+    size: 'large'
+  }))), isOpen && React.createElement("div", {
+    className: "dropdown-body"
+  }, options.map(function (option, index) {
+    return React.createElement("div", {
+      key: index,
+      className: 'dropdown-item',
+      onClick: function onClick() {
+        return handleOptionClick(option);
+      },
+      id: props.name
+    }, option.name);
+  }))), props.error && React.createElement("label", {
+    className: 'error'
+  }, React.createElement(Icon, {
+    name: 'alert-circle-outline',
+    fill: colorGet('danger', 500)
+  }), props.error));
+};
 
 var _templateObject$5;
 var TooltipContainer = styled.div(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteralLoose(["\n  position: relative;\n  font-size: 10px;\n  width: fit-content;\n\n  .tooltip-box {\n    position: absolute;\n    font-size: 14px;\n    background: ", ";\n    color: #fff;\n    padding: 5px;\n    border-radius: 5px;\n    display: none;\n    z-index: 4;\n    white-space: nowrap;\n    left: 50%;\n    transform: translateX(-50%);\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n\n  .tooltip-box {\n    display: ", ";\n    width: fit-content;\n  }\n\n  .tooltip-arrow {\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    border-width: 5px;\n    border-style: solid;\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n"])), function (_ref) {
@@ -1135,5 +1218,5 @@ var Spinner = function Spinner(_ref) {
   }));
 };
 
-export { Accordion, Accordions, theme as BaseTheme, Button, Input, InputForm, Pagination, Spinner, SwipeToggle, Tooltip, formatDate, getBackgroundColor, getContrastColor, getValidationErrors, masker };
+export { Accordion, Accordions, theme as BaseTheme, Button, Input, InputForm, Pagination, Select, Spinner, SwipeToggle, Tooltip, formatDate, getBackgroundColor, getContrastColor, getValidationErrors, masker };
 //# sourceMappingURL=index.modern.js.map

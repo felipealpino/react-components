@@ -3,7 +3,7 @@ export * from './SwipeToggle';
 export * from './Inputs/Input';
 export * from './Inputs/InputForm';
 export * from './TextAreas/TextAreaForm';
-export * from './Selects/SelectForm';
+export * from './Selects/Select';
 export * from './Tooltip';
 export * from './Button';
 export * from './Accordion';
