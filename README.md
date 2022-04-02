@@ -20,6 +20,7 @@ Done components:
 [x] Button <br>
 [x] Accordion <br>
 [x] Select <br>
+[x] Checkbox <br>
 
 Next components:
 [ ] Avatar <br>
@@ -27,7 +28,6 @@ Next components:
 [ ] TextAreaForm <br>
 [ ] SelectForm <br>
 
-[ ] Checkbox <br>
 [ ] Toast <br>
 [ ] Tabs <br>
 [ ] Table <br>
