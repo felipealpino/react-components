@@ -9,7 +9,7 @@ Requirements: The engine "node" needs to be in the version "^12.22.0 || ^14.17.0
 3. yarn install to install all package.json dependencies
 4. yarn storybook to run the project and access the components
 
-Done components:
+Done components: <br>
 [x] Tooltip <br>
 [x] SwipeToggle <br>
 [x] Spinner <br>
@@ -22,7 +22,7 @@ Done components:
 [x] Select <br>
 [x] Checkbox <br>
 
-Next components:
+Next components: <br>
 [ ] Avatar <br>
 [ ] TextArea <br>
 [ ] TextAreaForm <br>
