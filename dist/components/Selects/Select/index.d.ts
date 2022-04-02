@@ -1,4 +1,4 @@
 import React from 'react';
-import { SelectDefaultProps } from '../../../components/Selects/interfaces/SelectDefaultProps';
-declare const Select: React.FC<SelectDefaultProps>;
+import { ISelectDefaultProps } from '../../../components/Selects/interfaces/ISelectDefaultProps';
+declare const Select: React.FC<ISelectDefaultProps>;
 export { Select };
