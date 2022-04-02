@@ -39,7 +39,7 @@ export const SelectContainer = styled.div<ISelectProps>`
   .dropdown {
     border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
     /* width: max-content; */
-    width:auto;
+    width: auto;
     border-radius: 4px;
     background-color: white;
   }
@@ -77,7 +77,7 @@ export const SelectContainer = styled.div<ISelectProps>`
       display: flex;
       padding-right: 5px;
     }
-
+    font-family: sans-serif;
     display: flex;
     align-items: center;
     padding-top: 5px;

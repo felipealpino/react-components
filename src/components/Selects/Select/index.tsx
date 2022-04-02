@@ -2,12 +2,12 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { SelectContainer } from './styles';
 import Icon from 'react-eva-icons';
 
-import { SelectDefaultProps } from '../../../components/Selects/interfaces/SelectDefaultProps';
+import { ISelectDefaultProps } from '../../../components/Selects/interfaces/ISelectDefaultProps';
 import { ISelectOptions } from '../../../components/Selects/interfaces/ISelectOptions';
 
 import { colorGet } from '../../../shared/utils/colorGet';
 
-const Select: React.FC<SelectDefaultProps> = (props) => {
+const Select: React.FC<ISelectDefaultProps> = (props) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [options, setOptions] = useState<ISelectOptions[]>([]);
   const [selectedItem, setSelectedItem] = useState<ISelectOptions>();

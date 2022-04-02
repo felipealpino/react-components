@@ -62,7 +62,7 @@ export const InputContainer = styled.div<IInputProps>`
       display: flex;
       padding-right: 5px;
     }
-
+    font-family: sans-serif;
     display: flex;
     align-items: center;
     padding-top: 5px;

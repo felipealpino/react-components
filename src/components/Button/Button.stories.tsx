@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { addDecorator, storiesOf } from '@storybook/react';
+import React from 'react';
+import { storiesOf } from '@storybook/react';
 import { Button } from '../Button';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 

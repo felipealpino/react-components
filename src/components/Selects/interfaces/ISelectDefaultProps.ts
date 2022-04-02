@@ -1,8 +1,8 @@
-import { ISelectOptions } from '../../../components/Selects/interfaces/ISelectOptions';
+import { ISelectOptions } from './ISelectOptions';
 import { ElementStatus } from '../../../shared/theme/colors';
 import { SelectHTMLAttributes } from 'react';
 
-export interface SelectDefaultProps extends SelectHTMLAttributes<HTMLSelectElement> {
+export interface ISelectDefaultProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   options: ISelectOptions[];
   mandatory?: boolean;
