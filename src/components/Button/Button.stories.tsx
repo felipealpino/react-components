@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Button } from '../Button';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 
 storiesOf('Button', module)
   .addDecorator(withKnobs)
@@ -13,13 +13,15 @@ storiesOf('Button', module)
       'primary'
     );
 
-    const isDisabled = boolean('Disabled ? ', true);
+    const isDisabled = boolean('Disabled ? ', false);
+
+    const buttonText = text('Button Text', 'Click me');
 
     return (
-      // <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      <Button disabled={isDisabled} status={status} onClick={() => alert('Voce clicou no botao')}>
-        Clique Aqui
-      </Button>
-      // </div>
+      <div style={{ display: 'flex', gap: '1rem' }}>
+        <Button disabled={isDisabled} status={status} onClick={(event) => console.log(event.target)}>
+          {buttonText}
+        </Button>
+      </div>
     );
   });

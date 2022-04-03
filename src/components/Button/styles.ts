@@ -18,6 +18,7 @@ export const ButtonContainer = styled.div<IButton>`
   min-width: 110px;
   width: fit-content;
   min-height: 30px;
+  user-select:none;
 
   background: ${({ status }) => colorGet(status, 500)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};

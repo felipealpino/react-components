@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-access-key */
 import { ElementStatus } from '../../shared/theme/colors';
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useCallback } from 'react';
 import { ButtonContainer } from './styles';
 
 export interface IButton extends HTMLAttributes<HTMLDivElement> {
@@ -8,9 +8,19 @@ export interface IButton extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
 }
 
-const Button: React.FC<IButton> = ({ disabled = false, ...props }) => {
+const Button: React.FC<IButton> = (props) => {
+  const handleOnClick = useCallback((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (props.disabled) return;
+    props.onClick && props.onClick(event);
+  }, [props.disabled]);
+  
   return (
-    <ButtonContainer {...props} disabled={disabled} className={`button-container ${props.className || ''}`}>
+    <ButtonContainer
+      {...props}
+      onClick={(event) => handleOnClick(event)}
+      disabled={props.disabled}
+      className={`button-container ${props.className || ''}`}
+    >
       {props.children}
     </ButtonContainer>
   );
