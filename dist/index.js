@@ -1047,7 +1047,7 @@ var Tooltip = function Tooltip(_ref) {
 };
 
 var _templateObject$6;
-var ButtonContainer = styled.div(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteralLoose(["\n  font-family: sans-serif;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  min-height: 30px;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  i {\n    display: flex;\n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n"])), function (_ref) {
+var ButtonContainer = styled.div(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteralLoose(["\n  font-family: sans-serif;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  min-height: 30px;\n  user-select:none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  i {\n    display: flex;\n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -1064,15 +1064,16 @@ var ButtonContainer = styled.div(_templateObject$6 || (_templateObject$6 = _tagg
   return colorGet(status, 600);
 });
 
-var _excluded$3 = ["disabled"];
-
-var Button = function Button(_ref) {
-  var _ref$disabled = _ref.disabled,
-      disabled = _ref$disabled === void 0 ? false : _ref$disabled,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$3);
-
+var Button = function Button(props) {
+  var handleOnClick = React.useCallback(function (event) {
+    if (props.disabled) return;
+    props.onClick && props.onClick(event);
+  }, [props.disabled]);
   return React__default.createElement(ButtonContainer, Object.assign({}, props, {
-    disabled: disabled,
+    onClick: function onClick(event) {
+      return handleOnClick(event);
+    },
+    disabled: props.disabled,
     className: "button-container " + (props.className || '')
   }), props.children);
 };
@@ -1101,12 +1102,12 @@ var AccordionContainer = styled.div(_templateObject$7 || (_templateObject$7 = _t
   return isOpen ? 'visible' : 'hidden';
 });
 
-var _excluded$4 = ["status"];
+var _excluded$3 = ["status"];
 
 var Accordion = function Accordion(_ref) {
   var _ref$status = _ref.status,
       status = _ref$status === void 0 ? 'control' : _ref$status,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$3);
 
   var _useState = React.useState(false),
       isOpen = _useState[0],
@@ -1157,12 +1158,12 @@ var AccordionsContainer = styled.div(_templateObject$8 || (_templateObject$8 = _
   return gap;
 });
 
-var _excluded$5 = ["gap"];
+var _excluded$4 = ["gap"];
 
 var Accordions = function Accordions(_ref) {
   var _ref$gap = _ref.gap,
       gap = _ref$gap === void 0 ? '0px' : _ref$gap,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
 
   var _useState = React.useState(0),
       accordionCurent = _useState[0],
@@ -1206,12 +1207,12 @@ var SpinnerContainer = styled.div(_templateObject$9 || (_templateObject$9 = _tag
   return colorGet(status, 500);
 });
 
-var _excluded$6 = ["fixed"];
+var _excluded$5 = ["fixed"];
 
 var Spinner = function Spinner(_ref) {
   var _ref$fixed = _ref.fixed,
       fixed = _ref$fixed === void 0 ? true : _ref$fixed,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
 
   return React__default.createElement(SpinnerContainer, Object.assign({
     className: "spinner-contaier " + (props.className || ''),
@@ -1221,10 +1222,88 @@ var Spinner = function Spinner(_ref) {
   }));
 };
 
+var _templateObject$a;
+var AvatarContainer = styled.div(_templateObject$a || (_templateObject$a = _taggedTemplateLiteralLoose(["\n  background: gray;\n  border-radius: 50%;\n  flex-shrink: 0;\n  overflow: hidden;\n  width: ", ";\n  height: ", ";\n\n  img {\n    height: 100%;\n    font-family: cover;\n    object-fit: cover;\n    width: 100%;\n  }\n\n  ", "\n"])), function (_ref) {
+  var width = _ref.width;
+  return width ? width : '50px';
+}, function (_ref2) {
+  var height = _ref2.height;
+  return height ? height : '50px';
+}, function (props) {
+  return props.onClick && "cursor: pointer";
+});
+
+var Avatar = function Avatar(props) {
+  return React__default.createElement(AvatarContainer, Object.assign({}, props), React__default.createElement("img", {
+    src: props.image,
+    alt: 'avatar'
+  }));
+};
+
+var _templateObject$b;
+var CheckboxContainer = styled.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteralLoose(["\n  width: max-content;\n  font-family: sans-serif;\n\n  > div {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n\n    .container-input {\n      background: ", ";\n      border: 2px solid ", ";\n      width: 30px;\n      height: 30px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      border-radius: ", ";\n\n      .container-icon {\n        i {\n          display: flex;\n        }\n      }\n\n      input[type='checkbox'] {\n        cursor: ", ";\n        background: transparent;\n        width: inherit;\n        height: inherit;\n        margin: 0;\n        opacity: 0;\n        position: absolute;\n      }\n    }\n\n    .container-label {\n      font-weight: 600;\n      font-size: 12px;\n      color: #222b45;\n    }\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n"])), function (_ref) {
+  var status = _ref.status,
+      disabled = _ref.disabled;
+  return disabled ? colorGet('basic', 300) : colorGet(status, 400);
+}, function (_ref2) {
+  var status = _ref2.status,
+      disabled = _ref2.disabled;
+  return disabled ? colorGet('basic', 400) : colorGet(status, 600);
+}, function (_ref3) {
+  var semiRounded = _ref3.semiRounded;
+  return semiRounded ? '4px' : '0px';
+}, function (_ref4) {
+  var disabled = _ref4.disabled;
+  return disabled ? 'not-allowed' : 'pointer';
+}, colorGet('danger', 600));
+
+var _excluded$6 = ["iconName"];
+
+var Checkbox = function Checkbox(_ref) {
+  var _ref$iconName = _ref.iconName,
+      iconName = _ref$iconName === void 0 ? 'checkmark' : _ref$iconName,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
+
+  var _useState = React.useState(props.defaultChecked || false),
+      isChecked = _useState[0],
+      setIsChecked = _useState[1];
+
+  var handleOnClick = React.useCallback(function (event) {
+    setIsChecked(event.target.checked);
+  }, []);
+  return React__default.createElement(CheckboxContainer, Object.assign({
+    className: 'checkbox-container'
+  }, props), React__default.createElement("div", null, React__default.createElement("div", {
+    className: 'container-input'
+  }, isChecked && React__default.createElement("label", {
+    className: 'container-icon'
+  }, React__default.createElement(Icon, {
+    name: iconName,
+    fill: props.iconFill || colorGet(props.status, 800),
+    size: 'large'
+  })), React__default.createElement("input", Object.assign({}, props, {
+    defaultChecked: isChecked,
+    type: 'checkbox',
+    onChange: function onChange(event) {
+      return handleOnClick(event);
+    }
+  }))), React__default.createElement("label", {
+    className: 'container-label',
+    htmlFor: props.label
+  }, props.label)), props.error && React__default.createElement("label", {
+    className: 'error'
+  }, React__default.createElement(Icon, {
+    name: 'alert-circle-outline',
+    fill: colorGet('danger', 500)
+  }), props.error));
+};
+
 exports.Accordion = Accordion;
 exports.Accordions = Accordions;
+exports.Avatar = Avatar;
 exports.BaseTheme = theme;
 exports.Button = Button;
+exports.Checkbox = Checkbox;
 exports.Input = Input;
 exports.InputForm = InputForm;
 exports.Pagination = Pagination;

@@ -9,3 +9,5 @@ export * from './Button';
 export * from './Accordion';
 export * from './Accordion/Accordions';
 export * from './Spinner';
+export * from './Avatar';
+export * from './Checkboxes/Checkbox';

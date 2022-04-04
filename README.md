@@ -21,9 +21,9 @@ Done components: <br>
 [x] Accordion <br>
 [x] Select <br>
 [x] Checkbox <br>
+[x] Avatar <br>
 
 Next components: <br>
-[ ] Avatar <br>
 [ ] TextArea <br>
 [ ] TextAreaForm <br>
 [ ] SelectForm <br>
