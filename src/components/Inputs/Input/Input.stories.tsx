@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Input } from '../Input';
 import { withKnobs, select, text, color, radios } from '@storybook/addon-knobs';
 import { useCallback } from '@storybook/addons';
-
+import { BaseStyles } from '../../BaseStyles';
 storiesOf('Input', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
@@ -33,6 +33,7 @@ storiesOf('Input', module)
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <BaseStyles />
         <div>
           <Input
             label='Name:'

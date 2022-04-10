@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select, color } from '@storybook/addon-knobs';
 import { Select } from '../Select';
 import { ISelectOptions } from '../interfaces/ISelectOptions';
-
+import { BaseStyles } from '../../BaseStyles';
 storiesOf('Select', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
@@ -39,6 +39,7 @@ storiesOf('Select', module)
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <BaseStyles />
         <Select
           handleOnChange={(option) => handleOnSelectOption(option, 'name')}
           placeholder='Select your name'

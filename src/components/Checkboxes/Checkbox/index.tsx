@@ -8,7 +8,7 @@ import { CheckboxContainer } from './styles';
 
 export type ICheckbox = ICheckboxDefaultProps & {};
 
-const Checkbox: React.FC<ICheckbox> = ({ iconName = 'checkmark', ...props }) => {
+const Checkbox: React.FC<ICheckbox> = ({ iconName = 'checkmark', iconFill, semiRounded, ...props }) => {
   const [isChecked, setIsChecked] = useState<boolean>(props.defaultChecked || false);
 
   const handleOnClick = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,20 +16,15 @@ const Checkbox: React.FC<ICheckbox> = ({ iconName = 'checkmark', ...props }) => 
   }, []);
 
   return (
-    <CheckboxContainer className='checkbox-container' {...props}>
+    <CheckboxContainer className='checkbox-container' {...props} semiRounded={semiRounded}>
       <div>
         <div className='container-input'>
           {isChecked && (
             <label className='container-icon'>
-              <Icon name={iconName} fill={props.iconFill || colorGet(props.status, 800)} size='large' />
+              <Icon name={iconName} fill={iconFill || colorGet(props.status, 800)} size='large' />
             </label>
           )}
-          <input
-            {...props}
-            defaultChecked={isChecked}
-            type='checkbox'
-            onChange={(event) => handleOnClick(event)}
-          />
+          <input {...props} defaultChecked={isChecked} type='checkbox' onChange={(event) => handleOnClick(event)} />
         </div>
         <label className='container-label' htmlFor={props.label}>
           {props.label}

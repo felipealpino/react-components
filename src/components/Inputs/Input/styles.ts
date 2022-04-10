@@ -4,7 +4,6 @@ import { colorGet } from '../../../shared/utils/colorGet';
 
 export const InputContainer = styled.div<IInputProps>`
   color: #2e3a59;
-  font-family: 'Open Sans', sans-serif;
   margin: 0.5rem 0px;
 
   .input-label {
@@ -62,7 +61,6 @@ export const InputContainer = styled.div<IInputProps>`
       display: flex;
       padding-right: 5px;
     }
-    font-family: sans-serif;
     display: flex;
     align-items: center;
     padding-top: 5px;

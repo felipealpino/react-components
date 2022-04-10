@@ -8,7 +8,6 @@ interface ISelectProps {
 }
 
 export const SelectContainer = styled.div<ISelectProps>`
-  font-family: sans-serif;
   font-size: 15px;
 
   .select-label {
@@ -77,7 +76,6 @@ export const SelectContainer = styled.div<ISelectProps>`
       display: flex;
       padding-right: 5px;
     }
-    font-family: sans-serif;
     display: flex;
     align-items: center;
     padding-top: 5px;

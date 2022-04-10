@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { SwipeToggle } from './index';
 import { select, withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { v1 as uuidv1 } from 'uuid';
-
+import { BaseStyles } from '../BaseStyles';
 storiesOf('SwipeToggle', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
@@ -23,6 +23,7 @@ storiesOf('SwipeToggle', module)
 
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: '5px' }}>
+        <BaseStyles />
         <SwipeToggle
           disabled={isDisabled}
           rounded={isRounded}

@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { Tooltip } from '../Tooltip';
 import { Button } from '../Button';
-
+import { BaseStyles } from '../BaseStyles';
 storiesOf('Tooltip', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
@@ -19,6 +19,7 @@ storiesOf('Tooltip', module)
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <BaseStyles />
         <Tooltip clickable={isClickable} position={tooltipPosition} status={status} text='The button is enabled'>
           <Button>Hover to tooltip</Button>
         </Tooltip>

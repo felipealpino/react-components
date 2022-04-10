@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import Icon from 'react-eva-icons';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { useField } from '@unform/core';
 
 function _extends() {
@@ -401,7 +401,7 @@ var SwipeToggle = function SwipeToggle(props) {
 };
 
 var _templateObject$2;
-var InputContainer = styled.div(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteralLoose(["\n  color: #2e3a59;\n  font-family: 'Open Sans', sans-serif;\n  margin: 0.5rem 0px;\n\n  .input-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .container-input-icon {\n    position: relative;\n  }\n\n  input {\n    width: 100%;\n    height: 40px;\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    -webkit-box-orient: vertical;\n  }\n\n  input:focus {\n    border: 1px solid ", ";\n  }\n\n  input:disabled {\n    cursor: not-allowed;\n    border: 1px solid ", ";\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n    font-family: sans-serif;\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n\n  .icon {\n    position: absolute;\n    margin-top: auto;\n    margin-left: auto;\n    margin-bottom: auto;\n    text-align: center;\n    right: 0;\n    top: 0;\n    z-index: 1;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 40px;\n    aspect-ratio: 1;\n    i {\n      display: flex;\n      svg {\n        width: 23px;\n        height: 23px;\n      }\n    }\n  }\n"])), function (_ref) {
+var InputContainer = styled.div(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteralLoose(["\n  color: #2e3a59;\n  margin: 0.5rem 0px;\n\n  .input-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .container-input-icon {\n    position: relative;\n  }\n\n  input {\n    width: 100%;\n    height: 40px;\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    -webkit-box-orient: vertical;\n  }\n\n  input:focus {\n    border: 1px solid ", ";\n  }\n\n  input:disabled {\n    cursor: not-allowed;\n    border: 1px solid ", ";\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n\n  .icon {\n    position: absolute;\n    margin-top: auto;\n    margin-left: auto;\n    margin-bottom: auto;\n    text-align: center;\n    right: 0;\n    top: 0;\n    z-index: 1;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 40px;\n    aspect-ratio: 1;\n    i {\n      display: flex;\n      svg {\n        width: 23px;\n        height: 23px;\n      }\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return "" + colorGet(status, 500);
 }, colorGet('danger', 500), function (_ref2) {
@@ -896,7 +896,7 @@ var _templateObject$3;
 var ContainerTextArea = styled.div(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    width: 100%;\n    box-sizing: border-box;\n    height: 32px;\n    border-radius: 4px;\n    border: 1px solid var(--black);\n    outline: none;\n  }\n\n  label {\n    width: inherit;\n    font-size: 12px;\n    display: flex;\n    font-weight: 700;\n    text-transform: uppercase;\n    white-space: nowrap;\n\n    .mandatory-star {\n      color: var(--main-danger-color);\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  span {\n    display: block;\n    color: var(--main-danger-color);\n    font-size: 11px;\n  }\n"])));
 
 var _templateObject$4;
-var SelectContainer = styled.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  font-family: sans-serif;\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  i {\n    display: flex;\n  }\n\n  .dropdown {\n    border: 1px solid ", ";\n    /* width: max-content; */\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: pointer;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    .icon-header {\n      cursor: pointer;\n      margin-left: 10px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    border-top: 1px solid ", ";\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n    font-family: sans-serif;\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n"])), function (_ref) {
+var SelectContainer = styled.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  i {\n    display: flex;\n  }\n\n  .dropdown {\n    border: 1px solid ", ";\n    /* width: max-content; */\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: pointer;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    .icon-header {\n      cursor: pointer;\n      margin-left: 10px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    border-top: 1px solid ", ";\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return "" + colorGet(status, 500);
 }, colorGet('danger', 500), function (_ref2) {
@@ -1044,7 +1044,7 @@ var Tooltip = function Tooltip(_ref) {
 };
 
 var _templateObject$6;
-var ButtonContainer = styled.div(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteralLoose(["\n  font-family: sans-serif;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  min-height: 30px;\n  user-select:none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  i {\n    display: flex;\n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n"])), function (_ref) {
+var ButtonContainer = styled.div(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteralLoose(["\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  i {\n    display: flex;\n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -1076,7 +1076,7 @@ var Button = function Button(props) {
 };
 
 var _templateObject$7;
-var AccordionContainer = styled.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;\n  background: ", ";\n  min-height: 3rem;\n  font-family: sans-serif;\n  width: inherit;\n\n  .accordion-header {\n    padding: 0.7rem;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    cursor: ", ";\n  }\n\n  .accordion-info-text {\n    > label {\n      cursor: inherit;\n    }\n  }\n\n  .accordion-icon {\n    transition: 0.2s ease-in-out;\n    transition-property: transform;\n    transform: ", ";\n\n    i {\n      display: flex;\n      svg {\n        width: 25px;\n        height: 25px;\n      }\n    }\n  }\n\n  .accordion-content {\n    overflow: hidden;\n    background: #ffffff;\n    padding: ", ";\n    max-height: ", ";\n    transition-property: max-height, padding;\n    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);\n    transition-duration: 500ms;\n    .accordion-childrens {\n      transition-duration: 300ms;\n      transition-property: visibility, opacity;\n      opacity: ", ";\n      visibility: ", ";\n    }\n  }\n"])), function (_ref) {
+var AccordionContainer = styled.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;\n  background: ", ";\n  min-height: 3rem;\n  width: inherit;\n\n  .accordion-header {\n    padding: 0.7rem;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    cursor: ", ";\n  }\n\n  .accordion-info-text {\n    > label {\n      cursor: inherit;\n    }\n  }\n\n  .accordion-icon {\n    transition: 0.2s ease-in-out;\n    transition-property: transform;\n    transform: ", ";\n\n    i {\n      display: flex;\n      svg {\n        width: 25px;\n        height: 25px;\n      }\n    }\n  }\n\n  .accordion-content {\n    overflow: hidden;\n    background: #ffffff;\n    padding: ", ";\n    max-height: ", ";\n    transition-property: max-height, padding;\n    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);\n    transition-duration: 500ms;\n    .accordion-childrens {\n      transition-duration: 300ms;\n      transition-property: visibility, opacity;\n      opacity: ", ";\n      visibility: ", ";\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 400);
 }, function (_ref2) {
@@ -1238,7 +1238,7 @@ var Avatar = function Avatar(props) {
 };
 
 var _templateObject$b;
-var CheckboxContainer = styled.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteralLoose(["\n  width: max-content;\n  font-family: sans-serif;\n\n  > div {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n\n    .container-input {\n      background: ", ";\n      border: 2px solid ", ";\n      width: 30px;\n      height: 30px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      border-radius: ", ";\n\n      .container-icon {\n        i {\n          display: flex;\n        }\n      }\n\n      input[type='checkbox'] {\n        cursor: ", ";\n        background: transparent;\n        width: inherit;\n        height: inherit;\n        margin: 0;\n        opacity: 0;\n        position: absolute;\n      }\n    }\n\n    .container-label {\n      font-weight: 600;\n      font-size: 12px;\n      color: #222b45;\n    }\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n"])), function (_ref) {
+var CheckboxContainer = styled.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteralLoose(["\n  width: max-content;\n\n  > div {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n\n    .container-input {\n      background: ", ";\n      border: 2px solid ", ";\n      width: 30px;\n      height: 30px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      border-radius: ", ";\n\n      .container-icon {\n        i {\n          display: flex;\n        }\n      }\n\n      input[type='checkbox'] {\n        cursor: ", ";\n        background: transparent;\n        width: inherit;\n        height: inherit;\n        margin: 0;\n        opacity: 0;\n        position: absolute;\n      }\n    }\n\n    .container-label {\n      font-weight: 600;\n      font-size: 12px;\n      color: #222b45;\n    }\n  }\n\n  .error {\n    i {\n      display: flex;\n      padding-right: 5px;\n    }\n    display: flex;\n    align-items: center;\n    padding-top: 5px;\n    color: ", ";\n    font-size: 12px;\n    font-weight: 600;\n  }\n"])), function (_ref) {
   var status = _ref.status,
       disabled = _ref.disabled;
   return disabled ? colorGet('basic', 300) : colorGet(status, 400);
@@ -1254,11 +1254,13 @@ var CheckboxContainer = styled.div(_templateObject$b || (_templateObject$b = _ta
   return disabled ? 'not-allowed' : 'pointer';
 }, colorGet('danger', 600));
 
-var _excluded$6 = ["iconName"];
+var _excluded$6 = ["iconName", "iconFill", "semiRounded"];
 
 var Checkbox = function Checkbox(_ref) {
   var _ref$iconName = _ref.iconName,
       iconName = _ref$iconName === void 0 ? 'checkmark' : _ref$iconName,
+      iconFill = _ref.iconFill,
+      semiRounded = _ref.semiRounded,
       props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
 
   var _useState = useState(props.defaultChecked || false),
@@ -1270,13 +1272,15 @@ var Checkbox = function Checkbox(_ref) {
   }, []);
   return React.createElement(CheckboxContainer, Object.assign({
     className: 'checkbox-container'
-  }, props), React.createElement("div", null, React.createElement("div", {
+  }, props, {
+    semiRounded: semiRounded
+  }), React.createElement("div", null, React.createElement("div", {
     className: 'container-input'
   }, isChecked && React.createElement("label", {
     className: 'container-icon'
   }, React.createElement(Icon, {
     name: iconName,
-    fill: props.iconFill || colorGet(props.status, 800),
+    fill: iconFill || colorGet(props.status, 800),
     size: 'large'
   })), React.createElement("input", Object.assign({}, props, {
     defaultChecked: isChecked,
@@ -1295,5 +1299,8 @@ var Checkbox = function Checkbox(_ref) {
   }), props.error));
 };
 
-export { Accordion, Accordions, Avatar, theme as BaseTheme, Button, Checkbox, Input, InputForm, Pagination, Select, Spinner, SwipeToggle, Tooltip, formatDate, getBackgroundColor, getContrastColor, getValidationErrors, masker };
+var _templateObject$c;
+var BaseStyles = createGlobalStyle(_templateObject$c || (_templateObject$c = _taggedTemplateLiteralLoose(["\n  *, *::before, *::after {\n    box-sizing: inherit;\n    box-sizing: border-box;\n    font-variant-numeric: lining-nums;\n    -webkit-font-smoothing: antialiased;\n    outline: none;\n  }\n\n  html {\n    box-sizing: border-box;\n    font-size: 100%;\n  }\n\n  body {\n    font-family: sans-serif\n  }\n\n  body,\n  html,\n  li,\n  ol,\n  ul {\n    margin: 0;\n    padding: 0;\n  }\n\n  ol,\n  ul,\n  li {\n    list-style: none;\n  }\n\n  \n\n  button, input {\n    overflow: visible;\n  }\n\n  input {\n    letter-spacing: normal;\n    word-spacing: normal;\n    text-transform: none;\n    text-indent: 0px;\n    text-shadow: none;\n    display: inline-block;\n    text-align: start;\n    cursor: text;\n    border-image: initial;\n    font: 400 13.3333px Arial;\n    /* -webkit-rtl-ordering: logical;\n    -webkit-writing-mode: horizontal-tb;\n    writing-mode:horizontal-tb; */\n    text-rendering: auto;\n  }\n"])));
+
+export { Accordion, Accordions, Avatar, BaseStyles, theme as BaseTheme, Button, Checkbox, Input, InputForm, Pagination, Select, Spinner, SwipeToggle, Tooltip, formatDate, getBackgroundColor, getContrastColor, getValidationErrors, masker };
 //# sourceMappingURL=index.modern.js.map

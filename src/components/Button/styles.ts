@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IButton } from '.';
 
 export const ButtonContainer = styled.div<IButton>`
-  font-family: sans-serif;
   border: none;
   display: flex;
   align-items: center;
@@ -17,8 +16,9 @@ export const ButtonContainer = styled.div<IButton>`
   transition-property: background;
   min-width: 110px;
   width: fit-content;
-  min-height: 30px;
-  user-select:none;
+  height: max-content;
+  min-height: 45px;
+  user-select: none;
 
   background: ${({ status }) => colorGet(status, 500)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};

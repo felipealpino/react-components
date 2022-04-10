@@ -3,7 +3,7 @@ import React from 'react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { Checkbox } from '../Checkbox';
-
+import { BaseStyles } from '../../BaseStyles';
 storiesOf('Checkbox', module)
   .addDecorator(withKnobs)
 
@@ -18,6 +18,7 @@ storiesOf('Checkbox', module)
 
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <BaseStyles />
         <Checkbox
           defaultChecked={true}
           onChange={(event) => console.log(event.target.checked)}

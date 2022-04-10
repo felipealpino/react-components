@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { Avatar } from '../Avatar';
-
+import { BaseStyles } from '../BaseStyles';
 storiesOf('Avatar', module)
   .addDecorator(withKnobs)
 
@@ -11,6 +11,7 @@ storiesOf('Avatar', module)
 
     return (
       <div style={{ display: 'flex', gap: '1rem', width: '100%' }}>
+        <BaseStyles />
         <Avatar image={image} />
         <Avatar image={image} height='40px' width='40px' />
         <Avatar image={image} height='30px' width='30px' />

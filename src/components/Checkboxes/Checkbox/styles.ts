@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 export const CheckboxContainer = styled.div<ICheckbox>`
   width: max-content;
-  font-family: sans-serif;
 
   > div {
     display: flex;

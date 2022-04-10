@@ -11,3 +11,4 @@ export * from './Accordion/Accordions';
 export * from './Spinner';
 export * from './Avatar';
 export * from './Checkboxes/Checkbox';
+export * from './BaseStyles';

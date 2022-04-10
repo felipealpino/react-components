@@ -7,7 +7,7 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { Button } from '../../Button';
 import * as Yup from 'yup';
-
+import { BaseStyles } from '../../BaseStyles';
 export const groupSchema = Yup.object().shape({
   first_name: Yup.string().required({ name: 'first_name', message: 'O campo é obrigatório' }),
   last_name: Yup.string().required({ name: 'last_name', message: 'O campo é obrigatório' })
@@ -67,6 +67,7 @@ storiesOf('InputForm', module)
 
     return (
       <Form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <BaseStyles />
         <InputForm
           label='Nome'
           name='first_name'

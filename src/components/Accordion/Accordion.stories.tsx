@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { Accordion } from '../Accordion';
 import { Accordions } from './Accordions';
+import { BaseStyles } from '../BaseStyles';
 
 storiesOf('Accordion', module)
   .addDecorator(withKnobs)
@@ -37,9 +38,10 @@ storiesOf('Accordion', module)
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'control'],
       'control'
     );
-    
+
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <BaseStyles />
         <Accordions gap={gap}>
           <Accordion title='Accordion 1' status='primary'>
             <div>oi</div>

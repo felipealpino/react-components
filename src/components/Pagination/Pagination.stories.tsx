@@ -1,9 +1,8 @@
-import React, { useCallback, useState } from 'react';
-import { addDecorator, storiesOf } from '@storybook/react';
+import React, { Fragment, useCallback, useState } from 'react';
+import { storiesOf } from '@storybook/react';
 import { Pagination } from '../Pagination';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { number } from 'yup';
-
+import { BaseStyles } from '../BaseStyles';
 storiesOf('Pagination', module)
   .addDecorator(withKnobs)
 
@@ -22,12 +21,15 @@ storiesOf('Pagination', module)
     }, []);
 
     return (
-      <Pagination
-        rounded={isRounded}
-        status={status}
-        totalOfPages={10}
-        currentPage={currentPage}
-        callbackGetListData={changePage}
-      />
+      <Fragment>
+        <BaseStyles />
+        <Pagination
+          rounded={isRounded}
+          status={status}
+          totalOfPages={10}
+          currentPage={currentPage}
+          callbackGetListData={changePage}
+        />
+      </Fragment>
     );
   });
