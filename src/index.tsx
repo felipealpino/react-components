@@ -1,4 +1,5 @@
 export * from './components';
+export * from './shared/styles';
 export * from './shared/utils';
 
 
