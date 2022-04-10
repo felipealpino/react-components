@@ -22,13 +22,13 @@ Done components: <br>
 [x] Select <br>
 [x] Checkbox <br>
 [x] Avatar <br>
+[x] Toast <br>
 
 Next components: <br>
 [ ] TextArea <br>
 [ ] TextAreaForm <br>
 [ ] SelectForm <br>
 
-[ ] Toast <br>
 [ ] Tabs <br>
 [ ] Table <br>
 [ ] Skeleton <br>
