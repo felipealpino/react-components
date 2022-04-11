@@ -11,14 +11,11 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   const { toastListCurrent } = useToast();
   const toastCardRef = useRef<HTMLDivElement>(null);
   const [shouldShow, setShouldShow] = useState<boolean>(false);
-  const [alreadyClicked, setAlreadyClicked] = useState<boolean>(false);
   const timeToUnmount = 700; //700ms
-
   const [myIndexInArray, setMyIndexInArray] = useState<number>(-1);
 
   const handleOnClickToastCard = useCallback(() => {
     setShouldShow(false);
-    setAlreadyClicked(true);
 
     props.handleOnClick(props.id, toastListCurrent);
   }, [props, toastListCurrent]);
@@ -32,7 +29,6 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   }, [props.status]);
 
   useEffect(() => {
-    if (alreadyClicked) return;
     setShouldShow(true);
 
     setTimeout(() => {
@@ -44,18 +40,17 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
       if (!toastCardRef || !toastCardRef.current) return;
       toastCardRef.current.click();
     }, duration + timeToUnmount);
-  }, [alreadyClicked, duration]);
+  }, [duration]);
 
   useEffect(() => {
     const myIndex = toastListCurrent.findIndex((toast) => toast.id === props.id);
-    setMyIndexInArray(myIndex)
+    setMyIndexInArray(myIndex);
   }, [props.id, toastListCurrent]);
 
   return (
     <ToastCardContainer
       {...props}
-      // numberOfCardsAvailable={numberOfCardsAvailable - 1}
-      numberOfCardsAvailable={myIndexInArray}
+      myIndexInArray={myIndexInArray}
       position={position}
       duration={duration}
       ref={toastCardRef}
@@ -63,11 +58,11 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
       onClick={handleOnClickToastCard}
       shouldShow={shouldShow}
     >
-      <div className="toast-text-info">
-        <div className="toast-title">{props.title}</div>
-        <div className="toast-subtitle">{props.subtitle}</div>
+      <div className='toast-text-info'>
+        <div className='toast-title'>{props.title}</div>
+        <div className='toast-subtitle'>{props.subtitle}</div>
       </div>
-      <div className="toast-icon">{toastIcon}</div>
+      <div className='toast-icon'>{toastIcon}</div>
     </ToastCardContainer>
   );
 };

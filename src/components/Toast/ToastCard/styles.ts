@@ -4,7 +4,7 @@ import { IToast } from '../interface/IToast';
 
 type IToastContainer = IToast & {
   shouldShow: boolean;
-  numberOfCardsAvailable: number;
+  myIndexInArray: number;
 };
 
 export const ToastCardContainer = styled.div<IToastContainer>`
@@ -23,38 +23,38 @@ export const ToastCardContainer = styled.div<IToastContainer>`
   color: #fff;
   box-shadow: 0 0 10px #999;
 
-  ${({ position, shouldShow, numberOfCardsAvailable }) =>
+  ${({ position, shouldShow, myIndexInArray }) =>
     position === 'top-right' &&
     ` 
-    top: ${numberOfCardsAvailable * 100 + 10}px;
+    top: ${myIndexInArray * 100 + 10}px;
     right: 12px;
     transition: transform 0.6s ease-in-out;
     transform: translateX(${shouldShow ? '0' : '200%'});
   `}
 
-  ${({ position, shouldShow, numberOfCardsAvailable }) =>
+  ${({ position, shouldShow, myIndexInArray }) =>
     position === 'bottom-right' &&
     ` 
-    bottom: ${numberOfCardsAvailable * 100 + 10}px;
+    bottom: ${myIndexInArray * 100 + 10}px;
     right: 12px;
     transition: transform 0.6s ease-in-out;
     transform: translateX(${shouldShow ? '0' : '200%'});
   `}
 
 
-${({ position, shouldShow, numberOfCardsAvailable }) =>
+${({ position, shouldShow, myIndexInArray }) =>
     position === 'top-left' &&
     ` 
-    top: ${numberOfCardsAvailable * 100 + 10}px;
+    top: ${myIndexInArray * 100 + 10}px;
     left: 12px;
     transition: transform 0.6s ease-in;
     transform: translateX(${shouldShow ? '0' : '-200%'});
   `}
 
-${({ position, shouldShow, numberOfCardsAvailable }) =>
+${({ position, shouldShow, myIndexInArray }) =>
     position === 'bottom-left' &&
     ` 
-    bottom: ${numberOfCardsAvailable * 100 + 10}px;
+    bottom: ${myIndexInArray * 100 + 10}px;
     left: 12px;
     transition: transform 0.6s ease-in;
     transform: translateX(${shouldShow ? '0' : '-200%'});
