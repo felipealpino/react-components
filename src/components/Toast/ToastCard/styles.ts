@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colorGet } from '../../../shared/utils';
 import { IToast } from '../interface/IToast';
 
 type IToastContainer = IToast & {
@@ -17,13 +18,10 @@ export const ToastCardContainer = styled.div<IToastContainer>`
   height: 90px;
   width: 312px;
   cursor: pointer;
-  /* @todo: ajustar para colorGet function */
-  background: ${({ status }) =>
-    status === 'success' ? '#4BA155' : status === 'danger' ? '#C84243' : status === 'warning' ? '#E0954B' : '#3DAAC6'};
+  background: ${({ status }) => colorGet(status, 500)};
   border-radius: 4px;
   color: #fff;
   box-shadow: 0 0 10px #999;
-  /* margin: 0.5rem 0px; */
 
   ${({ position, shouldShow, numberOfCardsAvailable }) =>
     position === 'top-right' &&
