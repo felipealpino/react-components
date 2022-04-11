@@ -7,19 +7,22 @@ import { IToastOptions, IToastPositions } from './interface/IToast';
 const ExampleToUse: React.FC = () => {
   const { addToast } = useToast();
 
+  const captalizeFirstLetter = useCallback((text: string): string => {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }, []);
+
   const handleClickButton = useCallback(
     (toastStatus: ElementStatus, position: IToastPositions) => {
       const state: IToastOptions = {
-        title: 'Very nice Toast title',
-        subtitle: 'Wtf!?  why is this subtitle so big ?',
-        duration: 2000,
+        title: `${captalizeFirstLetter(toastStatus)} Toast`,
+        subtitle: `This is a beautiful ${captalizeFirstLetter(toastStatus)} Toast 😃`,
+        duration: 5000,
         position: position,
         status: toastStatus
       };
-
       addToast(state);
     },
-    [addToast]
+    [addToast, captalizeFirstLetter]
   );
 
   return (
