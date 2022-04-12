@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { InputContainer } from './styles';
 import Icon from 'react-eva-icons';
 import { InputDefaultProps } from '../../../components/Inputs/interfaces/InputDefaultProps';
-import { colorGet } from '../../../shared/utils/colorGet';
 import { masker } from '../../../shared/utils';
+import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 
 export type IInputProps = InputDefaultProps & {};
 
@@ -32,12 +32,7 @@ const Input: React.FC<IInputProps> = (props) => {
         )}
       </div>
 
-      {props.error && (
-        <label className='error'>
-          <Icon name='alert-circle-outline' fill={colorGet('danger', 500)} />
-          {props.error}
-        </label>
-      )}
+      {props.error && <InputsErrorMessage error={props.error} />}
     </InputContainer>
   );
 };

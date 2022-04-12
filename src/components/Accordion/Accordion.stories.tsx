@@ -19,12 +19,12 @@ storiesOf('Accordion', module)
 
     return (
       <div style={{ display: 'flex', gap: '1rem', width: '100%', flexDirection: 'column' }}>
+        <BaseStyles />
         <Accordion disabled={isDisabled} status={status} title='Custom Accordion'>
           <div>alouuuu</div>
           <div>alouuuu</div>
           <div>alouuuu</div>
         </Accordion>
-
         <Accordion disabled={true} title='Disabled Accordion'></Accordion>
       </div>
     );

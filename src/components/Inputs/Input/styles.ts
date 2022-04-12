@@ -56,19 +56,6 @@ export const InputContainer = styled.div<IInputProps>`
     border: 1px solid ${colorGet('basic', 500)};
   }
 
-  .error {
-    i {
-      display: flex;
-      padding-right: 5px;
-    }
-    display: flex;
-    align-items: center;
-    padding-top: 5px;
-    color: ${colorGet('danger', 600)};
-    font-size: 12px;
-    font-weight: 600;
-  }
-
   .icon {
     position: absolute;
     margin-top: auto;

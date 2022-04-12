@@ -4,7 +4,7 @@ import { masker } from '../../../shared/utils/masker';
 import Icon from 'react-eva-icons';
 import { InputContainer } from '../Input/styles';
 import { InputDefaultProps } from '../../../components/Inputs/interfaces/InputDefaultProps';
-import { colorGet } from '../../../shared/utils/colorGet';
+import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 
 export type IInputFormProps = InputDefaultProps & {
   name: string;
@@ -55,12 +55,7 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, ...props }) => {
         )}
       </div>
 
-      {props.error && (
-        <label className='error'>
-          <Icon name='alert-circle-outline' fill={colorGet('danger', 500)} />
-          {props.error}
-        </label>
-      )}
+      {props.error && <InputsErrorMessage error={props.error} />}
     </InputContainer>
   );
 };

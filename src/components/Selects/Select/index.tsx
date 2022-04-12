@@ -5,7 +5,7 @@ import Icon from 'react-eva-icons';
 import { ISelectDefaultProps } from '../../../components/Selects/interfaces/ISelectDefaultProps';
 import { ISelectOptions } from '../../../components/Selects/interfaces/ISelectOptions';
 
-import { colorGet } from '../../../shared/utils/colorGet';
+import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 
 const Select: React.FC<ISelectDefaultProps> = (props) => {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -64,12 +64,7 @@ const Select: React.FC<ISelectDefaultProps> = (props) => {
           </div>
         )}
       </div>
-      {props.error && (
-        <label className='error'>
-          <Icon name='alert-circle-outline' fill={colorGet('danger', 500)} />
-          {props.error}
-        </label>
-      )}
+      {props.error && <InputsErrorMessage error={props.error} />}
     </SelectContainer>
   );
 };

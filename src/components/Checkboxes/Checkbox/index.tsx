@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Icon from 'react-eva-icons';
+import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 
 import { colorGet } from '../../../shared/utils/colorGet';
 
@@ -31,12 +32,7 @@ const Checkbox: React.FC<ICheckbox> = ({ iconName = 'checkmark', iconFill, semiR
         </label>
       </div>
 
-      {props.error && (
-        <label className='error'>
-          <Icon name='alert-circle-outline' fill={colorGet('danger', 500)} />
-          {props.error}
-        </label>
-      )}
+      {props.error && <InputsErrorMessage error={props.error} />}
     </CheckboxContainer>
   );
 };
