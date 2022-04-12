@@ -17,7 +17,7 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   const handleOnClickToastCard = useCallback(() => {
     setShouldShow(false);
 
-    props.handleOnClick(props.id, toastListCurrent);
+    props.handleOnClick(props.id);
   }, [props, toastListCurrent]);
 
   const toastIcon = useMemo(() => {

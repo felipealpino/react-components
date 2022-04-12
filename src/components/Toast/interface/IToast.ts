@@ -7,7 +7,7 @@ export type IToastPositions = 'bottom-right' | 'top-left' | 'bottom-left' | 'top
 
 export interface IToast {
   id: string;
-  handleOnClick: (id: string, toasts: IToast[]) => void;
+  handleOnClick: (id: string) => void;
   className?: string;
   position?: IToastPositions;
   duration?: number;

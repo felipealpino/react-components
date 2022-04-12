@@ -12,3 +12,5 @@ export * from './Spinner';
 export * from './Avatar';
 export * from './Checkboxes/Checkbox';
 export * from './BaseStyles';
+export * from './Toast/context/ToastContext';
+export * from './Toast/context/ToastContext';

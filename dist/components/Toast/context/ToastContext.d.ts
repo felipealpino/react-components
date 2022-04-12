@@ -1,9 +1,8 @@
 import React from 'react';
-import { IToast, IToastOptions, IToastPositions } from '../interface/IToast';
+import { IToast, IToastOptions } from '../interface/IToast';
 export declare type IToastContextData = {
     addToast: (options: IToastOptions) => void;
     toastListCurrent: IToast[];
-    containerPosition: IToastPositions;
 };
 export declare const ToastContext: React.Context<IToastContextData>;
 declare const ToastProvider: React.FC;

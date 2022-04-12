@@ -12,9 +12,10 @@ export const ToastContext = React.createContext<IToastContextData>({} as IToastC
 const ToastProvider: React.FC = ({ children }) => {
   const [toastListCurrent, setToastListCurrent] = useState<IToast[]>([]);
 
-  const removeToastCard = useCallback((cardId: string, toasts: IToast[]) => {
-    const filtered = toasts.filter((toast) => toast.id !== cardId);
-    setToastListCurrent(filtered);
+  const removeToastCard = useCallback((cardId: string) => {
+    setToastListCurrent((oldState) => {
+      return oldState.filter((toast) => toast.id !== cardId);
+    });
   }, []);
 
   const addToast = useCallback(
