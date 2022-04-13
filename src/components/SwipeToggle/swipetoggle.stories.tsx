@@ -4,6 +4,8 @@ import { SwipeToggle } from './index';
 import { select, withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { v1 as uuidv1 } from 'uuid';
 import { BaseStyles } from '../BaseStyles';
+import { FiX, FiCheck, FiEye, FiEyeOff } from 'react-icons/fi';
+
 storiesOf('SwipeToggle', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
@@ -34,8 +36,8 @@ storiesOf('SwipeToggle', module)
         />
 
         <SwipeToggle
-          iconNameDisabled='close'
-          iconNameEnabled='checkmark'
+          iconNameDisabled={FiX}
+          iconNameEnabled={FiCheck}
           handleOnChange={handleOnChange}
           status={status}
           outline={isOutline}
@@ -44,8 +46,8 @@ storiesOf('SwipeToggle', module)
         />
 
         <SwipeToggle
-          iconNameDisabled='eye-off-2'
-          iconNameEnabled='eye'
+          iconNameDisabled={FiEyeOff}
+          iconNameEnabled={FiEye}
           status={status}
           rounded={isRounded}
           disabled={isDisabled}

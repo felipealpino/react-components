@@ -27,25 +27,17 @@ export const PaginationContainer = styled.div<IPaginationProps>`
       transition: background-color 0.1s ease-in-out;
       background-color: ${({ status }) => colorGet(status, 500)};
       border-radius: ${({ rounded }) => (rounded ? '15px' : '4px')};
+      display: flex;
+      transition: 0.1s ease-in-out;
 
-      i {
-        display: flex;
-        align-items: center;
-        transition: 0.1s ease-in-out;
-
-        svg {
-          width: 25px;
-          height: 25px;
-          fill: ${({ status }) => colorGet(status, 'Contrast')};
-        }
+      svg {
+        width: 25px;
+        height: 25px;
+        color: ${({ status }) => colorGet(status, 'Contrast')};
       }
 
       &:hover {
         background-color: ${({ status }) => colorGet(status, 600)};
-
-        i svg {
-          fill: ${({ status }) => colorGet(status, 'Contrast')};
-        }
       }
     }
   }

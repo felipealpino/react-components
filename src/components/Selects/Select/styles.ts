@@ -31,13 +31,8 @@ export const SelectContainer = styled.div<ISelectProps>`
     }
   }
 
-  i {
-    display: flex;
-  }
-
   .dropdown {
     border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
-    /* width: max-content; */
     width: auto;
     border-radius: 4px;
     background-color: white;
@@ -50,9 +45,11 @@ export const SelectContainer = styled.div<ISelectProps>`
     justify-content: space-between;
     align-items: center;
 
-    .icon-header {
+    svg {
       cursor: pointer;
       margin-left: 10px;
+      width: 25px;
+      height: 25px;
       transition: 0.2s ease-in-out;
       transform: rotate(${({ isOpen }) => (isOpen ? '90deg' : '0deg')});
     }

@@ -29,11 +29,8 @@ export const ButtonContainer = styled.div<IButton>`
     background: ${({ status }) => colorGet(status, 600)};
   }
 
-  i {
-    display: flex;
-    svg {
-      width: 25px;
-      height: 25px;
-    }
+  svg {
+    width: 25px;
+    height: 25px;
   }
 `;

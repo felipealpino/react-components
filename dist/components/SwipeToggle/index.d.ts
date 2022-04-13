@@ -1,8 +1,9 @@
 import React from 'react';
+import { IconBaseProps } from 'react-icons';
 import { ElementStatus } from '../../shared/theme/colors';
 export interface ISwipeToggle {
-    iconNameDisabled?: string;
-    iconNameEnabled?: string;
+    iconNameDisabled?: React.ComponentType<IconBaseProps>;
+    iconNameEnabled?: React.ComponentType<IconBaseProps>;
     textIfOn?: string;
     textIfOff?: string;
     rounded?: boolean;

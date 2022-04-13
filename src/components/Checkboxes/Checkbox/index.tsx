@@ -1,15 +1,13 @@
 import React, { useCallback, useState } from 'react';
-import Icon from 'react-eva-icons';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
-
-import { colorGet } from '../../../shared/utils/colorGet';
 
 import { ICheckboxDefaultProps } from '../interface/ICheckboxDefaultProps';
 import { CheckboxContainer } from './styles';
+import { FiCheck } from 'react-icons/fi';
 
 export type ICheckbox = ICheckboxDefaultProps & {};
 
-const Checkbox: React.FC<ICheckbox> = ({ iconName = 'checkmark', iconFill, semiRounded, ...props }) => {
+const Checkbox: React.FC<ICheckbox> = ({ icon: Icon, iconColor, semiRounded, ...props }) => {
   const [isChecked, setIsChecked] = useState<boolean>(props.defaultChecked || false);
 
   const handleOnClick = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,11 +18,9 @@ const Checkbox: React.FC<ICheckbox> = ({ iconName = 'checkmark', iconFill, semiR
     <CheckboxContainer className='checkbox-container' {...props} semiRounded={semiRounded}>
       <div>
         <div className='container-input'>
-          {isChecked && (
-            <label className='container-icon'>
-              <Icon name={iconName} fill={iconFill || colorGet(props.status, 800)} size='large' />
-            </label>
-          )}
+          {isChecked && Icon && <Icon />}
+          {isChecked && !Icon && <FiCheck />}
+
           <input {...props} defaultChecked={isChecked} type='checkbox' onChange={(event) => handleOnClick(event)} />
         </div>
         <label className='container-label' htmlFor={props.label}>

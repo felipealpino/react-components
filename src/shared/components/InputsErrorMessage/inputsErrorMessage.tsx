@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from 'react-eva-icons';
+import { FiAlertCircle } from 'react-icons/fi';
 import { colorGet } from '../../utils';
 import { InputsErrorMessageContainer } from './styles';
 
@@ -10,7 +10,7 @@ interface IInputsErrorMessage {
 const InputsErrorMessage: React.FC<IInputsErrorMessage> = (props) => {
   return (
     <InputsErrorMessageContainer className='error'>
-      <Icon name='alert-circle-outline' fill={colorGet('danger', 500)} />
+      <FiAlertCircle color={colorGet('danger', 500)} />
       {props.error}
     </InputsErrorMessageContainer>
   );

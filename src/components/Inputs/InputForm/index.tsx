@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import { useField } from '@unform/core';
 import { masker } from '../../../shared/utils/masker';
-import Icon from 'react-eva-icons';
 import { InputContainer } from '../Input/styles';
 import { InputDefaultProps } from '../../../components/Inputs/interfaces/InputDefaultProps';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
@@ -10,12 +9,12 @@ export type IInputFormProps = InputDefaultProps & {
   name: string;
 };
 
-const InputForm: React.FC<IInputFormProps> = ({ inputRef, ...props }) => {
+const InputForm: React.FC<IInputFormProps> = ({ inputRef, icon: Icon, ...props }) => {
   let inputReference = useRef<HTMLInputElement>(null);
   if (inputRef) inputReference = inputRef;
 
   const { fieldName, registerField } = useField(props.name);
-  
+
   useEffect(() => {
     registerField({
       name: fieldName,
@@ -48,9 +47,9 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, ...props }) => {
 
       <div className='container-input-icon'>
         <input id={fieldName} ref={inputReference} onChange={handleChange} {...props} />
-        {props.icon && (
+        {Icon && (
           <div className='icon'>
-            <Icon name={props.icon.name} fill={props.icon.fill} />
+            <Icon color={props.iconColor} fill={props.iconFill || 'transparent'} />
           </div>
         )}
       </div>

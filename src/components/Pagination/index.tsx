@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import Icon from 'react-eva-icons';
 import { ElementStatus } from '../../shared/theme/colors';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { PaginationContainer } from './styles';
 
@@ -48,13 +48,13 @@ const Pagination: React.FC<IPagination> = ({ rounded = true, ...props }) => {
     >
       <div className='pagination-content'>
         <label className='pagination-content-icon back' onClick={goBackPage}>
-          <Icon name='arrow-ios-back' fill='white' />
+          <FiChevronLeft color='#FFFFFF' />
         </label>
         <span className='pagination-content-text'>
           Página {Number(props.currentPage) + 1} de {props.totalOfPages > 0 ? props.totalOfPages : 1}
         </span>
         <label className='pagination-content-icon forward' onClick={goForwardPage}>
-          <Icon name='arrow-ios-forward' fill='white' />
+          <FiChevronRight color='#FFFFFF' />
         </label>
       </div>
     </PaginationContainer>

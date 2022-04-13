@@ -2,12 +2,11 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
-var Icon = _interopDefault(require('react-eva-icons'));
+var fi = require('react-icons/fi');
 var styled$1 = require('styled-components');
 var styled$1__default = _interopDefault(styled$1);
 var core = require('@unform/core');
 var uuid = require('uuid');
-var fi = require('react-icons/fi');
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -224,7 +223,7 @@ var colorGet = function colorGet(status, statusComplement) {
 };
 
 var _templateObject;
-var PaginationContainer = styled$1__default.div(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  margin-top: 10px;\n\n  .pagination-content {\n    display: flex;\n\n    span {\n      margin: auto;\n      font-weight: 700;\n    }\n\n    .pagination-content-icon {\n      cursor: pointer;\n      margin: 0px 10px;\n      transition: background-color 0.1s ease-in-out;\n      background-color: ", ";\n      border-radius: ", ";\n\n      i {\n        display: flex;\n        align-items: center;\n        transition: 0.1s ease-in-out;\n\n        svg {\n          width: 25px;\n          height: 25px;\n          fill: ", ";\n        }\n      }\n\n      &:hover {\n        background-color: ", ";\n\n        i svg {\n          fill: ", ";\n        }\n      }\n    }\n  }\n\n  ", "\n\n  ", "\n"])), function (_ref) {
+var PaginationContainer = styled$1__default.div(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  margin-top: 10px;\n\n  .pagination-content {\n    display: flex;\n\n    span {\n      margin: auto;\n      font-weight: 700;\n    }\n\n    .pagination-content-icon {\n      cursor: pointer;\n      margin: 0px 10px;\n      transition: background-color 0.1s ease-in-out;\n      background-color: ", ";\n      border-radius: ", ";\n      display: flex;\n      transition: 0.1s ease-in-out;\n\n      svg {\n        width: 25px;\n        height: 25px;\n        color: ", ";\n      }\n\n      &:hover {\n        background-color: ", ";\n      }\n    }\n  }\n\n  ", "\n\n  ", "\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -237,13 +236,10 @@ var PaginationContainer = styled$1__default.div(_templateObject || (_templateObj
   var status = _ref4.status;
   return colorGet(status, 600);
 }, function (_ref5) {
-  var status = _ref5.status;
-  return colorGet(status, 'Contrast');
-}, function (_ref6) {
-  var isFirstPage = _ref6.isFirstPage;
+  var isFirstPage = _ref5.isFirstPage;
   return isFirstPage && "\n    .pagination-content-icon.back {\n      opacity: 0.3;\n    }\n  \n  ";
-}, function (_ref7) {
-  var isLastPage = _ref7.isLastPage;
+}, function (_ref6) {
+  var isLastPage = _ref6.isLastPage;
   return isLastPage && "\n    .pagination-content-icon.forward {\n      opacity: 0.3;\n    }\n  \n  ";
 });
 
@@ -286,22 +282,20 @@ var Pagination = function Pagination(_ref) {
   }, React__default.createElement("label", {
     className: 'pagination-content-icon back',
     onClick: goBackPage
-  }, React__default.createElement(Icon, {
-    name: 'arrow-ios-back',
-    fill: 'white'
+  }, React__default.createElement(fi.FiChevronLeft, {
+    color: '#FFFFFF'
   })), React__default.createElement("span", {
     className: 'pagination-content-text'
   }, "P\xE1gina ", Number(props.currentPage) + 1, " de ", props.totalOfPages > 0 ? props.totalOfPages : 1), React__default.createElement("label", {
     className: 'pagination-content-icon forward',
     onClick: goForwardPage
-  }, React__default.createElement(Icon, {
-    name: 'arrow-ios-forward',
-    fill: 'white'
+  }, React__default.createElement(fi.FiChevronRight, {
+    color: '#FFFFFF'
   }))));
 };
 
 var _templateObject$1;
-var SwipeToggleContainer = styled$1__default.label(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteralLoose(["\n  position: relative;\n  display: inline-block;\n  width: 52px;\n  height: 32px;\n\n  input {\n    opacity: 0;\n    width: 0;\n    height: 0;\n  }\n\n  .slider {\n    position: absolute;\n    cursor: ", ";\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-color: ", ";\n    border: ", ";\n    border-radius: ", ";\n    transition: 0.6s ease all;\n    opacity: ", ";\n  }\n\n  .center-ball {\n    position: absolute;\n    content: '';\n    height: 28px;\n    width: 28px;\n    background-color: white;\n    transition: 0.4s;\n    border-radius: ", ";\n    margin: 1px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    label {\n      cursor: ", ";\n    }\n\n    ", ";\n    ", ";\n    ", ";\n\n    i {\n      display: flex;\n      align-items: center;\n      justify-content: center;\n\n      svg {\n        fill: ", ";\n      }\n    }\n\n    .animated-icon-div {\n      width: 18px;\n      height: 18px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      transition: 0.4;\n\n      .animated-icon {\n        background-color: ", ";\n        height: 1.5px;\n        width: 12px;\n        border-radius: 8px;\n        transform: ", ";\n        position: absolute;\n        right: ", ";\n        transition: 0.4s;\n\n        &::after {\n          content: '';\n          background-color: ", ";\n          position: absolute;\n          height: 1.5px;\n          width: ", ";\n          border-radius: ", ";\n          transform: rotate(90deg);\n          left: ", ";\n          bottom: ", ";\n          transition: 0.4s;\n        }\n      }\n    }\n  }\n"])), function (_ref) {
+var SwipeToggleContainer = styled$1__default.label(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteralLoose(["\n  position: relative;\n  display: inline-block;\n  width: 52px;\n  height: 32px;\n\n  input {\n    opacity: 0;\n    width: 0;\n    height: 0;\n  }\n\n  .slider {\n    position: absolute;\n    cursor: ", ";\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    background-color: ", ";\n    border: ", ";\n    border-radius: ", ";\n    transition: 0.6s ease all;\n    opacity: ", ";\n  }\n\n  .center-ball {\n    position: absolute;\n    content: '';\n    height: 28px;\n    width: 28px;\n    background-color: white;\n    transition: 0.4s;\n    border-radius: ", ";\n    margin: 1px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    cursor: ", ";\n\n    ", ";\n    ", ";\n    ", ";\n\n    svg {\n      width: 20px;\n      height: 20px;\n      color: ", ";\n    }\n\n    .animated-icon-div {\n      width: 18px;\n      height: 18px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      transition: 0.4;\n\n      .animated-icon {\n        background-color: ", ";\n        height: 1.5px;\n        width: 12px;\n        border-radius: 8px;\n        transform: ", ";\n        position: absolute;\n        right: ", ";\n        transition: 0.4s;\n\n        &::after {\n          content: '';\n          background-color: ", ";\n          position: absolute;\n          height: 1.5px;\n          width: ", ";\n          border-radius: ", ";\n          transform: rotate(90deg);\n          left: ", ";\n          bottom: ", ";\n          transition: 0.4s;\n        }\n      }\n    }\n  }\n"])), function (_ref) {
   var disabled = _ref.disabled;
   return disabled ? 'not-allowed' : 'pointer';
 }, function (_ref2) {
@@ -367,7 +361,13 @@ var SwipeToggleContainer = styled$1__default.label(_templateObject$1 || (_templa
   return statusCheck ? '3px' : 'unset';
 });
 
-var SwipeToggle = function SwipeToggle(props) {
+var _excluded$1 = ["iconNameEnabled", "iconNameDisabled"];
+
+var SwipeToggle = function SwipeToggle(_ref) {
+  var IconEnabled = _ref.iconNameEnabled,
+      IconDisabled = _ref.iconNameDisabled,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$1);
+
   var _useState = React.useState(false),
       statusCheck = _useState[0],
       setStatusCheck = _useState[1];
@@ -397,17 +397,11 @@ var SwipeToggle = function SwipeToggle(props) {
     className: 'animated-icon-div'
   }, React__default.createElement("div", {
     className: 'animated-icon'
-  })), statusCheck && React__default.createElement("label", null, props.iconNameEnabled && React__default.createElement(Icon, {
-    name: props.iconNameEnabled,
-    fill: ''
-  }), " "), !statusCheck && React__default.createElement("label", null, props.iconNameDisabled && React__default.createElement(Icon, {
-    name: props.iconNameDisabled,
-    fill: ''
-  })))));
+  })), statusCheck && IconEnabled && React__default.createElement(IconEnabled, null), !statusCheck && IconDisabled && React__default.createElement(IconDisabled, null))));
 };
 
 var _templateObject$2;
-var InputContainer = styled$1__default.div(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteralLoose(["\n  color: #2e3a59;\n  margin: 0.5rem 0px;\n\n  .input-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .container-input-icon {\n    position: relative;\n  }\n\n  input {\n    width: 100%;\n    height: 40px;\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    -webkit-box-orient: vertical;\n  }\n\n  input:focus {\n    border: 1px solid ", ";\n  }\n\n  input:disabled {\n    cursor: not-allowed;\n    border: 1px solid ", ";\n  }\n\n  .icon {\n    position: absolute;\n    margin-top: auto;\n    margin-left: auto;\n    margin-bottom: auto;\n    text-align: center;\n    right: 0;\n    top: 0;\n    z-index: 1;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 40px;\n    aspect-ratio: 1;\n    i {\n      display: flex;\n      svg {\n        width: 23px;\n        height: 23px;\n      }\n    }\n  }\n"])), function (_ref) {
+var InputContainer = styled$1__default.div(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteralLoose(["\n  color: #2e3a59;\n  margin: 0.5rem 0px;\n\n  .input-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .container-input-icon {\n    position: relative;\n  }\n\n  input {\n    width: 100%;\n    height: 40px;\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    -webkit-box-orient: vertical;\n  }\n\n  input:focus {\n    border: 1px solid ", ";\n  }\n\n  input:disabled {\n    cursor: not-allowed;\n    border: 1px solid ", ";\n  }\n\n  .icon {\n    position: absolute;\n    margin-top: auto;\n    margin-left: auto;\n    margin-bottom: auto;\n    text-align: center;\n    right: 0;\n    top: 0;\n    z-index: 1;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 40px;\n    aspect-ratio: 1;\n\n    svg {\n      width: 20px;\n      height: 20px;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return "" + colorGet(status, 500);
 }, colorGet('danger', 500), function (_ref2) {
@@ -816,18 +810,22 @@ var errorMessageBuilder = function errorMessageBuilder(inputName, errors) {
 };
 
 var _templateObject$3;
-var InputsErrorMessageContainer = styled$1__default.label(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  i {\n    display: flex;\n    padding-right: 5px;\n  }\n  display: flex;\n  align-items: center;\n  padding-top: 5px;\n  color: ", ";\n  font-size: 12px;\n  font-weight: 600;\n"])), colorGet('danger', 600));
+var InputsErrorMessageContainer = styled$1__default.label(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  svg {\n    padding-right: 5px;\n    width: 25px;\n    height: 25px;\n  }\n  display: flex;\n  align-items: center;\n  padding-top: 5px;\n  color: ", ";\n  font-size: 12px;\n  font-weight: 600;\n"])), colorGet('danger', 600));
 
 var InputsErrorMessage = function InputsErrorMessage(props) {
   return React__default.createElement(InputsErrorMessageContainer, {
     className: 'error'
-  }, React__default.createElement(Icon, {
-    name: 'alert-circle-outline',
-    fill: colorGet('danger', 500)
+  }, React__default.createElement(fi.FiAlertCircle, {
+    color: colorGet('danger', 500)
   }), props.error);
 };
 
-var Input = function Input(props) {
+var _excluded$2 = ["icon"];
+
+var Input = function Input(_ref) {
+  var Icon = _ref.icon,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$2);
+
   var handleChange = React.useCallback(function (event) {
     if (props.mask && event.nativeEvent.inputType !== 'deleteContentBackward') {
       event.target.value = masker(event.target.value.replace(/[^a-zA-Z0-9]/g, ''), props.mask);
@@ -845,21 +843,22 @@ var Input = function Input(props) {
     className: 'container-input-icon'
   }, React__default.createElement("input", Object.assign({}, props, {
     onChange: handleChange
-  })), props.icon && React__default.createElement("div", {
+  })), Icon && React__default.createElement("div", {
     className: 'icon'
   }, React__default.createElement(Icon, {
-    name: props.icon.name,
-    fill: props.icon.fill
+    color: props.iconColor,
+    fill: props.iconFill || 'transparent'
   }))), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
 };
 
-var _excluded$1 = ["inputRef"];
+var _excluded$3 = ["inputRef", "icon"];
 
 var InputForm = function InputForm(_ref) {
   var inputRef = _ref.inputRef,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$1);
+      Icon = _ref.icon,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$3);
 
   var inputReference = React.useRef(null);
   if (inputRef) inputReference = inputRef;
@@ -902,11 +901,11 @@ var InputForm = function InputForm(_ref) {
     id: fieldName,
     ref: inputReference,
     onChange: handleChange
-  }, props)), props.icon && React__default.createElement("div", {
+  }, props)), Icon && React__default.createElement("div", {
     className: 'icon'
   }, React__default.createElement(Icon, {
-    name: props.icon.name,
-    fill: props.icon.fill
+    color: props.iconColor,
+    fill: props.iconFill || 'transparent'
   }))), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
@@ -916,7 +915,7 @@ var _templateObject$4;
 var ContainerTextArea = styled$1__default.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    width: 100%;\n    box-sizing: border-box;\n    height: 32px;\n    border-radius: 4px;\n    border: 1px solid var(--black);\n    outline: none;\n  }\n\n  label {\n    width: inherit;\n    font-size: 12px;\n    display: flex;\n    font-weight: 700;\n    text-transform: uppercase;\n    white-space: nowrap;\n\n    .mandatory-star {\n      color: var(--main-danger-color);\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  span {\n    display: block;\n    color: var(--main-danger-color);\n    font-size: 11px;\n  }\n"])));
 
 var _templateObject$5;
-var SelectContainer = styled$1__default.div(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  i {\n    display: flex;\n  }\n\n  .dropdown {\n    border: 1px solid ", ";\n    /* width: max-content; */\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: pointer;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    .icon-header {\n      cursor: pointer;\n      margin-left: 10px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    border-top: 1px solid ", ";\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (_ref) {
+var SelectContainer = styled$1__default.div(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .dropdown {\n    border: 1px solid ", ";\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: pointer;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    svg {\n      cursor: pointer;\n      margin-left: 10px;\n      width: 25px;\n      height: 25px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    border-top: 1px solid ", ";\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return "" + colorGet(status, 500);
 }, colorGet('danger', 500), function (_ref2) {
@@ -976,13 +975,9 @@ var Select = function Select(props) {
   }, React__default.createElement("div", {
     className: 'dropdown-header',
     onClick: toggleSelect
-  }, headerText, React__default.createElement("label", {
-    className: 'icon-header'
-  }, React__default.createElement(Icon, {
-    name: 'arrow-ios-forward-outline',
-    fill: '#000000',
-    size: 'large'
-  }))), isOpen && React__default.createElement("div", {
+  }, headerText, React__default.createElement(fi.FiChevronRight, {
+    color: '#222b45'
+  })), isOpen && React__default.createElement("div", {
     className: "dropdown-body"
   }, options.map(function (option, index) {
     return React__default.createElement("div", {
@@ -1021,7 +1016,7 @@ var TooltipContainer = styled$1__default.div(_templateObject$6 || (_templateObje
   return position === 'top' && "\n        bottom: -10px;\n        border-color: " + colorGet(status, 500) + " transparent transparent  transparent;\n    ";
 });
 
-var _excluded$2 = ["clickable", "status", "position"];
+var _excluded$4 = ["clickable", "status", "position"];
 
 var Tooltip = function Tooltip(_ref) {
   var _ref$clickable = _ref.clickable,
@@ -1030,7 +1025,7 @@ var Tooltip = function Tooltip(_ref) {
       status = _ref$status === void 0 ? 'danger' : _ref$status,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'bottom' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$2);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
 
   var _useState = React.useState(false),
       show = _useState[0],
@@ -1061,7 +1056,7 @@ var Tooltip = function Tooltip(_ref) {
 };
 
 var _templateObject$7;
-var ButtonContainer = styled$1__default.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  i {\n    display: flex;\n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n"])), function (_ref) {
+var ButtonContainer = styled$1__default.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -1093,7 +1088,7 @@ var Button = function Button(props) {
 };
 
 var _templateObject$8;
-var AccordionContainer = styled$1__default.div(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteralLoose(["\n  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;\n  background: ", ";\n  min-height: 3rem;\n  width: inherit;\n\n  .accordion-header {\n    padding: 0.7rem;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    cursor: ", ";\n  }\n\n  .accordion-info-text {\n    > label {\n      cursor: inherit;\n    }\n  }\n\n  .accordion-icon {\n    transition: 0.2s ease-in-out;\n    transition-property: transform;\n    transform: ", ";\n\n    i {\n      display: flex;\n      svg {\n        width: 25px;\n        height: 25px;\n      }\n    }\n  }\n\n  .accordion-content {\n    overflow: hidden;\n    background: #ffffff;\n    padding: ", ";\n    max-height: ", ";\n    transition-property: max-height, padding;\n    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);\n    transition-duration: 500ms;\n    .accordion-childrens {\n      transition-duration: 300ms;\n      transition-property: visibility, opacity;\n      opacity: ", ";\n      visibility: ", ";\n    }\n  }\n"])), function (_ref) {
+var AccordionContainer = styled$1__default.div(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteralLoose(["\n  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;\n  background: ", ";\n  min-height: 3rem;\n  width: inherit;\n\n  .accordion-header {\n    padding: 0.7rem;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    cursor: ", ";\n  }\n\n  .accordion-info-text {\n    > label {\n      cursor: inherit;\n    }\n  }\n\n  .accordion-icon {\n    transition: 0.2s ease-in-out;\n    transition-property: transform;\n    transform: ", ";\n    display: flex;\n    \n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n\n  .accordion-content {\n    overflow: hidden;\n    background: #ffffff;\n    padding: ", ";\n    max-height: ", ";\n    transition-property: max-height, padding;\n    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);\n    transition-duration: 500ms;\n    .accordion-childrens {\n      transition-duration: 300ms;\n      transition-property: visibility, opacity;\n      opacity: ", ";\n      visibility: ", ";\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 400);
 }, function (_ref2) {
@@ -1116,12 +1111,12 @@ var AccordionContainer = styled$1__default.div(_templateObject$8 || (_templateOb
   return isOpen ? 'visible' : 'hidden';
 });
 
-var _excluded$3 = ["status"];
+var _excluded$5 = ["status"];
 
 var Accordion = function Accordion(_ref) {
   var _ref$status = _ref.status,
       status = _ref$status === void 0 ? 'control' : _ref$status,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$3);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
 
   var _useState = React.useState(false),
       isOpen = _useState[0],
@@ -1151,14 +1146,12 @@ var Accordion = function Accordion(_ref) {
     className: 'accordion-info-text'
   }, React__default.createElement("label", null, props.title)), props.disabled && React__default.createElement("div", {
     className: 'accordion-icon'
-  }, React__default.createElement(Icon, {
-    name: 'close-circle-outline',
-    fill: '#11182F'
+  }, React__default.createElement(fi.FiXCircle, {
+    color: '#11182F'
   })), !props.disabled && React__default.createElement("div", {
     className: 'accordion-icon'
-  }, React__default.createElement(Icon, {
-    name: 'arrow-ios-downward',
-    fill: '#11182F'
+  }, React__default.createElement(fi.FiChevronDown, {
+    color: '#11182F'
   }))), props.children && React__default.createElement("div", {
     className: 'accordion-content'
   }, React__default.createElement("div", {
@@ -1172,12 +1165,12 @@ var AccordionsContainer = styled$1__default.div(_templateObject$9 || (_templateO
   return gap;
 });
 
-var _excluded$4 = ["gap"];
+var _excluded$6 = ["gap"];
 
 var Accordions = function Accordions(_ref) {
   var _ref$gap = _ref.gap,
       gap = _ref$gap === void 0 ? '0px' : _ref$gap,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
 
   var _useState = React.useState(0),
       accordionCurent = _useState[0],
@@ -1221,12 +1214,12 @@ var SpinnerContainer = styled$1__default.div(_templateObject$a || (_templateObje
   return colorGet(status, 500);
 });
 
-var _excluded$5 = ["fixed"];
+var _excluded$7 = ["fixed"];
 
 var Spinner = function Spinner(_ref) {
   var _ref$fixed = _ref.fixed,
       fixed = _ref$fixed === void 0 ? true : _ref$fixed,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$7);
 
   return React__default.createElement(SpinnerContainer, Object.assign({
     className: "spinner-contaier " + (props.className || ''),
@@ -1255,7 +1248,7 @@ var Avatar = function Avatar(props) {
 };
 
 var _templateObject$c;
-var CheckboxContainer = styled$1__default.div(_templateObject$c || (_templateObject$c = _taggedTemplateLiteralLoose(["\n  width: max-content;\n\n  > div {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n\n    .container-input {\n      background: ", ";\n      border: 2px solid ", ";\n      width: 30px;\n      height: 30px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      border-radius: ", ";\n\n      .container-icon {\n        i {\n          display: flex;\n        }\n      }\n\n      input[type='checkbox'] {\n        cursor: ", ";\n        background: transparent;\n        width: inherit;\n        height: inherit;\n        margin: 0;\n        opacity: 0;\n        position: absolute;\n      }\n    }\n\n    .container-label {\n      font-weight: 600;\n      font-size: 12px;\n      color: #222b45;\n    }\n  }\n"])), function (_ref) {
+var CheckboxContainer = styled$1__default.div(_templateObject$c || (_templateObject$c = _taggedTemplateLiteralLoose(["\n  width: max-content;\n\n  > div {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n\n    .container-input {\n      background: ", ";\n      border: 2px solid ", ";\n      width: 30px;\n      height: 30px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      border-radius: ", ";\n\n      \n      > svg {\n        width: 25px;\n        height: 25px;\n        color: ", ";\n      }\n\n      input[type='checkbox'] {\n        cursor: ", ";\n        background: transparent;\n        width: inherit;\n        height: inherit;\n        margin: 0;\n        opacity: 0;\n        position: absolute;\n      }\n    }\n\n    .container-label {\n      font-weight: 600;\n      font-size: 12px;\n      color: #222b45;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status,
       disabled = _ref.disabled;
   return disabled ? colorGet('basic', 300) : colorGet(status, 400);
@@ -1267,18 +1260,19 @@ var CheckboxContainer = styled$1__default.div(_templateObject$c || (_templateObj
   var semiRounded = _ref3.semiRounded;
   return semiRounded ? '4px' : '0px';
 }, function (_ref4) {
-  var disabled = _ref4.disabled;
+  var status = _ref4.status;
+  return colorGet(status, 900);
+}, function (_ref5) {
+  var disabled = _ref5.disabled;
   return disabled ? 'not-allowed' : 'pointer';
 });
 
-var _excluded$6 = ["iconName", "iconFill", "semiRounded"];
+var _excluded$8 = ["icon", "iconColor", "semiRounded"];
 
 var Checkbox = function Checkbox(_ref) {
-  var _ref$iconName = _ref.iconName,
-      iconName = _ref$iconName === void 0 ? 'checkmark' : _ref$iconName,
-      iconFill = _ref.iconFill,
+  var Icon = _ref.icon,
       semiRounded = _ref.semiRounded,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$8);
 
   var _useState = React.useState(props.defaultChecked || false),
       isChecked = _useState[0],
@@ -1293,13 +1287,7 @@ var Checkbox = function Checkbox(_ref) {
     semiRounded: semiRounded
   }), React__default.createElement("div", null, React__default.createElement("div", {
     className: 'container-input'
-  }, isChecked && React__default.createElement("label", {
-    className: 'container-icon'
-  }, React__default.createElement(Icon, {
-    name: iconName,
-    fill: iconFill || colorGet(props.status, 800),
-    size: 'large'
-  })), React__default.createElement("input", Object.assign({}, props, {
+  }, isChecked && Icon && React__default.createElement(Icon, null), isChecked && !Icon && React__default.createElement(fi.FiCheck, null), React__default.createElement("input", Object.assign({}, props, {
     defaultChecked: isChecked,
     type: 'checkbox',
     onChange: function onChange(event) {
@@ -1369,39 +1357,43 @@ function useToast() {
 }
 
 var _templateObject$e;
-var ToastCardContainer = styled$1__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  position: fixed;\n  user-select: none;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.1rem 1rem;\n  height: 90px;\n  width: 312px;\n  cursor: pointer;\n  background: ", ";\n  border-radius: 4px;\n  color: #fff;\n  box-shadow: 0 0 10px #999;\n\n  ", "\n\n  ", "\n\n\n", "\n\n", "\n\n  .toast-icon {\n    svg {\n      width: 30px;\n      height: 30px;\n    }\n  }\n\n  .toast-text-info {\n    display: flex;\n    flex-direction: column;\n    gap: 5px;\n    max-width: 210px;\n\n    .toast-title {\n      font-size: 18px;\n      font-weight: bold;\n\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n\n    .toast-subtitle {\n      font-size: 14px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: vertical;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n  }\n"])), function (_ref) {
+var ToastCardContainer = styled$1__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  position: fixed;\n  user-select: none;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.1rem 1rem;\n  height: 80px;\n  max-width: 400px;\n  min-width: 296px;\n  cursor: pointer;\n  background: ", ";\n  border-radius: 4px;\n  color: #fff;\n  box-shadow: 0 0 10px #999;\n\n  ", "\n\n  ", "\n\n\n", "\n\n", "\n\n  .toast-icon {\n    svg {\n      width: 30px;\n      height: 30px;\n    }\n  }\n\n  .toast-text-info {\n    display: flex;\n    flex-direction: column;\n    gap: 5px;\n    max-width: 300px;\n\n    .toast-title {\n      font-size: 18px;\n      font-weight: bold;\n\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n\n    .toast-subtitle {\n      font-size: 14px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: vertical;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
   var position = _ref2.position,
       shouldShow = _ref2.shouldShow,
-      myIndexInArray = _ref2.myIndexInArray;
-  return position === 'top-right' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform 0.6s ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
+      myIndexInArray = _ref2.myIndexInArray,
+      timeToUnmount = _ref2.timeToUnmount;
+  return position === 'top-right' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
 }, function (_ref3) {
   var position = _ref3.position,
       shouldShow = _ref3.shouldShow,
-      myIndexInArray = _ref3.myIndexInArray;
-  return position === 'bottom-right' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform 0.6s ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
+      myIndexInArray = _ref3.myIndexInArray,
+      timeToUnmount = _ref3.timeToUnmount;
+  return position === 'bottom-right' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
 }, function (_ref4) {
   var position = _ref4.position,
       shouldShow = _ref4.shouldShow,
-      myIndexInArray = _ref4.myIndexInArray;
-  return position === 'top-left' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform 0.6s ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
+      myIndexInArray = _ref4.myIndexInArray,
+      timeToUnmount = _ref4.timeToUnmount;
+  return position === 'top-left' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
 }, function (_ref5) {
   var position = _ref5.position,
       shouldShow = _ref5.shouldShow,
-      myIndexInArray = _ref5.myIndexInArray;
-  return position === 'bottom-left' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform 0.6s ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
+      myIndexInArray = _ref5.myIndexInArray,
+      timeToUnmount = _ref5.timeToUnmount;
+  return position === 'bottom-left' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
 });
 
-var _excluded$7 = ["duration", "position"];
+var _excluded$9 = ["duration", "position"];
 
 var ToastCard = function ToastCard(_ref) {
   var _ref$duration = _ref.duration,
       duration = _ref$duration === void 0 ? 5000 : _ref$duration,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$7);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$9);
 
   var _useToast = useToast(),
       toastListCurrent = _useToast.toastListCurrent;
@@ -1418,9 +1410,22 @@ var ToastCard = function ToastCard(_ref) {
       myIndexInArray = _useState2[0],
       setMyIndexInArray = _useState2[1];
 
+  var _useState3 = React.useState(),
+      intervalIdShow = _useState3[0],
+      setIntervalId = _useState3[1];
+
+  var _useState4 = React.useState(),
+      intervalIdRemove = _useState4[0],
+      setIntervalId2 = _useState4[1];
+
+  var mounted = React.useRef(false);
   var handleOnClickToastCard = React.useCallback(function () {
     setShouldShow(false);
-    props.handleOnClick(props.id);
+    var intervalIdRemove = setTimeout(function () {
+      props.handleOnClick(props.id);
+    }, timeToUnmount);
+    setIntervalId(intervalIdShow);
+    setIntervalId2(intervalIdRemove);
   }, [props, toastListCurrent]);
   var toastIcon = React.useMemo(function () {
     if (props.status === 'success') return React__default.createElement(fi.FiCheckCircle, null);
@@ -1431,28 +1436,49 @@ var ToastCard = function ToastCard(_ref) {
   }, [props.status]);
   React.useEffect(function () {
     setShouldShow(true);
-    setTimeout(function () {
+    removeToastFromScreen();
+  }, [duration]);
+  var removeToastFromScreen = React.useCallback(function () {
+    var intervalIdShow = setTimeout(function () {
       setShouldShow(false);
     }, duration);
-    setTimeout(function () {
+    var intervalIdRemove = setTimeout(function () {
       if (!toastCardRef || !toastCardRef.current) return;
       toastCardRef.current.click();
     }, duration + timeToUnmount);
-  }, [duration]);
+    setIntervalId(intervalIdShow);
+    setIntervalId2(intervalIdRemove);
+  }, [toastCardRef.current]);
+  var handleMouseLeave = React.useCallback(function () {
+    removeToastFromScreen();
+  }, [removeToastFromScreen]);
+  var handleMouseEnter = React.useCallback(function () {
+    intervalIdShow && clearTimeout(intervalIdShow);
+    intervalIdRemove && clearTimeout(intervalIdRemove);
+  }, [intervalIdShow, intervalIdRemove]);
   React.useEffect(function () {
     var myIndex = toastListCurrent.findIndex(function (toast) {
       return toast.id === props.id;
     });
     setMyIndexInArray(myIndex);
   }, [props.id, toastListCurrent]);
+  React.useEffect(function () {
+    mounted.current = true;
+    return function () {
+      mounted.current = false;
+    };
+  }, []);
   return React__default.createElement(ToastCardContainer, Object.assign({}, props, {
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
     myIndexInArray: myIndexInArray,
     position: position,
     duration: duration,
     ref: toastCardRef,
     className: "toast-card " + (props.className ? props.className : ''),
     onClick: handleOnClickToastCard,
-    shouldShow: shouldShow
+    shouldShow: shouldShow,
+    timeToUnmount: timeToUnmount
   }), React__default.createElement("div", {
     className: 'toast-text-info'
   }, React__default.createElement("div", {

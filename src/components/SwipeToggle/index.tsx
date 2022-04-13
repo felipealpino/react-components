@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 
-import Icon from 'react-eva-icons';
+import { IconBaseProps } from 'react-icons';
 
 import { ElementStatus } from '../../shared/theme/colors';
 
 import { SwipeToggleContainer } from './styles';
 
 export interface ISwipeToggle {
-  iconNameDisabled?: string;
-  iconNameEnabled?: string;
+  iconNameDisabled?: React.ComponentType<IconBaseProps>;
+  iconNameEnabled?: React.ComponentType<IconBaseProps>;
   textIfOn?: string;
   textIfOff?: string;
   rounded?: boolean;
@@ -21,7 +21,11 @@ export interface ISwipeToggle {
   className?: string;
 }
 
-const SwipeToggle: React.FC<ISwipeToggle> = (props) => {
+const SwipeToggle: React.FC<ISwipeToggle> = ({
+  iconNameEnabled: IconEnabled,
+  iconNameDisabled: IconDisabled,
+  ...props
+}) => {
   const [statusCheck, setStatusCheck] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -47,8 +51,8 @@ const SwipeToggle: React.FC<ISwipeToggle> = (props) => {
               <div className='animated-icon'></div>
             </div>
           )}
-          {statusCheck && <label>{props.iconNameEnabled && <Icon name={props.iconNameEnabled} fill='' />} </label>}
-          {!statusCheck && <label>{props.iconNameDisabled && <Icon name={props.iconNameDisabled} fill='' />}</label>}
+          {statusCheck && IconEnabled && <IconEnabled />}
+          {!statusCheck && IconDisabled && <IconDisabled />}
         </div>
       </span>
     </SwipeToggleContainer>

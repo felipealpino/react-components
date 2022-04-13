@@ -70,12 +70,10 @@ export const InputContainer = styled.div<IInputProps>`
     justify-content: center;
     width: 40px;
     aspect-ratio: 1;
-    i {
-      display: flex;
-      svg {
-        width: 23px;
-        height: 23px;
-      }
+
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 `;

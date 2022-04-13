@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { SelectContainer } from './styles';
-import Icon from 'react-eva-icons';
 
 import { ISelectDefaultProps } from '../../../components/Selects/interfaces/ISelectDefaultProps';
 import { ISelectOptions } from '../../../components/Selects/interfaces/ISelectOptions';
 
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
+import { FiChevronRight } from 'react-icons/fi';
 
 const Select: React.FC<ISelectDefaultProps> = (props) => {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const Select: React.FC<ISelectDefaultProps> = (props) => {
   useEffect(() => {
     setOptions(props.options);
     const found = props.options.find((option) => option.selected === true);
-    setSelectedItem(found)
+    setSelectedItem(found);
   }, [props.options]);
 
   const toggleSelect = useCallback(() => {
@@ -50,9 +50,7 @@ const Select: React.FC<ISelectDefaultProps> = (props) => {
       <div className='dropdown'>
         <div className='dropdown-header' onClick={toggleSelect}>
           {headerText}
-          <label className='icon-header'>
-            <Icon name='arrow-ios-forward-outline' fill='#000000' size='large' />
-          </label>
+            <FiChevronRight color='#222b45' />
         </div>
         {isOpen && (
           <div className={`dropdown-body`}>

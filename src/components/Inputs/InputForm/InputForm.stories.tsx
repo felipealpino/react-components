@@ -8,6 +8,7 @@ import { FormHandles } from '@unform/core';
 import { Button } from '../../Button';
 import * as Yup from 'yup';
 import { BaseStyles } from '../../BaseStyles';
+import { FiFilter } from 'react-icons/fi';
 export const groupSchema = Yup.object().shape({
   first_name: Yup.string().required({ name: 'first_name', message: 'O campo é obrigatório' }),
   last_name: Yup.string().required({ name: 'last_name', message: 'O campo é obrigatório' })
@@ -85,7 +86,14 @@ storiesOf('InputForm', module)
           error={errorMessageBuilder('last_name', errors)}
         />
 
-        <InputForm icon={{ name: 'funnel', fill: '222b45' }} name='search' status={status} placeholder='Buscar' />
+        <InputForm
+          icon={FiFilter}
+          iconColor='#222b45'
+          iconFill='#222b45'
+          name='search'
+          status={status}
+          placeholder='Buscar'
+        />
 
         <Button onClick={() => formRef.current.submitForm()}>Submit</Button>
         <div>

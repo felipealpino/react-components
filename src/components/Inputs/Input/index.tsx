@@ -1,13 +1,12 @@
 import React, { useCallback } from 'react';
 import { InputContainer } from './styles';
-import Icon from 'react-eva-icons';
 import { InputDefaultProps } from '../../../components/Inputs/interfaces/InputDefaultProps';
 import { masker } from '../../../shared/utils';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 
 export type IInputProps = InputDefaultProps & {};
 
-const Input: React.FC<IInputProps> = (props) => {
+const Input: React.FC<IInputProps> = ({ icon: Icon, ...props }) => {
   const handleChange = useCallback((event) => {
     if (props.mask && event.nativeEvent.inputType !== 'deleteContentBackward') {
       event.target.value = masker(event.target.value.replace(/[^a-zA-Z0-9]/g, ''), props.mask);
@@ -25,9 +24,9 @@ const Input: React.FC<IInputProps> = (props) => {
 
       <div className='container-input-icon'>
         <input {...props} onChange={handleChange} />
-        {props.icon && (
+        {Icon && (
           <div className='icon'>
-            <Icon name={props.icon.name} fill={props.icon.fill} />
+            <Icon color={props.iconColor} fill={props.iconFill || 'transparent'} />
           </div>
         )}
       </div>

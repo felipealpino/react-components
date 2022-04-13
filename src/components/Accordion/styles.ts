@@ -30,13 +30,11 @@ export const AccordionContainer = styled.div<IAccordionProps>`
     transition: 0.2s ease-in-out;
     transition-property: transform;
     transform: ${({ isOpen }) => `rotate(${isOpen ? '-180deg' : '0deg'})`};
-
-    i {
-      display: flex;
-      svg {
-        width: 25px;
-        height: 25px;
-      }
+    display: flex;
+    
+    svg {
+      width: 25px;
+      height: 25px;
     }
   }
 

@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from 'react';
+import { IconBaseProps } from 'react-icons';
 import { ElementStatus } from '../../../shared/theme/colors';
 export interface ICheckboxDefaultProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
@@ -8,6 +9,6 @@ export interface ICheckboxDefaultProps extends InputHTMLAttributes<HTMLInputElem
     name: string;
     id: string;
     semiRounded?: boolean;
-    iconName?: string;
-    iconFill?: string;
+    icon?: React.ComponentType<IconBaseProps>;
+    iconColor?: string;
 }

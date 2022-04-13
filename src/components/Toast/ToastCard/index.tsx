@@ -9,7 +9,6 @@ import { FiCheckCircle, FiInfo, FiAlertTriangle, FiXOctagon } from 'react-icons/
 
 // toast comes from the right and leaves to top
 // toast in the center of the page
-// smooth remove when toast gets clicked
 
 const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', ...props }) => {
   const { toastListCurrent } = useToast();

@@ -4,6 +4,8 @@ import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { Checkbox } from '../Checkbox';
 import { BaseStyles } from '../../BaseStyles';
+import { FiTrash2 } from 'react-icons/fi';
+
 storiesOf('Checkbox', module)
   .addDecorator(withKnobs)
 
@@ -33,8 +35,8 @@ storiesOf('Checkbox', module)
           onChange={(event) => console.log(event.target.checked)}
           status={status}
           semiRounded
-          iconName='trash-2-outline'
-          iconFill='#222B45'
+          icon={FiTrash2}
+          iconColor='#222B45'
           name={''}
           id={''}
           label={'ANANABO'}
@@ -45,7 +47,7 @@ storiesOf('Checkbox', module)
           onChange={(event) => console.log(event.target.checked)}
           status={status}
           semiRounded
-          iconFill='#222B45'
+          iconColor='#222B45'
           name={''}
           id={''}
           error='This field is required'

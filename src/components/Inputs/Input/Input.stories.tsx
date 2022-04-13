@@ -4,6 +4,7 @@ import { Input } from '../Input';
 import { withKnobs, select, text, color, radios } from '@storybook/addon-knobs';
 import { useCallback } from '@storybook/addons';
 import { BaseStyles } from '../../BaseStyles';
+import { FiFilter } from 'react-icons/fi';
 storiesOf('Input', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
@@ -43,7 +44,9 @@ storiesOf('Input', module)
             placeholder='Digite o nome'
             autoComplete='off'
             key={`${iconColor}-1`}
-            icon={{ name: 'funnel', fill: iconColor }}
+            icon={FiFilter}
+            iconColor={iconColor}
+            iconFill={iconColor}
           />
           <label>Name: {inputText.first_name || ''} </label>
         </div>
@@ -56,7 +59,8 @@ storiesOf('Input', module)
             onChange={(event) => handleInputChange(event)}
             status={status}
             placeholder='Digite o sobrenome'
-            icon={{ name: 'funnel', fill: iconColor }}
+            icon={FiFilter}
+            iconColor={iconColor}
           />
           <label>Last Name: {inputText.last_name || ''} </label>
         </div>

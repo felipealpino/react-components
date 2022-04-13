@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Icon from 'react-eva-icons';
 
 import { AccordionContainer } from '../../components/Accordion/styles';
 import { ElementStatus } from '../../shared/theme/colors';
+import { FiChevronDown, FiXCircle } from 'react-icons/fi';
 
 export interface IAccordion {
   index?: number;
@@ -42,13 +42,13 @@ const Accordion: React.FC<IAccordion> = ({ status = 'control', ...props }) => {
 
         {props.disabled && (
           <div className='accordion-icon'>
-            <Icon name='close-circle-outline' fill='#11182F' />
+            <FiXCircle color='#11182F' />
           </div>
         )}
 
         {!props.disabled && (
           <div className='accordion-icon'>
-            <Icon name='arrow-ios-downward' fill='#11182F' />
+            <FiChevronDown color='#11182F' />
           </div>
         )}
       </div>

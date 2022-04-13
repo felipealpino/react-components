@@ -54,23 +54,16 @@ export const SwipeToggleContainer = styled.label<ISwipeToggleProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-
-    label {
-      cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-    }
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
 
     ${({ statusCheck }) => statusCheck && '-webkit-transform: translateX(20px)'};
     ${({ statusCheck }) => statusCheck && ' -ms-transform: translateX(20px)'};
     ${({ statusCheck }) => statusCheck && 'transform: translateX(20px)'};
 
-    i {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      svg {
-        fill: ${({ status, statusCheck }) => (statusCheck ? colorGet(status, 500) : colorGet('danger', 500))};
-      }
+    svg {
+      width: 20px;
+      height: 20px;
+      color: ${({ status, statusCheck }) => (statusCheck ? colorGet(status, 500) : colorGet('danger', 500))};
     }
 
     .animated-icon-div {
