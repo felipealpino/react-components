@@ -15,8 +15,9 @@ export const ToastCardContainer = styled.div<IToastContainer>`
   align-items: center;
   justify-content: space-between;
   padding: 0.1rem 1rem;
-  height: 90px;
-  width: 312px;
+  height: 80px;
+  max-width: 400px;
+  min-width: 296px;
   cursor: pointer;
   background: ${({ status }) => colorGet(status, 500)};
   border-radius: 4px;
@@ -71,7 +72,7 @@ ${({ position, shouldShow, myIndexInArray }) =>
     display: flex;
     flex-direction: column;
     gap: 5px;
-    max-width: 210px;
+    max-width: 300px;
 
     .toast-title {
       font-size: 18px;
