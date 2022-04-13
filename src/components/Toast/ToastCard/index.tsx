@@ -7,9 +7,9 @@ import { IToast } from '../interface/IToast';
 import { ToastCardContainer } from './styles';
 import { FiCheckCircle, FiInfo, FiAlertTriangle, FiXOctagon } from 'react-icons/fi';
 
-// mouse over stop time to leave the page
 // toast comes from the right and leaves to top
 // toast in the center of the page
+// smooth remove when toast gets clicked
 
 const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', ...props }) => {
   const { toastListCurrent } = useToast();
@@ -17,15 +17,18 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   const [shouldShow, setShouldShow] = useState<boolean>(false);
   const timeToUnmount = 700; //700ms
   const [myIndexInArray, setMyIndexInArray] = useState<number>(-1);
-  // const [isMouseOverToast, setIsMouseOverToast] = useState<boolean>(false);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout>();
-  const [intervalId2, setIntervalId2] = useState<NodeJS.Timeout>();
+  const [intervalIdShow, setIntervalId] = useState<NodeJS.Timeout>();
+  const [intervalIdRemove, setIntervalId2] = useState<NodeJS.Timeout>();
   const mounted = useRef(false);
 
   const handleOnClickToastCard = useCallback(() => {
     setShouldShow(false);
+    const intervalIdRemove = setTimeout(() => {
+      props.handleOnClick(props.id);
+    }, timeToUnmount);
 
-    props.handleOnClick(props.id);
+    setIntervalId(intervalIdShow);
+    setIntervalId2(intervalIdRemove);
   }, [props, toastListCurrent]);
 
   const toastIcon = useMemo(() => {
@@ -42,18 +45,18 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   }, [duration]);
 
   const removeToastFromScreen = useCallback(() => {
-    const intervalId = setTimeout(() => {
+    const intervalIdShow = setTimeout(() => {
       setShouldShow(false);
     }, duration);
 
-    const intervalId2 = setTimeout(() => {
+    const intervalIdRemove = setTimeout(() => {
       //removing from array
       if (!toastCardRef || !toastCardRef.current) return;
       toastCardRef.current.click();
     }, duration + timeToUnmount);
 
-    setIntervalId(intervalId);
-    setIntervalId2(intervalId2);
+    setIntervalId(intervalIdShow);
+    setIntervalId2(intervalIdRemove);
   }, [toastCardRef.current]);
 
   const handleMouseLeave = useCallback(() => {
@@ -61,9 +64,9 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   }, [removeToastFromScreen]);
 
   const handleMouseEnter = useCallback(() => {
-    intervalId && clearTimeout(intervalId);
-    intervalId2 && clearTimeout(intervalId2);
-  }, [intervalId, intervalId2]);
+    intervalIdShow && clearTimeout(intervalIdShow);
+    intervalIdRemove && clearTimeout(intervalIdRemove);
+  }, [intervalIdShow, intervalIdRemove]);
 
   useEffect(() => {
     const myIndex = toastListCurrent.findIndex((toast) => toast.id === props.id);
@@ -89,6 +92,7 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
       className={`toast-card ${props.className ? props.className : ''}`}
       onClick={handleOnClickToastCard}
       shouldShow={shouldShow}
+      timeToUnmount={timeToUnmount}
     >
       <div className='toast-text-info'>
         <div className='toast-title'>{props.title}</div>

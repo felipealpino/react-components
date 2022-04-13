@@ -5,6 +5,7 @@ import { IToast } from '../interface/IToast';
 type IToastContainer = IToast & {
   shouldShow: boolean;
   myIndexInArray: number;
+  timeToUnmount: number;
 };
 
 export const ToastCardContainer = styled.div<IToastContainer>`
@@ -24,40 +25,40 @@ export const ToastCardContainer = styled.div<IToastContainer>`
   color: #fff;
   box-shadow: 0 0 10px #999;
 
-  ${({ position, shouldShow, myIndexInArray }) =>
+  ${({ position, shouldShow, myIndexInArray, timeToUnmount }) =>
     position === 'top-right' &&
     ` 
     top: ${myIndexInArray * 100 + 10}px;
     right: 12px;
-    transition: transform 0.6s ease-in-out;
+    transition: transform ${timeToUnmount - 100}ms ease-in-out;
     transform: translateX(${shouldShow ? '0' : '200%'});
   `}
 
-  ${({ position, shouldShow, myIndexInArray }) =>
+  ${({ position, shouldShow, myIndexInArray, timeToUnmount }) =>
     position === 'bottom-right' &&
     ` 
     bottom: ${myIndexInArray * 100 + 10}px;
     right: 12px;
-    transition: transform 0.6s ease-in-out;
+    transition: transform ${timeToUnmount - 100}ms ease-in-out;
     transform: translateX(${shouldShow ? '0' : '200%'});
   `}
 
 
-${({ position, shouldShow, myIndexInArray }) =>
+${({ position, shouldShow, myIndexInArray, timeToUnmount }) =>
     position === 'top-left' &&
     ` 
     top: ${myIndexInArray * 100 + 10}px;
     left: 12px;
-    transition: transform 0.6s ease-in;
+    transition: transform ${timeToUnmount - 100}ms ease-in;
     transform: translateX(${shouldShow ? '0' : '-200%'});
   `}
 
-${({ position, shouldShow, myIndexInArray }) =>
+${({ position, shouldShow, myIndexInArray, timeToUnmount }) =>
     position === 'bottom-left' &&
     ` 
     bottom: ${myIndexInArray * 100 + 10}px;
     left: 12px;
-    transition: transform 0.6s ease-in;
+    transition: transform ${timeToUnmount - 100}ms ease-in;
     transform: translateX(${shouldShow ? '0' : '-200%'});
   `}
 
