@@ -15,12 +15,19 @@ storiesOf('Button', module)
 
     const isDisabled = boolean('Disabled ? ', false);
 
+    const outline = boolean('Outline ? ', false);
+
     const buttonText = text('Button Text', 'Click me');
 
     return (
       <div style={{ display: 'flex', gap: '1rem' }}>
         <BaseStyles />
-        <Button disabled={isDisabled} status={status} onClick={(event) => console.log(event.target)}>
+        <Button
+          outline={outline}
+          disabled={isDisabled}
+          status={status}
+          onClick={(event) => console.log(`The button was clicked.`)}
+        >
           {buttonText}
         </Button>
       </div>
