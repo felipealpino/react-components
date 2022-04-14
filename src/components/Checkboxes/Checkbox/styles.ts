@@ -25,7 +25,7 @@ export const CheckboxContainer = styled.div<ICheckbox>`
       > svg {
         width: 25px;
         height: 25px;
-        color: ${({ status }) => colorGet(status, 900)};
+        color: ${({ status, disabled }) => disabled ? colorGet(status, 400) :  colorGet(status, 900)};
       }
 
       input[type='checkbox'] {
