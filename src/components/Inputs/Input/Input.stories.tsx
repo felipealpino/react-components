@@ -14,7 +14,7 @@ storiesOf('Input', module)
       'primary'
     );
 
-    const iconColor = color('Icon fill', '#8F9BB3');
+    const iconcolor = color('Icon fill', '#8F9BB3');
 
     interface IInputText {
       first_name?: string;
@@ -43,10 +43,10 @@ storiesOf('Input', module)
             status={status}
             placeholder='Digite o nome'
             autoComplete='off'
-            key={`${iconColor}-1`}
+            key={`${iconcolor}-1`}
             icon={FiFilter}
-            iconColor={iconColor}
-            iconFill={iconColor}
+            iconcolor={iconcolor}
+            iconfill={iconcolor}
           />
           <label>Name: {inputText.first_name || ''} </label>
         </div>
@@ -60,7 +60,7 @@ storiesOf('Input', module)
             status={status}
             placeholder='Digite o sobrenome'
             icon={FiFilter}
-            iconColor={iconColor}
+            iconcolor={iconcolor}
           />
           <label>Last Name: {inputText.last_name || ''} </label>
         </div>

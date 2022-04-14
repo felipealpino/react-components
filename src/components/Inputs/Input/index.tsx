@@ -26,7 +26,7 @@ const Input: React.FC<IInputProps> = ({ icon: Icon, ...props }) => {
         <input {...props} onChange={handleChange} />
         {Icon && (
           <div className='icon'>
-            <Icon color={props.iconColor} fill={props.iconFill || 'transparent'} />
+            <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />
           </div>
         )}
       </div>

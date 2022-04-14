@@ -7,7 +7,7 @@ import { FiCheck } from 'react-icons/fi';
 
 export type ICheckbox = ICheckboxDefaultProps & {};
 
-const Checkbox: React.FC<ICheckbox> = ({ icon: Icon, iconColor, semiRounded, ...props }) => {
+const Checkbox: React.FC<ICheckbox> = ({ icon: Icon, iconcolor, semiRounded, ...props }) => {
   const [isChecked, setIsChecked] = useState<boolean>(props.defaultChecked || false);
 
   const handleOnClick = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {

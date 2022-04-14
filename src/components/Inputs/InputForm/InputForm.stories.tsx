@@ -42,7 +42,6 @@ storiesOf('InputForm', module)
 
     const [errors, setErros] = useState<IInputErrorsFormat[]>([]);
     const [inputText, setInputFormText] = useState<IInputFormText>({});
-    const formRef = useRef<FormHandles>(null);
 
     const handleSubmit = (data) => {
       canSaveGroup(data);
@@ -67,7 +66,7 @@ storiesOf('InputForm', module)
     };
 
     return (
-      <Form ref={formRef} onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <BaseStyles />
         <InputForm
           label='Nome'
@@ -88,14 +87,14 @@ storiesOf('InputForm', module)
 
         <InputForm
           icon={FiFilter}
-          iconColor='#222b45'
-          iconFill='#222b45'
+          iconcolor='#222b45'
+          iconfill='#222b45'
           name='search'
           status={status}
           placeholder='Buscar'
         />
 
-        <Button onClick={() => formRef.current.submitForm()}>Submit</Button>
+        <Button type='submit'>Submit</Button>
         <div>
           <div>Nome: {inputText.first_name || ''} </div>
           <div>Sobrenome: {inputText.last_name || ''} </div>

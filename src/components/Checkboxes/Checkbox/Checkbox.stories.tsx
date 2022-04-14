@@ -18,6 +18,8 @@ storiesOf('Checkbox', module)
 
     const isDisabled = boolean('Disabled ? ', false);
 
+    const semiRounded = boolean('Semi Rounded ? ', true);
+
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <BaseStyles />
@@ -25,7 +27,7 @@ storiesOf('Checkbox', module)
           defaultChecked={true}
           onChange={(event) => console.log(event.target.checked)}
           status={status}
-          semiRounded
+          semiRounded={semiRounded}
           name={''}
           id={''}
         />
@@ -34,9 +36,9 @@ storiesOf('Checkbox', module)
           defaultChecked={false}
           onChange={(event) => console.log(event.target.checked)}
           status={status}
-          semiRounded
+          semiRounded={semiRounded}
           icon={FiTrash2}
-          iconColor='#222B45'
+          iconcolor='#222B45'
           name={''}
           id={''}
           label={'ANANABO'}
@@ -46,8 +48,8 @@ storiesOf('Checkbox', module)
           defaultChecked={false}
           onChange={(event) => console.log(event.target.checked)}
           status={status}
-          semiRounded
-          iconColor='#222B45'
+          semiRounded={semiRounded}
+          iconcolor='#222B45'
           name={''}
           id={''}
           error='This field is required'
@@ -58,7 +60,7 @@ storiesOf('Checkbox', module)
           defaultChecked={false}
           onChange={(event) => console.log(event.target.checked)}
           status={status}
-          semiRounded
+          semiRounded={semiRounded}
           name={''}
           id={''}
           disabled={isDisabled}

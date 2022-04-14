@@ -11,5 +11,6 @@ export interface ICheckboxDefaultProps extends InputHTMLAttributes<HTMLInputElem
   id: string;
   semiRounded?: boolean;
   icon?: React.ComponentType<IconBaseProps>;
-  iconColor?: string;
+  iconcolor?: string;
+  checkboxRef?: React.RefObject<HTMLInputElement>;
 }
