@@ -13,13 +13,6 @@ storiesOf('Select', module)
       'primary'
     );
 
-    interface IData {
-      name?: ISelectOptions;
-      gender?: ISelectOptions;
-    }
-
-    const [data, setData] = useState<IData>({});
-
     const names = [
       { name: 'Thawan Cavalcante', value: 'thawan' },
       { name: 'Gabriel Campos', value: 'gabriel' },
@@ -27,15 +20,8 @@ storiesOf('Select', module)
       { name: 'Felipe Gontijo', value: 'felipe' }
     ];
 
-    const genders = [
-      { name: 'Male', value: 'male', selected: true },
-      { name: 'Famale', value: 'famale' }
-    ];
-
     const handleOnSelectOption = useCallback((option: ISelectOptions, objectKey: string) => {
-      setData((oldState) => {
-        return { ...oldState, [objectKey]: option };
-      });
+      console.log(`Change key ${objectKey} to ${option}`);
     }, []);
 
     return (
@@ -46,34 +32,33 @@ storiesOf('Select', module)
           placeholder='Select your name'
           status={status}
           label='Names:'
-          name='name:'
+          name='name'
           mandatory
           options={names}
         />
 
         <Select
-          handleOnChange={(option) => handleOnSelectOption(option, 'gender')}
-          placeholder='Select your gender'
-          status={status}
-          label='Gender: '
-          name='gender'
-          mandatory
-          options={genders}
-        />
-
-        <Select
-          handleOnChange={(option) => console.log(option, 'gender')}
+          handleOnChange={() => {}}
           placeholder='Select with Error'
           status={status}
           label='This is an error select: '
           name='error'
           mandatory
-          options={[]}
+          options={names}
           error='This field is required.'
         />
 
         <Select
-          handleOnChange={(option) => console.log(option, 'gender')}
+          handleOnChange={() => {}}
+          placeholder='Select without options'
+          status={status}
+          label='This Select has no Options: '
+          name='no_options'
+          options={[]}
+        />
+
+        <Select
+          handleOnChange={(option) => console.log(option, 'name')}
           status={status}
           label='This Select has an Initial Option: '
           name='initial_option'
@@ -82,11 +67,11 @@ storiesOf('Select', module)
         />
 
         <Select
-          handleOnChange={(option) => console.log(option, 'name')}
+          handleOnChange={() => {}}
           placeholder='Disabled Select'
           status={status}
           label='This is an Disabled Select: '
-          name='error'
+          name='disabled_select'
           disabled
           options={names}
         />
