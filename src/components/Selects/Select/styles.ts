@@ -5,6 +5,7 @@ import styled from 'styled-components';
 interface ISelectProps {
   isOpen: boolean;
   status: ElementStatus;
+  isDisabled?: boolean;
 }
 
 export const SelectContainer = styled.div<ISelectProps>`
@@ -32,21 +33,24 @@ export const SelectContainer = styled.div<ISelectProps>`
   }
 
   .dropdown {
+    opacity: ${(props) => (props.isDisabled ? '0.5' : '1')};
     border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
     width: auto;
     border-radius: 4px;
     background-color: white;
+
+    position: relative;
+    width: 100%;
   }
 
   .dropdown-header {
     padding: 15px;
-    cursor: pointer;
+    cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     svg {
-      cursor: pointer;
       margin-left: 10px;
       width: 25px;
       height: 25px;
@@ -57,7 +61,14 @@ export const SelectContainer = styled.div<ISelectProps>`
 
   .dropdown-body {
     padding: 5px;
-    border-top: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
+    position: absolute;
+    top: 55px;
+    background: white;
+    border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
+    width: inherit;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    z-index: 1;
   }
 
   .dropdown-item {

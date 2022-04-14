@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { SelectContainer } from './styles';
 
 import { ISelectDefaultProps } from '../../../components/Selects/interfaces/ISelectDefaultProps';
@@ -7,41 +7,35 @@ import { ISelectOptions } from '../../../components/Selects/interfaces/ISelectOp
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 import { FiChevronRight } from 'react-icons/fi';
 
-const Select: React.FC<ISelectDefaultProps> = (props) => {
+const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
-  const [options, setOptions] = useState<ISelectOptions[]>([]);
-  const [selectedItem, setSelectedItem] = useState<ISelectOptions>();
-
-  useEffect(() => {
-    setOptions(props.options);
-    const found = props.options.find((option) => option.selected === true);
-    setSelectedItem(found);
-  }, [props.options]);
+  const [selectedItem, setSelectedItem] = useState<ISelectOptions | undefined>(props.initialOption);
 
   const toggleSelect = useCallback(() => {
-    setOpen(!isOpen);
-  }, [isOpen]);
+    !props.disabled && setOpen((oldState) => !oldState);
+  }, []);
 
   const handleOptionClick = useCallback(
     (option: ISelectOptions) => {
-      props.handleOnChange(option);
+      handleOnChange(option);
       setSelectedItem(option);
-      setOpen(!isOpen);
+      setOpen((oldState) => !oldState);
     },
-    [isOpen]
+    [handleOnChange]
   );
 
   const headerText = useMemo(() => {
     if (selectedItem) return selectedItem.name;
     if (props.placeholder) return props.placeholder;
     return 'Selecione uma Opção';
-  }, [selectedItem, props.placeholder]);
+  }, [props.placeholder, selectedItem]);
 
   return (
     <SelectContainer
       className={`select-container ${props.className ? props.className : ''}`}
       status={props.status}
       isOpen={isOpen}
+      isDisabled={props.disabled}
     >
       <label className='select-label'>
         {props.label}
@@ -50,17 +44,20 @@ const Select: React.FC<ISelectDefaultProps> = (props) => {
       <div className='dropdown'>
         <div className='dropdown-header' onClick={toggleSelect}>
           {headerText}
-            <FiChevronRight color='#222b45' />
+          <FiChevronRight color='#222b45' />
         </div>
-        {isOpen && (
-          <div className={`dropdown-body`}>
-            {options.map((option, index) => (
-              <div key={index} className='dropdown-item' onClick={() => handleOptionClick(option)} id={props.name}>
-                {option.name}
-              </div>
-            ))}
-          </div>
-        )}
+        {isOpen &&
+          (props.options.length > 0 ? (
+            <div className={`dropdown-body`}>
+              {props.options.map((option, index) => (
+                <div key={index} className='dropdown-item' onClick={() => handleOptionClick(option)} id={props.name}>
+                  {option.name}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={`dropdown-body`}>Nenhuma opção disponível .. </div>
+          ))}
       </div>
       {props.error && <InputsErrorMessage error={props.error} />}
     </SelectContainer>

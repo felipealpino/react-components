@@ -23,7 +23,8 @@ storiesOf('Select', module)
     const names = [
       { name: 'Thawan Cavalcante', value: 'thawan' },
       { name: 'Gabriel Campos', value: 'gabriel' },
-      { name: 'Igor Araujo', value: 'igor' }
+      { name: 'Igor Araujo', value: 'igor' },
+      { name: 'Felipe Gontijo', value: 'felipe' }
     ];
 
     const genders = [
@@ -49,6 +50,7 @@ storiesOf('Select', module)
           mandatory
           options={names}
         />
+
         <Select
           handleOnChange={(option) => handleOnSelectOption(option, 'gender')}
           placeholder='Select your gender'
@@ -70,11 +72,24 @@ storiesOf('Select', module)
           error='This field is required.'
         />
 
-        {data.name && data.gender && (
-          <label>
-            Hi, I am {data.name.name} and {data.gender.name}
-          </label>
-        )}
+        <Select
+          handleOnChange={(option) => console.log(option, 'gender')}
+          status={status}
+          label='This Select has an Initial Option: '
+          name='initial_option'
+          options={names}
+          initialOption={{ name: 'Felipe Gontijo', value: 'felipe' }}
+        />
+
+        <Select
+          handleOnChange={(option) => console.log(option, 'name')}
+          placeholder='Disabled Select'
+          status={status}
+          label='This is an Disabled Select: '
+          name='error'
+          disabled
+          options={names}
+        />
       </div>
     );
   });
