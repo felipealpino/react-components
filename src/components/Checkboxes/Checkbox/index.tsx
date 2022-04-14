@@ -11,7 +11,8 @@ const Checkbox: React.FC<ICheckbox> = ({ icon: Icon, iconColor, semiRounded, ...
   const [isChecked, setIsChecked] = useState<boolean>(props.defaultChecked || false);
 
   const handleOnClick = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked);
+    const checked = event.target.checked
+    setIsChecked(checked);
   }, []);
 
   return (

@@ -13,7 +13,7 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
 
   const toggleSelect = useCallback(() => {
     !props.disabled && setOpen((oldState) => !oldState);
-  }, []);
+  }, [props.disabled]);
 
   const handleOptionClick = useCallback(
     (option: ISelectOptions) => {
@@ -28,7 +28,7 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
     if (selectedItem) return selectedItem.name;
     if (props.placeholder) return props.placeholder;
     return 'Selecione uma Opção';
-  }, [props.placeholder, selectedItem]);
+  }, []);
 
   return (
     <SelectContainer

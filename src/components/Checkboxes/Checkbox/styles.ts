@@ -21,11 +21,10 @@ export const CheckboxContainer = styled.div<ICheckbox>`
       justify-content: center;
       border-radius: ${({ semiRounded }) => (semiRounded ? '4px' : '0px')};
 
-      
       > svg {
         width: 25px;
         height: 25px;
-        color: ${({ status, disabled }) => disabled ? colorGet(status, 400) :  colorGet(status, 900)};
+        color: ${({ status, disabled }) => (disabled ? colorGet(status, 400) : colorGet(status, 900))};
       }
 
       input[type='checkbox'] {
