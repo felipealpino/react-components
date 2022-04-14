@@ -1,16 +1,32 @@
-import React, { useCallback, useMemo, useState } from 'react';
-
-import { SelectContainer } from './styles';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ISelectDefaultProps } from '../../../components/Selects/interfaces/ISelectDefaultProps';
 import { ISelectOptions } from '../../../components/Selects/interfaces/ISelectOptions';
 
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 import { FiChevronRight } from 'react-icons/fi';
+import { SelectContainer } from '../Select/styles';
+import { useField } from '@unform/core';
 
-const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => {
+const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<ISelectOptions | undefined>(props.initialOption);
+  const { fieldName, registerField } = useField(props.name);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      getValue: () => {
+        return selectedItem;
+      },
+      setValue: (value: ISelectOptions | undefined) => {
+        setSelectedItem(value);
+      },
+      clearValue: () => {
+        setSelectedItem(undefined);
+      }
+    });
+  }, [fieldName, registerField, selectedItem]);
 
   const toggleSelect = useCallback(() => {
     !props.disabled && setOpen((oldState) => !oldState);
@@ -30,7 +46,7 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
     if (props.placeholder) return props.placeholder;
     return 'Selecione uma Opção';
   }, [props.placeholder, selectedItem]);
-  
+
   return (
     <SelectContainer
       className={`select-container ${props.className ? props.className : ''}`}
@@ -65,4 +81,4 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
   );
 };
 
-export { Select };
+export { SelectForm };
