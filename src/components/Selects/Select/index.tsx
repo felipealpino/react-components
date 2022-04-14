@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+
 import { SelectContainer } from './styles';
 
 import { ISelectDefaultProps } from '../../../components/Selects/interfaces/ISelectDefaultProps';
@@ -28,8 +29,8 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
     if (selectedItem) return selectedItem.name;
     if (props.placeholder) return props.placeholder;
     return 'Selecione uma Opção';
-  }, []);
-
+  }, [props.placeholder, selectedItem]);
+  
   return (
     <SelectContainer
       className={`select-container ${props.className ? props.className : ''}`}
