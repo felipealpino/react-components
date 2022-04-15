@@ -16,7 +16,7 @@ const ExampleToUse: React.FC = () => {
       const state: IToastOptions = {
         title: `${captalizeFirstLetter(toastStatus)} Toast`,
         subtitle: `This is a beautiful ${captalizeFirstLetter(toastStatus)} Toast 😃`,
-        duration: 2000,
+        duration: 4000,
         position: position,
         status: toastStatus
       };
