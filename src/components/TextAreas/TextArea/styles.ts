@@ -4,6 +4,7 @@ import { colorGet } from '../../../shared/utils';
 
 interface ITextArea {
   status?: ElementStatus;
+  resizable?: 'both' | 'horizontal' | 'vertical' | 'none';
 }
 
 export const ContainerTextArea = styled.div<ITextArea>`
@@ -11,21 +12,34 @@ export const ContainerTextArea = styled.div<ITextArea>`
   position: relative;
 
   textarea {
-    width: 100%;
     box-sizing: border-box;
-    height: 32px;
     border-radius: 4px;
     border: 1px solid ${(props) => colorGet(props.status, 500)};
     outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0.4375rem 1rem;
+    background: #f7f9fc;
+    transition: 0.1s ease-in-out;
+    transition-property: border;
+    text-overflow: ellipsis;
+    resize: ${({ resizable }) => resizable};
   }
 
   label {
-    width: inherit;
-    font-size: 12px;
-    display: flex;
-    font-weight: 700;
-    text-transform: uppercase;
+    color: ${(props) => colorGet(props.status, 500)};
+    font-size: 14px;
+    font-weight: 500;
     white-space: nowrap;
+    line-height: 30px;
+    text-transform: unset;
+    margin: 4px 0px;
+    letter-spacing: 0px;
+    font-size: 14px;
+    font-weight: 700;
+    user-select: none;
+    pointer-events: none;
+    display: flex;
 
     .mandatory-star {
       color: ${colorGet('danger', 500)};

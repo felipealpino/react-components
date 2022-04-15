@@ -32,7 +32,7 @@ export const SelectContainer = styled.div<ISelectProps>`
     }
   }
 
-  .dropdown {
+  .select-dropdown {
     opacity: ${(props) => (props.isDisabled ? '0.5' : '1')};
     border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
     width: auto;
@@ -43,7 +43,7 @@ export const SelectContainer = styled.div<ISelectProps>`
     width: 100%;
   }
 
-  .dropdown-header {
+  .select-dropdown-header {
     padding: 15px;
     cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
     display: flex;
@@ -59,7 +59,7 @@ export const SelectContainer = styled.div<ISelectProps>`
     }
   }
 
-  .dropdown-body {
+  .select-dropdown-body {
     padding: 5px;
     position: absolute;
     top: 55px;
@@ -71,11 +71,11 @@ export const SelectContainer = styled.div<ISelectProps>`
     z-index: 1;
   }
 
-  .dropdown-item {
+  .select-dropdown-item {
     padding: 10px;
   }
 
-  .dropdown-item:hover {
+  .select-dropdown-item:hover {
     cursor: pointer;
   }
 `;

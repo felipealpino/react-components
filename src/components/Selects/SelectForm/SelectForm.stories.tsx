@@ -5,7 +5,6 @@ import { Form } from '@unform/web';
 import { Button } from '../../Button';
 import { SelectForm } from '../../Selects/SelectForm';
 import { BaseStyles } from '../../BaseStyles';
-import { ISelectOptions } from '../interfaces/ISelectOptions';
 
 storiesOf('SelectForm', module)
   .addDecorator(withKnobs)

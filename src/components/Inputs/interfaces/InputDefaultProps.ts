@@ -9,7 +9,7 @@ export interface InputDefaultProps extends InputHTMLAttributes<HTMLInputElement>
   label?: string;
   error?: string;
   status?: ElementStatus;
-  mandatory?: boolean;
+  mandatory?: 'on';
   mask?: string;
   inputRef?: React.RefObject<HTMLInputElement>;
   name: string;

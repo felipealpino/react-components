@@ -46,7 +46,7 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, icon: Icon, ...props }
       </label>
 
       <div className='container-input-icon'>
-        <input id={fieldName} ref={inputReference} onChange={handleChange} {...props} />
+        <input id={fieldName} ref={inputReference} onChange={handleChange} {...props} className='inputform-component-tag'/>
         {Icon && (
           <div className='icon'>
             <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />

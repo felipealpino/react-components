@@ -61,6 +61,7 @@ storiesOf('Input', module)
             placeholder='Digite o sobrenome'
             icon={FiFilter}
             iconcolor={iconcolor}
+            mandatory='on'
           />
           <label>Last Name: {inputText.last_name || ''} </label>
         </div>

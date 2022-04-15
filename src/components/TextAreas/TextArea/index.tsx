@@ -5,15 +5,19 @@ import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/in
 
 export type ITextArea = TextAreaDefaultProps & {};
 
-const TextArea: React.FC<ITextArea> = (props) => {
+const TextArea: React.FC<ITextArea> = ({ resizable = 'both', ...props }) => {
   return (
-    <ContainerTextArea className={`textareaform-container ${props.className || ''}`} status={props.status}>
+    <ContainerTextArea
+      className={`textareaform-container ${props.className || ''}`}
+      status={props.status}
+      resizable={resizable}
+    >
       {props.label && (
         <label>
           {props.label} {props.mandatory && <span className='mandatory-star'>*</span>}
         </label>
       )}
-      <textarea className='component-input' {...props}>
+      <textarea className='textarea-component-tag' {...props}>
         {props.children}
       </textarea>
       {props.error && <InputsErrorMessage error={props.error} />}

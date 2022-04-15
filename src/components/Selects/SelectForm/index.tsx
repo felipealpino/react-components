@@ -58,22 +58,22 @@ const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props })
         {props.label}
         {props.mandatory && <span className='mandatory-star'>*</span>}
       </label>
-      <div className='dropdown'>
-        <div className='dropdown-header' onClick={toggleSelect}>
+      <div className='select-dropdown'>
+        <div className='select-dropdown-header' onClick={toggleSelect}>
           {headerText}
           <FiChevronRight color='#222b45' />
         </div>
         {isOpen &&
           (props.options.length > 0 ? (
-            <div className={`dropdown-body`}>
+            <div className={`select-dropdown-body`}>
               {props.options.map((option, index) => (
-                <div key={index} className='dropdown-item' onClick={() => handleOptionClick(option)} id={props.name}>
+                <div key={index} className='select-dropdown-item' onClick={() => handleOptionClick(option)} id={props.name}>
                   {option.name}
                 </div>
               ))}
             </div>
           ) : (
-            <div className={`dropdown-body`}>Nenhuma opção disponível .. </div>
+            <div className={`select-dropdown-body`}>Nenhuma opção disponível .. </div>
           ))}
       </div>
       {props.error && <InputsErrorMessage error={props.error} />}

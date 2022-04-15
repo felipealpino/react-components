@@ -2,9 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, color } from '@storybook/addon-knobs';
 import { BaseStyles } from '../../BaseStyles';
-import { TextArea } from '../TextArea';
+import { TextAreaForm } from '../TextAreaForm';
+import { Button } from '../../Button';
+import { Form } from '@unform/web';
 
-storiesOf('TextArea', module)
+storiesOf('TextAreaForm', module)
   .addDecorator(withKnobs)
   .add('Default', () => {
     const status = select(
@@ -13,21 +15,25 @@ storiesOf('TextArea', module)
       'primary'
     );
 
+    const handleSubmit = (formData) => {
+      console.log(`formData`, formData);
+    };
+
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <BaseStyles />
-        <TextArea
-          onChange={(event) => console.log(event.target.value)}
+        <TextAreaForm
           maxLength={30}
           cols={20}
           rows={2}
           status={status}
           label='Text Area Label:'
           mandatory='on'
-          name='text-area'
+          name='text-area-name'
           defaultValue='marrom bom boom'
           resizable='none'
-        ></TextArea>
-      </div>
+        />
+        <Button type='submit'>Submit</Button>
+      </Form>
     );
   });

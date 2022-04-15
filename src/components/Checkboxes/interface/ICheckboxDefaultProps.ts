@@ -4,7 +4,7 @@ import { ElementStatus } from '../../../shared/theme/colors';
 
 export interface ICheckboxDefaultProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  mandatory?: boolean;
+  mandatory?: 'on';
   error?: string;
   status?: ElementStatus;
   name: string;
