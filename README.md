@@ -36,12 +36,12 @@ Done components: <br>
 [x] Checkbox <br>
 [x] Avatar <br>
 [x] Toast <br>
+[x] TextArea <br>
+[x] TextAreaForm <br>
 
 Working on components: <br>
-[ ] TextArea <br>
-[ ] TextAreaForm <br>
+[ ] Tabs <br>
 
 Next components: <br>
-[ ] Tabs <br>
 [ ] Table <br>
 [ ] Skeleton <br>
