@@ -1,7 +1,5 @@
 import React from 'react';
 import { TextAreaDefaultProps } from '../../../components/TextAreas/interfaces/TextAreaDefaultProps';
-export declare type ITextAreaForm = TextAreaDefaultProps & {
-    name: string;
-};
-declare const TextAreaForm: React.FC<ITextAreaForm>;
-export default TextAreaForm;
+export declare type ITextArea = TextAreaDefaultProps & {};
+declare const TextAreaForm: React.FC<ITextArea>;
+export { TextAreaForm };

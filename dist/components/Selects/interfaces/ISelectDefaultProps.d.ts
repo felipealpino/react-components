@@ -4,7 +4,7 @@ import { SelectHTMLAttributes } from 'react';
 export interface ISelectDefaultProps extends SelectHTMLAttributes<HTMLSelectElement> {
     label?: string;
     options: ISelectOptions[];
-    mandatory?: boolean;
+    mandatory?: 'on';
     name: string;
     status: ElementStatus;
     placeholder?: string;

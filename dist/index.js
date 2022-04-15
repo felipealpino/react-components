@@ -842,7 +842,8 @@ var Input = function Input(_ref) {
   }, "*")), React__default.createElement("div", {
     className: 'container-input-icon'
   }, React__default.createElement("input", Object.assign({}, props, {
-    onChange: handleChange
+    onChange: handleChange,
+    className: 'input-component-tag'
   })), Icon && React__default.createElement("div", {
     className: 'icon'
   }, React__default.createElement(Icon, {
@@ -901,7 +902,9 @@ var InputForm = function InputForm(_ref) {
     id: fieldName,
     ref: inputReference,
     onChange: handleChange
-  }, props)), Icon && React__default.createElement("div", {
+  }, props, {
+    className: 'inputform-component-tag'
+  })), Icon && React__default.createElement("div", {
     className: 'icon'
   }, React__default.createElement(Icon, {
     color: props.iconcolor,
@@ -912,7 +915,7 @@ var InputForm = function InputForm(_ref) {
 };
 
 var _templateObject$4;
-var SelectContainer = styled$1__default.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .dropdown {\n    opacity: ", ";\n    border: 1px solid ", ";\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n\n    position: relative;\n    width: 100%;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: ", ";\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    svg {\n      margin-left: 10px;\n      width: 25px;\n      height: 25px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    position: absolute;\n    top: 55px;\n    background: white;\n    border: 1px solid ", ";\n    width: inherit;\n    border-bottom-right-radius: 4px;\n    border-bottom-left-radius: 4px;\n    z-index: 1;\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (_ref) {
+var SelectContainer = styled$1__default.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .select-dropdown {\n    opacity: ", ";\n    border: 1px solid ", ";\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n\n    position: relative;\n    width: 100%;\n  }\n\n  .select-dropdown-header {\n    padding: 15px;\n    cursor: ", ";\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    svg {\n      margin-left: 10px;\n      width: 25px;\n      height: 25px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .select-dropdown-body {\n    padding: 5px;\n    position: absolute;\n    top: 55px;\n    background: white;\n    border: 1px solid ", ";\n    width: inherit;\n    border-bottom-right-radius: 4px;\n    border-bottom-left-radius: 4px;\n    z-index: 1;\n  }\n\n  .select-dropdown-item {\n    padding: 10px;\n  }\n\n  .select-dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return "" + colorGet(status, 500);
 }, colorGet('danger', 500), function (props) {
@@ -971,25 +974,25 @@ var Select = function Select(_ref) {
   }, props.label, props.mandatory && React__default.createElement("span", {
     className: 'mandatory-star'
   }, "*")), React__default.createElement("div", {
-    className: 'dropdown'
+    className: 'select-dropdown'
   }, React__default.createElement("div", {
-    className: 'dropdown-header',
+    className: 'select-dropdown-header',
     onClick: toggleSelect
   }, headerText, React__default.createElement(fi.FiChevronRight, {
     color: '#222b45'
   })), isOpen && (props.options.length > 0 ? React__default.createElement("div", {
-    className: "dropdown-body"
+    className: "select-dropdown-body"
   }, props.options.map(function (option, index) {
     return React__default.createElement("div", {
       key: index,
-      className: 'dropdown-item',
+      className: 'select-dropdown-item',
       onClick: function onClick() {
         return handleOptionClick(option);
       },
       id: props.name
     }, option.name);
   })) : React__default.createElement("div", {
-    className: "dropdown-body"
+    className: "select-dropdown-body"
   }, "Nenhuma op\xE7\xE3o dispon\xEDvel .. "))), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
