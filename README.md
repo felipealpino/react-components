@@ -14,7 +14,8 @@ Step by step to install.
 1. Copy this: "react-components": "https://github.com/felipealpino/react-components.git"
 2. Paste it in your project dependencies.
 3. yarn install or npm install to install all package.json dependencies.
-**OBS:** If you want to install an specific branch like develop, you need to specify with #branch_name in the end, example:  
+<br><br>
+**OBS:** If you want to install a specific branch like develop, you need to specify with #branch_name in the end, example:  
 "react-components": "https://github.com/felipealpino/react-components.git#develop"
 
 ### To check and play with all componentes, go to https://felipealpino.github.io/react-components and be happy
@@ -31,15 +32,16 @@ Done components: <br>
 [x] Button <br>
 [x] Accordion <br>
 [x] Select <br>
+[x] SelectForm <br>
 [x] Checkbox <br>
 [x] Avatar <br>
 [x] Toast <br>
 
-Next components: <br>
+Working on components: <br>
 [ ] TextArea <br>
 [ ] TextAreaForm <br>
-[ ] SelectForm <br>
 
+Next components: <br>
 [ ] Tabs <br>
 [ ] Table <br>
 [ ] Skeleton <br>
