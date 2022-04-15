@@ -1,4 +1,4 @@
-export const formatDate = (date: Date, typeMonth: "numeric" | "long") => {
+export const formatDate = (date: Date, typeMonth: 'numeric' | 'long') => {
   return new Date(date).toLocaleDateString('pt-br', {
     year: 'numeric',
     month: typeMonth,
