@@ -7,6 +7,7 @@ import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/in
 import { FiChevronRight } from 'react-icons/fi';
 import { SelectContainer } from '../Select/styles';
 import { useField } from '@unform/core';
+import InputLabel from '../../../shared/components/InputLabel';
 
 const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -54,10 +55,8 @@ const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props })
       isOpen={isOpen}
       isDisabled={props.disabled}
     >
-      <label className='select-label'>
-        {props.label}
-        {props.mandatory && <span className='mandatory-star'>*</span>}
-      </label>
+      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
+
       <div className='select-dropdown'>
         <div className='select-dropdown-header' onClick={toggleSelect}>
           {headerText}
@@ -67,7 +66,12 @@ const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props })
           (props.options.length > 0 ? (
             <div className={`select-dropdown-body`}>
               {props.options.map((option, index) => (
-                <div key={index} className='select-dropdown-item' onClick={() => handleOptionClick(option)} id={props.name}>
+                <div
+                  key={index}
+                  className='select-dropdown-item'
+                  onClick={() => handleOptionClick(option)}
+                  id={props.name}
+                >
                   {option.name}
                 </div>
               ))}

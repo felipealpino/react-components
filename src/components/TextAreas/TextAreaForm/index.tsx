@@ -1,6 +1,7 @@
 import { useField } from '@unform/core';
 import React, { useEffect, useRef } from 'react';
 import { TextAreaDefaultProps } from '../../../components/TextAreas/interfaces/TextAreaDefaultProps';
+import InputLabel from '../../../shared/components/InputLabel';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 import { ContainerTextArea } from '../TextArea/styles';
 
@@ -34,11 +35,8 @@ const TextAreaForm: React.FC<ITextArea> = ({ textAreaRef, resizable = 'both', ..
       status={props.status}
       resizable={resizable}
     >
-      {props.label && (
-        <label>
-          {props.label} {props.mandatory && <span className='mandatory-star'>*</span>}
-        </label>
-      )}
+      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
+
       <textarea ref={textAreaReference} className='textarea-component-tag' {...props}>
         {props.children}
       </textarea>

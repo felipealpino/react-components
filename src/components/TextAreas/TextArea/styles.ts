@@ -26,28 +26,6 @@ export const ContainerTextArea = styled.div<ITextArea>`
     resize: ${({ resizable }) => resizable};
   }
 
-  label {
-    color: ${(props) => colorGet(props.status, 500)};
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-    line-height: 30px;
-    text-transform: unset;
-    margin: 4px 0px;
-    letter-spacing: 0px;
-    font-size: 14px;
-    font-weight: 700;
-    user-select: none;
-    pointer-events: none;
-    display: flex;
-
-    .mandatory-star {
-      color: ${colorGet('danger', 500)};
-      font-size: 14px;
-      margin-left: 3px;
-    }
-  }
-
   span {
     display: block;
     color: ${colorGet('danger', 500)};

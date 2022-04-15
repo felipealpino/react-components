@@ -11,27 +11,6 @@ interface ISelectProps {
 export const SelectContainer = styled.div<ISelectProps>`
   font-size: 15px;
 
-  .select-label {
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-    line-height: 30px;
-    color: ${({ status }) => `${colorGet(status, 500)}`};
-    text-transform: unset;
-    margin: 4px 0px;
-    letter-spacing: 0px;
-    font-size: 14px;
-    font-weight: 700;
-    user-select: none;
-    pointer-events: none;
-
-    .mandatory-star {
-      color: ${colorGet('danger', 500)};
-      font-size: 14px;
-      margin-left: 3px;
-    }
-  }
-
   .select-dropdown {
     opacity: ${(props) => (props.isDisabled ? '0.5' : '1')};
     border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};

@@ -4,6 +4,7 @@ import { masker } from '../../../shared/utils/masker';
 import { InputContainer } from '../Input/styles';
 import { InputDefaultProps } from '../../../components/Inputs/interfaces/InputDefaultProps';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
+import InputLabel from '../../../shared/components/InputLabel';
 
 export type IInputFormProps = InputDefaultProps & {
   name: string;
@@ -40,13 +41,16 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, icon: Icon, ...props }
 
   return (
     <InputContainer {...props} className={`input-container ${props.className || ''}`}>
-      <label className='input-label'>
-        {props.label}
-        {props.mandatory && <span className='mandatory-star'>*</span>}
-      </label>
+      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
 
       <div className='container-input-icon'>
-        <input id={fieldName} ref={inputReference} onChange={handleChange} {...props} className='inputform-component-tag'/>
+        <input
+          id={fieldName}
+          ref={inputReference}
+          onChange={handleChange}
+          {...props}
+          className='inputform-component-tag'
+        />
         {Icon && (
           <div className='icon'>
             <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />
