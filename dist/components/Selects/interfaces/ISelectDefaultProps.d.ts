@@ -8,6 +8,7 @@ export interface ISelectDefaultProps extends SelectHTMLAttributes<HTMLSelectElem
     name: string;
     status: ElementStatus;
     placeholder?: string;
-    handleOnChange: (selectedOption: ISelectOptions) => void;
+    handleOnChange?: (selectedOption: ISelectOptions) => void;
     error?: string;
+    initialOption?: ISelectOptions;
 }

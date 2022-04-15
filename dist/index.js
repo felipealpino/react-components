@@ -846,8 +846,8 @@ var Input = function Input(_ref) {
   })), Icon && React__default.createElement("div", {
     className: 'icon'
   }, React__default.createElement(Icon, {
-    color: props.iconColor,
-    fill: props.iconFill || 'transparent'
+    color: props.iconcolor,
+    fill: props.iconfill || 'transparent'
   }))), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
@@ -904,23 +904,24 @@ var InputForm = function InputForm(_ref) {
   }, props)), Icon && React__default.createElement("div", {
     className: 'icon'
   }, React__default.createElement(Icon, {
-    color: props.iconColor,
-    fill: props.iconFill || 'transparent'
+    color: props.iconcolor,
+    fill: props.iconfill || 'transparent'
   }))), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
 };
 
 var _templateObject$4;
-var ContainerTextArea = styled$1__default.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    width: 100%;\n    box-sizing: border-box;\n    height: 32px;\n    border-radius: 4px;\n    border: 1px solid var(--black);\n    outline: none;\n  }\n\n  label {\n    width: inherit;\n    font-size: 12px;\n    display: flex;\n    font-weight: 700;\n    text-transform: uppercase;\n    white-space: nowrap;\n\n    .mandatory-star {\n      color: var(--main-danger-color);\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  span {\n    display: block;\n    color: var(--main-danger-color);\n    font-size: 11px;\n  }\n"])));
-
-var _templateObject$5;
-var SelectContainer = styled$1__default.div(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .dropdown {\n    border: 1px solid ", ";\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: pointer;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    svg {\n      cursor: pointer;\n      margin-left: 10px;\n      width: 25px;\n      height: 25px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    border-top: 1px solid ", ";\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (_ref) {
+var SelectContainer = styled$1__default.div(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-label {\n    font-size: 14px;\n    font-weight: 500;\n    white-space: nowrap;\n    line-height: 30px;\n    color: ", ";\n    text-transform: unset;\n    margin: 4px 0px;\n    letter-spacing: 0px;\n    font-size: 14px;\n    font-weight: 700;\n    user-select: none;\n    pointer-events: none;\n\n    .mandatory-star {\n      color: ", ";\n      font-size: 14px;\n      margin-left: 3px;\n    }\n  }\n\n  .dropdown {\n    opacity: ", ";\n    border: 1px solid ", ";\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n\n    position: relative;\n    width: 100%;\n  }\n\n  .dropdown-header {\n    padding: 15px;\n    cursor: ", ";\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    svg {\n      margin-left: 10px;\n      width: 25px;\n      height: 25px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .dropdown-body {\n    padding: 5px;\n    position: absolute;\n    top: 55px;\n    background: white;\n    border: 1px solid ", ";\n    width: inherit;\n    border-bottom-right-radius: 4px;\n    border-bottom-left-radius: 4px;\n    z-index: 1;\n  }\n\n  .dropdown-item {\n    padding: 10px;\n  }\n\n  .dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return "" + colorGet(status, 500);
-}, colorGet('danger', 500), function (_ref2) {
+}, colorGet('danger', 500), function (props) {
+  return props.isDisabled ? '0.5' : '1';
+}, function (_ref2) {
   var status = _ref2.status;
   return "" + colorGet(status, 500);
+}, function (props) {
+  return props.isDisabled ? 'not-allowed' : 'pointer';
 }, function (_ref3) {
   var isOpen = _ref3.isOpen;
   return isOpen ? '90deg' : '0deg';
@@ -929,43 +930,42 @@ var SelectContainer = styled$1__default.div(_templateObject$5 || (_templateObjec
   return "" + colorGet(status, 500);
 });
 
-var Select = function Select(props) {
+var _excluded$4 = ["handleOnChange"];
+
+var Select = function Select(_ref) {
+  var handleOnChange = _ref.handleOnChange,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
+
   var _useState = React.useState(false),
       isOpen = _useState[0],
       setOpen = _useState[1];
 
-  var _useState2 = React.useState([]),
-      options = _useState2[0],
-      setOptions = _useState2[1];
+  var _useState2 = React.useState(props.initialOption),
+      selectedItem = _useState2[0],
+      setSelectedItem = _useState2[1];
 
-  var _useState3 = React.useState(),
-      selectedItem = _useState3[0],
-      setSelectedItem = _useState3[1];
-
-  React.useEffect(function () {
-    setOptions(props.options);
-    var found = props.options.find(function (option) {
-      return option.selected === true;
-    });
-    setSelectedItem(found);
-  }, [props.options]);
   var toggleSelect = React.useCallback(function () {
-    setOpen(!isOpen);
-  }, [isOpen]);
+    !props.disabled && setOpen(function (oldState) {
+      return !oldState;
+    });
+  }, [props.disabled]);
   var handleOptionClick = React.useCallback(function (option) {
-    props.handleOnChange(option);
+    handleOnChange && handleOnChange(option);
     setSelectedItem(option);
-    setOpen(!isOpen);
-  }, [isOpen]);
+    setOpen(function (oldState) {
+      return !oldState;
+    });
+  }, [handleOnChange]);
   var headerText = React.useMemo(function () {
     if (selectedItem) return selectedItem.name;
     if (props.placeholder) return props.placeholder;
     return 'Selecione uma Opção';
-  }, [selectedItem, props.placeholder]);
+  }, [props.placeholder, selectedItem]);
   return React__default.createElement(SelectContainer, {
     className: "select-container " + (props.className ? props.className : ''),
     status: props.status,
-    isOpen: isOpen
+    isOpen: isOpen,
+    isDisabled: props.disabled
   }, React__default.createElement("label", {
     className: 'select-label'
   }, props.label, props.mandatory && React__default.createElement("span", {
@@ -977,9 +977,9 @@ var Select = function Select(props) {
     onClick: toggleSelect
   }, headerText, React__default.createElement(fi.FiChevronRight, {
     color: '#222b45'
-  })), isOpen && React__default.createElement("div", {
+  })), isOpen && (props.options.length > 0 ? React__default.createElement("div", {
     className: "dropdown-body"
-  }, options.map(function (option, index) {
+  }, props.options.map(function (option, index) {
     return React__default.createElement("div", {
       key: index,
       className: 'dropdown-item',
@@ -988,13 +988,15 @@ var Select = function Select(props) {
       },
       id: props.name
     }, option.name);
-  }))), props.error && React__default.createElement(InputsErrorMessage, {
+  })) : React__default.createElement("div", {
+    className: "dropdown-body"
+  }, "Nenhuma op\xE7\xE3o dispon\xEDvel .. "))), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
 };
 
-var _templateObject$6;
-var TooltipContainer = styled$1__default.div(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteralLoose(["\n  position: relative;\n  font-size: 10px;\n  width: fit-content;\n\n  .tooltip-box {\n    position: absolute;\n    font-size: 14px;\n    background: ", ";\n    color: #fff;\n    padding: 5px;\n    border-radius: 5px;\n    display: none;\n    z-index: 4;\n    white-space: nowrap;\n    left: 50%;\n    transform: translateX(-50%);\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n\n  .tooltip-box {\n    display: ", ";\n    width: fit-content;\n  }\n\n  .tooltip-arrow {\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    border-width: 5px;\n    border-style: solid;\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n"])), function (_ref) {
+var _templateObject$5;
+var TooltipContainer = styled$1__default.div(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteralLoose(["\n  position: relative;\n  font-size: 10px;\n  width: fit-content;\n\n  .tooltip-box {\n    position: absolute;\n    font-size: 14px;\n    background: ", ";\n    color: #fff;\n    padding: 5px;\n    border-radius: 5px;\n    display: none;\n    z-index: 4;\n    white-space: nowrap;\n    left: 50%;\n    transform: translateX(-50%);\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n\n  .tooltip-box {\n    display: ", ";\n    width: fit-content;\n  }\n\n  .tooltip-arrow {\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    border-width: 5px;\n    border-style: solid;\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -1016,7 +1018,7 @@ var TooltipContainer = styled$1__default.div(_templateObject$6 || (_templateObje
   return position === 'top' && "\n        bottom: -10px;\n        border-color: " + colorGet(status, 500) + " transparent transparent  transparent;\n    ";
 });
 
-var _excluded$4 = ["clickable", "status", "position"];
+var _excluded$5 = ["clickable", "status", "position"];
 
 var Tooltip = function Tooltip(_ref) {
   var _ref$clickable = _ref.clickable,
@@ -1025,7 +1027,7 @@ var Tooltip = function Tooltip(_ref) {
       status = _ref$status === void 0 ? 'danger' : _ref$status,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'bottom' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
 
   var _useState = React.useState(false),
       show = _useState[0],
@@ -1055,40 +1057,41 @@ var Tooltip = function Tooltip(_ref) {
   }, props.children));
 };
 
-var _templateObject$7;
-var ButtonContainer = styled$1__default.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
-  var status = _ref.status;
-  return colorGet(status, 500);
+var _templateObject$6;
+var ButtonContainer = styled$1__default.button(_templateObject$6 || (_templateObject$6 = _taggedTemplateLiteralLoose(["\n  all: none;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
+  var status = _ref.status,
+      outline = _ref.outline;
+  return outline ? colorGet(status, 400) : colorGet(status, 500);
 }, function (_ref2) {
   var disabled = _ref2.disabled;
   return disabled ? 'not-allowed' : 'pointer';
 }, function (_ref3) {
   var status = _ref3.status;
-  return colorGet(status, 600);
+  return colorGet(status, 500);
 }, function (_ref4) {
   var disabled = _ref4.disabled;
   return !disabled ? '1' : '0.6';
 }, function (_ref5) {
   var status = _ref5.status;
-  return colorGet(status, 600);
+  return colorGet(status, 500);
 });
 
 var Button = function Button(props) {
-  var handleOnClick = React.useCallback(function (event) {
+  var handleOnClickButton = React.useCallback(function (event) {
     if (props.disabled) return;
     props.onClick && props.onClick(event);
   }, [props.disabled]);
   return React__default.createElement(ButtonContainer, Object.assign({}, props, {
-    onClick: function onClick(event) {
-      return handleOnClick(event);
-    },
     disabled: props.disabled,
-    className: "button-container " + (props.className || '')
+    className: "button-container " + (props.className || ''),
+    onClick: function onClick(event) {
+      return handleOnClickButton(event);
+    }
   }), props.children);
 };
 
-var _templateObject$8;
-var AccordionContainer = styled$1__default.div(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteralLoose(["\n  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;\n  background: ", ";\n  min-height: 3rem;\n  width: inherit;\n\n  .accordion-header {\n    padding: 0.7rem;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    cursor: ", ";\n  }\n\n  .accordion-info-text {\n    > label {\n      cursor: inherit;\n    }\n  }\n\n  .accordion-icon {\n    transition: 0.2s ease-in-out;\n    transition-property: transform;\n    transform: ", ";\n    display: flex;\n    \n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n\n  .accordion-content {\n    overflow: hidden;\n    background: #ffffff;\n    padding: ", ";\n    max-height: ", ";\n    transition-property: max-height, padding;\n    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);\n    transition-duration: 500ms;\n    .accordion-childrens {\n      transition-duration: 300ms;\n      transition-property: visibility, opacity;\n      opacity: ", ";\n      visibility: ", ";\n    }\n  }\n"])), function (_ref) {
+var _templateObject$7;
+var AccordionContainer = styled$1__default.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;\n  background: ", ";\n  min-height: 3rem;\n  width: inherit;\n\n  .accordion-header {\n    padding: 0.7rem;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    cursor: ", ";\n  }\n\n  .accordion-info-text {\n    > label {\n      cursor: inherit;\n    }\n  }\n\n  .accordion-icon {\n    transition: 0.2s ease-in-out;\n    transition-property: transform;\n    transform: ", ";\n    display: flex;\n    \n    svg {\n      width: 25px;\n      height: 25px;\n    }\n  }\n\n  .accordion-content {\n    overflow: hidden;\n    background: #ffffff;\n    padding: ", ";\n    max-height: ", ";\n    transition-property: max-height, padding;\n    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);\n    transition-duration: 500ms;\n    .accordion-childrens {\n      transition-duration: 300ms;\n      transition-property: visibility, opacity;\n      opacity: ", ";\n      visibility: ", ";\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 400);
 }, function (_ref2) {
@@ -1111,12 +1114,12 @@ var AccordionContainer = styled$1__default.div(_templateObject$8 || (_templateOb
   return isOpen ? 'visible' : 'hidden';
 });
 
-var _excluded$5 = ["status"];
+var _excluded$6 = ["status"];
 
 var Accordion = function Accordion(_ref) {
   var _ref$status = _ref.status,
       status = _ref$status === void 0 ? 'control' : _ref$status,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
 
   var _useState = React.useState(false),
       isOpen = _useState[0],
@@ -1159,18 +1162,18 @@ var Accordion = function Accordion(_ref) {
   }, props.children)));
 };
 
-var _templateObject$9;
-var AccordionsContainer = styled$1__default.div(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteralLoose(["\n  display: flex;\n  flex-direction: column;\n  gap: ", ";\n"])), function (_ref) {
+var _templateObject$8;
+var AccordionsContainer = styled$1__default.div(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteralLoose(["\n  display: flex;\n  flex-direction: column;\n  gap: ", ";\n"])), function (_ref) {
   var gap = _ref.gap;
   return gap;
 });
 
-var _excluded$6 = ["gap"];
+var _excluded$7 = ["gap"];
 
 var Accordions = function Accordions(_ref) {
   var _ref$gap = _ref.gap,
       gap = _ref$gap === void 0 ? '0px' : _ref$gap,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$7);
 
   var _useState = React.useState(0),
       accordionCurent = _useState[0],
@@ -1205,8 +1208,8 @@ var Accordions = function Accordions(_ref) {
   }), getChildren);
 };
 
-var _templateObject$a;
-var SpinnerContainer = styled$1__default.div(_templateObject$a || (_templateObject$a = _taggedTemplateLiteralLoose(["\n  ", "\n  \n  .spinner-ball {\n    width: 30px;\n    aspect-ratio: 1;\n    border: 4px solid ", ";\n    border-top: 3px solid transparent;\n    border-radius: 50%;\n    animation: spin 1s cubic-bezier(1, 1, 1, 1) infinite;\n    margin: auto;\n\n    @keyframes spin {\n      from {\n        transform: rotate(0deg);\n      }\n      to {\n        transform: rotate(360deg);\n      }\n    }\n  }\n"])), function (_ref) {
+var _templateObject$9;
+var SpinnerContainer = styled$1__default.div(_templateObject$9 || (_templateObject$9 = _taggedTemplateLiteralLoose(["\n  ", "\n  \n  .spinner-ball {\n    width: 30px;\n    aspect-ratio: 1;\n    border: 4px solid ", ";\n    border-top: 3px solid transparent;\n    border-radius: 50%;\n    animation: spin 1s cubic-bezier(1, 1, 1, 1) infinite;\n    margin: auto;\n\n    @keyframes spin {\n      from {\n        transform: rotate(0deg);\n      }\n      to {\n        transform: rotate(360deg);\n      }\n    }\n  }\n"])), function (_ref) {
   var fixed = _ref.fixed;
   return fixed && " \n    position: fixed;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.2);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  ";
 }, function (_ref2) {
@@ -1214,12 +1217,12 @@ var SpinnerContainer = styled$1__default.div(_templateObject$a || (_templateObje
   return colorGet(status, 500);
 });
 
-var _excluded$7 = ["fixed"];
+var _excluded$8 = ["fixed"];
 
 var Spinner = function Spinner(_ref) {
   var _ref$fixed = _ref.fixed,
       fixed = _ref$fixed === void 0 ? true : _ref$fixed,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$7);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$8);
 
   return React__default.createElement(SpinnerContainer, Object.assign({
     className: "spinner-contaier " + (props.className || ''),
@@ -1229,8 +1232,8 @@ var Spinner = function Spinner(_ref) {
   }));
 };
 
-var _templateObject$b;
-var AvatarContainer = styled$1__default.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteralLoose(["\n  background: gray;\n  border-radius: 50%;\n  flex-shrink: 0;\n  overflow: hidden;\n  width: ", ";\n  height: ", ";\n\n  img {\n    height: 100%;\n    font-family: cover;\n    object-fit: cover;\n    width: 100%;\n  }\n\n  ", "\n"])), function (_ref) {
+var _templateObject$a;
+var AvatarContainer = styled$1__default.div(_templateObject$a || (_templateObject$a = _taggedTemplateLiteralLoose(["\n  background: gray;\n  border-radius: 50%;\n  flex-shrink: 0;\n  overflow: hidden;\n  width: ", ";\n  height: ", ";\n\n  img {\n    height: 100%;\n    font-family: cover;\n    object-fit: cover;\n    width: 100%;\n  }\n\n  ", "\n"])), function (_ref) {
   var width = _ref.width;
   return width ? width : '50px';
 }, function (_ref2) {
@@ -1247,8 +1250,8 @@ var Avatar = function Avatar(props) {
   }));
 };
 
-var _templateObject$c;
-var CheckboxContainer = styled$1__default.div(_templateObject$c || (_templateObject$c = _taggedTemplateLiteralLoose(["\n  width: max-content;\n\n  > div {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n\n    .container-input {\n      background: ", ";\n      border: 2px solid ", ";\n      width: 30px;\n      height: 30px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      border-radius: ", ";\n\n      \n      > svg {\n        width: 25px;\n        height: 25px;\n        color: ", ";\n      }\n\n      input[type='checkbox'] {\n        cursor: ", ";\n        background: transparent;\n        width: inherit;\n        height: inherit;\n        margin: 0;\n        opacity: 0;\n        position: absolute;\n      }\n    }\n\n    .container-label {\n      font-weight: 600;\n      font-size: 12px;\n      color: #222b45;\n    }\n  }\n"])), function (_ref) {
+var _templateObject$b;
+var CheckboxContainer = styled$1__default.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteralLoose(["\n  width: max-content;\n\n  > div {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n\n    .container-input {\n      background: ", ";\n      border: 2px solid ", ";\n      width: 30px;\n      height: 30px;\n      position: relative;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      border-radius: ", ";\n\n      > svg {\n        width: 25px;\n        height: 25px;\n        color: ", ";\n      }\n\n      input[type='checkbox'] {\n        cursor: ", ";\n        background: transparent;\n        width: inherit;\n        height: inherit;\n        margin: 0;\n        opacity: 0;\n        position: absolute;\n      }\n    }\n\n    .container-label {\n      font-weight: 600;\n      font-size: 12px;\n      color: #222b45;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status,
       disabled = _ref.disabled;
   return disabled ? colorGet('basic', 300) : colorGet(status, 400);
@@ -1260,26 +1263,28 @@ var CheckboxContainer = styled$1__default.div(_templateObject$c || (_templateObj
   var semiRounded = _ref3.semiRounded;
   return semiRounded ? '4px' : '0px';
 }, function (_ref4) {
-  var status = _ref4.status;
-  return colorGet(status, 900);
+  var status = _ref4.status,
+      disabled = _ref4.disabled;
+  return disabled ? colorGet(status, 400) : colorGet(status, 900);
 }, function (_ref5) {
   var disabled = _ref5.disabled;
   return disabled ? 'not-allowed' : 'pointer';
 });
 
-var _excluded$8 = ["icon", "iconColor", "semiRounded"];
+var _excluded$9 = ["icon", "iconcolor", "semiRounded"];
 
 var Checkbox = function Checkbox(_ref) {
   var Icon = _ref.icon,
       semiRounded = _ref.semiRounded,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$8);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$9);
 
   var _useState = React.useState(props.defaultChecked || false),
       isChecked = _useState[0],
       setIsChecked = _useState[1];
 
   var handleOnClick = React.useCallback(function (event) {
-    setIsChecked(event.target.checked);
+    var checked = event.target.checked;
+    setIsChecked(checked);
   }, []);
   return React__default.createElement(CheckboxContainer, Object.assign({
     className: 'checkbox-container'
@@ -1301,8 +1306,8 @@ var Checkbox = function Checkbox(_ref) {
   }));
 };
 
-var _templateObject$d;
-var BaseStyles = styled$1.createGlobalStyle(_templateObject$d || (_templateObject$d = _taggedTemplateLiteralLoose(["\n  *, *::before, *::after {\n    box-sizing: inherit;\n    box-sizing: border-box;\n    font-variant-numeric: lining-nums;\n    -webkit-font-smoothing: antialiased;\n    outline: none;\n  }\n\n  html {\n    box-sizing: border-box;\n    font-size: 100%;\n  }\n\n  body {\n    font-family: sans-serif\n  }\n\n  body,\n  html,\n  li,\n  ol,\n  ul {\n    margin: 0;\n    padding: 0;\n  }\n\n  ol,\n  ul,\n  li {\n    list-style: none;\n  }\n\n  \n\n  button, input {\n    overflow: visible;\n  }\n\n  input {\n    letter-spacing: normal;\n    word-spacing: normal;\n    text-transform: none;\n    text-indent: 0px;\n    text-shadow: none;\n    display: inline-block;\n    text-align: start;\n    cursor: text;\n    border-image: initial;\n    font: 400 13.3333px Arial;\n    /* -webkit-rtl-ordering: logical;\n    -webkit-writing-mode: horizontal-tb;\n    writing-mode:horizontal-tb; */\n    text-rendering: auto;\n  }\n"])));
+var _templateObject$c;
+var BaseStyles = styled$1.createGlobalStyle(_templateObject$c || (_templateObject$c = _taggedTemplateLiteralLoose(["\n  *, *::before, *::after {\n    box-sizing: inherit;\n    box-sizing: border-box;\n    font-variant-numeric: lining-nums;\n    -webkit-font-smoothing: antialiased;\n    outline: none;\n  }\n\n  html {\n    box-sizing: border-box;\n    font-size: 100%;\n  }\n\n  body {\n    font-family: sans-serif\n  }\n\n  body,\n  html,\n  li,\n  ol,\n  ul {\n    margin: 0;\n    padding: 0;\n  }\n\n  ol,\n  ul,\n  li {\n    list-style: none;\n  }\n\n  \n\n  button, input {\n    overflow: visible;\n  }\n\n  input {\n    letter-spacing: normal;\n    word-spacing: normal;\n    text-transform: none;\n    text-indent: 0px;\n    text-shadow: none;\n    display: inline-block;\n    text-align: start;\n    cursor: text;\n    border-image: initial;\n    font: 400 13.3333px Arial;\n    /* -webkit-rtl-ordering: logical;\n    -webkit-writing-mode: horizontal-tb;\n    writing-mode:horizontal-tb; */\n    text-rendering: auto;\n  }\n"])));
 
 var ToastContext = React__default.createContext({});
 
@@ -1356,8 +1361,8 @@ function useToast() {
   return context;
 }
 
-var _templateObject$e;
-var ToastCardContainer = styled$1__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  position: fixed;\n  user-select: none;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.1rem 1rem;\n  height: 80px;\n  max-width: 400px;\n  min-width: 296px;\n  cursor: pointer;\n  background: ", ";\n  border-radius: 4px;\n  color: #fff;\n  box-shadow: 0 0 10px #999;\n\n  ", "\n\n  ", "\n\n\n", "\n\n", "\n\n  .toast-icon {\n    svg {\n      width: 30px;\n      height: 30px;\n    }\n  }\n\n  .toast-text-info {\n    display: flex;\n    flex-direction: column;\n    gap: 5px;\n    max-width: 300px;\n\n    .toast-title {\n      font-size: 18px;\n      font-weight: bold;\n\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n\n    .toast-subtitle {\n      font-size: 14px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: vertical;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n  }\n"])), function (_ref) {
+var _templateObject$d;
+var ToastCardContainer = styled$1__default.div(_templateObject$d || (_templateObject$d = _taggedTemplateLiteralLoose(["\n  position: fixed;\n  user-select: none;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.1rem 1rem;\n  height: 80px;\n  max-width: 400px;\n  min-width: 296px;\n  cursor: pointer;\n  background: ", ";\n  border-radius: 4px;\n  color: #fff;\n  box-shadow: 0 0 10px #999;\n\n  ", "\n\n  ", "\n\n\n", "\n\n", "\n\n  .toast-icon {\n    svg {\n      width: 30px;\n      height: 30px;\n    }\n  }\n\n  .toast-text-info {\n    display: flex;\n    flex-direction: column;\n    gap: 5px;\n    max-width: 300px;\n\n    .toast-title {\n      font-size: 18px;\n      font-weight: bold;\n\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n\n    .toast-subtitle {\n      font-size: 14px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: vertical;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -1386,14 +1391,14 @@ var ToastCardContainer = styled$1__default.div(_templateObject$e || (_templateOb
   return position === 'bottom-left' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
 });
 
-var _excluded$9 = ["duration", "position"];
+var _excluded$a = ["duration", "position"];
 
 var ToastCard = function ToastCard(_ref) {
   var _ref$duration = _ref.duration,
       duration = _ref$duration === void 0 ? 5000 : _ref$duration,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$9);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$a);
 
   var _useToast = useToast(),
       toastListCurrent = _useToast.toastListCurrent;

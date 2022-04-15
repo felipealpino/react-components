@@ -3,8 +3,8 @@ import { InputHTMLAttributes } from 'react';
 import { IconBaseProps } from 'react-icons';
 export interface InputDefaultProps extends InputHTMLAttributes<HTMLInputElement> {
     icon?: React.ComponentType<IconBaseProps>;
-    iconColor?: string;
-    iconFill?: string;
+    iconcolor?: string;
+    iconfill?: string;
     label?: string;
     error?: string;
     status?: ElementStatus;

@@ -1,6 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { ElementStatus } from '../../../shared/theme/colors';
+import { colorGet } from '../../../shared/utils';
 
-export const ContainerTextArea = styled.div`
+interface ITextArea {
+  status?: ElementStatus;
+}
+
+export const ContainerTextArea = styled.div<ITextArea>`
   width: 100%;
   position: relative;
 
@@ -9,7 +15,7 @@ export const ContainerTextArea = styled.div`
     box-sizing: border-box;
     height: 32px;
     border-radius: 4px;
-    border: 1px solid var(--black);
+    border: 1px solid ${(props) => colorGet(props.status, 500)};
     outline: none;
   }
 
@@ -22,7 +28,7 @@ export const ContainerTextArea = styled.div`
     white-space: nowrap;
 
     .mandatory-star {
-      color: var(--main-danger-color);
+      color: ${colorGet('danger', 500)};
       font-size: 14px;
       margin-left: 3px;
     }
@@ -30,7 +36,7 @@ export const ContainerTextArea = styled.div`
 
   span {
     display: block;
-    color: var(--main-danger-color);
+    color: ${colorGet('danger', 500)};
     font-size: 11px;
   }
 `;
