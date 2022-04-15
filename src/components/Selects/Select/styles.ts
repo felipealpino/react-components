@@ -6,6 +6,7 @@ interface ISelectProps {
   isOpen: boolean;
   status: ElementStatus;
   isDisabled?: boolean;
+  optionsFillSpace?: boolean;
 }
 
 export const SelectContainer = styled.div<ISelectProps>`
@@ -40,14 +41,15 @@ export const SelectContainer = styled.div<ISelectProps>`
 
   .select-dropdown-body {
     padding: 5px;
-    position: absolute;
+    position: ${({ optionsFillSpace }) => (optionsFillSpace ? 'initial' : 'absolute')};
     top: 55px;
     background: white;
-    border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
     width: inherit;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
     z-index: 1;
+    border: ${({ optionsFillSpace, status }) => (optionsFillSpace ? 'none' : `1px solid ${colorGet(status, 500)}`)};
+    border-top: ${({ optionsFillSpace, status }) => optionsFillSpace && `1px solid ${colorGet(status, 500)}`};
   }
 
   .select-dropdown-item {

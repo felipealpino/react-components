@@ -4,6 +4,14 @@ import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import { Accordion } from '../Accordion';
 import { Accordions } from './Accordions';
 import { BaseStyles } from '../BaseStyles';
+import { Select } from '../Selects/Select';
+
+const names = [
+  { name: 'Thawan Cavalcante', value: 'thawan' },
+  { name: 'Gabriel Campos', value: 'gabriel' },
+  { name: 'Igor Araujo', value: 'igor' },
+  { name: 'Felipe Gontijo', value: 'felipe' }
+];
 
 storiesOf('Accordion', module)
   .addDecorator(withKnobs)
@@ -17,6 +25,8 @@ storiesOf('Accordion', module)
 
     const isDisabled = boolean('Disabled ? ', false);
 
+    const selectBodyFillSpace = boolean('Select Options Fill Space ', false);
+
     return (
       <div style={{ display: 'flex', gap: '1rem', width: '100%', flexDirection: 'column' }}>
         <BaseStyles />
@@ -24,6 +34,16 @@ storiesOf('Accordion', module)
           <div>alouuuu</div>
           <div>alouuuu</div>
           <div>alouuuu</div>
+          <Select
+            optionsFillSpace={selectBodyFillSpace}
+            handleOnChange={(option) => console.log(option, 'name')}
+            placeholder='Select your name'
+            status={status}
+            label='Names:'
+            name='name'
+            mandatory='on'
+            options={names}
+          />
         </Accordion>
         <Accordion disabled={true} title='Disabled Accordion'></Accordion>
       </div>
@@ -39,12 +59,24 @@ storiesOf('Accordion', module)
       'control'
     );
 
+    const selectBodyFillSpace = boolean('Select Options Fill Space ', false);
+
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <BaseStyles />
         <Accordions gap={gap}>
           <Accordion title='Accordion 1' status='primary'>
             <div>oi</div>
+            <Select
+              optionsFillSpace={selectBodyFillSpace}
+              handleOnChange={(option) => console.log(option, 'name')}
+              placeholder='Select your name'
+              status={status}
+              label='Names:'
+              name='name'
+              mandatory='on'
+              options={names}
+            />
           </Accordion>
           <Accordion title='Accordion 2' disabled status='secondary'>
             <div>oi</div>

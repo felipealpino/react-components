@@ -33,7 +33,7 @@ storiesOf('Select', module)
           status={status}
           label='Names:'
           name='name'
-          mandatory
+          mandatory='on'
           options={names}
         />
 
@@ -43,7 +43,7 @@ storiesOf('Select', module)
           status={status}
           label='This is an error select: '
           name='error'
-          mandatory
+          mandatory='on'
           options={names}
           error='This field is required.'
         />
