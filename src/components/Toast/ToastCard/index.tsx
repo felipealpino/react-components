@@ -16,8 +16,8 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   const [shouldShow, setShouldShow] = useState<boolean>(false);
   const timeToUnmount = 700; //700ms
   const [myIndexInArray, setMyIndexInArray] = useState<number>(-1);
-  const [intervalIdShow, setIntervalId] = useState<NodeJS.Timeout>();
-  const [intervalIdRemove, setIntervalId2] = useState<NodeJS.Timeout>();
+  const [intervalIdShow, setIntervalIdShow] = useState<NodeJS.Timeout>();
+  const [intervalIdRemove, setIntervalIdRemove] = useState<NodeJS.Timeout>();
   const mounted = useRef(false);
 
   const handleOnClickToastCard = useCallback(() => {
@@ -26,8 +26,8 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
       props.handleOnClick(props.id);
     }, timeToUnmount);
 
-    setIntervalId(intervalIdShow);
-    setIntervalId2(intervalIdRemove);
+    setIntervalIdShow(intervalIdShow);
+    setIntervalIdRemove(intervalIdRemove);
   }, [props, toastListCurrent]);
 
   const toastIcon = useMemo(() => {
@@ -45,7 +45,7 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
 
   const removeToastFromScreen = useCallback(() => {
     const intervalIdShow = setTimeout(() => {
-      setShouldShow(false);
+      mounted.current && setShouldShow(false);
     }, duration);
 
     const intervalIdRemove = setTimeout(() => {
@@ -54,8 +54,8 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
       toastCardRef.current.click();
     }, duration + timeToUnmount);
 
-    setIntervalId(intervalIdShow);
-    setIntervalId2(intervalIdRemove);
+    setIntervalIdShow(intervalIdShow);
+    setIntervalIdRemove(intervalIdRemove);
   }, [toastCardRef.current]);
 
   const handleMouseLeave = useCallback(() => {
