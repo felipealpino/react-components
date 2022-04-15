@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, color } from '@storybook/addon-knobs';
+import { withKnobs, select, color, boolean } from '@storybook/addon-knobs';
 import { Select } from '../Select';
 import { ISelectOptions } from '../interfaces/ISelectOptions';
 import { BaseStyles } from '../../BaseStyles';
@@ -12,6 +12,8 @@ storiesOf('Select', module)
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'control'],
       'primary'
     );
+
+    const selectBodyFillSpace = boolean('Select Options Fill Space ', false);
 
     const names = [
       { name: 'Thawan Cavalcante', value: 'thawan' },
@@ -28,6 +30,7 @@ storiesOf('Select', module)
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <BaseStyles />
         <Select
+          optionsFillSpace={selectBodyFillSpace}
           handleOnChange={(option) => handleOnSelectOption(option, 'name')}
           placeholder='Select your name'
           status={status}
@@ -38,6 +41,7 @@ storiesOf('Select', module)
         />
 
         <Select
+          optionsFillSpace={selectBodyFillSpace}
           handleOnChange={() => {}}
           placeholder='Select with Error'
           status={status}
@@ -49,6 +53,7 @@ storiesOf('Select', module)
         />
 
         <Select
+          optionsFillSpace={selectBodyFillSpace}
           handleOnChange={() => {}}
           placeholder='Select without options'
           status={status}
@@ -58,6 +63,7 @@ storiesOf('Select', module)
         />
 
         <Select
+          optionsFillSpace={selectBodyFillSpace}
           handleOnChange={(option) => console.log(option, 'name')}
           status={status}
           label='This Select has an Initial Option: '
@@ -67,6 +73,7 @@ storiesOf('Select', module)
         />
 
         <Select
+          optionsFillSpace={selectBodyFillSpace}
           handleOnChange={() => {}}
           placeholder='Disabled Select'
           status={status}

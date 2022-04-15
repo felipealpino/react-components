@@ -15,6 +15,8 @@ storiesOf('SelectForm', module)
       'primary'
     );
 
+    const selectBodyFillSpace = boolean('Select Options Fill Space ', false);
+
     const names = [
       { name: 'Thawan Cavalcante', value: 'thawan' },
       { name: 'Gabriel Campos', value: 'gabriel' },
@@ -29,10 +31,10 @@ storiesOf('SelectForm', module)
     return (
       <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <BaseStyles />
-        <SelectForm options={names} name={'name'} status={'basic'} />
-        <SelectForm options={names} name={'name2'} status={'basic'} />
-        <SelectForm options={names} name={'name3'} status={'basic'} />
-        <SelectForm options={names} name={'name4'} status={'basic'} />
+        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name'} status={'basic'} />
+        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name2'} status={'basic'} />
+        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name3'} status={'basic'} />
+        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name4'} status={'basic'} />
         <Button type='submit'>Submit</Button>
       </Form>
     );
