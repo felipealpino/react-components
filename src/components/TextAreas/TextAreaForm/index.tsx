@@ -1,11 +1,10 @@
 import { useField } from '@unform/core';
 import React, { useEffect, useRef } from 'react';
-import { TextAreaDefaultProps } from '../../../components/TextAreas/interfaces/TextAreaDefaultProps';
 import InputLabel from '../../../shared/components/InputLabel';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
+import { ITextArea } from '../TextArea';
 import { ContainerTextArea } from '../TextArea/styles';
 
-export type ITextArea = TextAreaDefaultProps & {};
 
 const TextAreaForm: React.FC<ITextArea> = ({ textAreaRef, resizable = 'both', ...props }) => {
   let textAreaReference = useRef<HTMLTextAreaElement>(null);
