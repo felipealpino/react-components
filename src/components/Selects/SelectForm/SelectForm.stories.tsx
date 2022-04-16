@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { Form } from '@unform/web';
 import { Button } from '../../Button';
 import { SelectForm } from '../../Selects/SelectForm';

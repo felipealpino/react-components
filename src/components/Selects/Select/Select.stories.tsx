@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, color, boolean } from '@storybook/addon-knobs';
 import { Select } from '../Select';

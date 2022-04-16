@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-access-key */
 import { ElementStatus } from '../../shared/theme/colors';
 import React, { ButtonHTMLAttributes, useCallback } from 'react';
 import { ButtonContainer } from './styles';

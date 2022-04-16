@@ -1,10 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, {  useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { InputForm } from '../InputForm';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 import { useCallback } from '@storybook/addons';
 import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
 import { Button } from '../../Button';
 import * as Yup from 'yup';
 import { BaseStyles } from '../../BaseStyles';

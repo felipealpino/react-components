@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { Spinner } from '../Spinner';
 import { Accordion } from '../Accordion';
 import { BaseStyles } from '../BaseStyles';

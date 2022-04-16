@@ -361,7 +361,7 @@ var _templateObject$4;
 var ButtonContainer = styled__default.button(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  all: none;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
   var status = _ref.status,
       outline = _ref.outline;
-  return outline ? colorGet(status, 400) : colorGet(status, 500);
+  return outline ? colorGet(status, 300) : colorGet(status, 500);
 }, function (_ref2) {
   var disabled = _ref2.disabled;
   return disabled ? 'not-allowed' : 'pointer';
