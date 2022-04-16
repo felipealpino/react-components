@@ -1,4 +1,5 @@
 export declare type ElementStatus = 'basic' | 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'success' | 'warning' | 'danger' | 'info' | 'control';
+export declare const ElementStatusConstraints: string[];
 export interface IColors {
     black: string | string[];
     white: string | string[];

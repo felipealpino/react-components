@@ -27,7 +27,7 @@ export const ButtonContainer = styled.button<IButton>`
   opacity: ${({ disabled }) => (!disabled ? '1' : '0.6')};
 
   &:hover {
-    background: ${({ status }) => colorGet(status, 500)};
+    background: ${({ status, disabled }) => !disabled && colorGet(status, 500)};
   }
 
   svg {

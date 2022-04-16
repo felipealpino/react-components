@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react";
+import React, { ComponentProps, Fragment } from 'react';
 
 export const combineContext = (...components: React.FC[]): React.FC => {
   return components.reduce(
@@ -11,6 +11,6 @@ export const combineContext = (...components: React.FC[]): React.FC => {
         );
       };
     },
-    ({ children }) => <>{children}</>
+    ({ children }) => <Fragment>{children}</Fragment>
   );
 };

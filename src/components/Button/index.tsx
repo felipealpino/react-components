@@ -15,13 +15,12 @@ const Button: React.FC<IButton> = (props) => {
       if (props.disabled) return;
       props.onClick && props.onClick(event);
     },
-    [props.disabled]
+    [props.disabled, props.onClick]
   );
 
   return (
     <ButtonContainer
       {...props}
-      disabled={props.disabled}
       className={`button-container ${props.className || ''}`}
       onClick={(event) => handleOnClickButton(event)}
     >
