@@ -21,7 +21,7 @@ export const ButtonContainer = styled.button<IButton>`
   min-height: 45px;
   user-select: none;
 
-  background: ${({ status, outline }) => (outline ? colorGet(status, 400) : colorGet(status, 500))};
+  background: ${({ status, outline }) => (outline ? colorGet(status, 300) : colorGet(status, 500))};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border: 2px solid ${({ status }) => colorGet(status, 500)};
   opacity: ${({ disabled }) => (!disabled ? '1' : '0.6')};
