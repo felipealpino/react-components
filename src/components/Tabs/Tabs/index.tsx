@@ -39,7 +39,7 @@ const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
             />
           ))}
         </ul>
-        <div className='rendered-component-to-render-container'>
+        <div className='rendered-components-container'>
           {props.tabs.map((tab) => (
             <div className={`rendered-tab ${tab.index === selectedTab ? '--show' : ''}`}>{tab.componentToRender}</div>
           ))}

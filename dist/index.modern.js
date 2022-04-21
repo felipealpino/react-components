@@ -1448,19 +1448,114 @@ var SwipeToggle = function SwipeToggle(_ref) {
 };
 
 var _templateObject$d;
-var ContainerTextArea = styled__default.div(_templateObject$d || (_templateObject$d = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    box-sizing: border-box;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    resize: ", ";\n  }\n\n  span {\n    display: block;\n    color: ", ";\n    font-size: 11px;\n  }\n"])), function (props) {
+var TabContainer = styled__default.div(_templateObject$d || (_templateObject$d = _taggedTemplateLiteralLoose(["\n  border-bottom: 3px solid ", ";\n  padding: 10px 16px;\n  cursor: pointer;\n"])), colorGet('basic', 400));
+
+var _excluded$c = ["className"];
+
+var Tab = function Tab(_ref) {
+  var className = _ref.className,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$c);
+
+  return React.createElement(TabContainer, Object.assign({
+    className: "tab-option " + (className ? className : '')
+  }, props, {
+    onClick: function onClick() {
+      return props.handleOnClickTab(props.index);
+    }
+  }), props.label);
+};
+
+var _templateObject$e;
+var TabsContainer = styled__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  background: #fff;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  height: 50px;\n\n  .tab-options-list {\n    user-select: none;\n    display: flexbox;\n    justify-content: center;\n    overflow-x: auto;\n    padding-bottom: 2px;\n  }\n\n  .selected {\n    color: ", ";\n    border-bottom: 3px solid ", ";\n  }\n\n  .rendered-components-container {\n    .rendered-tab {\n      display: none;\n    }\n\n    .rendered-tab.--show {\n      display: block;\n    }\n  }\n"])), function (_ref) {
+  var status = _ref.status;
+  return status && colorGet(status, 600);
+}, function (_ref2) {
+  var status = _ref2.status;
+  return status && colorGet(status, 600);
+});
+
+var _excluded$d = ["children", "className"];
+
+var Tabs = function Tabs(_ref) {
+  var className = _ref.className,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$d);
+
+  var _useState = useState(0),
+      selectedTab = _useState[0],
+      setSelectedTab = _useState[1];
+
+  useEffect(function () {
+    props.selectedTabIndex && setSelectedTab(props.selectedTabIndex);
+  }, [props.selectedTabIndex]);
+  var handleOnChangeTab = useCallback(function (clickedTab) {
+    setSelectedTab(clickedTab);
+  }, []);
+  return React.createElement(Fragment, null, React.createElement(TabsContainer, Object.assign({
+    className: "tabs-container " + (className ? className : '')
+  }, props), React.createElement("ul", {
+    className: 'tab-options-list'
+  }, props.tabs.map(function (tab) {
+    return React.createElement(Tab, {
+      key: tab.label,
+      className: "" + (selectedTab === tab.index ? 'selected' : ''),
+      label: tab.label,
+      index: tab.index,
+      selectedTab: selectedTab,
+      status: props.status,
+      handleOnClickTab: function handleOnClickTab(clickedTab) {
+        return handleOnChangeTab(clickedTab);
+      }
+    });
+  })), React.createElement("div", {
+    className: 'rendered-components-container'
+  }, props.tabs.map(function (tab) {
+    return React.createElement("div", {
+      className: "rendered-tab " + (tab.index === selectedTab ? '--show' : '')
+    }, tab.componentToRender);
+  }))));
+};
+
+var TabsContext = React.createContext({});
+
+var TabsProvider = function TabsProvider(_ref) {
+  var children = _ref.children;
+
+  var _useState = useState(0),
+      selectedTab = _useState[0],
+      setSelectedTab = _useState[1];
+
+  return React.createElement(TabsContext.Provider, {
+    value: {
+      selectedTab: selectedTab,
+      setSelectedTab: setSelectedTab
+    }
+  }, children);
+};
+
+function useTabs() {
+  var context = useContext(TabsContext);
+
+  if (!context) {
+    throw new Error('useTabs must be used within a TabsProvider');
+  }
+
+  return context;
+}
+
+var _templateObject$f;
+var ContainerTextArea = styled__default.div(_templateObject$f || (_templateObject$f = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    box-sizing: border-box;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    resize: ", ";\n  }\n\n  span {\n    display: block;\n    color: ", ";\n    font-size: 11px;\n  }\n"])), function (props) {
   return colorGet(props.status, 500);
 }, function (_ref) {
   var resizable = _ref.resizable;
   return resizable;
 }, colorGet('danger', 500));
 
-var _excluded$c = ["resizable"];
+var _excluded$e = ["resizable"];
 
 var TextArea = function TextArea(_ref) {
   var _ref$resizable = _ref.resizable,
       resizable = _ref$resizable === void 0 ? 'both' : _ref$resizable,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$c);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$e);
 
   return React.createElement(ContainerTextArea, {
     className: "textareaform-container " + (props.className || ''),
@@ -1477,13 +1572,13 @@ var TextArea = function TextArea(_ref) {
   }));
 };
 
-var _excluded$d = ["textAreaRef", "resizable"];
+var _excluded$f = ["textAreaRef", "resizable"];
 
 var TextAreaForm = function TextAreaForm(_ref) {
   var textAreaRef = _ref.textAreaRef,
       _ref$resizable = _ref.resizable,
       resizable = _ref$resizable === void 0 ? 'both' : _ref$resizable,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$d);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$f);
 
   var textAreaReference = useRef(null);
   if (textAreaRef) textAreaReference = textAreaRef;
@@ -1575,8 +1670,8 @@ function useToast() {
   return context;
 }
 
-var _templateObject$e;
-var TooltipContainer = styled__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  position: relative;\n  font-size: 10px;\n  width: fit-content;\n\n  .tooltip-box {\n    position: absolute;\n    font-size: 14px;\n    background: ", ";\n    color: #fff;\n    padding: 5px;\n    border-radius: 5px;\n    display: none;\n    z-index: 4;\n    white-space: nowrap;\n    left: 50%;\n    transform: translateX(-50%);\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n\n  .tooltip-box {\n    display: ", ";\n    width: fit-content;\n  }\n\n  .tooltip-arrow {\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    border-width: 5px;\n    border-style: solid;\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n"])), function (_ref) {
+var _templateObject$g;
+var TooltipContainer = styled__default.div(_templateObject$g || (_templateObject$g = _taggedTemplateLiteralLoose(["\n  position: relative;\n  font-size: 10px;\n  width: fit-content;\n\n  .tooltip-box {\n    position: absolute;\n    font-size: 14px;\n    background: ", ";\n    color: #fff;\n    padding: 5px;\n    border-radius: 5px;\n    display: none;\n    z-index: 4;\n    white-space: nowrap;\n    left: 50%;\n    transform: translateX(-50%);\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n\n  .tooltip-box {\n    display: ", ";\n    width: fit-content;\n  }\n\n  .tooltip-arrow {\n    position: absolute;\n    left: 50%;\n    transform: translateX(-50%);\n    border-width: 5px;\n    border-style: solid;\n\n    /* tooltip show bottom  */\n    ", "\n\n    /* tooltip show top  */\n    ", "\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -1598,7 +1693,7 @@ var TooltipContainer = styled__default.div(_templateObject$e || (_templateObject
   return position === 'top' && "\n        bottom: -10px;\n        border-color: " + colorGet(status, 500) + " transparent transparent  transparent;\n    ";
 });
 
-var _excluded$e = ["clickable", "status", "position"];
+var _excluded$g = ["clickable", "status", "position"];
 
 var Tooltip = function Tooltip(_ref) {
   var _ref$clickable = _ref.clickable,
@@ -1607,7 +1702,7 @@ var Tooltip = function Tooltip(_ref) {
       status = _ref$status === void 0 ? 'danger' : _ref$status,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'bottom' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$e);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$g);
 
   var _useState = useState(false),
       show = _useState[0],
@@ -1637,8 +1732,8 @@ var Tooltip = function Tooltip(_ref) {
   }, props.children));
 };
 
-var _templateObject$f;
-var ToastCardContainer = styled__default.div(_templateObject$f || (_templateObject$f = _taggedTemplateLiteralLoose(["\n  position: fixed;\n  user-select: none;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.1rem 1rem;\n  height: 80px;\n  max-width: 400px;\n  min-width: 296px;\n  cursor: pointer;\n  background: ", ";\n  border-radius: 4px;\n  color: #fff;\n  box-shadow: 0 0 10px #999;\n\n  ", "\n\n  ", "\n\n\n", "\n\n", "\n\n  .toast-icon {\n    svg {\n      width: 30px;\n      height: 30px;\n    }\n  }\n\n  .toast-text-info {\n    display: flex;\n    flex-direction: column;\n    gap: 5px;\n    max-width: 300px;\n\n    .toast-title {\n      font-size: 18px;\n      font-weight: bold;\n\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n\n    .toast-subtitle {\n      font-size: 14px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: vertical;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n  }\n"])), function (_ref) {
+var _templateObject$h;
+var ToastCardContainer = styled__default.div(_templateObject$h || (_templateObject$h = _taggedTemplateLiteralLoose(["\n  position: fixed;\n  user-select: none;\n  box-sizing: border-box;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0.1rem 1rem;\n  height: 80px;\n  max-width: 400px;\n  min-width: 296px;\n  cursor: pointer;\n  background: ", ";\n  border-radius: 4px;\n  color: #fff;\n  box-shadow: 0 0 10px #999;\n\n  ", "\n\n  ", "\n\n\n", "\n\n", "\n\n  .toast-icon {\n    svg {\n      width: 30px;\n      height: 30px;\n    }\n  }\n\n  .toast-text-info {\n    display: flex;\n    flex-direction: column;\n    gap: 5px;\n    max-width: 300px;\n\n    .toast-title {\n      font-size: 18px;\n      font-weight: bold;\n\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n\n    .toast-subtitle {\n      font-size: 14px;\n      display: -webkit-box;\n      -webkit-line-clamp: 2;\n      -webkit-box-orient: vertical;\n      overflow: hidden;\n      text-overflow: ellipsis;\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return colorGet(status, 500);
 }, function (_ref2) {
@@ -1667,14 +1762,14 @@ var ToastCardContainer = styled__default.div(_templateObject$f || (_templateObje
   return position === 'bottom-left' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
 });
 
-var _excluded$f = ["duration", "position"];
+var _excluded$h = ["duration", "position"];
 
 var ToastCard = function ToastCard(_ref) {
   var _ref$duration = _ref.duration,
       duration = _ref$duration === void 0 ? 5000 : _ref$duration,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$f);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$h);
 
   var _useToast = useToast(),
       toastListCurrent = _useToast.toastListCurrent;
@@ -1797,5 +1892,5 @@ var ThemeProvider$1 = function ThemeProvider$1(_ref) {
   }, React.createElement(ToastProvider, null, React.createElement(ToastCardsContainer, null), children));
 };
 
-export { Accordion, Accordions, Avatar, BaseStyles, theme as BaseTheme, Button, Checkbox, CheckboxForm, Input, InputForm, Pagination, Select, SelectForm, ServerStyleSheet, Spinner, SwipeToggle, TextArea, TextAreaForm, ThemeProvider$1 as ThemeProvider, ToastContext, ToastProvider, Tooltip, calcAge, colorGet, combineContext, createGlobalStyle, css, deleteObjectKeys, errorMessageBuilder, formatDate, getContrastColor, masker, objectToQuery, removeDuplicatesFromArray, styled, useToast, withTheme };
+export { Accordion, Accordions, Avatar, BaseStyles, theme as BaseTheme, Button, Checkbox, CheckboxForm, Input, InputForm, Pagination, Select, SelectForm, ServerStyleSheet, Spinner, SwipeToggle, Tabs, TabsContext, TabsProvider, TextArea, TextAreaForm, ThemeProvider$1 as ThemeProvider, ToastContext, ToastProvider, Tooltip, calcAge, colorGet, combineContext, createGlobalStyle, css, deleteObjectKeys, errorMessageBuilder, formatDate, getContrastColor, masker, objectToQuery, removeDuplicatesFromArray, styled, useTabs, useToast, withTheme };
 //# sourceMappingURL=index.modern.js.map

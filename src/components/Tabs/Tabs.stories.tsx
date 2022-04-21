@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import { BaseStyles } from '../BaseStyles';
 import { Tabs } from '../Tabs/Tabs';
-import { ITab, Tab } from '../Tabs/Tab';
+import { ITab } from '../Tabs/Tab';
 
 storiesOf('Tabs', module)
   .addDecorator(withKnobs)
@@ -22,34 +22,85 @@ storiesOf('Tabs', module)
     ];
 
     return (
-      <div style={{ display: 'flex', gap: '1rem', width: '100%', flexDirection: 'column' }}>
+      <Fragment>
         <BaseStyles />
         <Tabs status={status} tabs={tabsToRender} />
-      </div>
+      </Fragment>
     );
   });
+
+const DirectoryContainer: React.FC = (props) => {
+  return <div style={{ padding: '2rem 1rem 1rem 1rem', height: 'calc(100vh - 50px)', overflowY: 'auto' }}>{props.children}</div>;
+};
 
 const Home: React.FC = () => {
   const [homeCount, setHomeCount] = useState<number>(0);
   return (
     <div style={{ cursor: 'pointer' }} onClick={() => setHomeCount((oldState) => oldState + 1)}>
-      Home - homeCount State - {homeCount}
+      <DirectoryContainer>
+        Home - homeCount State - {homeCount}
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+        <div>helloy</div>
+      </DirectoryContainer>
     </div>
   );
 };
 const Products: React.FC = () => {
   const [productsCount, setProductsCount] = useState<number>(0);
   return (
-    <div style={{ cursor: 'pointer' }} onClick={() => setProductsCount((oldState) => oldState + 1)}>
-      Products - productsCount State - {productsCount}
-    </div>
+    <DirectoryContainer>
+      <div style={{ cursor: 'pointer' }} onClick={() => setProductsCount((oldState) => oldState + 1)}>
+        Products - productsCount State - {productsCount}
+      </div>
+    </DirectoryContainer>
   );
 };
 const Graphics: React.FC = () => {
   const [graphicsCount, setGraphicsCount] = useState<number>(0);
   return (
-    <div style={{ cursor: 'pointer' }} onClick={() => setGraphicsCount((oldState) => oldState + 1)}>
-      Graphics - graphicsCount State - {graphicsCount}
-    </div>
+    <DirectoryContainer>
+      <div style={{ cursor: 'pointer' }} onClick={() => setGraphicsCount((oldState) => oldState + 1)}>
+        Graphics - graphicsCount State - {graphicsCount}
+      </div>
+    </DirectoryContainer>
   );
 };

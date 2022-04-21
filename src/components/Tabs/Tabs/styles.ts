@@ -24,10 +24,7 @@ export const TabsContainer = styled.div<ITabs>`
     border-bottom: 3px solid ${({ status }) => status && colorGet(status, 600)};
   }
 
-  .rendered-component-to-render-container {
-    margin-top: 50px;
-    text-align: center;
-
+  .rendered-components-container {
     .rendered-tab {
       display: none;
     }

@@ -22,25 +22,25 @@ Step by step to install.
 
 
 Done components: <br>
-[x] Tooltip <br>
-[x] SwipeToggle <br>
-[x] Spinner <br>
-[x] Select <br>
-[x] Pagination <br>
-[x] InputForm <br>
-[x] Input <br>
-[x] Button <br>
 [x] Accordion <br>
+[x] Avatar <br>
+[x] Button <br>
+[x] Checkbox <br>
+[x] CheckboxForm <br>
+[x] Input <br>
+[x] InputForm <br>
+[x] Pagination <br>
 [x] Select <br>
 [x] SelectForm <br>
-[x] Checkbox <br>
-[x] Avatar <br>
+[x] SwipeToggle <br>
+[x] Spinner <br>
 [x] Toast <br>
 [x] TextArea <br>
 [x] TextAreaForm <br>
+[x] Tooltip <br>
+[x] Tabs <br>
 
 Working on components: <br>
-[ ] Tabs <br>
 
 Next components: <br>
 [ ] Table <br>
