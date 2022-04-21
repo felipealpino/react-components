@@ -201,13 +201,16 @@ var colors = {
   basicTransparent400: 'rgba(143, 155, 179, 0.32)',
   basicTransparent500: 'rgba(143, 155, 179, 0.4)',
   basicTransparent600: 'rgba(143, 155, 179, 0.48)',
-  control500: '#fff',
-  controlTransparent100: 'rgba(255, 255, 255, 0.08)',
-  controlTransparent200: 'rgba(255, 255, 255, 0.16)',
-  controlTransparent300: 'rgba(255, 255, 255, 0.24)',
-  controlTransparent400: 'rgba(255, 255, 255, 0.32)',
-  controlTransparent500: 'rgba(255, 255, 255, 0.4)',
-  controlTransparent600: 'rgba(255, 255, 255, 0.48)'
+  dark100: '#E1E1E6',
+  dark200: '#C4C4CC',
+  dark300: '#8D8D99',
+  dark400: '#7C7C8A',
+  dark500: '#505059',
+  dark600: '#323238',
+  dark700: '#29292E',
+  dark800: '#202024',
+  dark900: '#121214',
+  dark1000: '#09090A'
 };
 
 var colorGet = function colorGet(status, statusComplement) {
@@ -250,7 +253,7 @@ var _excluded = ["status"];
 
 var Accordion = function Accordion(_ref) {
   var _ref$status = _ref.status,
-      status = _ref$status === void 0 ? 'control' : _ref$status,
+      status = _ref$status === void 0 ? 'basic' : _ref$status,
       props = _objectWithoutPropertiesLoose(_ref, _excluded);
 
   var _useState = React.useState(false),
@@ -356,42 +359,6 @@ var Avatar = function Avatar(props) {
     src: props.image,
     alt: 'avatar'
   }));
-};
-
-var _templateObject$3;
-var BaseStyles = styled$1.createGlobalStyle(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  *, *::before, *::after {\n    box-sizing: inherit;\n    box-sizing: border-box;\n    font-variant-numeric: lining-nums;\n    -webkit-font-smoothing: antialiased;\n    outline: none;\n  }\n\n  html {\n    box-sizing: border-box;\n    font-size: 100%;\n  }\n\n  body {\n    font-family: sans-serif\n  }\n\n  body,\n  html,\n  li,\n  ol,\n  ul {\n    margin: 0;\n    padding: 0;\n  }\n\n  ol,\n  ul,\n  li {\n    list-style: none;\n  }\n\n  \n\n  button, input {\n    overflow: visible;\n  }\n\n  input {\n    letter-spacing: normal;\n    word-spacing: normal;\n    text-transform: none;\n    text-indent: 0px;\n    text-shadow: none;\n    display: inline-block;\n    text-align: start;\n    cursor: text;\n    border-image: initial;\n    font: 400 13.3333px Arial;\n    /* -webkit-rtl-ordering: logical;\n    -webkit-writing-mode: horizontal-tb;\n    writing-mode:horizontal-tb; */\n    text-rendering: auto;\n  }\n"])));
-
-var _templateObject$4;
-var ButtonContainer = styled$1__default.button(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  all: none;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
-  var status = _ref.status,
-      outline = _ref.outline;
-  return outline ? colorGet(status, 300) : colorGet(status, 500);
-}, function (_ref2) {
-  var disabled = _ref2.disabled;
-  return disabled ? 'not-allowed' : 'pointer';
-}, function (_ref3) {
-  var status = _ref3.status;
-  return colorGet(status, 500);
-}, function (_ref4) {
-  var disabled = _ref4.disabled;
-  return !disabled ? '1' : '0.6';
-}, function (_ref5) {
-  var status = _ref5.status,
-      disabled = _ref5.disabled;
-  return !disabled && colorGet(status, 500);
-});
-
-var Button = function Button(props) {
-  var handleOnClickButton = React.useCallback(function (event) {
-    if (props.disabled) return;
-    props.onClick && props.onClick(event);
-  }, [props.disabled, props.onClick]);
-  return React__default.createElement(ButtonContainer, Object.assign({}, props, {
-    className: "button-container " + (props.className || ''),
-    onClick: function onClick(event) {
-      return handleOnClickButton(event);
-    }
-  }), props.children);
 };
 
 var removeDuplicatesFromArray = function removeDuplicatesFromArray(arrayWithDuplicatedItens) {
@@ -821,6 +788,42 @@ function masker(val, mask) {
 
   return maskared;
 }
+
+var _templateObject$3;
+var BaseStyles = styled$1.createGlobalStyle(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  *, *::before, *::after {\n    box-sizing: inherit;\n    box-sizing: border-box;\n    font-variant-numeric: lining-nums;\n    -webkit-font-smoothing: antialiased;\n    outline: none;\n  }\n\n  html {\n    box-sizing: border-box;\n    font-size: 100%;\n  }\n\n  body {\n    font-family: sans-serif;\n    color: ", ";\n  }\n  \n\n  /* width */\n  ::-webkit-scrollbar {\n    width: 6px;\n    height:6px;\n  }\n  /* Track */\n  ::-webkit-scrollbar-track {\n    border-radius: 10px;\n  }\n  /* Handle */\n  ::-webkit-scrollbar-thumb {\n    background-color: #ababab;\n    border-radius: 10px;\n  }\n\n  body,\n  html,\n  li,\n  ol,\n  ul {\n    margin: 0;\n    padding: 0;\n  }\n\n  ol,\n  ul,\n  li {\n    list-style: none;\n  }\n\n  \n\n  button, input {\n    overflow: visible;\n  }\n\n  input {\n    letter-spacing: normal;\n    word-spacing: normal;\n    text-transform: none;\n    text-indent: 0px;\n    text-shadow: none;\n    display: inline-block;\n    text-align: start;\n    cursor: text;\n    border-image: initial;\n    font: 400 13.3333px Arial;\n    /* -webkit-rtl-ordering: logical;\n    -webkit-writing-mode: horizontal-tb;\n    writing-mode:horizontal-tb; */\n    text-rendering: auto;\n  }\n"])), colorGet('basic', 800));
+
+var _templateObject$4;
+var ButtonContainer = styled$1__default.button(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  all: none;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
+  var status = _ref.status,
+      outline = _ref.outline;
+  return outline ? colorGet(status, 300) : colorGet(status, 500);
+}, function (_ref2) {
+  var disabled = _ref2.disabled;
+  return disabled ? 'not-allowed' : 'pointer';
+}, function (_ref3) {
+  var status = _ref3.status;
+  return colorGet(status, 500);
+}, function (_ref4) {
+  var disabled = _ref4.disabled;
+  return !disabled ? '1' : '0.6';
+}, function (_ref5) {
+  var status = _ref5.status,
+      disabled = _ref5.disabled;
+  return !disabled && colorGet(status, 500);
+});
+
+var Button = function Button(props) {
+  var handleOnClickButton = React.useCallback(function (event) {
+    if (props.disabled) return;
+    props.onClick && props.onClick(event);
+  }, [props.disabled, props.onClick]);
+  return React__default.createElement(ButtonContainer, Object.assign({}, props, {
+    className: "button-container " + (props.className || ''),
+    onClick: function onClick(event) {
+      return handleOnClickButton(event);
+    }
+  }), props.children);
+};
 
 var _templateObject$5;
 var InputsErrorMessageContainer = styled$1__default.label(_templateObject$5 || (_templateObject$5 = _taggedTemplateLiteralLoose(["\n  svg {\n    padding-right: 5px;\n    width: 25px;\n    height: 25px;\n  }\n  display: flex;\n  align-items: center;\n  padding-top: 5px;\n  color: ", ";\n  font-size: 12px;\n  font-weight: 600;\n"])), colorGet('danger', 600));

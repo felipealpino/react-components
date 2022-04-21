@@ -19,7 +19,7 @@ storiesOf('Accordion', module)
   .add('Open Multiple', () => {
     const status = select(
       'Status',
-      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'control'],
+      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
       'primary'
     );
 
@@ -55,8 +55,8 @@ storiesOf('Accordion', module)
 
     const status = select(
       'Status',
-      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'control'],
-      'control'
+      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
+      'basic'
     );
 
     const selectBodyFillSpace = boolean('Select Options Fill Space ', false);

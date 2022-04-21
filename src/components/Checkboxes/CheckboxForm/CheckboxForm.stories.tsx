@@ -11,7 +11,7 @@ storiesOf('CheckboxForm', module)
   .add('Default', () => {
     const status = select(
       'Status',
-      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'control'],
+      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
       'primary'
     );
 

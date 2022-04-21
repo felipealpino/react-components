@@ -14,7 +14,7 @@ export interface IAccordion {
   accordionCurent?: number;
 }
 
-const Accordion: React.FC<IAccordion> = ({ status = 'control', ...props }) => {
+const Accordion: React.FC<IAccordion> = ({ status = 'basic', ...props }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleOpen = useCallback(() => {

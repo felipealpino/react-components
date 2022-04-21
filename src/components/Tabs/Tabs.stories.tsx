@@ -11,7 +11,7 @@ storiesOf('Tabs', module)
   .add('Default', () => {
     const status = select(
       'Status',
-      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger'],
+      ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
       'primary'
     );
 

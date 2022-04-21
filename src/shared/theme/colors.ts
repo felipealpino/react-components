@@ -8,7 +8,7 @@ export declare type ElementStatus =
   | 'warning'
   | 'danger'
   | 'info'
-  | 'control';
+  | 'dark';
 
 export const ElementStatusConstraints = [
   'basic',
@@ -20,7 +20,7 @@ export const ElementStatusConstraints = [
   'warning',
   'danger',
   'info',
-  'control'
+  'dark'
 ];
 
 export interface IColors {
@@ -174,13 +174,16 @@ export interface IColors {
   basicTransparent400: string;
   basicTransparent500: string;
   basicTransparent600: string;
-  control500: string;
-  controlTransparent100: string;
-  controlTransparent200: string;
-  controlTransparent300: string;
-  controlTransparent400: string;
-  controlTransparent500: string;
-  controlTransparent600: string;
+  dark100: string;
+  dark200: string;
+  dark300: string;
+  dark400: string;
+  dark500: string;
+  dark600: string;
+  dark700: string;
+  dark800: string;
+  dark900: string;
+  dark1000: string;
 }
 
 export const colors: IColors = {
@@ -334,11 +337,14 @@ export const colors: IColors = {
   basicTransparent400: 'rgba(143, 155, 179, 0.32)',
   basicTransparent500: 'rgba(143, 155, 179, 0.4)',
   basicTransparent600: 'rgba(143, 155, 179, 0.48)',
-  control500: '#fff',
-  controlTransparent100: 'rgba(255, 255, 255, 0.08)',
-  controlTransparent200: 'rgba(255, 255, 255, 0.16)',
-  controlTransparent300: 'rgba(255, 255, 255, 0.24)',
-  controlTransparent400: 'rgba(255, 255, 255, 0.32)',
-  controlTransparent500: 'rgba(255, 255, 255, 0.4)',
-  controlTransparent600: 'rgba(255, 255, 255, 0.48)'
+  dark100: '#E1E1E6',
+  dark200: '#C4C4CC',
+  dark300: '#8D8D99',
+  dark400: '#7C7C8A',
+  dark500: '#505059',
+  dark600: '#323238',
+  dark700: '#29292E',
+  dark800: '#202024',
+  dark900: '#121214',
+  dark1000: '#09090A'
 };
