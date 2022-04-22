@@ -76,17 +76,7 @@ const Home: React.FC = () => {
         <div>helloy</div>
         <div>helloy</div>
         <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
-        <div>helloy</div>
+        <div>LAST</div>
       </DirectoryContainer>
     </div>
   );

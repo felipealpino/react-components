@@ -9,10 +9,10 @@ export const TabsContainer = styled.div<ITabs>`
   left: 0;
   right: 0;
   z-index: 1;
-  min-height: 50px;
-
+  
   .tab-options-list {
     /* box-shadow: 0px 10px 10px -10px ${colorGet('basic', 700)}; */
+    min-height: 50px;
     font-weight: 600;
     user-select: none;
     display: flexbox;
