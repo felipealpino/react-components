@@ -19,8 +19,8 @@ export const BaseStyles = createGlobalStyle`
   body {
     font-family: sans-serif;
     color: ${colorGet('basic', 800)};
+    /* background-color: #202024; */
   }
-  
 
   /* width */
   ::-webkit-scrollbar {
@@ -29,7 +29,7 @@ export const BaseStyles = createGlobalStyle`
   }
   /* Track */
   ::-webkit-scrollbar-track {
-    border-radius: 10px;
+    /* background-color: #202024; */
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
