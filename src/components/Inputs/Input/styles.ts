@@ -18,7 +18,7 @@ export const InputContainer = styled.div<IInputProps>`
     font-weight: 500;
     padding: 0.4375rem 1rem;
     border-radius: 4px;
-    border: 1px solid ${({ status, error }) => `${colorGet(error ? 'danger' : status, 400)}`};
+    border: 2px solid ${({ status, error }) => `${colorGet(error ? 'danger' : status, 400)}`};
     background: #f7f9fc;
     transition: 0.1s ease-in-out;
     transition-property: border;
@@ -27,12 +27,12 @@ export const InputContainer = styled.div<IInputProps>`
   }
 
   input:focus {
-    border: 1px solid ${({ status }) => colorGet(status, 600)};
+    border: 2px solid ${({ status }) => colorGet(status, 600)};
   }
 
   input:disabled {
     cursor: not-allowed;
-    border: 1px solid ${colorGet('basic', 500)};
+    border: 2px solid ${colorGet('basic', 500)};
   }
 
   .icon {

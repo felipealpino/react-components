@@ -14,7 +14,7 @@ export const SelectContainer = styled.div<ISelectProps>`
 
   .select-dropdown {
     opacity: ${(props) => (props.isDisabled ? '0.5' : '1')};
-    border: 1px solid ${({ status }) => `${colorGet(status, 500)}`};
+    border: 2px solid ${({ status }) => `${colorGet(status, 500)}`};
     width: auto;
     border-radius: 4px;
     background-color: white;

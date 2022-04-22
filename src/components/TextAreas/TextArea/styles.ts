@@ -14,7 +14,7 @@ export const ContainerTextArea = styled.div<ITextArea>`
   textarea {
     box-sizing: border-box;
     border-radius: 4px;
-    border: 1px solid ${(props) => colorGet(props.status, 500)};
+    border: 2px solid ${(props) => colorGet(props.status, 500)};
     outline: none;
     font-size: 15px;
     font-weight: 500;
