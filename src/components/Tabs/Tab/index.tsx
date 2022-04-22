@@ -11,7 +11,7 @@ export interface ITab {
   className?: string;
   componentToRender?: any;
   icon?: React.ComponentType<IconBaseProps>;
-  iconPosition?: IPosition;
+  iconposition?: IPosition;
   iconfill?: string;
 }
 
@@ -21,21 +21,21 @@ export type ITabComplete = ITab & {
   handleOnClickTab: (clickedTab: number) => void;
 };
 
-const Tab: React.FC<ITabComplete> = ({ className, iconPosition = 'left', icon: Icon, ...props }) => {
+const Tab: React.FC<ITabComplete> = ({ className, iconposition = 'left', icon: Icon, ...props }) => {
   return (
     <TabContainer
-      iconPosition={iconPosition}
+      iconposition={iconposition}
       className={`tab-option ${className ? className : ''}`}
       {...props}
       onClick={() => props.handleOnClickTab(props.index)}
     >
-      {Icon && (iconPosition === 'left' || iconPosition === 'top') && (
+      {Icon && (iconposition === 'left' || iconposition === 'top') && (
         <Icon color={colorGet('basic', 800)} fill={props.iconfill || 'transparent'} />
       )}
 
       <span>{props.label}</span>
 
-      {Icon && (iconPosition === 'right' || iconPosition === 'bottom') && (
+      {Icon && (iconposition === 'right' || iconposition === 'bottom') && (
         <Icon color={colorGet('basic', 800)} fill={props.iconfill || 'transparent'} />
       )}
     </TabContainer>

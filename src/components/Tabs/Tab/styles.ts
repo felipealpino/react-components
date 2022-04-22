@@ -9,5 +9,5 @@ export const TabContainer = styled.div<ITabComplete>`
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-direction: ${({ iconPosition }) => (iconPosition === 'top' || iconPosition === 'bottom' ? 'column' : 'row')};
+  flex-direction: ${({ iconposition }) => (iconposition === 'top' || iconposition === 'bottom' ? 'column' : 'row')};
 `;

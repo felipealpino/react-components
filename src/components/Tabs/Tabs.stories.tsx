@@ -16,12 +16,12 @@ storiesOf('Tabs', module)
       'primary'
     );
 
-    const iconPosition = select('Icon Position', ['left', 'bottom', 'right', 'top'], 'left');
+    const iconposition = select('Icon Position', ['left', 'bottom', 'right', 'top'], 'left');
 
     const tabsToRender: ITab[] = [
-      { label: 'Home', index: 0, componentToRender: <Home />, icon: FiHome, iconPosition: iconPosition },
-      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconPosition: iconPosition },
-      { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconPosition: iconPosition }
+      { label: 'Home', index: 0, componentToRender: <Home />, icon: FiHome, iconposition: iconposition },
+      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition },
+      { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition }
     ];
 
     return (
