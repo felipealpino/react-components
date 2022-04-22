@@ -213,7 +213,7 @@ var colors = {
   dark1000: '#09090A'
 };
 
-var colorGet = function colorGet(status, statusComplement) {
+var colorGet = function colorGet(status, statusComplement, isTransparent) {
   if (status === void 0) {
     status = 'primary';
   }
@@ -222,7 +222,7 @@ var colorGet = function colorGet(status, statusComplement) {
     statusComplement = '';
   }
 
-  return "" + colors["" + status + statusComplement];
+  return "" + colors["" + status + (isTransparent ? 'Transparent' : '') + statusComplement];
 };
 
 var _templateObject;
@@ -790,10 +790,10 @@ function masker(val, mask) {
 }
 
 var _templateObject$3;
-var BaseStyles = styled$1.createGlobalStyle(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  *, *::before, *::after {\n    box-sizing: inherit;\n    box-sizing: border-box;\n    font-variant-numeric: lining-nums;\n    -webkit-font-smoothing: antialiased;\n    outline: none;\n  }\n\n  html {\n    box-sizing: border-box;\n    font-size: 100%;\n  }\n\n  body {\n    font-family: sans-serif;\n    color: ", ";\n  }\n  \n\n  /* width */\n  ::-webkit-scrollbar {\n    width: 6px;\n    height:6px;\n  }\n  /* Track */\n  ::-webkit-scrollbar-track {\n    border-radius: 10px;\n  }\n  /* Handle */\n  ::-webkit-scrollbar-thumb {\n    background-color: #ababab;\n    border-radius: 10px;\n  }\n\n  body,\n  html,\n  li,\n  ol,\n  ul {\n    margin: 0;\n    padding: 0;\n  }\n\n  ol,\n  ul,\n  li {\n    list-style: none;\n  }\n\n  \n\n  button, input {\n    overflow: visible;\n  }\n\n  input {\n    letter-spacing: normal;\n    word-spacing: normal;\n    text-transform: none;\n    text-indent: 0px;\n    text-shadow: none;\n    display: inline-block;\n    text-align: start;\n    cursor: text;\n    border-image: initial;\n    font: 400 13.3333px Arial;\n    /* -webkit-rtl-ordering: logical;\n    -webkit-writing-mode: horizontal-tb;\n    writing-mode:horizontal-tb; */\n    text-rendering: auto;\n  }\n"])), colorGet('basic', 800));
+var BaseStyles = styled$1.createGlobalStyle(_templateObject$3 || (_templateObject$3 = _taggedTemplateLiteralLoose(["\n  *, *::before, *::after {\n    box-sizing: inherit;\n    box-sizing: border-box;\n    font-variant-numeric: lining-nums;\n    -webkit-font-smoothing: antialiased;\n    outline: none;\n  }\n\n  html {\n    box-sizing: border-box;\n    font-size: 100%;\n  }\n\n  body {\n    font-family: sans-serif;\n    color: ", ";\n    /* background-color: #202024; */\n  }\n\n  /* width */\n  ::-webkit-scrollbar {\n    width: 6px;\n    height:6px;\n  }\n  /* Track */\n  ::-webkit-scrollbar-track {\n    /* background-color: #202024; */\n  }\n  /* Handle */\n  ::-webkit-scrollbar-thumb {\n    background-color: #ababab;\n    border-radius: 10px;\n  }\n\n  body,\n  html,\n  li,\n  ol,\n  ul {\n    margin: 0;\n    padding: 0;\n  }\n\n  ol,\n  ul,\n  li {\n    list-style: none;\n  }\n\n  \n\n  button, input {\n    overflow: visible;\n  }\n\n  input {\n    letter-spacing: normal;\n    word-spacing: normal;\n    text-transform: none;\n    text-indent: 0px;\n    text-shadow: none;\n    display: inline-block;\n    text-align: start;\n    cursor: text;\n    border-image: initial;\n    font: 400 13.3333px Arial;\n    /* -webkit-rtl-ordering: logical;\n    -webkit-writing-mode: horizontal-tb;\n    writing-mode:horizontal-tb; */\n    text-rendering: auto;\n  }\n"])), colorGet('basic', 800));
 
 var _templateObject$4;
-var ButtonContainer = styled$1__default.button(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  all: none;\n  border: none;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 14px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 45px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
+var ButtonContainer = styled$1__default.button(_templateObject$4 || (_templateObject$4 = _taggedTemplateLiteralLoose(["\n  all: none;\n  border: none;\n  display: flex;\n  gap: 10px;\n  align-items: center;\n  justify-content: center;\n  border-radius: 4px;\n  color: #ffffff;\n  padding: 10px 15px;\n  font-weight: 600;\n  font-size: 16px;\n  transition: 0.1s ease-in-out;\n  transition-property: background;\n  min-width: 110px;\n  width: fit-content;\n  height: max-content;\n  min-height: 50px;\n  user-select: none;\n\n  background: ", ";\n  cursor: ", ";\n  border: 2px solid ", ";\n  opacity: ", ";\n\n  &:hover {\n    background: ", ";\n  }\n\n  svg {\n    width: 25px;\n    height: 25px;\n  }\n"])), function (_ref) {
   var status = _ref.status,
       outline = _ref.outline;
   return outline ? colorGet(status, 300) : colorGet(status, 500);
@@ -809,10 +809,15 @@ var ButtonContainer = styled$1__default.button(_templateObject$4 || (_templateOb
 }, function (_ref5) {
   var status = _ref5.status,
       disabled = _ref5.disabled;
-  return !disabled && colorGet(status, 500);
+  return !disabled && colorGet(status, 600);
 });
 
-var Button = function Button(props) {
+var _excluded$2 = ["icon"];
+
+var Button = function Button(_ref) {
+  var Icon = _ref.icon,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$2);
+
   var handleOnClickButton = React.useCallback(function (event) {
     if (props.disabled) return;
     props.onClick && props.onClick(event);
@@ -822,7 +827,13 @@ var Button = function Button(props) {
     onClick: function onClick(event) {
       return handleOnClickButton(event);
     }
-  }), props.children);
+  }), Icon && props.iconposition === 'left' && React__default.createElement(Icon, {
+    color: props.iconcolor,
+    fill: props.iconfill || 'transparent'
+  }), props.children, Icon && props.iconposition === 'right' && React__default.createElement(Icon, {
+    color: props.iconcolor,
+    fill: props.iconfill || 'transparent'
+  }));
 };
 
 var _templateObject$5;
@@ -857,12 +868,12 @@ var CheckboxContainer = styled$1__default.div(_templateObject$6 || (_templateObj
   return disabled ? 'not-allowed' : 'pointer';
 });
 
-var _excluded$2 = ["icon", "iconcolor", "semiRounded"];
+var _excluded$3 = ["icon", "iconcolor", "semiRounded"];
 
 var Checkbox = function Checkbox(_ref) {
   var Icon = _ref.icon,
       semiRounded = _ref.semiRounded,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$2);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$3);
 
   var _useState = React.useState(props.defaultChecked || false),
       isChecked = _useState[0],
@@ -892,13 +903,13 @@ var Checkbox = function Checkbox(_ref) {
   }));
 };
 
-var _excluded$3 = ["checkboxRef", "semiRounded", "icon"];
+var _excluded$4 = ["checkboxRef", "semiRounded", "icon"];
 
 var CheckboxForm = function CheckboxForm(_ref) {
   var checkboxRef = _ref.checkboxRef,
       semiRounded = _ref.semiRounded,
       Icon = _ref.icon,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$3);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
 
   var checkboxReference = React.useRef(null);
   if (checkboxRef) checkboxReference = checkboxRef;
@@ -953,26 +964,26 @@ var CheckboxForm = function CheckboxForm(_ref) {
 };
 
 var _templateObject$7;
-var InputContainer = styled$1__default.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  color: #2e3a59;\n  margin: 0.5rem 0px;\n\n  .container-input-icon {\n    position: relative;\n  }\n\n  input {\n    width: 100%;\n    height: 40px;\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    -webkit-box-orient: vertical;\n  }\n\n  input:focus {\n    border: 1px solid ", ";\n  }\n\n  input:disabled {\n    cursor: not-allowed;\n    border: 1px solid ", ";\n  }\n\n  .icon {\n    position: absolute;\n    margin-top: auto;\n    margin-left: auto;\n    margin-bottom: auto;\n    text-align: center;\n    right: 0;\n    top: 0;\n    z-index: 1;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    width: 40px;\n    aspect-ratio: 1;\n\n    svg {\n      width: 20px;\n      height: 20px;\n    }\n  }\n"])), function (_ref) {
+var InputContainer = styled$1__default.div(_templateObject$7 || (_templateObject$7 = _taggedTemplateLiteralLoose(["\n  margin: 0.5rem 0px;\n\n  .container-input-icon {\n    position: relative;\n\n    svg {\n      width: 20px;\n      height: 20px;\n      position: absolute;\n      z-index: 1;\n      top: 50%;\n      transform: translateY(-50%);\n      right: 0.5rem;\n    }\n\n    input {\n      width: 100%;\n      height: 40px;\n      outline: none;\n      font-size: 15px;\n      font-weight: 500;\n      padding: 0.4375rem 1rem;\n      border-radius: 4px;\n      border: 2px solid ", ";\n      background: ", ";\n      transition: 0.1s ease-in-out;\n      transition-property: border, background;\n      text-overflow: ellipsis;\n      -webkit-box-orient: vertical;\n    }\n    \n    input:focus {\n      border: 2px solid ", ";\n      background: ", ";\n    }\n\n    input:disabled {\n      cursor: not-allowed;\n      border: 2px solid ", ";\n    }\n  }\n"])), function (_ref) {
   var status = _ref.status,
       error = _ref.error;
   return "" + colorGet(error ? 'danger' : status, 400);
-}, function (_ref2) {
+}, colorGet('basic', 200), function (_ref2) {
   var status = _ref2.status;
   return colorGet(status, 600);
-}, colorGet('basic', 500));
+}, colorGet('basic', 300), colorGet('basic', 500));
 
 var _templateObject$8;
-var InputLabelContainer = styled$1__default.label(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteralLoose(["\n  font-size: 14px;\n  font-weight: 500;\n  white-space: nowrap;\n  line-height: 30px;\n  color: ", ";\n  text-transform: unset;\n  margin: 4px 0px;\n  letter-spacing: 0px;\n  font-size: 14px;\n  font-weight: 700;\n  user-select: none;\n  pointer-events: none;\n  display: flex;\n\n  .mandatory-star {\n    color: ", ";\n    font-size: 14px;\n    margin-left: 3px;\n  }\n"])), function (_ref) {
+var InputLabelContainer = styled$1__default.label(_templateObject$8 || (_templateObject$8 = _taggedTemplateLiteralLoose(["\n  white-space: nowrap;\n  color: ", ";\n  text-transform: unset;\n  margin: 4px 0px;\n  font-size: 14px;\n  font-weight: 700;\n  user-select: none;\n  pointer-events: none;\n  display: flex;\n\n  .mandatory-star {\n    color: ", ";\n    font-size: 14px;\n    margin-left: 3px;\n  }\n"])), function (_ref) {
   var status = _ref.status;
   return "" + colorGet(status, 500);
 }, colorGet('danger', 500));
 
-var _excluded$4 = ["className"];
+var _excluded$5 = ["className"];
 
 var InputLabel = function InputLabel(_ref) {
   var className = _ref.className,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$4);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
 
   return React__default.createElement(InputLabelContainer, Object.assign({
     className: "input-label " + (className ? className : '')
@@ -981,11 +992,11 @@ var InputLabel = function InputLabel(_ref) {
   }, "*"));
 };
 
-var _excluded$5 = ["icon"];
+var _excluded$6 = ["icon"];
 
 var Input = function Input(_ref) {
   var Icon = _ref.icon,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$5);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
 
   var handleChange = React.useCallback(function (event) {
     if (props.mask && event.nativeEvent.inputType !== 'deleteContentBackward') {
@@ -1005,22 +1016,20 @@ var Input = function Input(_ref) {
   }, React__default.createElement("input", Object.assign({}, props, {
     onChange: handleChange,
     className: 'input-component-tag'
-  })), Icon && React__default.createElement("div", {
-    className: 'icon'
-  }, React__default.createElement(Icon, {
+  })), Icon && React__default.createElement(Icon, {
     color: props.iconcolor,
     fill: props.iconfill || 'transparent'
-  }))), props.error && React__default.createElement(InputsErrorMessage, {
+  })), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
 };
 
-var _excluded$6 = ["inputRef", "icon"];
+var _excluded$7 = ["inputRef", "icon"];
 
 var InputForm = function InputForm(_ref) {
   var inputRef = _ref.inputRef,
       Icon = _ref.icon,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$6);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$7);
 
   var inputReference = React.useRef(null);
   if (inputRef) inputReference = inputRef;
@@ -1065,12 +1074,10 @@ var InputForm = function InputForm(_ref) {
     onChange: handleChange
   }, props, {
     className: 'inputform-component-tag'
-  })), Icon && React__default.createElement("div", {
-    className: 'icon'
-  }, React__default.createElement(Icon, {
+  })), Icon && React__default.createElement(Icon, {
     color: props.iconcolor,
     fill: props.iconfill || 'transparent'
-  }))), props.error && React__default.createElement(InputsErrorMessage, {
+  })), props.error && React__default.createElement(InputsErrorMessage, {
     error: props.error
   }));
 };
@@ -1096,12 +1103,12 @@ var PaginationContainer = styled$1__default.div(_templateObject$9 || (_templateO
   return isLastPage && "\n    .pagination-content-icon.forward {\n      opacity: 0.3;\n    }\n  \n  ";
 });
 
-var _excluded$7 = ["rounded"];
+var _excluded$8 = ["rounded"];
 
 var Pagination = function Pagination(_ref) {
   var _ref$rounded = _ref.rounded,
       rounded = _ref$rounded === void 0 ? true : _ref$rounded,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$7);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$8);
 
   var _useState = React.useState(true),
       isFirstPage = _useState[0],
@@ -1148,7 +1155,7 @@ var Pagination = function Pagination(_ref) {
 };
 
 var _templateObject$a;
-var SelectContainer = styled$1__default.div(_templateObject$a || (_templateObject$a = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-dropdown {\n    opacity: ", ";\n    border: 1px solid ", ";\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n\n    position: relative;\n    width: 100%;\n  }\n\n  .select-dropdown-header {\n    padding: 15px;\n    cursor: ", ";\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    svg {\n      margin-left: 10px;\n      width: 25px;\n      height: 25px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .select-dropdown-body {\n    padding: 5px;\n    position: ", ";\n    top: 55px;\n    background: white;\n    width: inherit;\n    border-bottom-right-radius: 4px;\n    border-bottom-left-radius: 4px;\n    z-index: 1;\n    border: ", ";\n    border-top: ", ";\n  }\n\n  .select-dropdown-item {\n    padding: 10px;\n  }\n\n  .select-dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (props) {
+var SelectContainer = styled$1__default.div(_templateObject$a || (_templateObject$a = _taggedTemplateLiteralLoose(["\n  font-size: 15px;\n\n  .select-dropdown {\n    opacity: ", ";\n    border: 2px solid ", ";\n    width: auto;\n    border-radius: 4px;\n    background-color: white;\n\n    position: relative;\n    width: 100%;\n  }\n\n  .select-dropdown-header {\n    padding: 15px;\n    cursor: ", ";\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n\n    svg {\n      margin-left: 10px;\n      width: 25px;\n      height: 25px;\n      transition: 0.2s ease-in-out;\n      transform: rotate(", ");\n    }\n  }\n\n  .select-dropdown-body {\n    padding: 5px;\n    position: ", ";\n    top: 55px;\n    background: white;\n    width: inherit;\n    border-bottom-right-radius: 4px;\n    border-bottom-left-radius: 4px;\n    z-index: 1;\n    border: ", ";\n    border-top: ", ";\n  }\n\n  .select-dropdown-item {\n    padding: 10px;\n  }\n\n  .select-dropdown-item:hover {\n    cursor: pointer;\n  }\n"])), function (props) {
   return props.isDisabled ? '0.5' : '1';
 }, function (_ref) {
   var status = _ref.status;
@@ -1171,11 +1178,11 @@ var SelectContainer = styled$1__default.div(_templateObject$a || (_templateObjec
   return optionsFillSpace && "1px solid " + colorGet(status, 500);
 });
 
-var _excluded$8 = ["handleOnChange"];
+var _excluded$9 = ["handleOnChange"];
 
 var Select = function Select(_ref) {
   var handleOnChange = _ref.handleOnChange,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$8);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$9);
 
   var _useState = React.useState(false),
       isOpen = _useState[0],
@@ -1237,11 +1244,11 @@ var Select = function Select(_ref) {
   }));
 };
 
-var _excluded$9 = ["handleOnChange"];
+var _excluded$a = ["handleOnChange"];
 
 var SelectForm = function SelectForm(_ref) {
   var handleOnChange = _ref.handleOnChange,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$9);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$a);
 
   var _useState = React.useState(false),
       isOpen = _useState[0],
@@ -1321,27 +1328,45 @@ var SelectForm = function SelectForm(_ref) {
   }));
 };
 
-var _templateObject$b;
-var SpinnerContainer = styled$1__default.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteralLoose(["\n  ", "\n  \n  .spinner-ball {\n    width: 30px;\n    aspect-ratio: 1;\n    border: 4px solid ", ";\n    border-top: 3px solid transparent;\n    border-radius: 50%;\n    animation: spin 1s cubic-bezier(1, 1, 1, 1) infinite;\n    margin: auto;\n\n    @keyframes spin {\n      from {\n        transform: rotate(0deg);\n      }\n      to {\n        transform: rotate(360deg);\n      }\n    }\n  }\n"])), function (_ref) {
+var _templateObject$b, _templateObject2;
+var SpinnerContainer = styled$1__default.div(_templateObject$b || (_templateObject$b = _taggedTemplateLiteralLoose(["\n  ", "\n"])), function (_ref) {
   var fixed = _ref.fixed;
-  return fixed && " \n    position: fixed;\n    inset: 0;\n    background: rgba(0, 0, 0, 0.2);\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  ";
+  return fixed && " \n    position: fixed;\n    inset: 0;\n    background: " + colorGet('basic', 600, true) + ";\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    ";
+});
+var SpinnerBall = styled$1__default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n  /* 12sm 16md 24lg 32xl */\n  width: ", ";\n  height: ", ";\n  border: 4px solid ", ";\n  border-top: 4px solid ", ";\n  border-left: 4px solid ", ";\n  border-right: 4px solid ", ";\n  border-radius: 50%;\n  animation: spin 1s cubic-bezier(1, 1, 1, 1) infinite;\n  margin: auto;\n\n  @keyframes spin {\n    from {\n      transform: rotate(0deg);\n    }\n    to {\n      transform: rotate(360deg);\n    }\n  }\n"])), function (props) {
+  return props.size;
+}, function (props) {
+  return props.size;
 }, function (_ref2) {
   var status = _ref2.status;
-  return colorGet(status, 500);
+  return colorGet(status, 600);
+}, function (_ref3) {
+  var status = _ref3.status;
+  return colorGet(status, 300);
+}, function (_ref4) {
+  var status = _ref4.status;
+  return colorGet(status, 300);
+}, function (_ref5) {
+  var status = _ref5.status;
+  return colorGet(status, 300);
 });
 
-var _excluded$a = ["fixed"];
+var _excluded$b = ["fixed", "size"];
 
 var Spinner = function Spinner(_ref) {
   var _ref$fixed = _ref.fixed,
       fixed = _ref$fixed === void 0 ? true : _ref$fixed,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$a);
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? '30px' : _ref$size,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$b);
 
   return React__default.createElement(SpinnerContainer, Object.assign({
     className: "spinner-contaier " + (props.className || ''),
     fixed: fixed
-  }, props), React__default.createElement("div", {
-    className: 'spinner-ball'
+  }, props), React__default.createElement(SpinnerBall, {
+    className: 'spinner-ball',
+    status: props.status,
+    size: size
   }));
 };
 
@@ -1412,12 +1437,12 @@ var SwipeToggleContainer = styled$1__default.label(_templateObject$c || (_templa
   return statusCheck ? '3px' : 'unset';
 });
 
-var _excluded$b = ["iconNameEnabled", "iconNameDisabled"];
+var _excluded$c = ["iconNameEnabled", "iconNameDisabled"];
 
 var SwipeToggle = function SwipeToggle(_ref) {
   var IconEnabled = _ref.iconNameEnabled,
       IconDisabled = _ref.iconNameDisabled,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$b);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$c);
 
   var _useState = React.useState(false),
       statusCheck = _useState[0],
@@ -1452,37 +1477,53 @@ var SwipeToggle = function SwipeToggle(_ref) {
 };
 
 var _templateObject$d;
-var TabContainer = styled$1__default.div(_templateObject$d || (_templateObject$d = _taggedTemplateLiteralLoose(["\n  border-bottom: 3px solid ", ";\n  padding: 10px 16px;\n  cursor: pointer;\n"])), colorGet('basic', 400));
+var TabContainer = styled$1__default.div(_templateObject$d || (_templateObject$d = _taggedTemplateLiteralLoose(["\n  border-bottom: 3px solid ", ";\n  padding: 10px 16px;\n  cursor: pointer;\n  display: flex;\n  align-items: center;\n  gap: 10px;\n  flex-direction: ", ";\n"])), colorGet('basic', 400), function (_ref) {
+  var iconposition = _ref.iconposition;
+  return iconposition === 'top' || iconposition === 'bottom' ? 'column' : 'row';
+});
 
-var _excluded$c = ["className"];
+var _excluded$d = ["className", "iconposition", "icon"];
 
 var Tab = function Tab(_ref) {
   var className = _ref.className,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$c);
+      _ref$iconposition = _ref.iconposition,
+      iconposition = _ref$iconposition === void 0 ? 'left' : _ref$iconposition,
+      Icon = _ref.icon,
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$d);
 
   return React__default.createElement(TabContainer, Object.assign({
+    iconposition: iconposition,
     className: "tab-option " + (className ? className : '')
   }, props, {
     onClick: function onClick() {
       return props.handleOnClickTab(props.index);
     }
-  }), props.label);
+  }), Icon && (iconposition === 'left' || iconposition === 'top') && React__default.createElement(Icon, {
+    color: colorGet('basic', 800),
+    fill: props.iconfill || 'transparent'
+  }), React__default.createElement("span", null, props.label), Icon && (iconposition === 'right' || iconposition === 'bottom') && React__default.createElement(Icon, {
+    color: colorGet('basic', 800),
+    fill: props.iconfill || 'transparent'
+  }));
 };
 
 var _templateObject$e;
-var TabsContainer = styled$1__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  background: #fff;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  height: 50px;\n\n  .tab-options-list {\n    user-select: none;\n    display: flexbox;\n    justify-content: center;\n    overflow-x: auto;\n    padding-bottom: 2px;\n  }\n\n  .selected {\n    color: ", ";\n    border-bottom: 3px solid ", ";\n  }\n\n  .rendered-components-container {\n    .rendered-tab {\n      display: none;\n    }\n\n    .rendered-tab.--show {\n      display: block;\n    }\n  }\n"])), function (_ref) {
+var TabsContainer = styled$1__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  background: #fff;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  \n  .tab-options-list {\n    /* box-shadow: 0px 10px 10px -10px ", "; */\n    min-height: 50px;\n    font-weight: 600;\n    user-select: none;\n    display: flexbox;\n    justify-content: center;\n    overflow-x: auto;\n    padding-bottom: 2px;\n  }\n\n  .selected {\n    color: ", ";\n    border-bottom: 3px solid ", ";\n\n    svg {\n      color: ", " !important;\n    }\n  }\n\n  .rendered-components-container {\n    .rendered-tab {\n      display: none;\n    }\n\n    .rendered-tab.--show {\n      display: block;\n    }\n  }\n"])), colorGet('basic', 700), function (_ref) {
   var status = _ref.status;
-  return status && colorGet(status, 600);
+  return colorGet(status, 600);
 }, function (_ref2) {
   var status = _ref2.status;
   return status && colorGet(status, 600);
+}, function (_ref3) {
+  var status = _ref3.status;
+  return colorGet(status, 600);
 });
 
-var _excluded$d = ["children", "className"];
+var _excluded$e = ["children", "className"];
 
 var Tabs = function Tabs(_ref) {
   var className = _ref.className,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$d);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$e);
 
   var _useState = React.useState(0),
       selectedTab = _useState[0],
@@ -1499,21 +1540,19 @@ var Tabs = function Tabs(_ref) {
   }, props), React__default.createElement("ul", {
     className: 'tab-options-list'
   }, props.tabs.map(function (tab) {
-    return React__default.createElement(Tab, {
+    return React__default.createElement(Tab, Object.assign({}, tab, {
       key: tab.label,
       className: "" + (selectedTab === tab.index ? 'selected' : ''),
-      label: tab.label,
-      index: tab.index,
       selectedTab: selectedTab,
-      status: props.status,
       handleOnClickTab: function handleOnClickTab(clickedTab) {
         return handleOnChangeTab(clickedTab);
       }
-    });
+    }));
   })), React__default.createElement("div", {
     className: 'rendered-components-container'
   }, props.tabs.map(function (tab) {
     return React__default.createElement("div", {
+      key: tab.label,
       className: "rendered-tab " + (tab.index === selectedTab ? '--show' : '')
     }, tab.componentToRender);
   }))));
@@ -1547,19 +1586,19 @@ function useTabs() {
 }
 
 var _templateObject$f;
-var ContainerTextArea = styled$1__default.div(_templateObject$f || (_templateObject$f = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    box-sizing: border-box;\n    border-radius: 4px;\n    border: 1px solid ", ";\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    resize: ", ";\n  }\n\n  span {\n    display: block;\n    color: ", ";\n    font-size: 11px;\n  }\n"])), function (props) {
+var ContainerTextArea = styled$1__default.div(_templateObject$f || (_templateObject$f = _taggedTemplateLiteralLoose(["\n  width: 100%;\n  position: relative;\n\n  textarea {\n    box-sizing: border-box;\n    border-radius: 4px;\n    border: 2px solid ", ";\n    outline: none;\n    font-size: 15px;\n    font-weight: 500;\n    padding: 0.4375rem 1rem;\n    background: #f7f9fc;\n    transition: 0.1s ease-in-out;\n    transition-property: border;\n    text-overflow: ellipsis;\n    resize: ", ";\n  }\n\n  span {\n    display: block;\n    color: ", ";\n    font-size: 11px;\n  }\n"])), function (props) {
   return colorGet(props.status, 500);
 }, function (_ref) {
   var resizable = _ref.resizable;
   return resizable;
 }, colorGet('danger', 500));
 
-var _excluded$e = ["resizable"];
+var _excluded$f = ["resizable"];
 
 var TextArea = function TextArea(_ref) {
   var _ref$resizable = _ref.resizable,
       resizable = _ref$resizable === void 0 ? 'both' : _ref$resizable,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$e);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$f);
 
   return React__default.createElement(ContainerTextArea, {
     className: "textareaform-container " + (props.className || ''),
@@ -1576,13 +1615,13 @@ var TextArea = function TextArea(_ref) {
   }));
 };
 
-var _excluded$f = ["textAreaRef", "resizable"];
+var _excluded$g = ["textAreaRef", "resizable"];
 
 var TextAreaForm = function TextAreaForm(_ref) {
   var textAreaRef = _ref.textAreaRef,
       _ref$resizable = _ref.resizable,
       resizable = _ref$resizable === void 0 ? 'both' : _ref$resizable,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$f);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$g);
 
   var textAreaReference = React.useRef(null);
   if (textAreaRef) textAreaReference = textAreaRef;
@@ -1697,7 +1736,7 @@ var TooltipContainer = styled$1__default.div(_templateObject$g || (_templateObje
   return position === 'top' && "\n        bottom: -10px;\n        border-color: " + colorGet(status, 500) + " transparent transparent  transparent;\n    ";
 });
 
-var _excluded$g = ["clickable", "status", "position"];
+var _excluded$h = ["clickable", "status", "position"];
 
 var Tooltip = function Tooltip(_ref) {
   var _ref$clickable = _ref.clickable,
@@ -1706,7 +1745,7 @@ var Tooltip = function Tooltip(_ref) {
       status = _ref$status === void 0 ? 'danger' : _ref$status,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'bottom' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$g);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$h);
 
   var _useState = React.useState(false),
       show = _useState[0],
@@ -1766,14 +1805,14 @@ var ToastCardContainer = styled$1__default.div(_templateObject$h || (_templateOb
   return position === 'bottom-left' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
 });
 
-var _excluded$h = ["duration", "position"];
+var _excluded$i = ["duration", "position"];
 
 var ToastCard = function ToastCard(_ref) {
   var _ref$duration = _ref.duration,
       duration = _ref$duration === void 0 ? 5000 : _ref$duration,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$h);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$i);
 
   var _useToast = useToast(),
       toastListCurrent = _useToast.toastListCurrent;
