@@ -6,7 +6,7 @@ import { BaseStyles } from '../BaseStyles';
 storiesOf('Avatar', module)
   .addDecorator(withKnobs)
 
-  .add('Open Multiple', () => {
+  .add('Default', () => {
     const image = text('Image URL', 'https://source.unsplash.com/random?avatar');
 
     return (
