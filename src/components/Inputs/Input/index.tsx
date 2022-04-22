@@ -22,11 +22,7 @@ const Input: React.FC<IInputProps> = ({ icon: Icon, ...props }) => {
 
       <div className='container-input-icon'>
         <input {...props} onChange={handleChange} className='input-component-tag' />
-        {Icon && (
-          <div className='icon'>
-            <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />
-          </div>
-        )}
+        {Icon && <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />}
       </div>
 
       {props.error && <InputsErrorMessage error={props.error} />}

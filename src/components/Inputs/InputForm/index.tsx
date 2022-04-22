@@ -51,11 +51,7 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, icon: Icon, ...props }
           {...props}
           className='inputform-component-tag'
         />
-        {Icon && (
-          <div className='icon'>
-            <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />
-          </div>
-        )}
+        {Icon && <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />}
       </div>
 
       {props.error && <InputsErrorMessage error={props.error} />}
