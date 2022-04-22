@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import { BaseStyles } from '../../BaseStyles';
@@ -15,8 +15,11 @@ storiesOf('TextAreaForm', module)
       'primary'
     );
 
+    const [value, setValue] = useState<string>('marrom bom boom');
+
     const handleSubmit = (formData) => {
-      console.log(`formData`, formData);
+      console.log(formData)
+      setValue(formData.textAreaName);
     };
 
     return (
@@ -29,10 +32,11 @@ storiesOf('TextAreaForm', module)
           status={status}
           label='Text Area Label:'
           mandatory='on'
-          name='text-area-name'
-          defaultValue='marrom bom boom'
+          name='textAreaName'
+          defaultValue={value}
           resizable='none'
         />
+        Value: {value}
         <Button type='submit'>Submit</Button>
       </Form>
     );

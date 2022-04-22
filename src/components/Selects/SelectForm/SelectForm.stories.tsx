@@ -26,15 +26,15 @@ storiesOf('SelectForm', module)
 
     const handleSubmit = (formData) => {
       console.log(`formData`, formData);
+      console.log(`select1 > `, formData.select1);
+      console.log(`select2 > `, formData.select2);
     };
 
     return (
       <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <BaseStyles />
-        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name'} status={'basic'} />
-        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name2'} status={'basic'} />
-        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name3'} status={'basic'} />
-        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'name4'} status={'basic'} />
+        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'select1'} status={status} />
+        <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'select2'} status={status} />
         <Button type='submit'>Submit</Button>
       </Form>
     );

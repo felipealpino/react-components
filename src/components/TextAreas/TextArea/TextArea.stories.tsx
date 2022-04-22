@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import { BaseStyles } from '../../BaseStyles';
@@ -13,11 +13,13 @@ storiesOf('TextArea', module)
       'primary'
     );
 
+    const [value, setValue] = useState<string>('marrom bom boom');
+
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <BaseStyles />
         <TextArea
-          onChange={(event) => console.log(event.target.value)}
+          onChange={(event) => setValue(event.target.value)}
           maxLength={30}
           cols={20}
           rows={2}
@@ -25,9 +27,10 @@ storiesOf('TextArea', module)
           label='Text Area Label:'
           mandatory='on'
           name='text-area'
-          defaultValue='marrom bom boom'
+          defaultValue={value}
           resizable='none'
         ></TextArea>
+        Value: {value}
       </div>
     );
   });

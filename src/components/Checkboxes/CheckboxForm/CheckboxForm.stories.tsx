@@ -21,15 +21,15 @@ storiesOf('CheckboxForm', module)
 
     const handleSubmit = (formData) => {
       console.log(`formData`, formData);
+      console.log(`checkbox1 >`, formData.checkbox1);
+      console.log(`checkbox2 >`, formData.checkbox2);
     };
 
     return (
       <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <BaseStyles />
-        <CheckboxForm semiRounded={semiRounded} name='checkbox1' id='checkbox1' disabled={isDisabled} />
-        <CheckboxForm semiRounded={semiRounded} name='checkbox2' id='checkbox2' disabled={isDisabled} />
-        <CheckboxForm semiRounded={semiRounded} name='checkbox3' id='checkbox3' disabled={isDisabled} />
-        <CheckboxForm semiRounded={semiRounded} name='checkbox4' id='checkbox4' disabled={isDisabled} />
+        <CheckboxForm semiRounded={semiRounded} status={status} name='checkbox1' id='checkbox1' disabled={isDisabled} />
+        <CheckboxForm semiRounded={semiRounded} status={status} name='checkbox2' id='checkbox2' disabled={isDisabled} />
         <Button type='submit'>Submit</Button>
       </Form>
     );

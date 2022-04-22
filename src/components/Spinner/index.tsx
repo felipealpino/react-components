@@ -1,18 +1,19 @@
 import { ElementStatus } from '../../shared/theme/colors';
 import React from 'react';
 
-import { SpinnerContainer } from './styles';
+import { SpinnerBall, SpinnerContainer } from './styles';
 
 export interface ISpinner {
   status?: ElementStatus;
   fixed?: boolean;
   className?: string;
+  size?: string;
 }
 
-const Spinner: React.FC<ISpinner> = ({ fixed = true, ...props }) => {
+const Spinner: React.FC<ISpinner> = ({ fixed = true, size = '30px', ...props }) => {
   return (
     <SpinnerContainer className={`spinner-contaier ${props.className || ''}`} fixed={fixed} {...props}>
-      <div className='spinner-ball'></div>
+      <SpinnerBall className='spinner-ball' status={props.status} size={size} />
     </SpinnerContainer>
   );
 };

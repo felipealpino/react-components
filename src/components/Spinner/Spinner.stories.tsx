@@ -28,14 +28,16 @@ storiesOf('Spinner', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'secondary'
     );
+
+    const spinnerSize = select('Size', ['20px', '30px', '40px', '50px', '60px'], '30px');
 
     return (
       <div>
         <BaseStyles />
         Loading ....
-        <Spinner status={status} />
+        <Spinner status={status} size={spinnerSize} />
       </div>
     );
   });
