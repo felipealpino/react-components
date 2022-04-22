@@ -9,9 +9,11 @@ export const TabsContainer = styled.div<ITabs>`
   left: 0;
   right: 0;
   z-index: 1;
-  height: 50px;
+  min-height: 50px;
 
   .tab-options-list {
+    /* box-shadow: 0px 10px 10px -10px ${colorGet('basic', 700)}; */
+    font-weight: 600;
     user-select: none;
     display: flexbox;
     justify-content: center;
@@ -20,8 +22,12 @@ export const TabsContainer = styled.div<ITabs>`
   }
 
   .selected {
-    color: ${({ status }) => status && colorGet(status, 600)};
+    color: ${({ status }) =>  colorGet(status, 600)};
     border-bottom: 3px solid ${({ status }) => status && colorGet(status, 600)};
+
+    svg {
+      color: ${({ status }) => colorGet(status, 600)} !important;
+    }
   }
 
   .rendered-components-container {

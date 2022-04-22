@@ -29,19 +29,19 @@ const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
         <ul className='tab-options-list'>
           {props.tabs.map((tab) => (
             <Tab
+              {...tab}
               key={tab.label}
               className={`${selectedTab === tab.index ? 'selected' : ''}`}
-              label={tab.label}
-              index={tab.index}
               selectedTab={selectedTab}
-              status={props.status}
               handleOnClickTab={(clickedTab) => handleOnChangeTab(clickedTab)}
             />
           ))}
         </ul>
         <div className='rendered-components-container'>
           {props.tabs.map((tab) => (
-            <div className={`rendered-tab ${tab.index === selectedTab ? '--show' : ''}`}>{tab.componentToRender}</div>
+            <div key={tab.label} className={`rendered-tab ${tab.index === selectedTab ? '--show' : ''}`}>
+              {tab.componentToRender}
+            </div>
           ))}
         </div>
       </TabsContainer>
