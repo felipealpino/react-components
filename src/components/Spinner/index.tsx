@@ -12,7 +12,7 @@ export interface ISpinner {
 
 const Spinner: React.FC<ISpinner> = ({ fixed = true, size = '30px', ...props }) => {
   return (
-    <SpinnerContainer className={`spinner-contaier ${props.className || ''}`} fixed={fixed} {...props}>
+    <SpinnerContainer className={`spinner-container ${props.className || ''}`} fixed={fixed} {...props}>
       <SpinnerBall className='spinner-ball' status={props.status} size={size} />
     </SpinnerContainer>
   );

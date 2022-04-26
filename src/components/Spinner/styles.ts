@@ -20,6 +20,7 @@ export const SpinnerContainer = styled.div<ISpinner>`
     align-items: center;
     `}
 `;
+
 export const SpinnerBall = styled.div<ISpinnerBallProps>`
   /* 12sm 16md 24lg 32xl */
   width: ${(props) => props.size};
