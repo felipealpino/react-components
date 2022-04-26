@@ -14,7 +14,6 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   const [myIndexInArray, setMyIndexInArray] = useState<number>(-1);
   const intervalIdShow: { current: NodeJS.Timeout | null } = useRef(null);
   const intervalIdRemove: { current: NodeJS.Timeout | null } = useRef(null);
-
   const mounted = useRef(false);
 
   const handleOnClickToastCard = useCallback(() => {
