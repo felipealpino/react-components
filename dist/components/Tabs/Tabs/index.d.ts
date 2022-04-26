@@ -7,6 +7,8 @@ export interface ITabs {
     selectedTabIndex?: number;
     handleOnChangeTab?: (selectedTabIndex: number) => void;
     tabs: ITab[];
+    shouldResetTabsStates?: boolean;
+    tabsPosition?: 'flex-start' | 'flex-end' | 'space-around' | 'space-between' | 'space-evenly' | 'center';
 }
 declare const Tabs: React.FC<ITabs>;
 export { Tabs };

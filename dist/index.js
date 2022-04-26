@@ -1361,7 +1361,7 @@ var Spinner = function Spinner(_ref) {
       props = _objectWithoutPropertiesLoose(_ref, _excluded$b);
 
   return React__default.createElement(SpinnerContainer, Object.assign({
-    className: "spinner-contaier " + (props.className || ''),
+    className: "spinner-container " + (props.className || ''),
     fixed: fixed
   }, props), React__default.createElement(SpinnerBall, {
     className: 'spinner-ball',
@@ -1508,14 +1508,17 @@ var Tab = function Tab(_ref) {
 };
 
 var _templateObject$e;
-var TabsContainer = styled$1__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  background: #fff;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n  \n  .tab-options-list {\n    /* box-shadow: 0px 10px 10px -10px ", "; */\n    min-height: 50px;\n    font-weight: 600;\n    user-select: none;\n    display: flexbox;\n    justify-content: center;\n    overflow-x: auto;\n    padding-bottom: 2px;\n  }\n\n  .selected {\n    color: ", ";\n    border-bottom: 3px solid ", ";\n\n    svg {\n      color: ", " !important;\n    }\n  }\n\n  .rendered-components-container {\n    .rendered-tab {\n      display: none;\n    }\n\n    .rendered-tab.--show {\n      display: block;\n    }\n  }\n"])), colorGet('basic', 700), function (_ref) {
-  var status = _ref.status;
-  return colorGet(status, 600);
+var TabsContainer = styled$1__default.div(_templateObject$e || (_templateObject$e = _taggedTemplateLiteralLoose(["\n  background: #fff;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1;\n\n  .tab-options-list {\n    min-height: 50px;\n    font-weight: 600;\n    user-select: none;\n    display: flex;\n    overflow-x: auto;\n    padding-bottom: 2px;\n    justify-content: ", ";\n  }\n\n  .selected {\n    color: ", ";\n    border-bottom: 3px solid ", ";\n\n    svg {\n      color: ", " !important;\n    }\n  }\n\n  .rendered-components-container {\n    .rendered-tab {\n      display: none;\n    }\n\n    .rendered-tab.--show {\n      display: block;\n    }\n  }\n"])), function (_ref) {
+  var tabsPosition = _ref.tabsPosition;
+  return tabsPosition;
 }, function (_ref2) {
   var status = _ref2.status;
-  return status && colorGet(status, 600);
+  return colorGet(status, 600);
 }, function (_ref3) {
   var status = _ref3.status;
+  return status && colorGet(status, 600);
+}, function (_ref4) {
+  var status = _ref4.status;
   return colorGet(status, 600);
 });
 
@@ -1535,13 +1538,20 @@ var Tabs = function Tabs(_ref) {
   var handleOnChangeTab = React.useCallback(function (clickedTab) {
     setSelectedTab(clickedTab);
   }, []);
-  return React__default.createElement(React.Fragment, null, React__default.createElement(TabsContainer, Object.assign({
+  var renderedResetedTab = React.useMemo(function () {
+    var foundTab = props.tabs.find(function (tab) {
+      return tab.index === selectedTab;
+    });
+    if (!foundTab) throw new Error("TAB NOT FOUND");
+    return foundTab.componentToRender;
+  }, [props.tabs, selectedTab]);
+  return React__default.createElement(TabsContainer, Object.assign({
     className: "tabs-container " + (className ? className : '')
   }, props), React__default.createElement("ul", {
     className: 'tab-options-list'
   }, props.tabs.map(function (tab) {
     return React__default.createElement(Tab, Object.assign({}, tab, {
-      key: tab.label,
+      key: tab.index,
       className: "" + (selectedTab === tab.index ? 'selected' : ''),
       selectedTab: selectedTab,
       handleOnClickTab: function handleOnClickTab(clickedTab) {
@@ -1550,12 +1560,12 @@ var Tabs = function Tabs(_ref) {
     }));
   })), React__default.createElement("div", {
     className: 'rendered-components-container'
-  }, props.tabs.map(function (tab) {
+  }, !props.shouldResetTabsStates && props.tabs.map(function (tab) {
     return React__default.createElement("div", {
-      key: tab.label,
+      key: tab.index,
       className: "rendered-tab " + (tab.index === selectedTab ? '--show' : '')
     }, tab.componentToRender);
-  }))));
+  }), props.shouldResetTabsStates && renderedResetedTab));
 };
 
 var TabsContext = React__default.createContext({});
@@ -1784,25 +1794,25 @@ var ToastCardContainer = styled$1__default.div(_templateObject$h || (_templateOb
       shouldShow = _ref2.shouldShow,
       myIndexInArray = _ref2.myIndexInArray,
       timeToUnmount = _ref2.timeToUnmount;
-  return position === 'top-right' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
+  return position === 'top-right' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform " + timeToUnmount + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
 }, function (_ref3) {
   var position = _ref3.position,
       shouldShow = _ref3.shouldShow,
       myIndexInArray = _ref3.myIndexInArray,
       timeToUnmount = _ref3.timeToUnmount;
-  return position === 'bottom-right' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
+  return position === 'bottom-right' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    right: 12px;\n    transition: transform " + timeToUnmount + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '200%') + ");\n  ";
 }, function (_ref4) {
   var position = _ref4.position,
       shouldShow = _ref4.shouldShow,
       myIndexInArray = _ref4.myIndexInArray,
       timeToUnmount = _ref4.timeToUnmount;
-  return position === 'top-left' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
+  return position === 'top-left' && " \n    top: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + timeToUnmount + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
 }, function (_ref5) {
   var position = _ref5.position,
       shouldShow = _ref5.shouldShow,
       myIndexInArray = _ref5.myIndexInArray,
       timeToUnmount = _ref5.timeToUnmount;
-  return position === 'bottom-left' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + (timeToUnmount - 100) + "ms ease-in;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
+  return position === 'bottom-left' && " \n    bottom: " + (myIndexInArray * 100 + 10) + "px;\n    left: 12px;\n    transition: transform " + timeToUnmount + "ms ease-in-out;\n    transform: translateX(" + (shouldShow ? '0' : '-200%') + ");\n  ";
 });
 
 var _excluded$i = ["duration", "position"];
@@ -1817,8 +1827,6 @@ var ToastCard = function ToastCard(_ref) {
   var _useToast = useToast(),
       toastListCurrent = _useToast.toastListCurrent;
 
-  var toastCardRef = React.useRef(null);
-
   var _useState = React.useState(false),
       shouldShow = _useState[0],
       setShouldShow = _useState[1];
@@ -1829,23 +1837,15 @@ var ToastCard = function ToastCard(_ref) {
       myIndexInArray = _useState2[0],
       setMyIndexInArray = _useState2[1];
 
-  var _useState3 = React.useState(),
-      intervalIdShow = _useState3[0],
-      setIntervalIdShow = _useState3[1];
-
-  var _useState4 = React.useState(),
-      intervalIdRemove = _useState4[0],
-      setIntervalIdRemove = _useState4[1];
-
+  var intervalIdShow = React.useRef(null);
+  var intervalIdRemove = React.useRef(null);
   var mounted = React.useRef(false);
   var handleOnClickToastCard = React.useCallback(function () {
     setShouldShow(false);
-    var intervalIdRemove = setTimeout(function () {
+    intervalIdRemove.current = setTimeout(function () {
       props.handleOnClick(props.id);
     }, timeToUnmount);
-    setIntervalIdShow(intervalIdShow);
-    setIntervalIdRemove(intervalIdRemove);
-  }, [props, toastListCurrent]);
+  }, [props.handleOnClick, props.id]);
   var toastIcon = React.useMemo(function () {
     if (props.status === 'success') return React__default.createElement(fi.FiCheckCircle, null);
     if (props.status === 'warning') return React__default.createElement(fi.FiAlertTriangle, null);
@@ -1853,28 +1853,25 @@ var ToastCard = function ToastCard(_ref) {
     if (props.status === 'danger') return React__default.createElement(fi.FiXOctagon, null);
     return;
   }, [props.status]);
-  React.useEffect(function () {
-    setShouldShow(true);
-    removeToastFromScreen();
-  }, [duration]);
+  var handleMouseEnter = React.useCallback(function () {
+    intervalIdShow.current && clearTimeout(intervalIdShow.current);
+    intervalIdRemove.current && clearTimeout(intervalIdRemove.current);
+  }, []);
   var removeToastFromScreen = React.useCallback(function () {
-    var intervalIdShow = setTimeout(function () {
+    intervalIdShow.current = setTimeout(function () {
       mounted.current && setShouldShow(false);
     }, duration);
-    var intervalIdRemove = setTimeout(function () {
-      if (!toastCardRef || !toastCardRef.current) return;
-      toastCardRef.current.click();
+    intervalIdRemove.current = setTimeout(function () {
+      props.handleOnClick(props.id);
     }, duration + timeToUnmount);
-    setIntervalIdShow(intervalIdShow);
-    setIntervalIdRemove(intervalIdRemove);
-  }, [toastCardRef.current]);
+  }, [duration, props.handleOnClick, props.id]);
   var handleMouseLeave = React.useCallback(function () {
     removeToastFromScreen();
   }, [removeToastFromScreen]);
-  var handleMouseEnter = React.useCallback(function () {
-    intervalIdShow && clearTimeout(intervalIdShow);
-    intervalIdRemove && clearTimeout(intervalIdRemove);
-  }, [intervalIdShow, intervalIdRemove]);
+  React.useEffect(function () {
+    setShouldShow(true);
+    removeToastFromScreen();
+  }, [removeToastFromScreen]);
   React.useEffect(function () {
     var myIndex = toastListCurrent.findIndex(function (toast) {
       return toast.id === props.id;
@@ -1893,7 +1890,6 @@ var ToastCard = function ToastCard(_ref) {
     myIndexInArray: myIndexInArray,
     position: position,
     duration: duration,
-    ref: toastCardRef,
     className: "toast-card " + (props.className ? props.className : ''),
     onClick: handleOnClickToastCard,
     shouldShow: shouldShow,

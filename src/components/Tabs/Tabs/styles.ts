@@ -17,6 +17,7 @@ export const TabsContainer = styled.div<ITabs>`
     display: flex;
     overflow-x: auto;
     padding-bottom: 2px;
+    justify-content: ${({ tabsPosition }) => tabsPosition};
   }
 
   .selected {

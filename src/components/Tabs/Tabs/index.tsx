@@ -10,6 +10,7 @@ export interface ITabs {
   handleOnChangeTab?: (selectedTabIndex: number) => void;
   tabs: ITab[];
   shouldResetTabsStates?: boolean;
+  tabsPosition?: 'flex-start' | 'flex-end' | 'space-around' | 'space-between' | 'space-evenly' | 'center';
 }
 
 const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
@@ -35,7 +36,7 @@ const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
         {props.tabs.map((tab) => (
           <Tab
             {...tab}
-            key={tab.label}
+            key={tab.index}
             className={`${selectedTab === tab.index ? 'selected' : ''}`}
             selectedTab={selectedTab}
             handleOnClickTab={(clickedTab) => handleOnChangeTab(clickedTab)}
@@ -46,7 +47,7 @@ const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
         {/* Render all components to render */}
         {!props.shouldResetTabsStates &&
           props.tabs.map((tab) => (
-            <div key={tab.label} className={`rendered-tab ${tab.index === selectedTab ? '--show' : ''}`}>
+            <div key={tab.index} className={`rendered-tab ${tab.index === selectedTab ? '--show' : ''}`}>
               {tab.componentToRender}
             </div>
           ))}
