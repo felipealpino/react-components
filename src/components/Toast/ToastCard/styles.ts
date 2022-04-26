@@ -49,7 +49,7 @@ ${({ position, shouldShow, myIndexInArray, timeToUnmount }) =>
     ` 
     top: ${myIndexInArray * 100 + 10}px;
     left: 12px;
-    transition: transform ${timeToUnmount - 100}ms ease-in;
+    transition: transform ${timeToUnmount - 100}ms ease-in-out;
     transform: translateX(${shouldShow ? '0' : '-200%'});
   `}
 
@@ -58,7 +58,7 @@ ${({ position, shouldShow, myIndexInArray, timeToUnmount }) =>
     ` 
     bottom: ${myIndexInArray * 100 + 10}px;
     left: 12px;
-    transition: transform ${timeToUnmount - 100}ms ease-in;
+    transition: transform ${timeToUnmount - 100}ms ease-in-out;
     transform: translateX(${shouldShow ? '0' : '-200%'});
   `}
 
