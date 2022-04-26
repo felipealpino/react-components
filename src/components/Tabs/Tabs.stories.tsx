@@ -75,7 +75,7 @@ storiesOf('Tabs', module)
 
 const DirectoryContainer: React.FC = (props) => {
   return (
-    <div style={{ padding: '2rem 1rem 1rem 1rem', height: 'calc(100vh + 52px)', overflowY: 'auto' }}>
+    <div style={{ padding: '2rem 1rem 1rem 1rem', height: 'calc(100vh - 50px)', overflowY: 'auto' }}>
       {props.children}
     </div>
   );
