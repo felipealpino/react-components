@@ -1,7 +1,6 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ElementStatus } from '../../../shared/theme/colors';
 import { ITab, Tab } from '../Tab';
-
 import { TabsContainer } from './styles';
 
 export interface ITabs {
@@ -10,6 +9,7 @@ export interface ITabs {
   selectedTabIndex?: number;
   handleOnChangeTab?: (selectedTabIndex: number) => void;
   tabs: ITab[];
+  shouldResetTabsStates?: boolean;
 }
 
 const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
@@ -23,29 +23,38 @@ const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
     setSelectedTab(clickedTab);
   }, []);
 
+  const renderedResetedTab = useMemo(() => {
+    const foundTab = props.tabs.find((tab) => tab.index === selectedTab);
+    if (!foundTab) throw new Error(`TAB NOT FOUND`);
+    return foundTab.componentToRender;
+  }, [props.tabs, selectedTab]);
+
   return (
-    <Fragment>
-      <TabsContainer className={`tabs-container ${className ? className : ''}`} {...props}>
-        <ul className='tab-options-list'>
-          {props.tabs.map((tab) => (
-            <Tab
-              {...tab}
-              key={tab.label}
-              className={`${selectedTab === tab.index ? 'selected' : ''}`}
-              selectedTab={selectedTab}
-              handleOnClickTab={(clickedTab) => handleOnChangeTab(clickedTab)}
-            />
-          ))}
-        </ul>
-        <div className='rendered-components-container'>
-          {props.tabs.map((tab) => (
+    <TabsContainer className={`tabs-container ${className ? className : ''}`} {...props}>
+      <ul className='tab-options-list'>
+        {props.tabs.map((tab) => (
+          <Tab
+            {...tab}
+            key={tab.label}
+            className={`${selectedTab === tab.index ? 'selected' : ''}`}
+            selectedTab={selectedTab}
+            handleOnClickTab={(clickedTab) => handleOnChangeTab(clickedTab)}
+          />
+        ))}
+      </ul>
+      <div className='rendered-components-container'>
+        {/* Render all components to render */}
+        {!props.shouldResetTabsStates &&
+          props.tabs.map((tab) => (
             <div key={tab.label} className={`rendered-tab ${tab.index === selectedTab ? '--show' : ''}`}>
               {tab.componentToRender}
             </div>
           ))}
-        </div>
-      </TabsContainer>
-    </Fragment>
+
+        {/* Render just one component to render  */}
+        {props.shouldResetTabsStates && renderedResetedTab}
+      </div>
+    </TabsContainer>
   );
 };
 

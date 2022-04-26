@@ -9,20 +9,18 @@ export const TabsContainer = styled.div<ITabs>`
   left: 0;
   right: 0;
   z-index: 1;
-  
+
   .tab-options-list {
-    /* box-shadow: 0px 10px 10px -10px ${colorGet('basic', 700)}; */
     min-height: 50px;
     font-weight: 600;
     user-select: none;
-    display: flexbox;
-    justify-content: center;
+    display: flex;
     overflow-x: auto;
     padding-bottom: 2px;
   }
 
   .selected {
-    color: ${({ status }) =>  colorGet(status, 600)};
+    color: ${({ status }) => colorGet(status, 600)};
     border-bottom: 3px solid ${({ status }) => status && colorGet(status, 600)};
 
     svg {

@@ -20,8 +20,16 @@ storiesOf('Tabs', module)
 
     const tabsToRender: ITab[] = [
       { label: 'Home', index: 0, componentToRender: <Home />, icon: FiHome, iconposition: iconposition },
-      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition },
-      { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition }
+      { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 3, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 4, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 5, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 6, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 7, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 8, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 9, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Graphics', index: 10, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
+      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition }
     ];
 
     return (
