@@ -46,13 +46,20 @@ storiesOf('Tabs', module)
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
       'primary'
     );
-    
+
     const iconposition = select('Icon Position', ['left', 'bottom', 'right', 'top'], 'left');
 
     const shouldUnmmount = boolean('Reset Tab State onChange? ', false);
 
     const tabsToRender: ITab[] = [
       { label: 'Home', index: 0, componentToRender: <Home />, icon: FiHome, iconposition: iconposition },
+      {
+        label: 'Products',
+        index: 1,
+        icon: FiLayers,
+        iconposition: iconposition,
+        clickTabCallback: () => alert(`You clicked in a tab without componentToRender and with a clickTabCallback, use this prop case you want to change between routes`)
+      },
       { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
       { label: 'Graphics', index: 3, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
       { label: 'Graphics', index: 4, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
@@ -61,8 +68,7 @@ storiesOf('Tabs', module)
       { label: 'Graphics', index: 7, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
       { label: 'Graphics', index: 8, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
       { label: 'Graphics', index: 9, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
-      { label: 'Graphics', index: 10, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
-      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition }
+      { label: 'Graphics', index: 10, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition }
     ];
 
     return (
