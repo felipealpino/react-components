@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Repository in progress, goto branch develop  ..... 
-=======
 # react-components
->>>>>>> develop
 
 Step by step to install.
 
