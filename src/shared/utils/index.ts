@@ -2,7 +2,6 @@ export * from './removeDuplicatesFromArray';
 export * from './errorMessageBuilder';
 export * from './getContrastColor';
 export * from './deleteObjectKeys';
-export * from './combineContext';
 export * from './objectToQuery';
 export * from './calculateAge';
 export * from './formatDate';
