@@ -12,7 +12,7 @@ storiesOf('Button', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const iconPosition = select('Icon Position', ['left', 'right'], 'right');
@@ -28,12 +28,12 @@ storiesOf('Button', module)
         <BaseStyles />
         <Button
           icon={FiSave}
-          iconfill='#996DFF'
-          iconcolor='#633BBC'
+          iconfill="#996DFF"
+          iconcolor="#633BBC"
           outline={outline}
           disabled={isDisabled}
           status={status}
-          onClick={(event) => console.log(`The button was clicked.`)}
+          onClick={() => console.log('The button was clicked')}
           iconposition={iconPosition}
         >
           {buttonText}
@@ -44,18 +44,13 @@ storiesOf('Button', module)
           outline={outline}
           disabled={isDisabled}
           status={status}
-          onClick={(event) => console.log(`The button was clicked.`)}
+          onClick={() => console.log('The button was clicked')}
           iconposition={iconPosition}
         >
           {buttonText}
         </Button>
 
-        <Button
-          outline={outline}
-          disabled={isDisabled}
-          status={status}
-          onClick={(event) => console.log(`The button was clicked.`)}
-        >
+        <Button outline={outline} disabled={isDisabled} status={status} onClick={() => console.log('The button was clicked.')}>
           {buttonText}
         </Button>
       </div>

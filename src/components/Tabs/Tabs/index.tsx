@@ -13,7 +13,7 @@ export interface ITabs {
   tabsPosition?: 'flex-start' | 'flex-end' | 'space-around' | 'space-between' | 'space-evenly' | 'center';
 }
 
-const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
+const Tabs: React.FC<ITabs> = ({ className, ...props }) => {
   const [selectedTab, setSelectedTab] = useState<number>(0);
 
   useEffect(() => {
@@ -26,13 +26,13 @@ const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
 
   const renderedResetedTab = useMemo(() => {
     const foundTab = props.tabs.find((tab) => tab.index === selectedTab);
-    if (!foundTab) throw new Error(`TAB NOT FOUND`);
+    if (!foundTab) throw new Error('TAB NOT FOUND');
     return foundTab.componentToRender;
   }, [props.tabs, selectedTab]);
 
   return (
     <TabsContainer className={`tabs-container ${className ? className : ''}`} {...props}>
-      <ul className='tab-options-list'>
+      <ul className="tab-options-list">
         {props.tabs.map((tab) => (
           <Tab
             {...tab}
@@ -44,7 +44,7 @@ const Tabs: React.FC<ITabs> = ({ children, className, ...props }) => {
           />
         ))}
       </ul>
-      <div className='rendered-components-container'>
+      <div className="rendered-components-container">
         {/* Render all components to render */}
         {!props.shouldResetTabsStates &&
           props.tabs.map((tab) => (

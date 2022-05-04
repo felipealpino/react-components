@@ -12,49 +12,45 @@ export interface IAccordion {
   disabled?: boolean;
   handleSetCurrent?: (index: number) => void;
   accordionCurent?: number;
+  children?: React.ReactNode;
 }
 
-const Accordion: React.FC<IAccordion> = ({ status = 'basic', ...props }) => {
+const Accordion: React.FC<IAccordion> = ({ status = 'basic', handleSetCurrent, ...props }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleOpen = useCallback(() => {
     setIsOpen((oldState) => !oldState);
-    props.handleSetCurrent && props.handleSetCurrent(Number(props.index));
-  }, []);
+    handleSetCurrent && handleSetCurrent(Number(props.index));
+  }, [handleSetCurrent, props.index]);
 
   useEffect(() => {
     if ((props.accordionCurent || props.accordionCurent == 0) && props.accordionCurent != props.index) {
       setIsOpen(false);
     }
-  }, [props.accordionCurent]);
+  }, [props.accordionCurent, props.index]);
 
   return (
-    <AccordionContainer
-      {...props}
-      status={status}
-      isOpen={isOpen}
-      className={`accordion-container ${props.className || ''}`}
-    >
-      <div className='accordion-header' onClick={() => !props.disabled && handleOpen()}>
-        <div className='accordion-info-text'>
+    <AccordionContainer {...props} status={status} isOpen={isOpen} className={`accordion-container ${props.className || ''}`}>
+      <div className="accordion-header" onClick={() => !props.disabled && handleOpen()}>
+        <div className="accordion-info-text">
           <label>{props.title}</label>
         </div>
 
         {props.disabled && (
-          <div className='accordion-icon'>
-            <FiXCircle color='#11182F' />
+          <div className="accordion-icon">
+            <FiXCircle color="#11182F" />
           </div>
         )}
 
         {!props.disabled && (
-          <div className='accordion-icon'>
-            <FiChevronDown color='#11182F' />
+          <div className="accordion-icon">
+            <FiChevronDown color="#11182F" />
           </div>
         )}
       </div>
       {props.children && (
-        <div className='accordion-content'>
-          <div className='accordion-childrens'>{props.children}</div>
+        <div className="accordion-content">
+          <div className="accordion-childrens">{props.children}</div>
         </div>
       )}
     </AccordionContainer>

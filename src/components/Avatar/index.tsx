@@ -11,7 +11,7 @@ export interface IAvatar {
 const Avatar: React.FC<IAvatar> = (props) => {
   return (
     <AvatarContainer {...props}>
-      <img src={props.image} alt='avatar' />
+      <img src={props.image} alt="avatar" />
     </AvatarContainer>
   );
 };

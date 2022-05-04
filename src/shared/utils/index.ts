@@ -1,4 +1,3 @@
-export * from './removeDuplicatesFromArray';
 export * from './errorMessageBuilder';
 export * from './getContrastColor';
 export * from './deleteObjectKeys';

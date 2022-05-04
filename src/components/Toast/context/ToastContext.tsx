@@ -9,7 +9,7 @@ export type IToastContextData = {
 
 export const ToastContext = React.createContext<IToastContextData>({} as IToastContextData);
 
-const ToastProvider: React.FC = ({ children }) => {
+const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [toastListCurrent, setToastListCurrent] = useState<IToast[]>([]);
 
   const removeToastCard = useCallback((cardId: string) => {
@@ -28,7 +28,7 @@ const ToastProvider: React.FC = ({ children }) => {
         position: options.position,
         title: options.title,
         subtitle: options.subtitle,
-        status: options.status
+        status: options.status,
       };
 
       setToastListCurrent((oldState) => {
@@ -36,7 +36,7 @@ const ToastProvider: React.FC = ({ children }) => {
         return [newToast, ...filteredPositions];
       });
     },
-    [removeToastCard]
+    [removeToastCard],
   );
 
   return <ToastContext.Provider value={{ addToast, toastListCurrent }}>{children}</ToastContext.Provider>;

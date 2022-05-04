@@ -33,7 +33,7 @@ export const InputContainer = styled.div<IInputProps>`
       text-overflow: ellipsis;
       -webkit-box-orient: vertical;
     }
-    
+
     input:focus {
       border: 2px solid ${({ status }) => colorGet(status, 600)};
       background: ${colorGet('basic', 300)};

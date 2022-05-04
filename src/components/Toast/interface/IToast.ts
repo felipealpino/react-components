@@ -1,7 +1,6 @@
-import { ElementStatus } from "../../../shared/theme/colors";
+import { ElementStatus } from '../../../shared/theme/colors';
 
 export type IToastPositions = 'bottom-right' | 'top-left' | 'bottom-left' | 'top-right';
-
 
 //@todo juntar essas duas interfaces
 

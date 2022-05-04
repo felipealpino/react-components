@@ -22,22 +22,21 @@ export type ITabComplete = ITab & {
   handleOnChangeTab: (clickedTab: number) => void;
 };
 
-const Tab: React.FC<ITabComplete> = ({ className, iconposition = 'left', icon: Icon, ...props }) => {
+const Tab: React.FC<ITabComplete> = ({ className, iconposition = 'left', icon: Icon, clickTabCallback, handleOnChangeTab, ...props }) => {
   const handleOnClick = useCallback(() => {
-    props.handleOnChangeTab(props.index);
-    props.clickTabCallback && props.clickTabCallback();
-  }, []);
+    handleOnChangeTab(props.index);
+    clickTabCallback && clickTabCallback();
+  }, [clickTabCallback, handleOnChangeTab, props.index]);
 
   return (
     <TabContainer
+      handleOnChangeTab={handleOnChangeTab}
       iconposition={iconposition}
       className={`tab-option ${className ? className : ''}`}
       onClick={handleOnClick}
       {...props}
     >
-      {Icon && (iconposition === 'left' || iconposition === 'top') && (
-        <Icon color={colorGet('basic', 800)} fill={props.iconfill || 'transparent'} />
-      )}
+      {Icon && (iconposition === 'left' || iconposition === 'top') && <Icon color={colorGet('basic', 800)} fill={props.iconfill || 'transparent'} />}
 
       <span>{props.label}</span>
 

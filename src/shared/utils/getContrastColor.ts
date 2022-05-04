@@ -1,4 +1,4 @@
-import { colors } from "../theme";
+import { colors } from '../theme';
 
 export function getContrastColor(status: string | undefined): string {
   if (!status) {
@@ -7,5 +7,4 @@ export function getContrastColor(status: string | undefined): string {
 
   const color = `${status}Contrast`;
   return colors[color] ? `${colors[color]}` : colors.primaryContrast;
-};
-
+}

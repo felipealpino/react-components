@@ -125,10 +125,10 @@ export const fonts: IFonts = {
     fontWeight: 400,
     lineHeight: '1.25rem',
   },
-}
+};
 
 export const fontWeights: IFontWeights = {
   light: 300,
   normal: 400,
-  bold: 600
+  bold: 600,
 };

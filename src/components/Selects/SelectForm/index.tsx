@@ -25,7 +25,7 @@ const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props })
       },
       clearValue: () => {
         setSelectedItem(undefined);
-      }
+      },
     });
   }, [fieldName, registerField, selectedItem]);
 
@@ -39,7 +39,7 @@ const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props })
       setSelectedItem(option);
       setOpen((oldState) => !oldState);
     },
-    [handleOnChange]
+    [handleOnChange],
   );
 
   const headerText = useMemo(() => {
@@ -58,27 +58,22 @@ const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props })
     >
       {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
 
-      <div className='select-dropdown'>
-        <div className='select-dropdown-header' onClick={toggleSelect}>
+      <div className="select-dropdown">
+        <div className="select-dropdown-header" onClick={toggleSelect}>
           {headerText}
-          <FiChevronRight color='#222b45' />
+          <FiChevronRight color="#222b45" />
         </div>
         {isOpen &&
           (props.options.length > 0 ? (
-            <div className={`select-dropdown-body`}>
+            <div className={'select-dropdown-body'}>
               {props.options.map((option, index) => (
-                <div
-                  key={index}
-                  className='select-dropdown-item'
-                  onClick={() => handleOptionClick(option)}
-                  id={props.name}
-                >
+                <div key={index} className="select-dropdown-item" onClick={() => handleOptionClick(option)} id={props.name}>
                   {option.name}
                 </div>
               ))}
             </div>
           ) : (
-            <div className={`select-dropdown-body`}>Nenhuma opção disponível .. </div>
+            <div className={'select-dropdown-body'}>Nenhuma opção disponível .. </div>
           ))}
       </div>
       {props.error && <InputsErrorMessage error={props.error} />}

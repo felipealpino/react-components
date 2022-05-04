@@ -1,4 +1,3 @@
-
 export interface IInput {
   fontSize: string;
   fontWeight: number | string;
@@ -14,42 +13,42 @@ export interface IFormElements {
   input: {
     padding: string;
     floatingLabel: string;
-  }
+  };
 
   inputs: {
-    tiny: IInput,
-    small: IInput,
-    medium: IInput,
-    large: IInput,
-    giant: IInput,
-  }
+    tiny: IInput;
+    small: IInput;
+    medium: IInput;
+    large: IInput;
+    giant: IInput;
+  };
 
   checkbox: {
     border: string;
     borderRadius: string;
     sizes?: {
       [key: string]: object;
-    }
-  }
+    };
+  };
 
   fileInput: {
     backgroundColor: string;
     color: string;
-  }
+  };
 
   radio: {
     border: string;
     borderRadius: string;
     sizes?: {
       [key: string]: object;
-    }
-  }
+    };
+  };
 }
 
 export const formElements: IFormElements = {
   input: {
     padding: '16px',
-    floatingLabel: 'translate(-10px, -40px) scale(0.75)'
+    floatingLabel: 'translate(-10px, -40px) scale(0.75)',
   },
   inputs: {
     tiny: {
@@ -121,8 +120,8 @@ export const formElements: IFormElements = {
         checkmark: '20px',
         height: '30px',
         width: '30px',
-      }
-    }
+      },
+    },
   },
   fileInput: {
     backgroundColor: '#3880ff',
@@ -146,7 +145,7 @@ export const formElements: IFormElements = {
         innerCircle: '18px',
         height: '30px',
         width: '30px',
-      }
-    }
+      },
+    },
   },
 };

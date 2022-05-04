@@ -7,7 +7,7 @@ import { FiCheckCircle, FiInfo, FiAlertTriangle, FiXOctagon } from 'react-icons/
 // toast comes from the right and leaves to top
 // toast in the center of the page
 
-const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', ...props }) => {
+const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', handleOnClick, ...props }) => {
   const { toastListCurrent } = useToast();
   const [shouldShow, setShouldShow] = useState<boolean>(false);
   const timeToUnmount = 700; //700ms
@@ -19,9 +19,9 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   const handleOnClickToastCard = useCallback(() => {
     setShouldShow(false);
     intervalIdRemove.current = setTimeout(() => {
-      props.handleOnClick(props.id);
+      handleOnClick(props.id);
     }, timeToUnmount);
-  }, [props.handleOnClick, props.id]);
+  }, [handleOnClick, props.id]);
 
   const toastIcon = useMemo(() => {
     if (props.status === 'success') return <FiCheckCircle />;
@@ -43,9 +43,9 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
 
     intervalIdRemove.current = setTimeout(() => {
       //removing from array
-      props.handleOnClick(props.id);
+      handleOnClick(props.id);
     }, duration + timeToUnmount);
-  }, [duration, props.handleOnClick, props.id]);
+  }, [duration, handleOnClick, props.id]);
 
   const handleMouseLeave = useCallback(() => {
     removeToastFromScreen();
@@ -71,6 +71,7 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
   return (
     <ToastCardContainer
       {...props}
+      handleOnClick={handleOnClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       myIndexInArray={myIndexInArray}
@@ -81,11 +82,11 @@ const ToastCard: React.FC<IToast> = ({ duration = 5000, position = 'top-right', 
       shouldShow={shouldShow}
       timeToUnmount={timeToUnmount}
     >
-      <div className='toast-text-info'>
-        <div className='toast-title'>{props.title}</div>
-        <div className='toast-subtitle'>{props.subtitle}</div>
+      <div className="toast-text-info">
+        <div className="toast-title">{props.title}</div>
+        <div className="toast-subtitle">{props.subtitle}</div>
       </div>
-      <div className='toast-icon'>{toastIcon}</div>
+      <div className="toast-icon">{toastIcon}</div>
     </ToastCardContainer>
   );
 };

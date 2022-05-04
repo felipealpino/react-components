@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { storiesOf } from '@storybook/react';
 import { SwipeToggle } from './index';
-import { select, withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { select, withKnobs, boolean } from '@storybook/addon-knobs';
 import { v1 as uuidv1 } from 'uuid';
 import { BaseStyles } from '../BaseStyles';
 import { FiX, FiCheck, FiEye, FiEyeOff } from 'react-icons/fi';
@@ -12,7 +12,7 @@ storiesOf('SwipeToggle', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const isOutline = boolean('Outline', true);
@@ -26,14 +26,7 @@ storiesOf('SwipeToggle', module)
     return (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: '5px' }}>
         <BaseStyles />
-        <SwipeToggle
-          disabled={isDisabled}
-          rounded={isRounded}
-          handleOnChange={handleOnChange}
-          status={status}
-          outline={isOutline}
-          key={uuidv1()}
-        />
+        <SwipeToggle disabled={isDisabled} rounded={isRounded} handleOnChange={handleOnChange} status={status} outline={isOutline} key={uuidv1()} />
 
         <SwipeToggle
           iconNameDisabled={FiX}

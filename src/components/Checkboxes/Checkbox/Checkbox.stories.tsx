@@ -13,7 +13,7 @@ storiesOf('Checkbox', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const isDisabled = boolean('Disabled ? ', false);
@@ -38,7 +38,7 @@ storiesOf('Checkbox', module)
           status={status}
           semiRounded={semiRounded}
           icon={FiTrash2}
-          iconcolor='#222B45'
+          iconcolor="#222B45"
           name={''}
           id={''}
           label={'ANANABO'}
@@ -49,10 +49,10 @@ storiesOf('Checkbox', module)
           onChange={(event) => console.log(event.target.checked)}
           status={status}
           semiRounded={semiRounded}
-          iconcolor='#222B45'
+          iconcolor="#222B45"
           name={''}
           id={''}
-          error='This field is required'
+          error="This field is required"
           label={'Hi, I am a required checkbox'}
         />
 

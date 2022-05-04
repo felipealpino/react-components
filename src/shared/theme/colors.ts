@@ -10,18 +10,7 @@ export declare type ElementStatus =
   | 'info'
   | 'dark';
 
-export const ElementStatusConstraints = [
-  'basic',
-  'primary',
-  'secondary',
-  'tertiary',
-  'quaternary',
-  'success',
-  'warning',
-  'danger',
-  'info',
-  'dark'
-];
+export const ElementStatusConstraints = ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'warning', 'danger', 'info', 'dark'];
 
 export interface IColors {
   black: string | string[];
@@ -346,5 +335,5 @@ export const colors: IColors = {
   dark700: '#29292E',
   dark800: '#202024',
   dark900: '#121214',
-  dark1000: '#09090A'
+  dark1000: '#09090A',
 };

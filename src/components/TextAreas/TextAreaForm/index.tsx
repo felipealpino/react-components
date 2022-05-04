@@ -5,7 +5,6 @@ import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/in
 import { ITextArea } from '../TextArea';
 import { ContainerTextArea } from '../TextArea/styles';
 
-
 const TextAreaForm: React.FC<ITextArea> = ({ textAreaRef, resizable = 'both', ...props }) => {
   let textAreaReference = useRef<HTMLTextAreaElement>(null);
   if (textAreaRef) textAreaReference = textAreaRef;
@@ -24,19 +23,15 @@ const TextAreaForm: React.FC<ITextArea> = ({ textAreaRef, resizable = 'both', ..
       },
       clearValue: (ref) => {
         ref.current.value = '';
-      }
+      },
     });
   }, [fieldName, textAreaReference, registerField]);
 
   return (
-    <ContainerTextArea
-      className={`textareaform-container ${props.className || ''}`}
-      status={props.status}
-      resizable={resizable}
-    >
+    <ContainerTextArea className={`textareaform-container ${props.className || ''}`} status={props.status} resizable={resizable}>
       {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
 
-      <textarea ref={textAreaReference} className='textarea-component-tag' {...props}>
+      <textarea ref={textAreaReference} className="textarea-component-tag" {...props}>
         {props.children}
       </textarea>
       {props.error && <InputsErrorMessage error={props.error} />}

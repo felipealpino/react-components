@@ -10,7 +10,7 @@ storiesOf('Pagination', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const isRounded = boolean('Rounded ? ', false);
@@ -23,13 +23,7 @@ storiesOf('Pagination', module)
     return (
       <Fragment>
         <BaseStyles />
-        <Pagination
-          rounded={isRounded}
-          status={status}
-          totalOfPages={10}
-          currentPage={currentPage}
-          callbackGetListData={changePage}
-        />
+        <Pagination rounded={isRounded} status={status} totalOfPages={10} currentPage={currentPage} callbackGetListData={changePage} />
       </Fragment>
     );
   });

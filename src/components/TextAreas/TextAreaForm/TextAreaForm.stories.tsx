@@ -12,13 +12,13 @@ storiesOf('TextAreaForm', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const [value, setValue] = useState<string>('marrom bom boom');
 
     const handleSubmit = (formData) => {
-      console.log(formData)
+      console.log(formData);
       setValue(formData.textAreaName);
     };
 
@@ -30,14 +30,14 @@ storiesOf('TextAreaForm', module)
           cols={20}
           rows={2}
           status={status}
-          label='Text Area Label:'
-          mandatory='on'
-          name='textAreaName'
+          label="Text Area Label:"
+          mandatory="on"
+          name="textAreaName"
           defaultValue={value}
-          resizable='none'
+          resizable="none"
         />
         Value: {value}
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     );
   });

@@ -6,6 +6,7 @@ import { ThemeProvider as Provider } from './styled';
 
 interface IThemeProviderProps {
   customTheme?: IDefaultTheme;
+  children?: React.ReactNode;
 }
 
 export const ThemeProvider: React.FC<IThemeProviderProps> = ({ children, customTheme }) => {
