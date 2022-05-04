@@ -6,6 +6,7 @@ export interface ITooltip {
     className?: string;
     position?: 'top' | 'bottom';
     clickable?: boolean;
+    children?: React.ReactNode;
 }
 declare const Tooltip: React.FC<ITooltip>;
 export { Tooltip };
