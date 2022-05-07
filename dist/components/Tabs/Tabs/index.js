@@ -39,7 +39,7 @@ var Tabs = function (_a) {
         return foundTab.componentToRender;
     }, [props.tabs, selectedTab]);
     return (React.createElement(TabsContainer, __assign({ className: "tabs-container " + (className ? className : '') }, props),
-        React.createElement("ul", { className: "tab-options-list" }, props.tabs.map(function (tab) { return (React.createElement(Tab, __assign({}, tab, { key: tab.index, className: "" + (selectedTab === tab.index ? 'selected' : ''), selectedTab: selectedTab, handleOnChangeTab: function (clickedTab) { return handleOnChangeTab(clickedTab); }, clickTabCallback: tab.clickTabCallback }))); })),
+        React.createElement("ul", { className: "tab-options-list" }, props.tabs.map(function (tab) { return (React.createElement(Tab, __assign({}, tab, { key: tab.index, className: "" + (selectedTab === tab.index ? 'selected' : ''), selectedTab: selectedTab, handleOnChangeTab: function (clickedTab) { return !tab.disabled && handleOnChangeTab(clickedTab); }, clickTabCallback: tab.clickTabCallback }))); })),
         React.createElement("div", { className: "rendered-components-container" },
             !props.shouldResetTabsStates &&
                 props.tabs.map(function (tab) { return (React.createElement("div", { key: tab.index, className: "rendered-tab " + (tab.index === selectedTab ? '--show' : '') }, tab.componentToRender)); }),

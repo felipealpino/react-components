@@ -22,7 +22,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import React, { useCallback, useEffect, useState } from 'react';
 import { AccordionContainer } from '../../components/Accordion/styles';
-import { FiChevronDown, FiXCircle } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 var Accordion = function (_a) {
     var _b = _a.status, status = _b === void 0 ? 'basic' : _b, handleSetCurrent = _a.handleSetCurrent, props = __rest(_a, ["status", "handleSetCurrent"]);
     var _c = useState(false), isOpen = _c[0], setIsOpen = _c[1];
@@ -39,10 +39,8 @@ var Accordion = function (_a) {
         React.createElement("div", { className: "accordion-header", onClick: function () { return !props.disabled && handleOpen(); } },
             React.createElement("div", { className: "accordion-info-text" },
                 React.createElement("label", null, props.title)),
-            props.disabled && (React.createElement("div", { className: "accordion-icon" },
-                React.createElement(FiXCircle, { color: "#11182F" }))),
-            !props.disabled && (React.createElement("div", { className: "accordion-icon" },
-                React.createElement(FiChevronDown, { color: "#11182F" })))),
+            React.createElement("div", { className: "accordion-icon" },
+                React.createElement(FiChevronDown, { color: "#11182F" }))),
         props.children && (React.createElement("div", { className: "accordion-content" },
             React.createElement("div", { className: "accordion-childrens" }, props.children)))));
 };

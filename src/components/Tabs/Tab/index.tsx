@@ -14,6 +14,7 @@ export interface ITab {
   iconposition?: IPosition;
   iconfill?: string;
   clickTabCallback?: () => void;
+  disabled?: boolean;
 }
 
 export type ITabComplete = ITab & {

@@ -22,7 +22,7 @@ storiesOf('Tabs', module)
 
     const tabsToRender: ITab[] = [
       { label: 'Home', index: 0, componentToRender: <Home />, icon: FiHome, iconposition: iconposition },
-      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition },
+      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition, disabled: true },
       { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
     ];
 

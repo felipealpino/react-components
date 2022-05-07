@@ -26,18 +26,17 @@ const Radio: React.FC<IRadio> = ({ handleOnCheck, radioSize = 30, ...props }) =>
   );
 
   return (
-    <RadioContainer>
+    <RadioContainer disabled={props.disabled}>
       <InputRadio
         radioSize={radioSize}
         status={props.status}
         id={props.id}
         name={props.name}
         type="radio"
-        disabled={props.disabled}
-        // value={value}
         onChange={(event) => handleOnChange(event)}
+        disabled={props.disabled}
       />
-      {!!props.label && <InputLabel label={props.label} status={props.disabled ? 'basic' : props.status} isRequired={props.required} />}
+      {!!props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
     </RadioContainer>
   );
 };

@@ -15,7 +15,7 @@ export var ButtonContainer = styled.button(templateObject_1 || (templateObject_1
     return colorGet(status, 500);
 }, function (_a) {
     var disabled = _a.disabled;
-    return (!disabled ? '1' : '0.6');
+    return (!disabled ? '1' : '0.5');
 }, function (_a) {
     var status = _a.status, disabled = _a.disabled;
     return !disabled && colorGet(status, 600);

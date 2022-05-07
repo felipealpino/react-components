@@ -30,7 +30,7 @@ export var SwipeToggleContainer = styled.label(templateObject_1 || (templateObje
     return (rounded ? '100px' : '4px');
 }, function (_a) {
     var disabled = _a.disabled;
-    return (disabled ? '0.6' : '1');
+    return (disabled ? '0.5' : '1');
 }, function (_a) {
     var rounded = _a.rounded;
     return (rounded ? '100px' : '4px');

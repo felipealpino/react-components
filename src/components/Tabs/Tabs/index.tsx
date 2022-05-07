@@ -39,7 +39,7 @@ const Tabs: React.FC<ITabs> = ({ className, ...props }) => {
             key={tab.index}
             className={`${selectedTab === tab.index ? 'selected' : ''}`}
             selectedTab={selectedTab}
-            handleOnChangeTab={(clickedTab) => handleOnChangeTab(clickedTab)}
+            handleOnChangeTab={(clickedTab) => !tab.disabled && handleOnChangeTab(clickedTab)}
             clickTabCallback={tab.clickTabCallback}
           />
         ))}

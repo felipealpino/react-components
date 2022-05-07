@@ -17,11 +17,9 @@ var Radio = function (_a) {
     var handleOnChange = useCallback(function (event) {
         !!handleOnCheck && handleOnCheck(event);
     }, [handleOnCheck]);
-    return (React.createElement(RadioContainer, null,
-        React.createElement(InputRadio, { radioSize: radioSize, status: props.status, id: props.id, name: props.name, type: "radio", disabled: props.disabled, 
-            // value={value}
-            onChange: function (event) { return handleOnChange(event); } }),
-        !!props.label && React.createElement(InputLabel, { label: props.label, status: props.disabled ? 'basic' : props.status, isRequired: props.required })));
+    return (React.createElement(RadioContainer, { disabled: props.disabled },
+        React.createElement(InputRadio, { radioSize: radioSize, status: props.status, id: props.id, name: props.name, type: "radio", onChange: function (event) { return handleOnChange(event); }, disabled: props.disabled }),
+        !!props.label && React.createElement(InputLabel, { label: props.label, status: props.status, isRequired: props.required })));
 };
 export { Radio };
 //# sourceMappingURL=index.js.map
