@@ -8,23 +8,24 @@ export const RadioContainer = styled.div`
   gap: 0.5rem;
 `;
 
-export const InputRadio = styled.input<Pick<IRadio, 'status' | 'radioSize'>>`
+export const InputRadio = styled.input<Pick<IRadio, 'status' | 'radioSize' | 'disabled'>>`
   display: flex;
   align-items: center;
   justify-content: center;
   appearance: none;
   width: ${(props) => `${props.radioSize}px`};
   height: ${(props) => `${props.radioSize}px`};
-  border: 0.2rem solid ${(props) => colorGet(props.status, 500)};
+  border: 0.2rem solid ${(props) => colorGet(props.disabled ? 'basic' : props.status, 500)};
   border-radius: 50%;
   background: transparent;
   transition: 0.2s;
   transition-property: background, box-shadow;
   outline: none;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  margin: 0;
 
   &:hover {
-    box-shadow: 0 0 0 0.3rem ${(props) => colorGet(props.status, 200)};
+    box-shadow: ${(props) => (props.disabled ? 'none' : `0 0 0 0.3rem  ${colorGet(props.status, 200)}`)};
   }
 
   /* &:focus {
@@ -36,7 +37,7 @@ export const InputRadio = styled.input<Pick<IRadio, 'status' | 'radioSize'>>`
     width: ${(props) => `${(props.radioSize || 30) / 2}px`};
     height: ${(props) => `${(props.radioSize || 30) / 2}px`};
     border-radius: 50%;
-    background: ${(props) => colorGet(props.status, 500)};
+    background: ${(props) => colorGet(props.disabled ? 'basic' : props.status, 500)};
     transition: opacity 0.2s;
     opacity: 0;
     position: absolute;
@@ -46,10 +47,4 @@ export const InputRadio = styled.input<Pick<IRadio, 'status' | 'radioSize'>>`
       opacity: 1;
     }
   }
-`;
-
-export const Label = styled.label<Pick<IRadio, 'status'>>`
-  color: ${(props) => colorGet(props.status, 500)};
-  cursor: pointer;
-  font-weight: 500;
 `;
