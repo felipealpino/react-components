@@ -35,7 +35,7 @@ var Input = function (_a) {
             onChange(event);
     }, [onChange, props.mask]);
     return (React.createElement(InputContainer, __assign({}, props, { className: "input-container " + (props.className || '') }),
-        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, mandatory: props.mandatory }),
+        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, isRequired: props.required }),
         React.createElement("div", { className: "container-input-icon" },
             React.createElement("input", __assign({}, props, { onChange: handleChange, className: "input-component-tag" })),
             Icon && React.createElement(Icon, { color: props.iconcolor, fill: props.iconfill || 'transparent' })),

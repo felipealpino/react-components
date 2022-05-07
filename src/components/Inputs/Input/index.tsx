@@ -21,7 +21,7 @@ const Input: React.FC<IInputProps> = ({ icon: Icon, onChange, ...props }) => {
 
   return (
     <InputContainer {...props} className={`input-container ${props.className || ''}`}>
-      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
+      {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
 
       <div className="container-input-icon">
         <input {...props} onChange={handleChange} className="input-component-tag" />

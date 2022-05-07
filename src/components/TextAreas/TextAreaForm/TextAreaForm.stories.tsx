@@ -31,7 +31,7 @@ storiesOf('TextAreaForm', module)
           rows={2}
           status={status}
           label="Text Area Label:"
-          mandatory="on"
+          required
           name="textAreaName"
           defaultValue={value}
           resizable="none"

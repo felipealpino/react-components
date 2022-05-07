@@ -29,7 +29,7 @@ const TextAreaForm: React.FC<ITextArea> = ({ textAreaRef, resizable = 'both', ..
 
   return (
     <ContainerTextArea className={`textareaform-container ${props.className || ''}`} status={props.status} resizable={resizable}>
-      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
+      {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
 
       <textarea ref={textAreaReference} className="textarea-component-tag" {...props}>
         {props.children}

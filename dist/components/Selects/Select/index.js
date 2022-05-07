@@ -34,7 +34,7 @@ var Select = function (_a) {
         return 'Selecione uma Opção';
     }, [props.placeholder, selectedItem]);
     return (React.createElement(SelectContainer, { className: "select-container " + (props.className ? props.className : ''), status: props.status, isOpen: isOpen, isDisabled: props.disabled, optionsFillSpace: props.optionsFillSpace },
-        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, mandatory: props.mandatory }),
+        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, isRequired: props.required }),
         React.createElement("div", { className: "select-dropdown" },
             React.createElement("div", { className: "select-dropdown-header", onClick: toggleSelect },
                 headerText,

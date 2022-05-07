@@ -27,7 +27,7 @@ import InputLabel from '../../../shared/components/InputLabel';
 var TextArea = function (_a) {
     var _b = _a.resizable, resizable = _b === void 0 ? 'both' : _b, props = __rest(_a, ["resizable"]);
     return (React.createElement(ContainerTextArea, { className: "textareaform-container " + (props.className || ''), status: props.status, resizable: resizable },
-        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, mandatory: props.mandatory }),
+        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, isRequired: props.required }),
         React.createElement("textarea", __assign({ className: "textarea-component-tag" }, props), props.children),
         props.error && React.createElement(InputsErrorMessage, { error: props.error })));
 };

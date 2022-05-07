@@ -47,7 +47,7 @@ var TextAreaForm = function (_a) {
         });
     }, [fieldName, textAreaReference, registerField]);
     return (React.createElement(ContainerTextArea, { className: "textareaform-container " + (props.className || ''), status: props.status, resizable: resizable },
-        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, mandatory: props.mandatory }),
+        props.label && React.createElement(InputLabel, { label: props.label, status: props.status, isRequired: props.required }),
         React.createElement("textarea", __assign({ ref: textAreaReference, className: "textarea-component-tag" }, props), props.children),
         props.error && React.createElement(InputsErrorMessage, { error: props.error })));
 };

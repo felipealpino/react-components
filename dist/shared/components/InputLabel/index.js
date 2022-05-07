@@ -26,7 +26,7 @@ var InputLabel = function (_a) {
     var className = _a.className, props = __rest(_a, ["className"]);
     return (React.createElement(InputLabelContainer, __assign({ className: "input-label " + (className ? className : '') }, props),
         props.label,
-        props.mandatory && React.createElement("span", { className: "mandatory-star" }, "*")));
+        props.isRequired && React.createElement("span", { className: "required-star" }, "*")));
 };
 export default InputLabel;
 //# sourceMappingURL=index.js.map

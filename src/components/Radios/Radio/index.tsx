@@ -12,7 +12,7 @@ export interface IRadio {
   status?: ElementStatus;
   id: string;
   name: string;
-  mandatory?: 'on';
+  required?: boolean;
   radioSize?: number;
   disabled?: boolean;
 }
@@ -37,7 +37,7 @@ const Radio: React.FC<IRadio> = ({ handleOnCheck, radioSize = 30, ...props }) =>
         // value={value}
         onChange={(event) => handleOnChange(event)}
       />
-      {!!props.label && <InputLabel label={props.label} status={props.disabled ? 'basic' : props.status} mandatory={props.mandatory} />}
+      {!!props.label && <InputLabel label={props.label} status={props.disabled ? 'basic' : props.status} isRequired={props.required} />}
     </RadioContainer>
   );
 };

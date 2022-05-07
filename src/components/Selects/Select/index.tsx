@@ -40,7 +40,7 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
       isDisabled={props.disabled}
       optionsFillSpace={props.optionsFillSpace}
     >
-      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
+      {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
 
       <div className="select-dropdown">
         <div className="select-dropdown-header" onClick={toggleSelect}>
