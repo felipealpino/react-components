@@ -8,7 +8,12 @@ export type ITextArea = TextAreaDefaultProps & {};
 
 const TextArea: React.FC<ITextArea> = ({ resizable = 'both', ...props }) => {
   return (
-    <ContainerTextArea className={`textareaform-container ${props.className || ''}`} status={props.status} resizable={resizable}>
+    <ContainerTextArea
+      className={`textareaform-container ${props.className || ''}`}
+      status={props.status}
+      resizable={resizable}
+      disabled={props.disabled}
+    >
       {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
 
       <textarea className="textarea-component-tag" {...props}>

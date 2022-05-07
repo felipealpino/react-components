@@ -37,11 +37,5 @@ export const CheckboxContainer = styled.div<ICheckbox>`
         position: absolute;
       }
     }
-
-    .container-label {
-      font-weight: 600;
-      font-size: 12px;
-      color: #222b45;
-    }
   }
 `;

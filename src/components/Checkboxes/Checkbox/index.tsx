@@ -4,6 +4,7 @@ import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/in
 import { ICheckboxDefaultProps } from '../interface/ICheckboxDefaultProps';
 import { CheckboxContainer } from './styles';
 import { FiCheck } from 'react-icons/fi';
+import InputLabel from '../../../shared/components/InputLabel';
 
 export type ICheckbox = ICheckboxDefaultProps & {};
 
@@ -24,9 +25,7 @@ const Checkbox: React.FC<ICheckbox> = ({ icon: Icon, semiRounded, ...props }) =>
 
           <input {...props} defaultChecked={isChecked} type="checkbox" onChange={(event) => handleOnClick(event)} />
         </div>
-        <label className="container-label" htmlFor={props.label}>
-          {props.label}
-        </label>
+        {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
       </div>
 
       {props.error && <InputsErrorMessage error={props.error} />}

@@ -54,6 +54,7 @@ storiesOf('Checkbox', module)
           id={''}
           error="This field is required"
           label={'Hi, I am a required checkbox'}
+          required
         />
 
         <Checkbox

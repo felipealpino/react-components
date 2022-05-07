@@ -4,6 +4,7 @@ import { FiCheck } from 'react-icons/fi';
 import { CheckboxContainer } from '../Checkbox/styles';
 import { ICheckboxDefaultProps } from '../interface/ICheckboxDefaultProps';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
+import InputLabel from '../../../shared/components/InputLabel';
 
 export type ICheckboxFormProps = ICheckboxDefaultProps & {};
 
@@ -44,9 +45,7 @@ const CheckboxForm: React.FC<ICheckboxFormProps> = ({ checkboxRef, semiRounded, 
 
           <input {...props} ref={checkboxReference} defaultChecked={isChecked} type="checkbox" onChange={(event) => handleOnClick(event)} />
         </div>
-        <label className="container-label" htmlFor={props.label}>
-          {props.label}
-        </label>
+        {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
       </div>
 
       {props.error && <InputsErrorMessage error={props.error} />}

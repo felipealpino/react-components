@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { BaseStyles } from '../../BaseStyles';
 import { TextArea } from '../TextArea';
 
@@ -12,6 +12,8 @@ storiesOf('TextArea', module)
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
       'primary',
     );
+
+    const isDisabled = boolean('Disabled', false);
 
     const [value, setValue] = useState<string>('marrom bom boom');
 
@@ -29,6 +31,7 @@ storiesOf('TextArea', module)
           name="text-area"
           defaultValue={value}
           resizable="none"
+          disabled={isDisabled}
         ></TextArea>
         Value: {value}
       </div>

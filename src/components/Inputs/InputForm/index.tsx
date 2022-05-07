@@ -44,7 +44,7 @@ const InputForm: React.FC<IInputFormProps> = ({ inputRef, icon: Icon, onChange, 
 
   return (
     <InputContainer {...props} className={`input-container ${props.className || ''}`}>
-      {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
+      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
 
       <div className="container-input-icon">
         <input id={fieldName} ref={inputReference} onChange={handleChange} {...props} className="inputform-component-tag" />

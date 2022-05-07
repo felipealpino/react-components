@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { BaseStyles } from '../../BaseStyles';
 import { TextAreaForm } from '../TextAreaForm';
 import { Button } from '../../Button';
@@ -14,6 +14,7 @@ storiesOf('TextAreaForm', module)
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
       'primary',
     );
+    const isDisabled = boolean('Disabled', false);
 
     const [value, setValue] = useState<string>('marrom bom boom');
 
@@ -22,6 +23,7 @@ storiesOf('TextAreaForm', module)
       setValue(formData.textAreaName);
     };
 
+    console.log(isDisabled);
     return (
       <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <BaseStyles />
@@ -35,6 +37,7 @@ storiesOf('TextAreaForm', module)
           name="textAreaName"
           defaultValue={value}
           resizable="none"
+          disabled={isDisabled}
         />
         Value: {value}
         <Button type="submit">Submit</Button>
