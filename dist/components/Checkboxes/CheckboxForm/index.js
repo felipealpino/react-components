@@ -25,6 +25,7 @@ import { useField } from '@unform/core';
 import { FiCheck } from 'react-icons/fi';
 import { CheckboxContainer } from '../Checkbox/styles';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
+import InputLabel from '../../../shared/components/InputLabel';
 var CheckboxForm = function (_a) {
     var checkboxRef = _a.checkboxRef, semiRounded = _a.semiRounded, Icon = _a.icon, props = __rest(_a, ["checkboxRef", "semiRounded", "icon"]);
     var checkboxReference = useRef(null);
@@ -57,7 +58,7 @@ var CheckboxForm = function (_a) {
                 isChecked && Icon && React.createElement(Icon, null),
                 isChecked && !Icon && React.createElement(FiCheck, null),
                 React.createElement("input", __assign({}, props, { ref: checkboxReference, defaultChecked: isChecked, type: "checkbox", onChange: function (event) { return handleOnClick(event); } }))),
-            React.createElement("label", { className: "container-label", htmlFor: props.label }, props.label)),
+            props.label && React.createElement(InputLabel, { label: props.label, status: props.status, isRequired: props.required })),
         props.error && React.createElement(InputsErrorMessage, { error: props.error })));
 };
 export { CheckboxForm };

@@ -24,6 +24,7 @@ import React, { useCallback, useState } from 'react';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
 import { CheckboxContainer } from './styles';
 import { FiCheck } from 'react-icons/fi';
+import InputLabel from '../../../shared/components/InputLabel';
 var Checkbox = function (_a) {
     var Icon = _a.icon, semiRounded = _a.semiRounded, props = __rest(_a, ["icon", "semiRounded"]);
     var _b = useState(props.defaultChecked || false), isChecked = _b[0], setIsChecked = _b[1];
@@ -37,7 +38,7 @@ var Checkbox = function (_a) {
                 isChecked && Icon && React.createElement(Icon, null),
                 isChecked && !Icon && React.createElement(FiCheck, null),
                 React.createElement("input", __assign({}, props, { defaultChecked: isChecked, type: "checkbox", onChange: function (event) { return handleOnClick(event); } }))),
-            React.createElement("label", { className: "container-label", htmlFor: props.label }, props.label)),
+            props.label && React.createElement(InputLabel, { label: props.label, status: props.status, isRequired: props.required })),
         props.error && React.createElement(InputsErrorMessage, { error: props.error })));
 };
 export { Checkbox };

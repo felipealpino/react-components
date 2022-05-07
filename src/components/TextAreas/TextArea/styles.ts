@@ -20,6 +20,10 @@ export const ContainerTextArea = styled.div<Pick<ITextArea, 'resizable' | 'statu
     resize: ${({ resizable }) => resizable};
   }
 
+  textarea:disabled {
+    cursor: not-allowed;
+  }
+
   span {
     display: block;
     color: ${colorGet('danger', 500)};

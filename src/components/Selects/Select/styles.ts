@@ -5,7 +5,7 @@ import styled from 'styled-components';
 interface ISelectProps {
   isOpen: boolean;
   status: ElementStatus;
-  isDisabled?: boolean;
+  disabled?: boolean;
   optionsFillSpace?: boolean;
 }
 
@@ -13,7 +13,7 @@ export const SelectContainer = styled.div<ISelectProps>`
   font-size: 15px;
 
   .select-dropdown {
-    opacity: ${(props) => (props.isDisabled ? '0.5' : '1')};
+    opacity: ${(props) => (props.disabled ? '0.5' : '1')};
     border: 2px solid ${({ status }) => `${colorGet(status, 500)}`};
     border-radius: 4px;
     position: relative;
@@ -22,7 +22,7 @@ export const SelectContainer = styled.div<ISelectProps>`
 
   .select-dropdown-header {
     padding: 15px;
-    cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
+    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
     display: flex;
     justify-content: space-between;
     align-items: center;

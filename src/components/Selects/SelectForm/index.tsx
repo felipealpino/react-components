@@ -53,7 +53,7 @@ const SelectForm: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props })
       className={`select-container ${props.className ? props.className : ''}`}
       status={props.status}
       isOpen={isOpen}
-      isDisabled={props.disabled}
+      disabled={props.disabled}
       optionsFillSpace={props.optionsFillSpace}
     >
       {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
