@@ -11,6 +11,7 @@ export const AccordionContainer = styled.div<IAccordionProps>`
   background: ${({ status }) => colorGet(status, 400)};
   min-height: 3rem;
   width: inherit;
+  opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
 
   .accordion-header {
     padding: 0.7rem;

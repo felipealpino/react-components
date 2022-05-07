@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { AccordionContainer } from '../../components/Accordion/styles';
 import { ElementStatus } from '../../shared/theme/colors';
-import { FiChevronDown, FiXCircle } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 
 export interface IAccordion {
   index?: number;
@@ -35,18 +35,9 @@ const Accordion: React.FC<IAccordion> = ({ status = 'basic', handleSetCurrent, .
         <div className="accordion-info-text">
           <label>{props.title}</label>
         </div>
-
-        {props.disabled && (
-          <div className="accordion-icon">
-            <FiXCircle color="#11182F" />
-          </div>
-        )}
-
-        {!props.disabled && (
-          <div className="accordion-icon">
-            <FiChevronDown color="#11182F" />
-          </div>
-        )}
+        <div className="accordion-icon">
+          <FiChevronDown color="#11182F" />
+        </div>
       </div>
       {props.children && (
         <div className="accordion-content">

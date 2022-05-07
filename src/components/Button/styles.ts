@@ -25,7 +25,7 @@ export const ButtonContainer = styled.button<IButton>`
   background: ${({ status, outline }) => (outline ? colorGet(status, 300) : colorGet(status, 500))};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border: 2px solid ${({ status }) => colorGet(status, 500)};
-  opacity: ${({ disabled }) => (!disabled ? '1' : '0.6')};
+  opacity: ${({ disabled }) => (!disabled ? '1' : '0.5')};
 
   &:hover {
     background: ${({ status, disabled }) => !disabled && colorGet(status, 600)};
