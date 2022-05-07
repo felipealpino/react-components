@@ -12,10 +12,11 @@ const TextArea: React.FC<ITextArea> = ({ resizable = 'both', ...props }) => {
       className={`textareaform-container ${props.className || ''}`}
       status={props.status}
       resizable={resizable}
+      disabled={props.disabled}
     >
-      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
+      {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
 
-      <textarea className='textarea-component-tag' {...props}>
+      <textarea className="textarea-component-tag" {...props}>
         {props.children}
       </textarea>
       {props.error && <InputsErrorMessage error={props.error} />}

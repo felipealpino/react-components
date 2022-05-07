@@ -13,7 +13,7 @@ export const InputLabelContainer = styled.label<InputLabel>`
   pointer-events: none;
   display: flex;
 
-  .mandatory-star {
+  .required-star {
     color: ${colorGet('danger', 500)};
     font-size: 14px;
     margin-left: 3px;

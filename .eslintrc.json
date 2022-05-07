@@ -1,0 +1,39 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended", "plugin:react-hooks/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "always"],
+    // "indent": ["error", 1],
+    "indent": "off",
+    // "linebreak-style": ["error", "windows"]
+    "linebreak-style": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "prefer-const": "warn",
+    "@typescript-eslint/no-empty-function": "warn",
+    "no-var": "warn"
+  }
+}

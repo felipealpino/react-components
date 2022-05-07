@@ -13,26 +13,20 @@ export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconfill?: string;
 }
 
-const Button: React.FC<IButton> = ({ icon: Icon, ...props }) => {
+const Button: React.FC<IButton> = ({ icon: Icon, onClick, ...props }) => {
   const handleOnClickButton = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       if (props.disabled) return;
-      props.onClick && props.onClick(event);
+      onClick && onClick(event);
     },
-    [props.disabled, props.onClick]
+    [onClick, props.disabled],
   );
 
   return (
-    <ButtonContainer
-      {...props}
-      className={`button-container ${props.className || ''}`}
-      onClick={(event) => handleOnClickButton(event)}
-    >
+    <ButtonContainer {...props} className={`button-container ${props.className || ''}`} onClick={(event) => handleOnClickButton(event)}>
       {Icon && props.iconposition === 'left' && <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />}
       {props.children}
-      {Icon && props.iconposition === 'right' && (
-        <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />
-      )}
+      {Icon && props.iconposition === 'right' && <Icon color={props.iconcolor} fill={props.iconfill || 'transparent'} />}
     </ButtonContainer>
   );
 };

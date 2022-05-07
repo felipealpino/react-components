@@ -10,11 +10,13 @@ export interface ITab {
     icon?: React.ComponentType<IconBaseProps>;
     iconposition?: IPosition;
     iconfill?: string;
+    clickTabCallback?: () => void;
+    disabled?: boolean;
 }
 export declare type ITabComplete = ITab & {
     status?: ElementStatus;
     selectedTab: number;
-    handleOnClickTab: (clickedTab: number) => void;
+    handleOnChangeTab: (clickedTab: number) => void;
 };
 declare const Tab: React.FC<ITabComplete>;
 export { Tab };

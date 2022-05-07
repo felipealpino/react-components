@@ -22,8 +22,8 @@ export * from './Spinner';
 
 export * from './SwipeToggle';
 
-export * from './Tabs/Tabs'
-export * from './Tabs/context/TabsContext'
+export * from './Tabs/Tabs';
+export * from './Tabs/context/TabsContext';
 
 export * from './TextAreas/TextArea';
 export * from './TextAreas/TextAreaForm';

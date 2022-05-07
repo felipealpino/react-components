@@ -12,7 +12,7 @@ storiesOf('SelectForm', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const selectBodyFillSpace = boolean('Select Options Fill Space ', false);
@@ -21,13 +21,13 @@ storiesOf('SelectForm', module)
       { name: 'Thawan Cavalcante', value: 'thawan' },
       { name: 'Gabriel Campos', value: 'gabriel' },
       { name: 'Igor Araujo', value: 'igor' },
-      { name: 'Felipe Gontijo', value: 'felipe' }
+      { name: 'Felipe Gontijo', value: 'felipe' },
     ];
 
     const handleSubmit = (formData) => {
-      console.log(`formData`, formData);
-      console.log(`select1 > `, formData.select1);
-      console.log(`select2 > `, formData.select2);
+      console.log('formData', formData);
+      console.log('select1 > ', formData.select1);
+      console.log('select2 > ', formData.select2);
     };
 
     return (
@@ -35,7 +35,7 @@ storiesOf('SelectForm', module)
         <BaseStyles />
         <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'select1'} status={status} />
         <SelectForm optionsFillSpace={selectBodyFillSpace} options={names} name={'select2'} status={status} />
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     );
   });

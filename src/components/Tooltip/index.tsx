@@ -8,6 +8,7 @@ export interface ITooltip {
   className?: string;
   position?: 'top' | 'bottom';
   clickable?: boolean;
+  children?: React.ReactNode;
 }
 
 const Tooltip: React.FC<ITooltip> = ({ clickable = false, status = 'danger', position = 'bottom', ...props }) => {
@@ -25,11 +26,11 @@ const Tooltip: React.FC<ITooltip> = ({ clickable = false, status = 'danger', pos
       onMouseEnter={() => !clickable && setShow(true)}
       onClick={() => clickable && setShow(!show)}
     >
-      <div className='tooltip-box'>
+      <div className="tooltip-box">
         {props.text}
-        <span className='tooltip-arrow' />
+        <span className="tooltip-arrow" />
       </div>
-      <div className='tooltip-children'>{props.children}</div>
+      <div className="tooltip-children">{props.children}</div>
     </TooltipContainer>
   );
 };

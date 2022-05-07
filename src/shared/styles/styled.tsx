@@ -6,8 +6,8 @@ const {
   css,
   withTheme,
   createGlobalStyle,
-  ThemeProvider
-} = (styledComponents as unknown) as styledComponents.ThemedStyledComponentsModule<IDefaultTheme>;
+  ThemeProvider,
+} = styledComponents as unknown as styledComponents.ThemedStyledComponentsModule<IDefaultTheme>;
 
 const { ServerStyleSheet } = styledComponents;
 

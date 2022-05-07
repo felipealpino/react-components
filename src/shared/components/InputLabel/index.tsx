@@ -4,7 +4,7 @@ import { InputLabelContainer } from './styles';
 
 export interface InputLabel {
   label: string;
-  mandatory?: 'on';
+  isRequired?: boolean;
   className?: string;
   status?: ElementStatus;
 }
@@ -13,7 +13,7 @@ const InputLabel: React.FC<InputLabel> = ({ className, ...props }) => {
   return (
     <InputLabelContainer className={`input-label ${className ? className : ''}`} {...props}>
       {props.label}
-      {props.mandatory && <span className='mandatory-star'>*</span>}
+      {props.isRequired && <span className="required-star">*</span>}
     </InputLabelContainer>
   );
 };

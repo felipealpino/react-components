@@ -13,21 +13,17 @@ storiesOf('Tabs', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const iconposition = select('Icon Position', ['left', 'bottom', 'right', 'top'], 'left');
 
-    const tabPosition = select(
-      'Tabs Position',
-      ['flex-start', 'flex-end', 'space-around', 'space-between', 'space-evenly', 'center'],
-      'center'
-    );
+    const tabPosition = select('Tabs Position', ['flex-start', 'flex-end', 'space-around', 'space-between', 'space-evenly', 'center'], 'center');
 
     const tabsToRender: ITab[] = [
       { label: 'Home', index: 0, componentToRender: <Home />, icon: FiHome, iconposition: iconposition },
-      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition },
-      { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition }
+      { label: 'Products', index: 1, componentToRender: <Products />, icon: FiLayers, iconposition: iconposition, disabled: true },
+      { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
     ];
 
     const shouldUnmmount = boolean('Reset Tab State onChange? ', false);
@@ -44,7 +40,7 @@ storiesOf('Tabs', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const iconposition = select('Icon Position', ['left', 'bottom', 'right', 'top'], 'left');
@@ -58,7 +54,8 @@ storiesOf('Tabs', module)
         index: 1,
         icon: FiLayers,
         iconposition: iconposition,
-        clickTabCallback: () => alert(`You clicked in a tab without componentToRender and with a clickTabCallback, use this prop case you want to change between routes`)
+        clickTabCallback: () =>
+          alert('You clicked in a tab without componentToRender and with a clickTabCallback, use this prop case you want to change between routes'),
       },
       { label: 'Graphics', index: 2, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
       { label: 'Graphics', index: 3, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
@@ -68,7 +65,7 @@ storiesOf('Tabs', module)
       { label: 'Graphics', index: 7, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
       { label: 'Graphics', index: 8, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
       { label: 'Graphics', index: 9, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
-      { label: 'Graphics', index: 10, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition }
+      { label: 'Graphics', index: 10, componentToRender: <Graphics />, icon: FiTrendingUp, iconposition: iconposition },
     ];
 
     return (
@@ -79,12 +76,8 @@ storiesOf('Tabs', module)
     );
   });
 
-const DirectoryContainer: React.FC = (props) => {
-  return (
-    <div style={{ padding: '2rem 1rem 1rem 1rem', height: 'calc(100vh - 50px)', overflowY: 'auto' }}>
-      {props.children}
-    </div>
-  );
+const DirectoryContainer: React.FC<{ children?: React.ReactNode }> = (props) => {
+  return <div style={{ padding: '2rem 1rem 1rem 1rem', height: 'calc(100vh - 50px)', overflowY: 'auto' }}>{props.children}</div>;
 };
 
 const Home: React.FC = () => {

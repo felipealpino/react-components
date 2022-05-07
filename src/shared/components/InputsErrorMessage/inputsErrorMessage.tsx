@@ -9,7 +9,7 @@ interface IInputsErrorMessage {
 
 const InputsErrorMessage: React.FC<IInputsErrorMessage> = (props) => {
   return (
-    <InputsErrorMessageContainer className='error'>
+    <InputsErrorMessageContainer className="error">
       <FiAlertCircle color={colorGet('danger', 500)} />
       {props.error}
     </InputsErrorMessageContainer>

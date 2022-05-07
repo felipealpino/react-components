@@ -16,5 +16,5 @@ export const AvatarContainer = styled.div<IAvatar>`
     width: 100%;
   }
 
-  ${(props) => props.onClick && `cursor: pointer`}
+  ${(props) => props.onClick && 'cursor: pointer'}
 `;

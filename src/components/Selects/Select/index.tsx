@@ -23,7 +23,7 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
       setSelectedItem(option);
       setOpen((oldState) => !oldState);
     },
-    [handleOnChange]
+    [handleOnChange],
   );
 
   const headerText = useMemo(() => {
@@ -37,32 +37,27 @@ const Select: React.FC<ISelectDefaultProps> = ({ handleOnChange, ...props }) => 
       className={`select-container ${props.className ? props.className : ''}`}
       status={props.status}
       isOpen={isOpen}
-      isDisabled={props.disabled}
+      disabled={props.disabled}
       optionsFillSpace={props.optionsFillSpace}
     >
-      {props.label && <InputLabel label={props.label} status={props.status} mandatory={props.mandatory} />}
+      {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
 
-      <div className='select-dropdown'>
-        <div className='select-dropdown-header' onClick={toggleSelect}>
+      <div className="select-dropdown">
+        <div className="select-dropdown-header" onClick={toggleSelect}>
           {headerText}
-          <FiChevronRight color='#222b45' />
+          <FiChevronRight color="#222b45" />
         </div>
         {isOpen &&
           (props.options.length > 0 ? (
-            <div className={`select-dropdown-body`}>
+            <div className={'select-dropdown-body'}>
               {props.options.map((option, index) => (
-                <div
-                  key={index}
-                  className='select-dropdown-item'
-                  onClick={() => handleOptionClick(option)}
-                  id={props.name}
-                >
+                <div key={index} className="select-dropdown-item" onClick={() => handleOptionClick(option)} id={props.name}>
                   {option.name}
                 </div>
               ))}
             </div>
           ) : (
-            <div className={`select-dropdown-body`}>Nenhuma opção disponível .. </div>
+            <div className={'select-dropdown-body'}>Nenhuma opção disponível .. </div>
           ))}
       </div>
       {props.error && <InputsErrorMessage error={props.error} />}

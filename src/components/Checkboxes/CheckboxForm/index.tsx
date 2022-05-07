@@ -4,6 +4,7 @@ import { FiCheck } from 'react-icons/fi';
 import { CheckboxContainer } from '../Checkbox/styles';
 import { ICheckboxDefaultProps } from '../interface/ICheckboxDefaultProps';
 import InputsErrorMessage from '../../../shared/components/InputsErrorMessage/inputsErrorMessage';
+import InputLabel from '../../../shared/components/InputLabel';
 
 export type ICheckboxFormProps = ICheckboxDefaultProps & {};
 
@@ -24,7 +25,7 @@ const CheckboxForm: React.FC<ICheckboxFormProps> = ({ checkboxRef, semiRounded, 
       },
       clearValue: (ref) => {
         ref.current.checked = false;
-      }
+      },
     });
   }, [fieldName, checkboxReference, registerField]);
 
@@ -36,23 +37,15 @@ const CheckboxForm: React.FC<ICheckboxFormProps> = ({ checkboxRef, semiRounded, 
   }, []);
 
   return (
-    <CheckboxContainer className='checkbox-form-container' {...props} semiRounded={semiRounded}>
+    <CheckboxContainer className="checkbox-form-container" {...props} semiRounded={semiRounded}>
       <div>
-        <div className='container-input'>
+        <div className="container-input">
           {isChecked && Icon && <Icon />}
           {isChecked && !Icon && <FiCheck />}
 
-          <input
-            {...props}
-            ref={checkboxReference}
-            defaultChecked={isChecked}
-            type='checkbox'
-            onChange={(event) => handleOnClick(event)}
-          />
+          <input {...props} ref={checkboxReference} defaultChecked={isChecked} type="checkbox" onChange={(event) => handleOnClick(event)} />
         </div>
-        <label className='container-label' htmlFor={props.label}>
-          {props.label}
-        </label>
+        {props.label && <InputLabel label={props.label} status={props.status} isRequired={props.required} />}
       </div>
 
       {props.error && <InputsErrorMessage error={props.error} />}

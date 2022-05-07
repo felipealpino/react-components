@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, color, boolean } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { Select } from '../Select';
 import { ISelectOptions } from '../interfaces/ISelectOptions';
 import { BaseStyles } from '../../BaseStyles';
@@ -10,7 +10,7 @@ storiesOf('Select', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const selectBodyFillSpace = boolean('Select Options Fill Space ', false);
@@ -19,7 +19,7 @@ storiesOf('Select', module)
       { name: 'Thawan Cavalcante', value: 'thawan' },
       { name: 'Gabriel Campos', value: 'gabriel' },
       { name: 'Igor Araujo', value: 'igor' },
-      { name: 'Felipe Gontijo', value: 'felipe' }
+      { name: 'Felipe Gontijo', value: 'felipe' },
     ];
 
     const handleOnSelectOption = useCallback((option: ISelectOptions, objectKey: string) => {
@@ -32,33 +32,33 @@ storiesOf('Select', module)
         <Select
           optionsFillSpace={selectBodyFillSpace}
           handleOnChange={(option) => handleOnSelectOption(option, 'name')}
-          placeholder='Select your name'
+          placeholder="Select your name"
           status={status}
-          label='Names:'
-          name='name'
-          mandatory='on'
+          label="Names:"
+          name="name"
+          required
           options={names}
         />
 
         <Select
           optionsFillSpace={selectBodyFillSpace}
-          handleOnChange={() => {}}
-          placeholder='Select with Error'
+          handleOnChange={() => console.log('changed')}
+          placeholder="Select with Error"
           status={status}
-          label='This is an error select: '
-          name='error'
-          mandatory='on'
+          label="This is an error select: "
+          name="error"
+          required
           options={names}
-          error='This field is required.'
+          error="This field is required."
         />
 
         <Select
           optionsFillSpace={selectBodyFillSpace}
-          handleOnChange={() => {}}
-          placeholder='Select without options'
+          handleOnChange={() => console.log('changed')}
+          placeholder="Select without options"
           status={status}
-          label='This Select has no Options: '
-          name='no_options'
+          label="This Select has no Options: "
+          name="no_options"
           options={[]}
         />
 
@@ -66,19 +66,19 @@ storiesOf('Select', module)
           optionsFillSpace={selectBodyFillSpace}
           handleOnChange={(option) => console.log(option, 'name')}
           status={status}
-          label='This Select has an Initial Option: '
-          name='initial_option'
+          label="This Select has an Initial Option: "
+          name="initial_option"
           options={names}
           initialOption={{ name: 'Felipe Gontijo', value: 'felipe' }}
         />
 
         <Select
           optionsFillSpace={selectBodyFillSpace}
-          handleOnChange={() => {}}
-          placeholder='Disabled Select'
+          handleOnChange={() => console.log('changed')}
+          placeholder="Disabled Select"
           status={status}
-          label='This is an Disabled Select: '
-          name='disabled_select'
+          label="This is an Disabled Select: "
+          name="disabled_select"
           disabled
           options={names}
         />

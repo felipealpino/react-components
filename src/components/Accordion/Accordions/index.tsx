@@ -4,6 +4,7 @@ import { AccordionsContainer } from '../../../components/Accordion/Accordions/st
 
 export interface IAccordions {
   gap?: string;
+  children?: React.ReactNode;
 }
 
 const Accordions: React.FC<IAccordions> = ({ gap = '0px', ...props }) => {
@@ -29,15 +30,19 @@ const Accordions: React.FC<IAccordions> = ({ gap = '0px', ...props }) => {
           index,
           handleSetCurrent,
           accordionCurent,
-          ...accordion.props
-        }
+          ...accordion.props,
+        },
       };
     });
 
     return newAccordions;
-  }, [accordionCurent, props.children]);
+  }, [accordionCurent, handleSetCurrent, props.children]);
 
-  return <AccordionsContainer {...props} gap={gap} className='accordions-list'>{getChildren}</AccordionsContainer>;
+  return (
+    <AccordionsContainer {...props} gap={gap} className="accordions-list">
+      {getChildren}
+    </AccordionsContainer>
+  );
 };
 
 export { Accordions };

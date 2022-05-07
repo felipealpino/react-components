@@ -11,13 +11,13 @@ storiesOf('Spinner', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     return (
       <Fragment>
         <BaseStyles />
-        <Accordion title='Spinner inside me'>
+        <Accordion title="Spinner inside me">
           <Spinner fixed={false} status={status} />
         </Accordion>
       </Fragment>
@@ -28,7 +28,7 @@ storiesOf('Spinner', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'secondary'
+      'secondary',
     );
 
     const spinnerSize = select('Size', ['20px', '30px', '40px', '50px', '60px'], '30px');

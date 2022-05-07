@@ -4,6 +4,8 @@ export declare type ITabsContextData = {
     setSelectedTab: (clickedTab: number) => void;
 };
 export declare const TabsContext: React.Context<ITabsContextData>;
-declare const TabsProvider: React.FC;
+declare const TabsProvider: React.FC<{
+    children: React.ReactNode;
+}>;
 declare function useTabs(): ITabsContextData;
 export { useTabs, TabsProvider };

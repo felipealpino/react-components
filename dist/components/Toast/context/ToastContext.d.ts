@@ -5,6 +5,8 @@ export declare type IToastContextData = {
     toastListCurrent: IToast[];
 };
 export declare const ToastContext: React.Context<IToastContextData>;
-declare const ToastProvider: React.FC;
+declare const ToastProvider: React.FC<{
+    children: React.ReactNode;
+}>;
 declare function useToast(): IToastContextData;
 export { useToast, ToastProvider };

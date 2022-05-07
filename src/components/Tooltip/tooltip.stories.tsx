@@ -10,7 +10,7 @@ storiesOf('Tooltip', module)
     const status = select(
       'Tooltip Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'danger'
+      'danger',
     );
 
     const tooltipPosition = select('Tooltip position', ['bottom', 'top'], 'bottom');
@@ -20,11 +20,11 @@ storiesOf('Tooltip', module)
     return (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <BaseStyles />
-        <Tooltip clickable={isClickable} position={tooltipPosition} status={status} text='The button is enabled'>
+        <Tooltip clickable={isClickable} position={tooltipPosition} status={status} text="The button is enabled">
           <Button>Hover to tooltip</Button>
         </Tooltip>
 
-        <Tooltip clickable={isClickable} position={tooltipPosition} status={status} text='The button is disabled'>
+        <Tooltip clickable={isClickable} position={tooltipPosition} status={status} text="The button is disabled">
           <Button disabled>Hover to tooltip</Button>
         </Tooltip>
       </div>

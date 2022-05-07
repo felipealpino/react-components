@@ -2,7 +2,7 @@ import React from 'react';
 import { ElementStatus } from '../../theme/colors';
 export interface InputLabel {
     label: string;
-    mandatory?: 'on';
+    isRequired?: boolean;
     className?: string;
     status?: ElementStatus;
 }

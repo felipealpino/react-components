@@ -4,6 +4,7 @@ import { colorGet } from '../../../shared/utils/colorGet';
 
 export const InputContainer = styled.div<IInputProps>`
   margin: 0.5rem 0px;
+  opacity: ${(props) => (props.disabled ? '0.5' : '1')};
 
   .container-input-icon {
     position: relative;
@@ -33,7 +34,7 @@ export const InputContainer = styled.div<IInputProps>`
       text-overflow: ellipsis;
       -webkit-box-orient: vertical;
     }
-    
+
     input:focus {
       border: 2px solid ${({ status }) => colorGet(status, 600)};
       background: ${colorGet('basic', 300)};
@@ -41,7 +42,6 @@ export const InputContainer = styled.div<IInputProps>`
 
     input:disabled {
       cursor: not-allowed;
-      border: 2px solid ${colorGet('basic', 500)};
     }
   }
 `;

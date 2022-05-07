@@ -1,7 +1,7 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { InputForm } from '../InputForm';
-import { withKnobs, select, text } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import { useCallback } from '@storybook/addons';
 import { Form } from '@unform/web';
 import { Button } from '../../Button';
@@ -10,7 +10,7 @@ import { BaseStyles } from '../../BaseStyles';
 import { FiFilter } from 'react-icons/fi';
 export const groupSchema = Yup.object().shape({
   first_name: Yup.string().required({ name: 'first_name', message: 'O campo é obrigatório' }),
-  last_name: Yup.string().required({ name: 'last_name', message: 'O campo é obrigatório' })
+  last_name: Yup.string().required({ name: 'last_name', message: 'O campo é obrigatório' }),
 });
 // .matches(/^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12]\d|3[01])$/, { message: { name: 'date', message: 'Formato inválido' } })
 
@@ -36,7 +36,7 @@ storiesOf('InputForm', module)
     const status = select(
       'Status',
       ['basic', 'primary', 'secondary', 'tertiary', 'quaternary', 'success', 'info', 'warning', 'danger', 'dark'],
-      'primary'
+      'primary',
     );
 
     const [errors, setErros] = useState<IInputErrorsFormat[]>([]);
@@ -53,7 +53,7 @@ storiesOf('InputForm', module)
     }, []);
 
     const beforeSubmitForm = async (inputData: any, schema: any) => {
-      let auxErrors = [] as IInputErrorsFormat[];
+      const auxErrors = [] as IInputErrorsFormat[];
       try {
         await schema.validate(inputData, { abortEarly: false });
         return auxErrors;
@@ -68,32 +68,25 @@ storiesOf('InputForm', module)
       <Form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <BaseStyles />
         <InputForm
-          label='Nome'
-          name='first_name'
+          label="Nome"
+          name="first_name"
           status={status}
-          placeholder='Digite o Nome'
-          autoComplete='off'
+          placeholder="Digite o Nome"
+          autoComplete="off"
           error={errorMessageBuilder('first_name', errors)}
         />
         <InputForm
-          label='Sobrenome'
-          name='last_name'
-          autoComplete='off'
+          label="Sobrenome"
+          name="last_name"
+          autoComplete="off"
           status={status}
-          placeholder='Digite o Sobrenome'
+          placeholder="Digite o Sobrenome"
           error={errorMessageBuilder('last_name', errors)}
         />
 
-        <InputForm
-          icon={FiFilter}
-          iconcolor='#222b45'
-          iconfill='#222b45'
-          name='search'
-          status={status}
-          placeholder='Buscar'
-        />
+        <InputForm icon={FiFilter} iconcolor="#222b45" iconfill="#222b45" name="search" status={status} placeholder="Buscar" />
 
-        <Button type='submit'>Submit</Button>
+        <Button type="submit">Submit</Button>
         <div>
           <div>Nome: {inputText.first_name || ''} </div>
           <div>Sobrenome: {inputText.last_name || ''} </div>

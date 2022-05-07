@@ -1,15 +1,9 @@
 import styled from 'styled-components';
-import { ElementStatus } from '../../../shared/theme/colors';
+import { ITextArea } from '.';
 import { colorGet } from '../../../shared/utils';
 
-interface ITextArea {
-  status?: ElementStatus;
-  resizable?: 'both' | 'horizontal' | 'vertical' | 'none';
-}
-
-export const ContainerTextArea = styled.div<ITextArea>`
-  width: 100%;
-  position: relative;
+export const ContainerTextArea = styled.div<Pick<ITextArea, 'resizable' | 'status' | 'disabled'>>`
+  opacity: ${(props) => (props.disabled ? '0.5' : '1')};
 
   textarea {
     box-sizing: border-box;
@@ -24,6 +18,10 @@ export const ContainerTextArea = styled.div<ITextArea>`
     transition-property: border;
     text-overflow: ellipsis;
     resize: ${({ resizable }) => resizable};
+  }
+
+  textarea:disabled {
+    cursor: not-allowed;
   }
 
   span {
