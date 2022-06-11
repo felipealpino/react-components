@@ -12,34 +12,76 @@ storiesOf('Radio', module)
       'primary',
     );
 
+    interface IRadioState {
+      r1?: string;
+      r2?: string;
+    }
+
     const size = select('Size', [30, 40, 50], 30);
 
-    const [radioState, setRadioState] = useState<{ r1: string; r2: string }>();
+    const [radioState, setRadioState] = useState<IRadioState>();
 
     const handleChangeInput = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-      setRadioState((oldState) => {
+      setRadioState((oldState?: IRadioState) => {
         const name = event.target.name;
-        const id = event.target.id;
-        return { ...oldState, [name]: id };
+        const value = event.target.value;
+
+        if (!oldState) return { [name]: value };
+        return { ...oldState, [name]: value };
       });
     }, []);
 
-    console.log(radioState);
+    console.log('radioState >> ', radioState);
     return (
       <Fragment>
         <BaseStyles />
         <div style={{ display: 'flex', gap: '10px' }}>
-          <Radio radioSize={size} id="yes" status={status} name="r1" handleOnCheck={(event) => handleChangeInput(event)} label="Yes" />
-          <Radio radioSize={size} id="no" status={status} name="r1" handleOnCheck={(event) => handleChangeInput(event)} label="No" />
-        </div>
-        <br />
-        <div style={{ display: 'flex', gap: '10px' }}>
-          <Radio radioSize={size} id="male" status="secondary" name="r2" handleOnCheck={(event) => handleChangeInput(event)} label="Male" />
-          <Radio radioSize={size} id="female" status="secondary" name="r2" handleOnCheck={(event) => handleChangeInput(event)} label="Female" />
+          <Radio
+            radioSize={size}
+            id="yes_id"
+            value="yes"
+            status={status}
+            name="radio1"
+            handleOnCheck={(event) => handleChangeInput(event)}
+            label="Yes"
+          />
+
+          <Radio
+            radioSize={size}
+            id="no_id"
+            value="no"
+            status={status}
+            name="radio1"
+            handleOnCheck={(event) => handleChangeInput(event)}
+            label="No"
+          />
         </div>
 
         <br />
-        <Radio disabled id={'disabled_radio'} label="Disabled:" name={'disabled_radio'} />
+
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <Radio
+            radioSize={size}
+            id="male_id"
+            value="male"
+            status="secondary"
+            name="radio2"
+            handleOnCheck={(event) => handleChangeInput(event)}
+            label="Male"
+          />
+          <Radio
+            radioSize={size}
+            id="female_id"
+            value="female"
+            status="secondary"
+            name="radio2"
+            handleOnCheck={(event) => handleChangeInput(event)}
+            label="Female"
+          />
+        </div>
+
+        <br />
+        <Radio disabled id="disabled_radio_id" value="disabled_radio" label="Disabled:" name="disabled_radio" />
       </Fragment>
     );
   });

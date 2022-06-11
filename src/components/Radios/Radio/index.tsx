@@ -8,7 +8,7 @@ import { InputRadio, RadioContainer } from './styles';
 export interface IRadio {
   handleOnCheck?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
-  // value: RadioValue;
+  value: any;
   status?: ElementStatus;
   id: string;
   name: string;
@@ -32,6 +32,7 @@ const Radio: React.FC<IRadio> = ({ handleOnCheck, radioSize = 30, ...props }) =>
         status={props.status}
         id={props.id}
         name={props.name}
+        value={props.value}
         type="radio"
         onChange={(event) => handleOnChange(event)}
         disabled={props.disabled}
