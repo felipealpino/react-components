@@ -5,6 +5,7 @@ import { BaseStyles } from '../../BaseStyles';
 import { RadioForm } from '../RadioForm';
 import { Form } from '@unform/web';
 import { Button } from '../../Button';
+import { IRadioButtonResponse } from '../interfaces/IRadioButtonResponse';
 
 storiesOf('RadioForm', module)
   .addDecorator(withKnobs)
@@ -18,14 +19,14 @@ storiesOf('RadioForm', module)
     const size = select('Size', [30, 40, 50], 30);
 
     const handleSubmit = (data) => {
-      const checkedValues: Array<any> = [];
-      
-      for (const property in data) {
-        const obj = data[property];
+      const checkedValues: IRadioButtonResponse[] = [];
+
+      for (const key in data) {
+        const obj = data[key];
         if (obj.isChecked) checkedValues.push(obj);
       }
 
-      console.log('checkedValues >>>> ', checkedValues);
+      console.log('formatted CheckedValues >>>> ', checkedValues);
     };
 
     return (
